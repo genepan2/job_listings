@@ -45,7 +45,6 @@ def get_job_details(job_id):
 
     return {"company": company, "job-title": job_title, "level": level}
 
-# Main function
 def main():
     # Get user input for the keyword
     keyword = input("Enter the keyword for the job search: ")
@@ -56,14 +55,23 @@ def main():
     # Get job details for each job ID
     job_details = [get_job_details(job_id) for job_id in job_ids]
 
-    # Create a DataFrame from the job details and save it to a CSV file with a unique name
-    # Here, the file will be saved with a name like 'jobs1.csv', 'jobs2.csv', etc., incrementing the number for each new file
+    # Create a DataFrame from the job details
     df = pd.DataFrame(job_details)
+
+    # Eliminate all blank rows from the DataFrame
+    df.dropna(inplace=True)
+
+    # Print the DataFrame
+    print("Job Details:")
+    print(df)
+
+    # Save the DataFrame to a CSV file with a unique name
     file_number = 1
     while True:
         file_name = f'jobs{file_number}.csv'
         try:
             df.to_csv(file_name, index=False, encoding='utf-8')
+            print(f"The search has finished, and the file '{file_name}' has been created.")
             break
         except FileExistsError:
             file_number += 1
