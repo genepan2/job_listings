@@ -39,6 +39,9 @@ def remove_some_tags(obj):
     if isinstance(obj, dict):
         obj.pop('short_name', None)
         obj.pop('id', None)
+        obj.pop('model_type', None)
+        obj.pop('tag', None)
+        obj.pop('type', None)
         for key, value in obj.items():
             remove_some_tags(value)
     elif isinstance(obj, list):
@@ -81,11 +84,6 @@ for page_number in range(0, 5):
             job['contents'] = strip_html_tags(job['contents'])
             job['contents'] = translate_unicode_characters(job['contents'])
 
-            # Remove specified fields
-            del job['tags']
-            del job['model_type']
-            del job['type']
-
             # Filter jobs for location "Berlin, Germany"
             if any(location['name'] == 'Berlin, Germany' for location in job['locations']):
                 filtered_jobs.append(job)
@@ -107,4 +105,3 @@ with open(ndjson_filename, 'w') as ndjson_file:
 
 print(f"Filtered jobs saved in '{json_filename}' in JSON format.")
 print(f"Filtered jobs saved in '{ndjson_filename}' in NDJSON format.")
-
