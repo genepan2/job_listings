@@ -5,107 +5,100 @@ from datetime import datetime
 import unicodedata
 import os
 
-# Parameters for job title and location
-job_title = "data-engineer"
-location = "berlin--berlin"
+class JobScraperWhatjobs:
+    def __init__(self, job_title, location, num_pages_to_scrape=3):
+        self.job_title = job_title
+        self.location = location
+        self.base_url = f"https://de.whatjobs.com/jobs/{self.job_title}/{self.location}"
+        self.num_pages_to_scrape = num_pages_to_scrape
+        self.global_job_number = 0
 
-base_url = f"https://de.whatjobs.com/jobs/{job_title}/{location}"
+        # Ensure the directory exists
+        self.directory_path = "json_files"
+        if not os.path.exists(self.directory_path):
+            os.makedirs(self.directory_path)
+        self.output_filename = f"{self.directory_path}/whatjobs_jobs_{{}}.json"
 
-# Ensure the directory exists
-directory_path = "json_files"
-if not os.path.exists(directory_path):
-    os.makedirs(directory_path)
+    def get_full_description(self, url):
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        description_div = soup.find("div", class_="dDesc")
+        if description_div:
+            description = description_div.get_text(separator=' ', strip=True)
+            description = description.replace("\n", " ")
+            description = unicodedata.normalize("NFC", description)
+            return description
+        return "N/A"
 
-output_filename = f"{directory_path}/whatjobs_jobs_{{}}.json"
-num_pages_to_scrape = 3
-global_job_number = 0
+    def scrape_page(self, url):
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        job_listings = soup.find_all("div", class_="searchResultItem")
+        jobs_data = []
 
-def get_full_description(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    
-    description_div = soup.find("div", class_="dDesc")
-    if description_div:
-        description = description_div.get_text(separator=' ', strip=True)
-        description = description.replace("\n", " ")
+        for job in job_listings:
+            title_element = job.find("h2", class_="title")
+            title = title_element.text.strip() if title_element else "N/A"
 
-        # Normalize the description text
-        description = unicodedata.normalize("NFC", description)
-        return description
+            location_element = job.find("div", class_="posR")
+            location = location_element.text.split(' ', 1)[1].strip() if location_element else "N/A"
 
-    return "N/A"
+            company_element = job.find("span", class_="wjIcon24 companyName")
+            company = company_element.find_parent('div').text.strip() if company_element else "N/A"
 
-def scrape_page(url):
-    global global_job_number
+            date_published_element = job.find("span", class_="wjIcon24 jobAge")
+            date_published = date_published_element.find_parent('div').text.strip() if date_published_element else "N/A"
 
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    job_listings = soup.find_all("div", class_="searchResultItem")
+            description_element = job.find("span", class_="jDesc")
+            description = description_element.text.strip() if description_element else "N/A"
+            job_url = description_element.find_next('a')['href'] if description_element else "N/A"
 
-    jobs_data = []
+            full_description = self.get_full_description(job_url)
 
-    for job in job_listings:
-        title_element = job.find("h2", class_="title")
-        title = title_element.text.strip() if title_element else "N/A"
-        
-        location_element = job.find("div", class_="posR")
-        location = location_element.text.split(' ', 1)[1].strip() if location_element else "N/A"
-        
-        company_element = job.find("span", class_="wjIcon24 companyName")
-        company = company_element.find_parent('div').text.strip() if company_element else "N/A"
-        
-        date_published_element = job.find("span", class_="wjIcon24 jobAge")
-        date_published = date_published_element.find_parent('div').text.strip() if date_published_element else "N/A"
-        
-        description_element = job.find("span", class_="jDesc")
-        description = description_element.text.strip() if description_element else "N/A"
-        job_url = description_element.find_next('a')['href'] if description_element else "N/A"
+            job_data = {
+                "job_number": self.global_job_number,
+                "job_title": title,
+                "job_location": location,
+                "company_name": company,
+                "publication_date": date_published,
+                "job_description": full_description,
+                "job_url": job_url,
+                "search_datetime": datetime.now().isoformat(),
+                "search_location": location
+            }
 
-        full_description = get_full_description(job_url)
-        
-        job_data = {
-            "job_number": global_job_number,
-            "job_title": title,
-            "job_location": location,
-            "company_name": company,
-            "publication_date": date_published,
-            "job_description": full_description,
-            "job_url": job_url,
-            "search_datetime": datetime.now().isoformat(),
-            "search_location": location
-        }
+            jobs_data.append(job_data)
+            self.global_job_number += 1
 
-        jobs_data.append(job_data)
-        global_job_number += 1
+        return jobs_data
 
-    return jobs_data
+    def scrape_all_pages(self):
+        all_jobs = []
+        file_count = 1
 
-def scrape_all_pages(base_url, num_pages):
-    all_jobs = []
-    file_count = 1
+        for page in range(1, self.num_pages_to_scrape + 1):
+            page_url = f"{self.base_url}?page={page}"
+            jobs_on_page = self.scrape_page(page_url)
 
-    for page in range(1, num_pages + 1):
-        page_url = f"{base_url}?page={page}"
-        jobs_on_page = scrape_page(page_url)
-        
-        if not jobs_on_page:
-            break
-        
-        all_jobs.extend(jobs_on_page)
+            if not jobs_on_page:
+                break
 
-        # Split the results into separate files containing 20 jobs each
-        if len(all_jobs) >= 20:
-            with open(output_filename.format(file_count), "w") as outfile:
-                json.dump(all_jobs[:20], outfile, ensure_ascii=False, indent=4)
-            all_jobs = all_jobs[20:]
-            file_count += 1
+            all_jobs.extend(jobs_on_page)
 
-    # Write any remaining jobs to file
-    if all_jobs:
-        with open(output_filename.format(file_count), "w") as outfile:
-            json.dump(all_jobs, outfile, ensure_ascii=False, indent=4)
+            # Split the results into separate files containing 20 jobs each
+            while len(all_jobs) >= 20:
+                with open(self.output_filename.format(file_count), "w") as outfile:
+                    json.dump(all_jobs[:20], outfile, ensure_ascii=False, indent=4)
+                print(f"Saved 20 jobs in '{self.output_filename.format(file_count)}'.")
+                all_jobs = all_jobs[20:]
+                file_count += 1
 
-    print(f"Scraped jobs and saved to files.")
+        # Write any remaining jobs to file
+        if all_jobs:
+            with open(self.output_filename.format(file_count), "w") as outfile:
+                json.dump(all_jobs, outfile, ensure_ascii=False, indent=4)
+            print(f"Saved the remaining {len(all_jobs)} jobs in '{self.output_filename.format(file_count)}'.")
 
 if __name__ == "__main__":
-    scrape_all_pages(base_url, num_pages_to_scrape)
+    scraper = JobScraperWhatjobs("data-engineer", "berlin--berlin")
+    scraper.scrape_all_pages()
