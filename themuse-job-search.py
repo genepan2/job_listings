@@ -1,25 +1,13 @@
-import requests  # Import the 'requests' module to make HTTP requests to APIs and websites
-import json  # Import the 'json' module to work with JSON data, such as parsing and serializing
-import re  # Import the 're' module for working with regular expressions, useful for text manipulation
-import unicodedata  # Import the 'unicodedata' module for working with Unicode characters and normalization
+import requests
+import json
+import re
+import unicodedata
+from datetime import datetime
+import os
 
-# Function to make a GET request and handle exceptions
 def get_requests_result(url, page_number):
     """
     Make a GET request to the specified URL and handle exceptions.
-
-    Parameters:
-    url : str
-        The URL to make the GET request to.
-    page_number : int
-        The page number to append to the URL.
-
-    Returns:
-    requests.Response
-        The response object from the HTTP request.
-    Raises:
-    Exception
-        If the request or response encounter an error.
     """
     try:
         res = requests.get(url + str(page_number))
@@ -28,49 +16,22 @@ def get_requests_result(url, page_number):
     except requests.exceptions.RequestException as e:
         raise Exception(f"Requesting page {page_number} failed: {e}")
 
-# Function to extract JSON content from response
 def get_json_content(res):
     """
     Extract JSON content from the response object.
-
-    Parameters:
-    res : requests.Response
-        The response object from the HTTP request.
-
-    Returns:
-    dict
-        The extracted JSON content.
     """
     return res.json()['results']
 
-# Function to strip HTML tags from text
 def strip_html_tags(text):
     """
     Remove HTML tags from the given text using regular expressions.
-
-    Parameters:
-    text : str
-        The input text containing HTML tags.
-
-    Returns:
-    str
-        The input text with HTML tags removed.
     """
     clean_text = re.sub(r'<.*?>', '', text)
     return clean_text
 
-# Function to translate Unicode characters to ASCII
 def translate_unicode_characters(text):
     """
     Translate Unicode characters to ASCII or remove them.
-
-    Parameters:
-    text : str
-        The input text containing Unicode characters.
-
-    Returns:
-    str
-        The input text with Unicode characters translated to ASCII.
     """
     translated_text = ''.join(
         char if ord(char) < 128 else unicodedata.normalize('NFKD', char).encode('ascii', 'ignore').decode('utf-8')
@@ -78,88 +39,82 @@ def translate_unicode_characters(text):
     )
     return translated_text
 
-
-# Function to remove specified fields from JSON object
-def remove_some_tags(obj):
+def transform_job_listing(job, search, job_number):
     """
-    Recursively remove specified fields from a JSON-like object.
-
-    This function removes the specified fields 'short_name', 'id', 'model_type', 'tags', and 'type'
-    from a JSON-like object. It operates recursively, traversing through dictionaries and lists.
-
-    Parameters:
-    obj : dict or list
-        The JSON-like object to remove fields from.
-
-    Returns:
-    None
+    Process and transform the job listing to the desired format.
     """
-    if isinstance(obj, dict):
-        obj.pop('short_name', None)
-        obj.pop('id', None)
-        obj.pop('model_type', None)
-        obj.pop('tags', None)
-        obj.pop('type', None)
-        for key, value in obj.items():
-            remove_some_tags(value)
-    elif isinstance(obj, list):
-        for item in obj:
-            remove_some_tags(item)
+    transformed_job = {
+        "job_number": job_number,
+        "job_title": job.get("name", ""),
+        "company_name": job.get("company", {}).get("name", ""),
+        "job_location": job.get("locations", [{}])[0].get("name", "") if job.get("locations") else "",
+        "search_keyword": job.get("categories", [{}])[0].get("name", "") if job.get("categories") else "",
+        "job_level": job.get("levels", [{}])[0].get("name", "") if job.get("levels") else "",
+        "publication_date": job.get("publication_date", ""),
+        "job_url": job.get("refs", {}).get("landing_page", ""),
+        "search_datetime": datetime.now().isoformat(),
+        "search_location": search["location"],
+        "job_description": job.get("contents", "")
+    }
+    return transformed_job
 
-
-# Display category options and get user input
-print("Select a job category:")
-print("1 - Data and Analytics")
-print("2 - Software Engineering")
-category_choice = input("Enter the number corresponding to your desired job category: ")
-
-# Determine the category based on user input
-if category_choice == "1":
-    category = "Data%20and%20Analytics"
-elif category_choice == "2":
-    category = "Software%20Engineering"
-else:
-    print("Invalid choice. Please select a valid option.")
-    exit()
+# Fixed category value to "Data and Analytics"
+search_keyword = "Data%20and%20Analytics"
 
 # Construct the API URL with the selected category and location
-url_themuse = f"https://www.themuse.com/api/public/jobs?category={category}&location=Berlin%2C%20Germany&page="
+url_themuse = f"https://www.themuse.com/api/public/jobs?category={search_keyword}&location=Berlin%2C%20Germany&page="
 
-# Initialize an empty list to store filtered jobs
-filtered_jobs = []
+search = {
+    "keyword": "Data and Analytics",
+    "location": "Berlin, Germany"
+}
+
+# Ensure the directory exists
+directory_path = "json_files"
+if not os.path.exists(directory_path):
+    os.makedirs(directory_path)
 
 # Loop through a range of pages to retrieve job listings
-for page_number in range(0, 5):
+file_number = 1
+job_number = 1  # Global job counter
+filtered_jobs_buffer = []  # This buffer will store jobs until it reaches a count of 20
+
+for page_number in range(0, 50):
     try:
         # Make a GET request to retrieve job listings
         res = get_requests_result(url_themuse, page_number)
-        json_content = get_json_content(res)
+        json_file = get_json_content(res)
 
-        # Process job listings, removing specified fields
-        for job in json_content:
-            remove_some_tags(job)
-
+        # Process and transform job listings
+        for job in json_file:
             job['contents'] = strip_html_tags(job['contents'])
             job['contents'] = translate_unicode_characters(job['contents'])
+            transformed_job = transform_job_listing(job, search, job_number)
 
-            # Filter jobs for location "Berlin, Germany"
-            if any(location['name'] == 'Berlin, Germany' for location in job['locations']):
-                filtered_jobs.append(job)
+            if 'Berlin, Germany' in transformed_job.get('job_location', ''):
+                transformed_job['job_number'] = job_number  # Add the job_number attribute
+                filtered_jobs_buffer.append(transformed_job)
+                job_number += 1  # Increment the global job counter
+
+            # Check if the buffer has reached a count of 20
+            if len(filtered_jobs_buffer) == 20:
+                # Save the buffered jobs to a file
+                json_filename = f"{directory_path}/the_muse_jobs_{file_number}.json"
+                with open(json_filename, 'w') as json_file:
+                    json.dump(filtered_jobs_buffer, json_file, indent=4)
+                print(f"Saved 20 jobs in '{json_filename}'.")
+
+                # Reset the buffer and increment the file number
+                filtered_jobs_buffer = []
+                file_number += 1
+
     except Exception as exception:
         print(exception)
         break
 
-# Save filtered jobs in JSON format
-json_filename = "filtered_jobs.json"
-with open(json_filename, 'w') as json_file:
-    json.dump(filtered_jobs, json_file, indent=4)  # Indent for better readability
-
-# Save filtered jobs in NDJSON format
-ndjson_filename = "filtered_jobs.ndjson"
-with open(ndjson_filename, 'w') as ndjson_file:
-    for job in filtered_jobs:
-        json.dump(job, ndjson_file)
-        ndjson_file.write('\n')
-
-print(f"Filtered jobs saved in '{json_filename}' in JSON format.")
-print(f"Filtered jobs saved in '{ndjson_filename}' in NDJSON format.")
+# If there are any remaining jobs in the buffer after looping, save them to a final file
+if filtered_jobs_buffer:
+    json_filename = f"{directory_path}/themuse_jobs_{file_number}.json"
+    with open(json_filename, 'w') as json_file:
+        json.dump(filtered_jobs_buffer, json_file, indent=4)
+    print(f"Saved the remaining {len(filtered_jobs_buffer)} jobs in '{json_filename}'.")
