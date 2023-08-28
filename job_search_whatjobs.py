@@ -56,7 +56,7 @@ class JobScraperWhatjobs:
             full_description = self.get_full_description(job_url)
 
             job_data = {
-                "job_number": self.global_job_number,
+                "job_number": f"whatjobs-{self.global_job_number}",
                 "job_title": title,
                 "job_location": location,
                 "company_name": company,

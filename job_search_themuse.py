@@ -43,7 +43,7 @@ class JobSearchTheMuse:
 
     def transform_job_listing(self, job):
         transformed_job = {
-            "job_number": self.job_number,
+            "job_number": f"themuse-{self.job_number}",
             "job_title": job.get("name", ""),
             "company_name": job.get("company", {}).get("name", ""),
             "job_location": job.get("locations", [{}])[0].get("name", "") if job.get("locations") else "",
