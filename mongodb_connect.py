@@ -9,12 +9,6 @@ class MongoDBUploader:
         self.collection = self.db[collection_name]
 
     def upload_json_files(self, folder_path):
-        """
-        Upload JSON files from a specific folder to the MongoDB collection.
-        
-        Parameters:
-        - folder_path: Path to the folder containing the JSON files.
-        """
         # List all files in the folder
         for filename in os.listdir(folder_path):
             if filename.endswith(".json"):
@@ -34,13 +28,22 @@ class MongoDBUploader:
     def close(self):
         self.client.close()
 
+# Paths embedded within the script
+def main_upload():
+    # For WhatJobs
+    whatjobs_folder_path = "json_files/whatjobs_json_files"
+    whatjobs_collection_name = "whatjobs_jobs_collected"
+    uploader_whatjobs = MongoDBUploader("job_listing_db", whatjobs_collection_name)
+    uploader_whatjobs.upload_json_files(whatjobs_folder_path)
+    uploader_whatjobs.close()
+
+    # For TheMuse
+    themuse_folder_path = "json_files/themuse_json_files"
+    themuse_collection_name = "themuse_jobs_collected"
+    uploader_themuse = MongoDBUploader("job_listing_db", themuse_collection_name)
+    uploader_themuse.upload_json_files(themuse_folder_path)
+    uploader_themuse.close()
 
 # If you want to run this directly
 if __name__ == "__main__":
-    folder_path = "json_files"
-    db_name = "job_listing_db"
-    collection_name = "jobs_collected"
-    
-    uploader = MongoDBUploader(db_name, collection_name)
-    uploader.upload_json_files(folder_path)
-    uploader.close()
+    main_upload()

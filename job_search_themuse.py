@@ -15,7 +15,7 @@ class JobSearchTheMuse:
         self.filtered_jobs_buffer = []
 
         # Ensure the directory exists
-        self.directory_path = "json_files"
+        self.directory_path = "json_files/themuse_json_files"
         if not os.path.exists(self.directory_path):
             os.makedirs(self.directory_path)
 
@@ -43,7 +43,7 @@ class JobSearchTheMuse:
 
     def transform_job_listing(self, job):
         transformed_job = {
-            "job_number": self.job_number,
+            "job_number": f"themuse-{self.job_number}",
             "job_title": job.get("name", ""),
             "company_name": job.get("company", {}).get("name", ""),
             "job_location": job.get("locations", [{}])[0].get("name", "") if job.get("locations") else "",
@@ -73,7 +73,7 @@ class JobSearchTheMuse:
                         self.job_number += 1
 
                     if len(self.filtered_jobs_buffer) == 20:
-                        json_filename = f"{self.directory_path}/the_muse_jobs_{self.file_number}.json"
+                        json_filename = f"{self.directory_path}/themuse_jobs_{self.file_number}.json"
                         with open(json_filename, 'w') as json_file:
                             json.dump(self.filtered_jobs_buffer, json_file, indent=4)
                         print(f"Saved 20 jobs in '{json_filename}'.")

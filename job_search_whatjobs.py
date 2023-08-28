@@ -14,7 +14,7 @@ class JobScraperWhatjobs:
         self.global_job_number = 0
 
         # Ensure the directory exists
-        self.directory_path = "json_files"
+        self.directory_path = "json_files/whatjobs_json_files"
         if not os.path.exists(self.directory_path):
             os.makedirs(self.directory_path)
         self.output_filename = f"{self.directory_path}/whatjobs_jobs_{{}}.json"
@@ -56,7 +56,7 @@ class JobScraperWhatjobs:
             full_description = self.get_full_description(job_url)
 
             job_data = {
-                "job_number": self.global_job_number,
+                "job_number": f"whatjobs-{self.global_job_number}",
                 "job_title": title,
                 "job_location": location,
                 "company_name": company,
@@ -64,7 +64,8 @@ class JobScraperWhatjobs:
                 "job_description": full_description,
                 "job_url": job_url,
                 "search_datetime": datetime.now().isoformat(),
-                "search_location": location
+                "search_location": location,
+                "search_keyword": self.job_title
             }
 
             jobs_data.append(job_data)
