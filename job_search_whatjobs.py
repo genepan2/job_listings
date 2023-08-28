@@ -14,7 +14,7 @@ class JobScraperWhatjobs:
         self.global_job_number = 0
 
         # Ensure the directory exists
-        self.directory_path = "json_files"
+        self.directory_path = "json_files/whatjobs_json_files"
         if not os.path.exists(self.directory_path):
             os.makedirs(self.directory_path)
         self.output_filename = f"{self.directory_path}/whatjobs_jobs_{{}}.json"

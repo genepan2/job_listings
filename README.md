@@ -1,4 +1,4 @@
-# job_listing Job Scraper README
+# job_search LinkedIn Job Scraper README
 
 This repository contains a Python script to scrape job details from LinkedIn based on a user-provided keyword. The script collects job IDs for the given keyword, retrieves detailed information for each job, and saves the data to a CSV file with a unique name. Additionally, the script eliminates any blank rows from the CSV file and displays the job details as a DataFrame.
 
