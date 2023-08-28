@@ -64,7 +64,8 @@ class JobScraperWhatjobs:
                 "job_description": full_description,
                 "job_url": job_url,
                 "search_datetime": datetime.now().isoformat(),
-                "search_location": location
+                "search_location": location,
+                "search_keyword": self.job_title
             }
 
             jobs_data.append(job_data)
