@@ -116,7 +116,7 @@ def get_job_details(job_id, search):
         # "job_description": description_contents.encode('utf-8', 'strict'),
         # "job_description": [content.prettify() for content in description_contents],
         "job_description": description_contents,
-        "search_datetime": datetime.now(),
+        "search_datetime": datetime.now().isoformat(),
         "search_keyword": search["keyword"],
         "search_location": search["location"]
     }
