@@ -1,22 +1,22 @@
 ATTRIBUTES:
 - Job
--- LinkedIn ID
--- Title
--- Location
--- LinkedIn Url
--- Amount of Applicants
--- Seniority level
--- Employment type
--- Job function
--- Industries
--- Description
+-- LinkedIn ID*
+-- Title*
+-- Location*
+-- LinkedIn Url*
+-- Amount of Applicants*
+-- Seniority level*
+-- Employment type*
+-- Job function*
+-- Industries*
+-- Description*
 
 - Company
 -- LinkedIn ID (?)
--- Name
--- LinkedIn Profile Url
+-- Name*
+-- LinkedIn Profile Url*
 
-- Date and Time Of Scraping
+- Date and Time Of Scraping*
 - Search Inputs
 -- Keywords
 -- Location
