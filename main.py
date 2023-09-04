@@ -1,22 +1,37 @@
-from job_search_whatjobs import JobScraperWhatjobs
-from job_search_themuse import JobSearchTheMuse
+from WhatjobsDataExtractor import WhatjobsDataExtractor
+from WhatjobsDataTransformer import WhatjobsDataTransformer
+from ThemuseDataExtractor import ThemuseDataExtractor
+from ThemuseDataTransformer import ThemuseDataTransformer
 from mongodb_connect import main_upload
-from merge_to_all_jobs_list import merge_collections_to_all_jobs_list  # Import the function
+from merge_to_all_jobs_list import merge_collections_to_all_jobs_list
 
 def main():
-    # Scraping jobs from various platforms
-    whatjobs_scraper = JobScraperWhatjobs("data-engineer", "berlin--berlin")
-    whatjobs_scraper.scrape_all_pages()
+    # List of job titles and locations to search for on WhatJobs
+    job_titles = ["data", "engineer", "software", "machine"]
+    locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich"]
 
-    # Scraping from themuse.com
-    themuse_scraper = JobSearchTheMuse("Data%20and%20Analytics", "Berlin%2C%20Germany")
-    themuse_scraper.scrape_jobs()
+    # For each job title and location combination, scrape the job listings from WhatJobs
+    for title in job_titles:
+        for loc in locations:
+            extractor = WhatjobsDataExtractor(title, loc)
+            extractor.scrape_all_pages()
+
+    # Transforming scraped data from WhatJobs
+    whatjobs_transformer = WhatjobsDataTransformer()
+    whatjobs_transformer.transform_data()
+
+    # Scraping and transforming data from themuse.com
+    themuse_extractor = ThemuseDataExtractor()
+    themuse_extractor.extract_jobs()
+
+    themuse_transformer = ThemuseDataTransformer()
+    themuse_transformer.transform_jobs()
 
     # Uploading scraped data to MongoDB
     main_upload()
 
     # Merging collections
-    merge_collections_to_all_jobs_list()  # Call the function to merge the collections
+    merge_collections_to_all_jobs_list()
 
 if __name__ == "__main__":
     main()
