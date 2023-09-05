@@ -16,7 +16,7 @@ class MongoDBUploader:
 
                 with open(filepath, 'r') as file:
                     data = json.load(file)
-                    
+
                     # Ensure data is a list for bulk insert
                     if isinstance(data, list):
                         self.collection.insert_many(data)
@@ -43,6 +43,13 @@ def main_upload():
     uploader_themuse = MongoDBUploader("job_listing_db", themuse_collection_name)
     uploader_themuse.upload_json_files(themuse_folder_path)
     uploader_themuse.close()
+
+    # For LinkedIn
+    linkedin_folder_path = "json_files/linkedin_json_files"
+    linkedin_collection_name = "linkedin_jobs_collected"
+    uploader_linkedin = MongoDBUploader("job_listing_db", linkedin_collection_name)
+    uploader_linkedin.upload_json_files(linkedin_folder_path)
+    uploader_linkedin.close()
 
 # If you want to run this directly
 if __name__ == "__main__":
