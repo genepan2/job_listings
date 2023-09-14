@@ -30,10 +30,10 @@ def search_jobs_by_keyword(keyword):
     client.close()
 
 def main():
-    # Prompt user for job category
+    # Prompt user for job category, we will have more options once it's complete
     options = {
         "1": "Data",
-        "2": "Software Engineering NOT WORKIN YET"
+       # "2": "Software Engineering NOT WORKING YET"
     }
     print("Choose a job category to search for:")
     for key, value in options.items():
