@@ -27,8 +27,20 @@ def main():
     themuse_extractor = ThemuseDataExtractor()
     themuse_extractor.extract_jobs()
 
-    themuse_transformer = ThemuseDataTransformer()
-    themuse_transformer.transform_jobs()
+    # themuse_transformer = ThemuseDataTransformer()
+    # themuse_transformer.transform_jobs()
+
+
+    # Scraping from linkedin.com
+    job_titles = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
+    locations = ["Berlin, Germany", "Cologne, Germany", "Hamburg, Germany", "Munich, Germany"]
+    for title in job_titles:
+        for location in locations:
+            linkedin_extractor = JobSearchLinkedInExtractor(title, location)
+            linkedin_extractor.scrape_jobs()
+
+    linkedin_transformer = JobSearchLinkedInTransformer()
+    linkedin_transformer.run_all()
 
 
     # Scraping from linkedin.com
