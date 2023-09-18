@@ -1,3 +1,5 @@
 __pycache__
 .trunk
 .vscode
+.DS_Store
+**.json
