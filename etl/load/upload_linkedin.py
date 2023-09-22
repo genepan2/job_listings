@@ -1,14 +1,13 @@
 import settings  # Import settings first to set up paths
 
-from mongodb_connection import MongoDBUploader
+from config.mongodb_connection import MongoDBUploader
 
-def upload_linkedin():
-    linkedin_collection_name = "linkedin_jobs_collected"
-    
-    uploader_linkedin = MongoDBUploader("job_listing_db", linkedin_collection_name)
-    uploader_linkedin.upload_json_file(settings.LINKEDIN_FILE_PATH)  # Use the path from settings
-    uploader_linkedin.close()
-
-# Run upload_linkedin function if this script is executed
-if __name__ == "__main__":
-    upload_linkedin()
+class LinkedinUploader:
+    @staticmethod
+    def upload():
+        linkedin_file_path = "data/processed/linkedin_json_files/linkedin_cleaned_data.json"
+        linkedin_collection_name = "linkedin_jobs_collected"
+        
+        uploader = MongoDBUploader("job_listing_db", linkedin_collection_name)
+        uploader.upload_json_file(linkedin_file_path)
+        uploader.close()
