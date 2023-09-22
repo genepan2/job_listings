@@ -11,7 +11,7 @@ from etl.extract.linkedin_extractor import JobSearchLinkedInExtractor
 from etl.transform.linkedin_transformer import JobSearchLinkedInTransformer
 from etl.load.upload_linkedin import LinkedinUploader
 
-from utils.merge_collections import MergeCollections
+from src.utils.merge_collections import MergeCollections
 
 
 def main():

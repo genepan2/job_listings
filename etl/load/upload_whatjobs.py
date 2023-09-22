@@ -1,4 +1,3 @@
-import settings  # Importing settings will also update the system path
 
 from config.mongodb_connection import MongoDBUploader
 
