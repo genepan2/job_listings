@@ -1,4 +1,4 @@
-import settings  # Import settings first to set up paths
+
 
 from config.mongodb_connection import MongoDBUploader
 
