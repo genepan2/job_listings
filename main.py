@@ -15,7 +15,7 @@ from src.utils.merge_collections import MergeCollections
 
 
 def main():
-    '''
+
     # Extraction and transformation for WhatJobs
     job_titles = ["data", "engineer", "software", "machine"]
     locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich"]
@@ -32,8 +32,6 @@ def main():
     themuse_transformer = ThemuseDataTransformer()
     themuse_transformer.transform_jobs()
 
-
-    '''
     # Extraction and transformation for LinkedIn
     # job_titles_linkedin = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
     job_titles_linkedin = ["Data Engineer", "Big Data Engineer"]
