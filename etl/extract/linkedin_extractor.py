@@ -62,30 +62,49 @@ class JobSearchLinkedInExtractor:
         # level = soup.find("ul", {"class": "description__job-criteria-list"})
         # level = level.find("li").text
 
-        job_linkedin_id = soup.find(
-            "code", {"id": "decoratedJobPostingId"}).string
+        job_linkedin_id_elem = soup.find("code", {"id": "decoratedJobPostingId"})
+        job_linkedin_id = job_linkedin_id_elem.text if job_linkedin_id_elem is not None else None
 
         job_linkedin_url = target_url
 
         print(job_linkedin_url)
 
-        amount_applicants_text = soup.select_one(
-            ".num-applicants__caption").text
+        amount_applicants_elem = soup.select_one(".num-applicants__caption")
+        amount_applicants_text = amount_applicants_elem.text if amount_applicants_elem is not None else None
 
         job_criteria_items = soup.find_all(
             "li", {"class": "description__job-criteria-item"})
-        seniority_level_text = job_criteria_items[0].select_one(
-            ".description__job-criteria-text").text
-        employment_type_text = job_criteria_items[1].select_one(
-            ".description__job-criteria-text").text
-        job_function_text = job_criteria_items[2].select_one(
-            ".description__job-criteria-text").text
-        industries_text = job_criteria_items[3].select_one(
-            ".description__job-criteria-text").text
+        # seniority_level_text = job_criteria_items[0].select_one(
+        #     ".description__job-criteria-text").text if isinstance(job_criteria_items, list) and job_criteria_items[0] is not None else None
+        # employment_type_text = job_criteria_items[1].select_one(
+        #     ".description__job-criteria-text").text if isinstance(job_criteria_items, list) and job_criteria_items[1] is not None else None
+        # job_function_text = job_criteria_items[2].select_one(
+        #     ".description__job-criteria-text").text  if isinstance(job_criteria_items, list) and job_criteria_items[2] is not None else None
+        # industries_text = job_criteria_items[3].select_one(
+        #     ".description__job-criteria-text").text  if isinstance(job_criteria_items, list) and job_criteria_items[3] is not None else None
 
-        description = soup.select_one(".description__text").select_one(
-            ".show-more-less-html__markup")
-        description_contents = description.text
+        if len(job_criteria_items) > 0:
+            seniority_level_text = job_criteria_items[0].select_one(".description__job-criteria-text").text
+            employment_type_text = job_criteria_items[1].select_one(".description__job-criteria-text").text
+            job_function_text = job_criteria_items[2].select_one(".description__job-criteria-text").text
+            industries_text = job_criteria_items[3].select_one(".description__job-criteria-text").text
+        else:
+            seniority_level_text = None
+            employment_type_text = None
+            job_function_text = None
+            industries_text = None
+
+        # description = soup.select_one(".description__text").select_one(
+        #     ".show-more-less-html__markup")
+        # description_contents = description.text
+
+        description = soup.select_one(".description__text")
+
+        if description is not None:
+            description_contents = description.select_one(".show-more-less-html__markup").text
+        else:
+            # Handle the case where the element is not found
+            description_contents = None  # Or any other default value or error handling logic
 
         company_html = soup.select_one(
             ".topcard__org-name-link")
