@@ -48,7 +48,8 @@ class JobSearchLinkedInExtractor:
             job_ids.extend(job.find("div", {"class": "base-card"}).get('data-entity-urn').split(
                 ":")[3] for job in all_jobs_on_this_page if job.find("div", {"class": "base-card"}))
 
-        return job_ids[:3]
+        # return job_ids[:10]
+        return job_ids
 
     def get_job_details(self, job_id, search):
         # print(search)
@@ -58,9 +59,6 @@ class JobSearchLinkedInExtractor:
 
         job_title = soup.find("div", {"class": "top-card-layout__entity-info"})
         job_title = job_title.find("a").text if job_title else None
-
-        # level = soup.find("ul", {"class": "description__job-criteria-list"})
-        # level = level.find("li").text
 
         job_linkedin_id_elem = soup.find("code", {"id": "decoratedJobPostingId"})
         job_linkedin_id = job_linkedin_id_elem.text if job_linkedin_id_elem is not None else None
@@ -74,14 +72,6 @@ class JobSearchLinkedInExtractor:
 
         job_criteria_items = soup.find_all(
             "li", {"class": "description__job-criteria-item"})
-        # seniority_level_text = job_criteria_items[0].select_one(
-        #     ".description__job-criteria-text").text if isinstance(job_criteria_items, list) and job_criteria_items[0] is not None else None
-        # employment_type_text = job_criteria_items[1].select_one(
-        #     ".description__job-criteria-text").text if isinstance(job_criteria_items, list) and job_criteria_items[1] is not None else None
-        # job_function_text = job_criteria_items[2].select_one(
-        #     ".description__job-criteria-text").text  if isinstance(job_criteria_items, list) and job_criteria_items[2] is not None else None
-        # industries_text = job_criteria_items[3].select_one(
-        #     ".description__job-criteria-text").text  if isinstance(job_criteria_items, list) and job_criteria_items[3] is not None else None
 
         if len(job_criteria_items) > 0:
             seniority_level_text = job_criteria_items[0].select_one(".description__job-criteria-text").text
@@ -94,27 +84,23 @@ class JobSearchLinkedInExtractor:
             job_function_text = None
             industries_text = None
 
-        # description = soup.select_one(".description__text").select_one(
-        #     ".show-more-less-html__markup")
-        # description_contents = description.text
-
         description = soup.select_one(".description__text")
-
         if description is not None:
             description_contents = description.select_one(".show-more-less-html__markup").text
         else:
-            # Handle the case where the element is not found
-            description_contents = None  # Or any other default value or error handling logic
+            description_contents = None
 
         company_html = soup.select_one(
             ".topcard__org-name-link")
         company_name = company_html.string if company_html else None
 
-        company_linkedin_url = company_html['href']
+        company_linkedin_url = company_html['href'] if company_html else None
 
-        job_location_html = soup.select_one(
-            ".topcard__flavor-row").select_one(".topcard__flavor--bullet")
-        job_location = job_location_html.text if job_location_html else None
+        job_location_html = soup.select_one(".topcard__flavor-row")
+        if job_location_html is not None:
+            job_location = job_location_html.select_one(".topcard__flavor--bullet").text
+        else:
+            job_location = None
 
         return {
             "company_name": company_name,

@@ -39,24 +39,23 @@ class JobSearchLinkedInTransformer:
                 data = json.load(file)
                 all_data.append(data)
         all_data = self.flatten(all_data)
-        # self.print_json(all_data)
         return all_data
 
     def transform(self, data):
         cleaned_data = []
         for job in data:
             cleaned_job = {key: value.strip() if isinstance(value, str) else value for key, value in job.items()}
-            # job_title
-            cleaned_job["job_title"] = cleaned_job["job_title"].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "")
-            # job_amount_applicants
-            amount_applicants = re.compile(r'\d+').findall(cleaned_job["job_amount_applicants"])
+
+            cleaned_job["job_title"] = cleaned_job["job_title"].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job["job_title"] else None
+
+            amount_applicants = re.compile(r'\d+').findall(cleaned_job["job_amount_applicants"]) if cleaned_job["job_amount_applicants"] else [0]
             cleaned_job["job_amount_applicants"] = amount_applicants[0]
-            # job_linkedin_id
-            cleaned_job["job_linkedin_id"] = cleaned_job["job_linkedin_id"].replace('<!--', '').replace('-->', '')
-            # company_linkedin_url
-            cleaned_job["company_linkedin_url"] = cleaned_job["company_linkedin_url"].split('?')[0]
+
+            cleaned_job["job_linkedin_id"] = cleaned_job["job_linkedin_id"].replace('<!--', '').replace('-->', '') if cleaned_job["job_linkedin_id"] else None
+
+            cleaned_job["company_linkedin_url"] = cleaned_job["company_linkedin_url"].split('?')[0] if cleaned_job["company_linkedin_url"] else None
+
             cleaned_data.append(cleaned_job)
-        self.print_json(cleaned_data)
         return cleaned_data
 
     def clean_filename(self, string, replace = False):
