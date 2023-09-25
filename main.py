@@ -15,6 +15,7 @@ from src.utils.merge_collections import MergeCollections
 
 
 def main():
+
     # Extraction and transformation for WhatJobs
     job_titles = ["data", "engineer", "software", "machine"]
     locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich"]
@@ -24,7 +25,7 @@ def main():
             whatjobs_extractor.scrape_all_pages()
     whatjobs_transformer = WhatjobsDataTransformer()
     whatjobs_transformer.transform_data()
-    
+
     # Extraction and transformation for Themuse
     themuse_extractor = ThemuseDataExtractor()
     themuse_extractor.extract_jobs()
@@ -32,20 +33,23 @@ def main():
     themuse_transformer.transform_jobs()
 
 
+    '''
     # Extraction and transformation for LinkedIn
-    job_titles_linkedin = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
-    locations_linkedin = ["Berlin, Germany", "Cologne, Germany", "Hamburg, Germany", "Munich, Germany"]
+    # job_titles_linkedin = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
+    job_titles_linkedin = ["Data Engineer", "Big Data Engineer"]
+    # locations_linkedin = ["Berlin, Germany", "Cologne, Germany", "Hamburg, Germany", "Munich, Germany"]
+    locations_linkedin = ["Berlin, Germany", "Munich, Germany"]
     for title in job_titles_linkedin:
         for location in locations_linkedin:
             linkedin_extractor = JobSearchLinkedInExtractor(title, location)
             linkedin_extractor.scrape_jobs()
     linkedin_transformer = JobSearchLinkedInTransformer()
     linkedin_transformer.run_all()
-
+    '''
     # Uploading to MongoDB
     WhatjobsUploader.upload()
     ThemuseUploader.upload()
-    LinkedinUploader.upload()
+    # LinkedinUploader.upload()
 
     # Merging collections in MongoDB
     MergeCollections.merge_to_all_jobs_list()
