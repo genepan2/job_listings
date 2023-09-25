@@ -15,7 +15,7 @@ from src.utils.merge_collections import MergeCollections
 
 
 def main():
-
+    '''
     # Extraction and transformation for WhatJobs
     job_titles = ["data", "engineer", "software", "machine"]
     locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich"]
@@ -45,11 +45,11 @@ def main():
             linkedin_extractor.scrape_jobs()
     linkedin_transformer = JobSearchLinkedInTransformer()
     linkedin_transformer.run_all()
-    '''
+
     # Uploading to MongoDB
-    WhatjobsUploader.upload()
-    ThemuseUploader.upload()
-    # LinkedinUploader.upload()
+    # WhatjobsUploader.upload()
+    # ThemuseUploader.upload()
+    LinkedinUploader.upload()
 
     # Merging collections in MongoDB
     MergeCollections.merge_to_all_jobs_list()
