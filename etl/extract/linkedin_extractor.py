@@ -4,6 +4,9 @@ from datetime import datetime
 import os
 import re
 import json
+from config.constants import FIELDS
+
+
 
 # Define constants
 BASE_URL = 'https://www.linkedin.com'
@@ -12,7 +15,8 @@ HEADERS = {
 }
 
 class JobSearchLinkedInExtractor:
-    def __init__(self, keyword, location, page = 1):
+    def __init__(self, keyword, location, items = None, page = 1):
+        self.items = items
         self.search_keyword = keyword
         self.search_location = location
         self.base_url = f'https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={keyword}&location={location}&currentJobId=3638465660&start={page}'
@@ -48,13 +52,13 @@ class JobSearchLinkedInExtractor:
             job_ids.extend(job.find("div", {"class": "base-card"}).get('data-entity-urn').split(
                 ":")[3] for job in all_jobs_on_this_page if job.find("div", {"class": "base-card"}))
 
-        # return job_ids[:10]
-        return job_ids
+        return job_ids[:self.items] if self.items else job_ids
 
     def get_job_details(self, job_id, search):
         # print(search)
         target_url = f'https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}'
         resp = requests.get(target_url, headers=HEADERS)
+        # print(resp.text)
         soup = BeautifulSoup(resp.text, 'html.parser')
 
         job_title = soup.find("div", {"class": "top-card-layout__entity-info"})
@@ -68,21 +72,26 @@ class JobSearchLinkedInExtractor:
         print(job_linkedin_url)
 
         amount_applicants_elem = soup.select_one(".num-applicants__caption")
-        amount_applicants_text = amount_applicants_elem.text if amount_applicants_elem is not None else None
+        amount_applicants = amount_applicants_elem.text if amount_applicants_elem is not None else None
+
+        publish_date_elem = soup.select_one(".posted-time-ago__text")
+        publish_date = publish_date_elem.text.strip() if publish_date_elem else None
+
+        print("publish_date:", publish_date)
 
         job_criteria_items = soup.find_all(
             "li", {"class": "description__job-criteria-item"})
 
         if len(job_criteria_items) > 0:
-            seniority_level_text = job_criteria_items[0].select_one(".description__job-criteria-text").text
-            employment_type_text = job_criteria_items[1].select_one(".description__job-criteria-text").text
-            job_function_text = job_criteria_items[2].select_one(".description__job-criteria-text").text
-            industries_text = job_criteria_items[3].select_one(".description__job-criteria-text").text
+            seniority_level = job_criteria_items[0].select_one(".description__job-criteria-text").text
+            employment_type = job_criteria_items[1].select_one(".description__job-criteria-text").text
+            job_function = job_criteria_items[2].select_one(".description__job-criteria-text").text
+            industries = job_criteria_items[3].select_one(".description__job-criteria-text").text
         else:
-            seniority_level_text = None
-            employment_type_text = None
-            job_function_text = None
-            industries_text = None
+            seniority_level = None
+            employment_type = None
+            job_function = None
+            industries = None
 
         description = soup.select_one(".description__text")
         if description is not None:
@@ -103,22 +112,22 @@ class JobSearchLinkedInExtractor:
             job_location = None
 
         return {
-            "company_name": company_name,
-            "company_linkedin_url": company_linkedin_url,
-            "job_title": job_title,
-            # "job_level": level,
-            "job_location": job_location,
-            "job_linkedin_id": job_linkedin_id,
-            "job_linkedin_url": job_linkedin_url,
-            "job_amount_applicants": amount_applicants_text,
-            "job_seniority_level_text": seniority_level_text,
-            "job_employment_type_text": employment_type_text,
-            "job_job_function_text": job_function_text,
-            "job_industries_text": industries_text,
-            "job_description": description_contents,
-            "search_datetime": datetime.now().isoformat(),
-            "search_keyword": search["keyword"],
-            "search_location": search["location"]
+            FIELDS["company_name"]: company_name,
+            FIELDS["company_linkedin_url"]: company_linkedin_url,
+            FIELDS["title"]: job_title,
+            FIELDS["location"]: job_location,
+            FIELDS["linkedin_id"]: job_linkedin_id,
+            FIELDS["url"]: job_linkedin_url,
+            FIELDS["applicants"]: amount_applicants,
+            FIELDS["publish_date"]: publish_date,
+            FIELDS["level"]: seniority_level,
+            FIELDS["employment"]: employment_type,
+            FIELDS["function"]: job_function,
+            FIELDS["industries"]: industries,
+            FIELDS["description"]: description_contents,
+            FIELDS["search_datetime"]: datetime.now().isoformat(),
+            FIELDS["search_keyword"]: search["keyword"],
+            FIELDS["search_location"]: search["location"]
         }
 
     def clean_filename(self, string, replace = False):
@@ -149,6 +158,6 @@ class JobSearchLinkedInExtractor:
 ####################################
 
 if __name__ == "__main__":
-    scraper = JobSearchLinkedInExtractor("Data Engineering", "Cologne, Germany")
+    scraper = JobSearchLinkedInExtractor("Data Engineering", "Berlin, Germany")
     scraper.scrape_jobs()
 
