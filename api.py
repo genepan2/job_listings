@@ -54,6 +54,30 @@ def get_full_uri(route: str, req: JobRequest):
 api = FastAPI()
 db = DbQuery()
 
+@api.get('/jobs')
+def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
+  jobs = db.query_jobs(
+    keyword = keyword,
+    level = level,
+    location = location,
+    age = age,
+    order = order,
+    page = page,
+    items_per_page = items_per_page
+  )
+
+  # full_uri = get_full_uri('/jobs', req)
+
+  result = {
+    "meta": {
+      "datetime": datetime.now()
+      # "url": full_uri
+    },
+    "data": jobs
+  }
+
+  return result
+
 @api.post('/jobs')
 def post_jobs(req: JobRequest):
   jobs = db.query_jobs(
