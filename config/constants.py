@@ -4,6 +4,21 @@ MISC = {
 	"items_per_page": 10
 }
 
+JOB_LOCATIONS = {
+	"berlin": "Berlin",
+	"munich": "Munich",
+	"hamburg": "Hamburg",
+	"cologne": "Cologne",
+	"unknown": "Unknown",
+}
+
+JOB_LEVELS = {
+	"intern": "Internship",
+	"entry": "Entry",
+	"mid": "Mid",
+	"senior": "Senior",
+	"unknown": "Unknown"
+}
 
 COLLECTIONS = {
 	"themuse": "themuse_jobs_collected",
@@ -18,21 +33,21 @@ MONGO = {
 }
 
 FIELDS = {
-		"title": "job_title",
-    "description": "job_description",
-    "level": "job_level",
-    "location": "job_location",
-		"employment": "job_employment_type_text",
-    "publish_date": "publication_date",
-		"applicants": "job_amount_applicants",
-		"function": "job_job_function_text",
-		"industries": "job_industries_text",
+		"number": "number",
+		"title": "title",
+    "description": "description",
+    "level": "level",
+    "location": "location",
+		"employment": "employment",
+    "publish_date": "publish_date",
+		"applicants": "applicants",
+		"function": "function",
+		"industries": "industries",
 		"company_name": "company_name",
 		"company_linkedin_url": "company_linkedin_url",
-		"linkedin_id": "job_linkedin_id",
-		"linkedin_url": "job_linkedin_url",
+		"linkedin_id": "linkedin_id",
+		"url": "url",
 		"search_datetime": "search_datetime",
 		"search_keyword": "search_keyword",
 		"search_location": "search_location"
-
 }

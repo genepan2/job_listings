@@ -3,6 +3,8 @@ import re
 from datetime import datetime
 import os
 import json
+from config.constants import FIELDS, JOB_LEVELS, JOB_LOCATIONS
+from src.utils.transformations import transform_job_level, transform_job_location, transform_to_isoformat
 
 class JobSearchLinkedInTransformer:
     def __init__(self):
@@ -46,14 +48,18 @@ class JobSearchLinkedInTransformer:
         for job in data:
             cleaned_job = {key: value.strip() if isinstance(value, str) else value for key, value in job.items()}
 
-            cleaned_job["job_title"] = cleaned_job["job_title"].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job["job_title"] else None
+            cleaned_job[FIELDS["title"]] = cleaned_job[FIELDS["title"]].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job[FIELDS["title"]] else None
 
-            amount_applicants = re.compile(r'\d+').findall(cleaned_job["job_amount_applicants"]) if cleaned_job["job_amount_applicants"] else [0]
-            cleaned_job["job_amount_applicants"] = amount_applicants[0]
+            cleaned_job[FIELDS["level"]] = transform_job_level(cleaned_job[FIELDS["level"]], cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["level"]] else JOB_LEVELS["unknown"]
+            cleaned_job[FIELDS["location"]] = transform_job_location(cleaned_job[FIELDS["location"]]) if cleaned_job[FIELDS["location"]] else JOB_LOCATIONS["unknown"]
+            cleaned_job[FIELDS["publish_date"]] = transform_to_isoformat(cleaned_job[FIELDS["publish_date"]], cleaned_job[FIELDS["search_datetime"]])
 
-            cleaned_job["job_linkedin_id"] = cleaned_job["job_linkedin_id"].replace('<!--', '').replace('-->', '') if cleaned_job["job_linkedin_id"] else None
+            amount_applicants = re.compile(r'\d+').findall(cleaned_job[FIELDS["applicants"]]) if cleaned_job[FIELDS["applicants"]] else [0]
+            cleaned_job[FIELDS["applicants"]] = amount_applicants[0]
 
-            cleaned_job["company_linkedin_url"] = cleaned_job["company_linkedin_url"].split('?')[0] if cleaned_job["company_linkedin_url"] else None
+            cleaned_job[FIELDS["linkedin_id"]] = cleaned_job[FIELDS["linkedin_id"]].replace('<!--', '').replace('-->', '') if cleaned_job[FIELDS["linkedin_id"]] else None
+
+            cleaned_job[FIELDS["company_linkedin_url"]] = cleaned_job[FIELDS["company_linkedin_url"]].split('?')[0] if cleaned_job[FIELDS["company_linkedin_url"]] else None
 
             cleaned_data.append(cleaned_job)
         return cleaned_data
