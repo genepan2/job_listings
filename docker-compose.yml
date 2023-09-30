@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/job_listing_db  # Specify the database name
+    networks:
+      - app-network  # Add this to allow communication between containers
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=job_listing_db  # Initialize a database named job_listing_db
+    networks:
+      - app-network  # Add this to allow communication between containers
+
+networks:  # Define a custom network
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
