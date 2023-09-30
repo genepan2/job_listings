@@ -51,8 +51,7 @@ def get_full_uri(route: str, req: JobRequest):
 
 ####################
 
-api = FastAPI()
-db = DbQuery()
+
 
 @api.get('/jobs')
 def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
