@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 import os
+from config.constants import FIELDS
 
 # The number of pages to be scraped from each search result
 NUM_PAGES_TO_SCRAPE = 1
@@ -14,7 +15,7 @@ class WhatjobsDataExtractor:
     global_job_number = 1   # Class level attribute to ensure each job gets a unique identifier
     all_jobs = []  # Class level attribute to store all jobs across different job titles and locations
 
-    def __init__(self, job_title, location):
+    def __init__(self, job_title, location, items = None):
         """
         Initialize the extractor with job title and location.
 
@@ -24,6 +25,7 @@ class WhatjobsDataExtractor:
         """
         self.job_title = job_title
         self.location = location
+        self.items = items
         self.base_url = f"https://de.whatjobs.com/jobs/{self.job_title}/{self.location}"
         self.num_pages_to_scrape = NUM_PAGES_TO_SCRAPE
         self.output_filename = "data/raw/whatjobs_json_files/whatjobs_raw_data.json"
@@ -50,6 +52,7 @@ class WhatjobsDataExtractor:
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')
         job_listings = soup.find_all("div", class_="searchResultItem")
+        job_listings = job_listings[:self.items] if self.items else job_listings
         jobs_data = []
 
         for job in job_listings:
@@ -72,17 +75,16 @@ class WhatjobsDataExtractor:
 
             # Collate the extracted data into a dictionary
             job_data = {
-                "job_number": f"whatjobs-{WhatjobsDataExtractor.global_job_number}",
-                "job_title": title,
-                "job_location": location,
-                "company_name": company,
-                "publication_date": date_published,
-                "job_description": description,
-                "job_url": job_url,
-                "search_datetime": datetime.now().isoformat(),
-                "search_location": location,
-                "search_keyword": self.job_title,
-                "job_description": description
+                FIELDS["number"]: f"whatjobs-{WhatjobsDataExtractor.global_job_number}",
+                FIELDS["company_name"]: company,
+                FIELDS["title"]: title,
+                FIELDS["location"]: location,
+                FIELDS["publish_date"]: date_published,
+                FIELDS["description"]: description,
+                FIELDS["url"]: job_url,
+                FIELDS["search_datetime"]: datetime.now().isoformat(),
+                FIELDS["search_keyword"]: self.job_title,
+                FIELDS["search_location"]: location
             }
 
             jobs_data.append(job_data)

@@ -1,5 +1,11 @@
-__pycache__
-.trunk
+# Ignore folders
+__pycache__/
+.old_files/
 .vscode
 .DS_Store
+.trunk
+
+# Ignore files
+.env
+_*.py
 **.json

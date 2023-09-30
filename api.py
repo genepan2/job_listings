@@ -5,7 +5,7 @@ from typing import Optional, Set, List
 from src.utils.query_request import DbQuery
 from datetime import datetime
 from config.constants import MISC
-import os
+
 
 ####################
 
@@ -51,10 +51,7 @@ def get_full_uri(route: str, req: JobRequest):
 
 ####################
 
-mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
 
-api = FastAPI()
-db = DbQuery(mongo_uri)
 
 @api.get('/jobs')
 def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):

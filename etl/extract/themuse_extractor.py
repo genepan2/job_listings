@@ -1,25 +1,29 @@
-# DataExtractor.py
-
 import requests
 import json
 import os
+import urllib.parse
+import random
 
 class ThemuseDataExtractor:
     """
     A class responsible for extracting job data from TheMuse's API for specific categories and locations.
-    
+
     Attributes:
         base_url (str): The base API URL with pre-set parameters.
         directory_path (str): Directory path where the extracted data will be saved.
     """
 
-    def __init__(self):
+    def __init__(self, categories:list , locations: list, items: int = None):
         """Initialize ThemuseDataExtractor with predefined settings."""
-        self.base_url = ("https://www.themuse.com/api/public/jobs?"
-                         "category=Computer%20and%20IT&category=Data%20and%20Analytics&category=Data%20Science&category=IT"
-                         "&category=Science%20and%20Engineering&category=Software%20Engineer&category=Software%20Engineering"
-                         "&location=Berlin%2C%20Germany&location=Cologne%2C%20Germany&location=Hamburg%2C%20Germany&location=Munich%2C%20Germany&page=")
-        
+        categories_str = "&category=".join([urllib.parse.quote(cat) for cat in categories])
+        locations_str = "&location=".join([urllib.parse.quote(loc) for loc in locations])
+        self.items = items
+        # self.base_url = ("https://www.themuse.com/api/public/jobs?"
+        #                  "category=Computer%20and%20IT&category=Data%20and%20Analytics&category=Data%20Science&category=IT"
+        #                  "&category=Science%20and%20Engineering&category=Software%20Engineer&category=Software%20Engineering"
+        #                  "&location=Berlin%2C%20Germany&location=Cologne%2C%20Germany&location=Hamburg%2C%20Germany&location=Munich%2C%20Germany&page=")
+        self.base_url = (f"https://www.themuse.com/api/public/jobs?category={categories_str}&location={locations_str}&page=")
+
         # Ensure the directory exists
         self.directory_path = "data/raw/themuse_json_files"
         if not os.path.exists(self.directory_path):
@@ -28,7 +32,7 @@ class ThemuseDataExtractor:
     def get_requests_result(self, url, page_number):
         """
         Fetches the result from the API for a given URL and page number.
-        
+
         Parameters:
             url (str): The base API URL.
             page_number (int): Page number for the request.
@@ -59,7 +63,12 @@ class ThemuseDataExtractor:
             except Exception as exception:
                 print(exception)
                 break
-        
+
+        # if there is an limit on the jobs, let'S shuffle them first
+        if self.items:
+            random.shuffle(job_buffer)
+            job_buffer = job_buffer[:self.items]
+
         # Save the extracted job data to a JSON file
         with open(f"{self.directory_path}/themuse_raw_data.json", 'w') as json_file:
             json.dump(job_buffer, json_file, indent=4)
