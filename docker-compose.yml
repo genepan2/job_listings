@@ -25,6 +25,7 @@ services:
 
 networks:  # Define a custom network
   app-network:
+    name: job_listing_app-network  # Corrected the network name here
     driver: bridge
 
 volumes:
