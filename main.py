@@ -34,6 +34,8 @@ def main():
     parser.add_argument('--themuse', action='store_true', help='Run Themuse extraction and transformation')
     parser.add_argument('--linkedin', action='store_true', help='Run LinkedIn extraction and transformation')
 
+    parser.add_argument('--action', type=str, help='transform, extract or load')
+
     parser.add_argument('--locations', type=min_max_locations, default=2, help='Amount of locations to process')
     parser.add_argument('--cats', type=min_max_cats, default=2, help='Amount of categories to process')
     parser.add_argument('--jobs', type=int, default=5, help='Amount of jobs (pro cat+location) to process')
@@ -75,15 +77,18 @@ def main():
 
     # Extraction, transformation and upload to mongoDB for LinkedIn
     if args.linkedin:
-        job_titles = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
-        job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany"]
-        for title in job_titles if not(args.cats) else job_titles[:args.cats]:
-            for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
-                linkedin_extractor = JobSearchLinkedInExtractor(title, loc, args.jobs)
-                linkedin_extractor.scrape_jobs()
-        linkedin_transformer = JobSearchLinkedInTransformer()
-        linkedin_transformer.run_all()
-        LinkedinUploader.upload()
+        if args.action == 'extract':
+            job_titles = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
+            job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany"]
+            for title in job_titles if not(args.cats) else job_titles[:args.cats]:
+                for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
+                    linkedin_extractor = JobSearchLinkedInExtractor(title, loc, args.jobs)
+                    linkedin_extractor.scrape_jobs()
+        elif args.action == 'transform':
+            linkedin_transformer = JobSearchLinkedInTransformer()
+            linkedin_transformer.run_all()
+        else:
+            LinkedinUploader.upload()
 
     # Merging collections in MongoDB
     MergeCollections.merge_to_all_jobs_list()
