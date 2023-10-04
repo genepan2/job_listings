@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 import json
 from config.constants import FIELDS, JOB_LEVELS, JOB_LOCATIONS
-from src.utils.transformations import transform_job_level, transform_job_location, transform_to_isoformat
+from src.utils.transformations import transform_job_level, transform_job_location, transform_to_isoformat, transform_job_title
 
 class JobSearchLinkedInTransformer:
     def __init__(self):
@@ -48,7 +48,8 @@ class JobSearchLinkedInTransformer:
         for job in data:
             cleaned_job = {key: value.strip() if isinstance(value, str) else value for key, value in job.items()}
 
-            cleaned_job[FIELDS["title"]] = cleaned_job[FIELDS["title"]].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job[FIELDS["title"]] else None
+            # cleaned_job[FIELDS["title"]] = cleaned_job[FIELDS["title"]].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job[FIELDS["title"]] else None
+            cleaned_job[FIELDS["title"]] = transform_job_title(cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["title"]] else None
 
             cleaned_job[FIELDS["level"]] = transform_job_level(cleaned_job[FIELDS["level"]], cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["level"]] else JOB_LEVELS["unknown"]
             cleaned_job[FIELDS["location"]] = transform_job_location(cleaned_job[FIELDS["location"]]) if cleaned_job[FIELDS["location"]] else JOB_LOCATIONS["unknown"]
