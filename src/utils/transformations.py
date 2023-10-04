@@ -41,22 +41,87 @@ def transform_job_location(job_location: str):
 import re
 from datetime import datetime, timedelta
 
+# def transform_to_isoformat(publication_date, search_datetime):
+#     today_names = ["today", "heute"]
+#     yesterday_names = ["yesterday", "gestern"]
+
+#     # Check if publication_date is a special keyword like "today" or "yesterday"
+#     if publication_date and publication_date.lower() in today_names:
+#         return search_datetime
+
+#     if publication_date and publication_date in yesterday_names:
+#         # We expect search_datetime to be in ISO format
+#         try:
+#             search_datetime_ob = datetime.strptime(search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+#             new_date_time_obj = search_datetime_ob - timedelta(days=1)
+#             return new_date_time_obj.isoformat()
+#         except ValueError:
+#             pass  # Continue to handle publication_date as a date string
+
+#     # Use regular expression to extract the numeric value and unit (hour, day, week, month)
+#     match = re.match(r'(\d+)\s+(\w+)', publication_date)
+#     if match:
+#         value, unit = match.groups()
+#         value = int(value)
+#         unit = unit.lower()
+
+#         if unit == "second":
+#             return (search_datetime_ob - timedelta(seconds=value)).isoformat()
+#         if unit == "hour":
+#             return (search_datetime_ob - timedelta(hours=value)).isoformat()
+#         elif "day"in unit:
+#             return (search_datetime_ob - timedelta(days=value)).isoformat()
+#         elif "week"in unit:
+#             return (search_datetime_ob - timedelta(weeks=value)).isoformat()
+#         elif "month"in unit:
+#             return (search_datetime_ob - timedelta(month=value)).isoformat()
+#             # Calculate the number of days in the month
+#             # year = search_datetime_ob.year
+#             # month = search_datetime_ob.month - value
+#             # if month <= 0:
+#             #     year -= 1
+#             #     month += 12
+#             # days_in_month = (datetime(year, month + 1, 1) - datetime(year, month, 1)).days
+#             # return (search_datetime_ob - timedelta(days=days_in_month)).isoformat()
+
+#     # Attempt to parse the publication_date with different date formats
+#     date_formats = [
+#         "%Y-%m-%dT%H:%M:%S.%f",  # ISO format
+#         "%d.%m.%Y",  # from whatjobs
+#         "%Y-%m-%dT%H:%M:%SZ",  # from themuse
+#         "%Y-%m-%d",
+#         "%Y-%m-%d %H:%M:%S",
+#         "%Y-%m-%d %H:%M:%S.%f",
+#     ]
+
+#     for date_format in date_formats:
+#         try:
+#             date_obj = datetime.strptime(publication_date, date_format)
+#             return date_obj.isoformat()
+#         except ValueError:
+#             pass  # Try the next format
+
+#     # If none of the formats match, raise an exception or return a default value as needed
+#     raise ValueError("Unable to parse publication_date")
+
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
+import re
+
 def transform_to_isoformat(publication_date, search_datetime):
     today_names = ["today", "heute"]
     yesterday_names = ["yesterday", "gestern"]
+
+    # Convert search_datetime to a datetime object at the start
+    search_datetime_ob = datetime.strptime(search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
 
     # Check if publication_date is a special keyword like "today" or "yesterday"
     if publication_date and publication_date.lower() in today_names:
         return search_datetime
 
-    if publication_date and publication_date in yesterday_names:
-        # We expect search_datetime to be in ISO format
-        try:
-            search_datetime_ob = datetime.strptime(search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
-            new_date_time_obj = search_datetime_ob - timedelta(days=1)
-            return new_date_time_obj.isoformat()
-        except ValueError:
-            pass  # Continue to handle publication_date as a date string
+    if publication_date and publication_date.lower() in yesterday_names:
+        new_date_time_obj = search_datetime_ob - timedelta(days=1)
+        return new_date_time_obj.isoformat()
 
     # Use regular expression to extract the numeric value and unit (hour, day, week, month)
     match = re.match(r'(\d+)\s+(\w+)', publication_date)
@@ -74,15 +139,7 @@ def transform_to_isoformat(publication_date, search_datetime):
         elif "week"in unit:
             return (search_datetime_ob - timedelta(weeks=value)).isoformat()
         elif "month"in unit:
-            return (search_datetime_ob - timedelta(month=value)).isoformat()
-            # Calculate the number of days in the month
-            # year = search_datetime_ob.year
-            # month = search_datetime_ob.month - value
-            # if month <= 0:
-            #     year -= 1
-            #     month += 12
-            # days_in_month = (datetime(year, month + 1, 1) - datetime(year, month, 1)).days
-            # return (search_datetime_ob - timedelta(days=days_in_month)).isoformat()
+            return (search_datetime_ob - relativedelta(months=value)).isoformat()
 
     # Attempt to parse the publication_date with different date formats
     date_formats = [
@@ -103,4 +160,5 @@ def transform_to_isoformat(publication_date, search_datetime):
 
     # If none of the formats match, raise an exception or return a default value as needed
     raise ValueError("Unable to parse publication_date")
+
 
