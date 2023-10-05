@@ -51,7 +51,7 @@ class JobSearchLinkedInTransformer:
             # cleaned_job[FIELDS["title"]] = cleaned_job[FIELDS["title"]].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job[FIELDS["title"]] else None
             cleaned_job[FIELDS["title"]] = transform_job_title(cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["title"]] else None
 
-            cleaned_job[FIELDS["level"]] = transform_job_level(cleaned_job[FIELDS["level"]], cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["level"]] else JOB_LEVELS["unknown"]
+            cleaned_job[FIELDS["level"]] = transform_job_level(cleaned_job[FIELDS["level"]], cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["level"]] else JOB_LEVELS["Middle"]
             cleaned_job[FIELDS["location"]] = transform_job_location(cleaned_job[FIELDS["location"]]) if cleaned_job[FIELDS["location"]] else JOB_LOCATIONS["unknown"]
             cleaned_job[FIELDS["publish_date"]] = transform_to_isoformat(cleaned_job[FIELDS["publish_date"]], cleaned_job[FIELDS["search_datetime"]])
 

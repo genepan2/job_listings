@@ -9,11 +9,14 @@ def transform_job_level(job_level: str = 'Entry', job_title: str = None):
   job_title = job_title.lower().strip()
 
   job_levels_mapping = {
-      "intern": ["internship", "intern", "working student"],
-      "entry": ["entry level", "entry", "junior"],
-      "mid": ["mid level", "mid"],
-      "senior": ["senior level", "senior"],
-      "unknown": ["not applicable"]
+      "Intern": ["internship", "intern", "working student"],
+      "Entry": ["entry level", "entry", "junior"],
+      "Middle": ["mid level", "mid", "not applicable"],
+      "Senior": ["senior level", "senior"],
+      "Lead": ["lead"],
+      "Head": ["head"],
+      "Student": ["Working Student", "student"],
+
   }
 
   for level, level_categories in job_levels_mapping.items():
@@ -24,7 +27,7 @@ def transform_job_level(job_level: str = 'Entry', job_title: str = None):
           if category in job_title:
               return JOB_LEVELS[level]
 
-  return JOB_LEVELS["unknown"]
+  return JOB_LEVELS["Middle"]
 
 def transform_job_location(job_location: str):
   # job_location = job_location.lower().split(',')[0].strip()
