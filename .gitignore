@@ -1,5 +1,6 @@
 # Ignore folders
 __pycache__/
+_temp
 .old_files/
 .vscode
 .DS_Store
@@ -9,3 +10,5 @@ __pycache__/
 .env
 _*.py
 **.json
+**/.DS_Store
+.DS_Store
