@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import re
 from config.constants import JOB_LEVELS, JOB_LOCATIONS
 
@@ -8,7 +9,7 @@ def transform_job_level(job_level: str = 'Entry', job_title: str = None):
   job_title = job_title.lower().strip()
 
   job_levels_mapping = {
-      "intern": ["internship"],
+      "intern": ["internship", "intern", "working student"],
       "entry": ["entry level", "entry", "junior"],
       "mid": ["mid level", "mid"],
       "senior": ["senior level", "senior"],
@@ -16,8 +17,12 @@ def transform_job_level(job_level: str = 'Entry', job_title: str = None):
   }
 
   for level, level_categories in job_levels_mapping.items():
-      if job_level in level_categories or job_title in [f"({level.lower()})", f"({level[:3].lower()})"]:
+      if job_level in level_categories:
           return JOB_LEVELS[level]
+
+      for category in level_categories:
+          if category in job_title:
+              return JOB_LEVELS[level]
 
   return JOB_LEVELS["unknown"]
 
@@ -38,51 +43,45 @@ def transform_job_location(job_location: str):
 
   return JOB_LOCATIONS["unknown"]
 
-import re
-from datetime import datetime, timedelta
 
 def transform_to_isoformat(publication_date, search_datetime):
     today_names = ["today", "heute"]
     yesterday_names = ["yesterday", "gestern"]
 
+    # Convert search_datetime to a datetime object at the start
+    search_datetime_ob = datetime.strptime(search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+
     # Check if publication_date is a special keyword like "today" or "yesterday"
-    if publication_date and publication_date.lower() in today_names:
+    if publication_date and publication_date.lower() in today_names or publication_date is None:
         return search_datetime
 
-    if publication_date and publication_date in yesterday_names:
-        # We expect search_datetime to be in ISO format
-        try:
-            search_datetime_ob = datetime.strptime(search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
-            new_date_time_obj = search_datetime_ob - timedelta(days=1)
-            return new_date_time_obj.isoformat()
-        except ValueError:
-            pass  # Continue to handle publication_date as a date string
+    if publication_date and publication_date.lower() in yesterday_names:
+        new_date_time_obj = search_datetime_ob - timedelta(days=1)
+        return new_date_time_obj.isoformat()
 
     # Use regular expression to extract the numeric value and unit (hour, day, week, month)
-    match = re.match(r'(\d+)\s+(\w+)', publication_date)
-    if match:
-        value, unit = match.groups()
-        value = int(value)
-        unit = unit.lower()
+    print(publication_date)
+    if publication_date and isinstance(publication_date, str):  # Add this check
+        match = re.match(r'(\d+)\s+(\w+)', publication_date)
+        if match:
+            value, unit = match.groups()
+            value = int(value)
+            unit = unit.lower()
 
-        if unit == "second":
-            return (search_datetime_ob - timedelta(seconds=value)).isoformat()
-        if unit == "hour":
-            return (search_datetime_ob - timedelta(hours=value)).isoformat()
-        elif "day"in unit:
-            return (search_datetime_ob - timedelta(days=value)).isoformat()
-        elif "week"in unit:
-            return (search_datetime_ob - timedelta(weeks=value)).isoformat()
-        elif "month"in unit:
-            return (search_datetime_ob - timedelta(month=value)).isoformat()
-            # Calculate the number of days in the month
-            # year = search_datetime_ob.year
-            # month = search_datetime_ob.month - value
-            # if month <= 0:
-            #     year -= 1
-            #     month += 12
-            # days_in_month = (datetime(year, month + 1, 1) - datetime(year, month, 1)).days
-            # return (search_datetime_ob - timedelta(days=days_in_month)).isoformat()
+            unit = unit[:-1] if unit.endswith('s') else unit
+
+            if unit == "second" :
+                return (search_datetime_ob - timedelta(seconds=value)).isoformat()
+            elif unit == "minute" :
+                return (search_datetime_ob - timedelta(minutes=value)).isoformat()
+            elif unit == "hour" :
+                return (search_datetime_ob - timedelta(hours=value)).isoformat()
+            elif unit == "day":
+                return (search_datetime_ob - timedelta(days=value)).isoformat()
+            elif unit == "week":
+                return (search_datetime_ob - timedelta(weeks=value)).isoformat()
+            elif unit == "month":
+                return (search_datetime_ob - relativedelta(months=value)).isoformat()
 
     # Attempt to parse the publication_date with different date formats
     date_formats = [
@@ -103,4 +102,23 @@ def transform_to_isoformat(publication_date, search_datetime):
 
     # If none of the formats match, raise an exception or return a default value as needed
     raise ValueError("Unable to parse publication_date")
+
+def transform_job_title(title: str):
+    to_remove_genders = ["(f/m/x)", "(m/f/d)", "(f/m/d)", "(m/w/d)", "(w/m/d)", "(M/W/D)", "m/f/d", "(w/m/x)", "(all genders!)", "(all genders)", "(All Genders)"]
+    to_remove_level = ["(Junior)", "Junior", "(Senior)", "Senior", "Intern", "Working Student"]
+
+    # Remove gender-related phrases
+    title_parts = [part for part in title.split() if part not in to_remove_genders]
+    # Remove level-related phrases
+    title_parts = [part for part in title_parts if part not in to_remove_level]
+
+    # Join the remaining parts back into a string
+    cleaned_title = ' '.join(title_parts)
+
+    # Remove extra spaces and strip
+    cleaned_title = ' '.join(cleaned_title.split())
+
+    return cleaned_title
+
+
 
