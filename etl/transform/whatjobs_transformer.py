@@ -12,8 +12,8 @@ class WhatjobsDataTransformer:
 
     def __init__(self):
         """Initialize transformer with input and output directories."""
-        self.input_directory = "data/raw/whatjobs_json_files"
-        self.output_filename = "data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"
+        self.input_directory = 'data/raw/whatjobs_json_files'  # Correct path
+        self.output_filename = "data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"  # Update the output filename accordingly
 
     def get_full_description(self, url):
         """
@@ -52,18 +52,37 @@ class WhatjobsDataTransformer:
         counter = 0
 
         for filename in os.listdir(self.input_directory):
-            if filename.startswith("whatjobs_raw_data.json"):
+            if filename.endswith(".json"):
                 with open(os.path.join(self.input_directory, filename), "r") as infile:
                     jobs = json.load(infile)
                     
                     for job in jobs:
                         try:
-                            job["job_description"] = self.get_full_description(job["job_url"])
+                            job["job_description"] = self.get_full_description(job["url"])
+                            
+                            # Adding the level attribute based on the job title
+                            job_title = job.get("title", "").lower()
+                            if "senior" in job_title:
+                                job["level"] = "senior"
+                            elif "junior" in job_title:
+                                job["level"] = "junior"
+                            elif "intern" in job_title or "internship" in job_title:
+                                job["level"] = "intern"
+                            elif "student" in job_title or "working student" in job_title:
+                                job["level"] = "student"
+                            elif "lead" in job_title:
+                                job["level"] = "lead"
+                            elif "head" in job_title:
+                                job["level"] = "head"
+                            else:
+                                job["level"] = "middle"
+
                             counter += 1
                             # Printing info for every 50 transformed elements
                             if counter % 50 == 0:
                                 print(f"Transformed {counter} jobs...")
                         except Exception as e:
+                            print(f"Error in job transformation. Error: {e}")
                             continue
 
                     all_jobs.extend(jobs)

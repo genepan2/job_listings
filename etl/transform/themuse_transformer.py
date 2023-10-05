@@ -66,19 +66,40 @@ class ThemuseDataTransformer:
         Returns:
             dict: Transformed job data.
         """
+        # Extract the job title and convert it to lowercase
+        job_title = job.get("name", "").lower()
+
+        # Initialize the job level to "middle" by default
+        job_level = "middle"
+
+        # Check for keywords in the job title and update the job level accordingly
+        if "senior" in job_title:
+            job_level = "senior"
+        elif "junior" in job_title:
+            job_level = "junior"
+        elif "intern" in job_title or "internship" in job_title:
+            job_level = "intern"
+        elif "student" in job_title or "working student" in job_title:
+            job_level = "student"
+        elif "lead" in job_title:
+            job_level = "lead"
+        elif "head" in job_title:
+            job_level = "head"
+
         transformed_job = {
             FIELDS["number"]: f"themuse-{self.job_number}",
             FIELDS["title"]: job.get("name", ""),
             FIELDS["company_name"]: job.get("company", {}).get("name", ""),
             FIELDS["location"]: job.get("locations", [{}])[0].get("name", "") if job.get("locations") else "",
             FIELDS["search_keyword"]: job.get("categories", [{}])[0].get("name", "") if job.get("categories") else "",
-            FIELDS["level"]: job.get("levels", [{}])[0].get("name", "") if job.get("levels") else "",
+            FIELDS["level"]: job_level,  # Assign the determined job level
             FIELDS["publish_date"]: job.get("publication_date", ""),
             FIELDS["url"]: job.get("refs", {}).get("landing_page", ""),
             FIELDS["search_datetime"]: datetime.now().isoformat(),
             FIELDS["description"]: self.strip_html_tags(job.get("contents", ""))
         }
         return transformed_job
+
 
     def transform_jobs(self):
         """
