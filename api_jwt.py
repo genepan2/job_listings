@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Header, HTTPException, Request, Body, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
 from enum import Enum
@@ -23,9 +24,11 @@ class UserSchema(BaseModel):
     password: str
 
 class JobLevel(str, Enum):
-    junior = "junior"
-    mid = "mid"
-    senior = "senior"
+	intern = "Internship"
+	entry = "Entry"
+	mid = "Mid"
+	senior = "Senior"
+	unknown = "Unknown"
 
 class JobLocation(str, Enum):
     berlin = "Berlin"
@@ -126,8 +129,21 @@ class JWTBearer(HTTPBearer):
 
 ####################
 
-api = FastAPI()
 db = DbQuery()
+
+origins = [
+    "http://localhost:3000",  # React's default port
+    "http://127.0.0.1:3000",
+]
+
+api = FastAPI()
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @api.get('/jobs')
 def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):

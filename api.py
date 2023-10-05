@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Header, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from enum import Enum
 from pydantic import BaseModel
 from typing import Optional, Set, List
@@ -10,9 +11,11 @@ import os
 ####################
 
 class JobLevel(str, Enum):
-    junior = "junior"
-    mid = "mid"
-    senior = "senior"
+	intern = "Internship"
+	entry = "Entry"
+	mid = "Mid"
+	senior = "Senior"
+	unknown = "Unknown"
 
 class JobLocation(str, Enum):
     berlin = "Berlin"
@@ -52,9 +55,21 @@ def get_full_uri(route: str, req: JobRequest):
 ####################
 
 mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
+db = DbQuery(mongo_uri)
+
+origins = [
+    "http://localhost:3000",  # React's default port
+    "http://127.0.0.1:3000",
+]
 
 api = FastAPI()
-db = DbQuery(mongo_uri)
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @api.get('/jobs')
 def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
