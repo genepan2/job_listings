@@ -77,17 +77,18 @@ def main():
 
     # Extraction, transformation and upload to mongoDB for LinkedIn
     if args.linkedin:
-        if args.action == 'extract':
+        if args.action == 'extract' or args.action == None:
             job_titles = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
             job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany"]
             for title in job_titles if not(args.cats) else job_titles[:args.cats]:
                 for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
                     linkedin_extractor = JobSearchLinkedInExtractor(title, loc, args.jobs)
                     linkedin_extractor.scrape_jobs()
-        elif args.action == 'transform':
+
+        if args.action == 'transform'  or args.action == None:
             linkedin_transformer = JobSearchLinkedInTransformer()
             linkedin_transformer.run_all()
-        else:
+        if args.action == 'load'  or args.action == None:
             LinkedinUploader.upload()
 
     # Merging collections in MongoDB
