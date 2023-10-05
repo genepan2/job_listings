@@ -5,6 +5,7 @@ _temp
 .vscode
 .DS_Store
 .trunk
+frontend/node_modules
 
 # Ignore files
 .env
