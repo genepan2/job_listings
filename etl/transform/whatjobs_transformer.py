@@ -63,19 +63,19 @@ class WhatjobsDataTransformer:
                             # Adding the level attribute based on the job title
                             job_title = job.get("title", "").lower()
                             if "senior" in job_title:
-                                job["level"] = "senior"
+                                job["level"] = "Senior"
                             elif "junior" in job_title:
-                                job["level"] = "junior"
+                                job["level"] = "Junior"
                             elif "intern" in job_title or "internship" in job_title:
-                                job["level"] = "intern"
+                                job["level"] = "Intern"
                             elif "student" in job_title or "working student" in job_title:
-                                job["level"] = "student"
+                                job["level"] = "Student"
                             elif "lead" in job_title:
-                                job["level"] = "lead"
+                                job["level"] = "Lead"
                             elif "head" in job_title:
-                                job["level"] = "head"
+                                job["level"] = "Head"
                             else:
-                                job["level"] = "middle"
+                                job["level"] = "Middle"
 
                             counter += 1
                             # Printing info for every 50 transformed elements

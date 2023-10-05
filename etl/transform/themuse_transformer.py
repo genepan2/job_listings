@@ -70,21 +70,21 @@ class ThemuseDataTransformer:
         job_title = job.get("name", "").lower()
 
         # Initialize the job level to "middle" by default
-        job_level = "middle"
+        job_level = "Middle"
 
         # Check for keywords in the job title and update the job level accordingly
         if "senior" in job_title:
-            job_level = "senior"
+            job_level = "Senior"
         elif "junior" in job_title:
-            job_level = "junior"
+            job_level = "Junior"
         elif "intern" in job_title or "internship" in job_title:
-            job_level = "intern"
+            job_level = "Intern"
         elif "student" in job_title or "working student" in job_title:
-            job_level = "student"
+            job_level = "Student"
         elif "lead" in job_title:
-            job_level = "lead"
+            job_level = "Lead"
         elif "head" in job_title:
-            job_level = "head"
+            job_level = "Head"
 
         transformed_job = {
             FIELDS["number"]: f"themuse-{self.job_number}",

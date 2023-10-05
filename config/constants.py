@@ -13,10 +13,10 @@ JOB_LOCATIONS = {
 }
 
 JOB_LEVELS = {
-	"intern": "Internship",
-	"entry": "Entry",
-	"mid": "Mid",
-	"senior": "Senior",
+	"Intern": "Internship",
+	"Entry": "Entry",
+	"Middle": "Middle",
+	"Senior": "Senior",
 	"unknown": "Unknown"
 }
 
