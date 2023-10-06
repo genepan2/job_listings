@@ -1,23 +1,16 @@
-# Import necessary libraries
 import re
-from datetime import datetime
-import os
 import json
+import os
+from datetime import datetime
+from langdetect import detect  # Ensure to install langdetect library
 from config.constants import FIELDS, JOB_LEVELS, JOB_LOCATIONS
 from src.utils.transformations import transform_job_level, transform_job_location, transform_to_isoformat, transform_job_title
 
+
 class JobSearchLinkedInTransformer:
     def __init__(self):
-
-        # Raw data directory
         self.directory_path = "data/raw/linkedin_json_files"
-        if not os.path.exists(self.directory_path):
-            os.makedirs(self.directory_path)
-
-        # Processed data directory
         self.processed_directory_path = "data/processed/linkedin_json_files"
-        if not os.path.exists(self.processed_directory_path):
-            os.makedirs(self.processed_directory_path)
 
     def flatten(self, lst):
         flat_list = []
@@ -30,7 +23,20 @@ class JobSearchLinkedInTransformer:
 
     def print_json(self, data):
         formatted_json = json.dumps(data, indent=4)
-        # print(formatted_json)
+        print(formatted_json)
+
+    def detect_language(self, text):
+        try:
+            lang = detect(text)
+            if lang == 'en':
+                return 'English'
+            elif lang == 'de':
+                return 'German'
+            else:
+                return 'Other'
+        except Exception as e:
+            print(f"Error detecting language. Error: {e}")
+            return 'Unknown'
 
     def load(self):
         dir_path = self.directory_path
@@ -47,10 +53,8 @@ class JobSearchLinkedInTransformer:
         cleaned_data = []
         for job in data:
             cleaned_job = {key: value.strip() if isinstance(value, str) else value for key, value in job.items()}
-
-            # cleaned_job[FIELDS["title"]] = cleaned_job[FIELDS["title"]].replace(" (m/f/d)", "").replace(" (f/m/d)", "").replace(" (m/w/d)", "").replace(" (w/m/d)", "") if cleaned_job[FIELDS["title"]] else None
+            
             cleaned_job[FIELDS["title"]] = transform_job_title(cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["title"]] else None
-
             cleaned_job[FIELDS["level"]] = transform_job_level(cleaned_job[FIELDS["level"]], cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["level"]] else JOB_LEVELS["Middle"]
             cleaned_job[FIELDS["location"]] = transform_job_location(cleaned_job[FIELDS["location"]]) if cleaned_job[FIELDS["location"]] else JOB_LOCATIONS["unknown"]
             cleaned_job[FIELDS["publish_date"]] = transform_to_isoformat(cleaned_job[FIELDS["publish_date"]], cleaned_job[FIELDS["search_datetime"]])
@@ -59,14 +63,16 @@ class JobSearchLinkedInTransformer:
             cleaned_job[FIELDS["applicants"]] = amount_applicants[0]
 
             cleaned_job[FIELDS["linkedin_id"]] = cleaned_job[FIELDS["linkedin_id"]].replace('<!--', '').replace('-->', '') if cleaned_job[FIELDS["linkedin_id"]] else None
-
             cleaned_job[FIELDS["company_linkedin_url"]] = cleaned_job[FIELDS["company_linkedin_url"]].split('?')[0] if cleaned_job[FIELDS["company_linkedin_url"]] else None
+            
+            # Adding language detection
+            cleaned_job["language"] = self.detect_language(cleaned_job[FIELDS["description"]])
 
             cleaned_data.append(cleaned_job)
         return cleaned_data
 
     def clean_filename(self, string, replace = False):
-        pattern = "[,!.\-: ]" #note the backslash in front of the "-". otherwise it means from to.
+        pattern = "[,!.\-: ]"
         if replace == False:
             filename = re.sub(pattern, "_", string)
         else:
@@ -78,7 +84,7 @@ class JobSearchLinkedInTransformer:
         return f"{path}/linkedin_cleaned_data.json"
 
     def save_jobs(self, data, type = "json"):
-        file_name = self.create_file_name(isRaw=False)  # Specify that the data isn't raw
+        file_name = self.create_file_name(isRaw=False)  
         with open(file_name, "w") as json_file:
             json.dump(data, json_file, indent = 4)
 

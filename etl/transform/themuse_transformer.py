@@ -4,6 +4,7 @@ import unicodedata
 from datetime import datetime
 import os
 from config.constants import FIELDS
+from langdetect import detect
 
 class ThemuseDataTransformer:
     """
@@ -56,6 +57,27 @@ class ThemuseDataTransformer:
         )
         return translated_text
 
+    def detect_language(self, text):
+        """Detect the language of the text.
+
+        Parameters:
+            text (str): The text whose language is to be detected.
+
+        Returns:
+            str: The language of the text.
+        """
+        try:
+            lang = detect(text)
+            if lang == 'en':
+                return 'English'
+            elif lang == 'de':
+                return 'German'
+            else:
+                return 'Other'
+        except Exception as e:
+            print(f"Error detecting language. Error: {e}")
+            return 'Unknown'
+    
     def transform_job_listing(self, job):
         """
         Transform a single job listing's data format.
@@ -66,13 +88,9 @@ class ThemuseDataTransformer:
         Returns:
             dict: Transformed job data.
         """
-        # Extract the job title and convert it to lowercase
         job_title = job.get("name", "").lower()
-
-        # Initialize the job level to "middle" by default
         job_level = "Middle"
 
-        # Check for keywords in the job title and update the job level accordingly
         if "senior" in job_title:
             job_level = "Senior"
         elif "junior" in job_title:
@@ -86,20 +104,23 @@ class ThemuseDataTransformer:
         elif "head" in job_title:
             job_level = "Head"
 
+        job_description = self.strip_html_tags(job.get("contents", ""))
+        language = self.detect_language(job_description)
+
         transformed_job = {
             FIELDS["number"]: f"themuse-{self.job_number}",
             FIELDS["title"]: job.get("name", ""),
             FIELDS["company_name"]: job.get("company", {}).get("name", ""),
             FIELDS["location"]: job.get("locations", [{}])[0].get("name", "") if job.get("locations") else "",
             FIELDS["search_keyword"]: job.get("categories", [{}])[0].get("name", "") if job.get("categories") else "",
-            FIELDS["level"]: job_level,  # Assign the determined job level
+            FIELDS["level"]: job_level,  
             FIELDS["publish_date"]: job.get("publication_date", ""),
             FIELDS["url"]: job.get("refs", {}).get("landing_page", ""),
             FIELDS["search_datetime"]: datetime.now().isoformat(),
-            FIELDS["description"]: self.strip_html_tags(job.get("contents", ""))
+            FIELDS["description"]: job_description,
+            FIELDS["language"]: language  
         }
         return transformed_job
-
 
     def transform_jobs(self):
         """
@@ -111,13 +132,12 @@ class ThemuseDataTransformer:
         transformed_jobs = []
         for job in raw_jobs:
             job_location = job.get("locations", [{}])[0].get("name", "")
-            if "Germany" in job_location:  # Check if the word 'Germany' is in job_location
+            if "Germany" in job_location:
                 job["contents"] = self.translate_unicode_characters(job.get("contents", ""))
                 transformed_job = self.transform_job_listing(job)
                 transformed_jobs.append(transformed_job)
                 self.job_number += 1
 
-        # Save the transformed job data to a JSON file in the processed directory
         with open(f"{self.processed_directory_path}/themuse_cleaned_data.json", 'w') as json_file:
             json.dump(transformed_jobs, json_file, indent=4)
 

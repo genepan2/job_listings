@@ -35,11 +35,11 @@ MONGO = {
 FIELDS = {
 		"number": "number",
 		"title": "title",
-    "description": "description",
-    "level": "level",
-    "location": "location",
+        "description": "description",
+        "level": "level",
+        "location": "location",
 		"employment": "employment",
-    "publish_date": "publish_date",
+   	    "publish_date": "publish_date",
 		"applicants": "applicants",
 		"function": "function",
 		"industries": "industries",
@@ -49,5 +49,6 @@ FIELDS = {
 		"url": "url",
 		"search_datetime": "search_datetime",
 		"search_keyword": "search_keyword",
-		"search_location": "search_location"
+		"search_location": "search_location",
+        "language": "language" 
 }

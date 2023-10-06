@@ -3,6 +3,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 import unicodedata
+from langdetect import detect
 
 class WhatjobsDataTransformer:
     """
@@ -12,8 +13,8 @@ class WhatjobsDataTransformer:
 
     def __init__(self):
         """Initialize transformer with input and output directories."""
-        self.input_directory = 'data/raw/whatjobs_json_files'  # Correct path
-        self.output_filename = "data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"  # Update the output filename accordingly
+        self.input_directory = 'data/raw/whatjobs_json_files'
+        self.output_filename = "data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"
 
     def get_full_description(self, url):
         """
@@ -25,12 +26,10 @@ class WhatjobsDataTransformer:
         Returns:
         - str: The fetched job description, or "N/A" if an error occurs.
         """
-        # Check if the URL is valid
         if not url.startswith("http"):
             print(f"Skipping invalid URL: {url}")
             return "N/A"
 
-        # Attempt to fetch the job description from the provided URL
         try:
             response = requests.get(url)
             response.raise_for_status()
@@ -45,8 +44,20 @@ class WhatjobsDataTransformer:
             print(f"Error fetching description for URL {url}. Error: {e}")
             return "N/A"
 
+    def detect_language(self, text):
+        try:
+            lang = detect(text)
+            if lang == 'en':
+                return 'English'
+            elif lang == 'de':
+                return 'German'
+            else:
+                return 'Unknown'
+        except Exception as e:
+            print(f"Error detecting language. Error: {e}")
+            return 'Unknown'
+    
     def transform_data(self):
-        """Transform raw job data by fetching full descriptions and normalizing fields."""
         print("Starting transformation...")
         all_jobs = []
         counter = 0
@@ -59,8 +70,7 @@ class WhatjobsDataTransformer:
                     for job in jobs:
                         try:
                             job["job_description"] = self.get_full_description(job["url"])
-                            
-                            # Adding the level attribute based on the job title
+
                             job_title = job.get("title", "").lower()
                             if "senior" in job_title:
                                 job["level"] = "Senior"
@@ -68,17 +78,12 @@ class WhatjobsDataTransformer:
                                 job["level"] = "Junior"
                             elif "intern" in job_title or "internship" in job_title:
                                 job["level"] = "Intern"
-                            elif "student" in job_title or "working student" in job_title:
-                                job["level"] = "Student"
-                            elif "lead" in job_title:
-                                job["level"] = "Lead"
-                            elif "head" in job_title:
-                                job["level"] = "Head"
                             else:
                                 job["level"] = "Middle"
 
+                            job["language"] = self.detect_language(job["job_description"])
+
                             counter += 1
-                            # Printing info for every 50 transformed elements
                             if counter % 50 == 0:
                                 print(f"Transformed {counter} jobs...")
                         except Exception as e:
@@ -93,7 +98,6 @@ class WhatjobsDataTransformer:
         print(f"Transformation finished. {len(all_jobs)} jobs saved in '{self.output_filename}'.")
 
 def main():
-    """Main function to initiate the data transformation process."""
     transformer = WhatjobsDataTransformer()
     transformer.transform_data()
 
