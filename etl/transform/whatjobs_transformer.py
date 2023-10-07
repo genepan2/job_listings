@@ -1,14 +1,11 @@
 import json
 import os
-import requests
-from bs4 import BeautifulSoup
-import unicodedata
 from langdetect import detect
 
 class WhatjobsDataTransformer:
     """
     This class is responsible for transforming raw job data scraped from WhatJobs. 
-    Transformation includes fetching full job descriptions and normalizing data.
+    Transformation includes normalizing data and detecting the language of the job descriptions.
     """
 
     def __init__(self):
@@ -16,35 +13,16 @@ class WhatjobsDataTransformer:
         self.input_directory = 'data/raw/whatjobs_json_files'
         self.output_filename = "data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"
 
-    def get_full_description(self, url):
+    def detect_language(self, text):
         """
-        Fetch the full job description from a given URL.
+        Detect the language of the given text.
 
         Args:
-        - url (str): The URL from which to fetch the job description.
+        - text (str): The text whose language is to be detected.
 
         Returns:
-        - str: The fetched job description, or "N/A" if an error occurs.
+        - str: The detected language, or "Unknown" if an error occurs.
         """
-        if not url.startswith("http"):
-            print(f"Skipping invalid URL: {url}")
-            return "N/A"
-
-        try:
-            response = requests.get(url)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.content, 'html.parser')
-            description_div = soup.find("div", class_="dDesc")
-            if description_div:
-                description = description_div.get_text(separator=' ', strip=True)
-                description = description.replace("\n", " ")
-                description = unicodedata.normalize("NFC", description)
-                return description
-        except Exception as e:
-            print(f"Error fetching description for URL {url}. Error: {e}")
-            return "N/A"
-
-    def detect_language(self, text):
         try:
             lang = detect(text)
             if lang == 'en':
@@ -52,12 +30,16 @@ class WhatjobsDataTransformer:
             elif lang == 'de':
                 return 'German'
             else:
-                return 'Unknown'
+                return 'Other'
         except Exception as e:
             print(f"Error detecting language. Error: {e}")
-            return 'Unknown'
+            return 'Other'
     
     def transform_data(self):
+        """
+        Transform the raw job data by detecting the language of the job descriptions
+        and normalizing the job levels based on keywords in the job titles.
+        """
         print("Starting transformation...")
         all_jobs = []
         counter = 0
@@ -69,8 +51,6 @@ class WhatjobsDataTransformer:
                     
                     for job in jobs:
                         try:
-                            job["job_description"] = self.get_full_description(job["url"])
-
                             job_title = job.get("title", "").lower()
                             if "senior" in job_title:
                                 job["level"] = "Senior"
@@ -78,10 +58,16 @@ class WhatjobsDataTransformer:
                                 job["level"] = "Junior"
                             elif "intern" in job_title or "internship" in job_title:
                                 job["level"] = "Intern"
+                            elif "lead" in job_title:
+                                job["level"]= "Lead"
+                            elif "head" in job_title:
+                                job["level"] = "Head"
+                            elif "student" in job_title or "working student" in job_title:
+                                job["level"] = "Student"
                             else:
                                 job["level"] = "Middle"
 
-                            job["language"] = self.detect_language(job["job_description"])
+                            job["language"] = self.detect_language(job["description"])
 
                             counter += 1
                             if counter % 50 == 0:
@@ -98,6 +84,9 @@ class WhatjobsDataTransformer:
         print(f"Transformation finished. {len(all_jobs)} jobs saved in '{self.output_filename}'.")
 
 def main():
+    """
+    Main function to execute the job data transformation.
+    """
     transformer = WhatjobsDataTransformer()
     transformer.transform_data()
 

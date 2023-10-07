@@ -15,8 +15,7 @@ def transform_job_level(job_level: str = 'Entry', job_title: str = None):
       "Senior": ["senior level", "senior"],
       "Lead": ["lead"],
       "Head": ["head"],
-      "Student": ["Working Student", "student"],
-
+      "Student": ["Working Student", "student"]
   }
 
   for level, level_categories in job_levels_mapping.items():
