@@ -17,7 +17,10 @@ JOB_LEVELS = {
 	"Entry": "Entry",
 	"Middle": "Middle",
 	"Senior": "Senior",
-	"unknown": "Unknown"
+	"unknown": "Unknown",
+    "Lead": "Lead",
+    "Head": "Head",
+    "Student":"Student"
 }
 
 COLLECTIONS = {
