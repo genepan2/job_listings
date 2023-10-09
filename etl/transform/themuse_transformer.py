@@ -108,7 +108,7 @@ class ThemuseDataTransformer:
         language = self.detect_language(job_description)
 
         transformed_job = {
-            FIELDS["number"]: f"themuse-{self.job_number}",
+            #FIELDS["number"]: f"themuse-{self.job_number}",
             FIELDS["title"]: job.get("name", ""),
             FIELDS["company_name"]: job.get("company", {}).get("name", ""),
             FIELDS["location"]: job.get("locations", [{}])[0].get("name", "") if job.get("locations") else "",
