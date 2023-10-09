@@ -3,8 +3,9 @@ import JobCard from './JobCard';
 
 function MainArea({ jobs }) {
     return (
-        <div className="main-area">
-            {jobs.map(job => <JobCard key={job.id} job={job} />)}
+		// <main role="main" className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
+		<div className="w-full">
+            {jobs.map((job, index) => <JobCard key={index} job={job} />)}
             <div className="pagination">
                 {/* Placeholder for pagination */}
             </div>
