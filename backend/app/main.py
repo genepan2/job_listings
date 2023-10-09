@@ -1,3 +1,4 @@
+import os
 import argparse
 
 # Import extraction, transformation, and loading functions from their respective locations in the project structure
@@ -48,8 +49,8 @@ def main():
 
     # Extraction, transformation and upload to mongoDB for WhatJobs
     if args.whatjobs:
-        job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist","Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
-        job_locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich", "Frankfurt"]
+        job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist", "Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
+        job_locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich", "frankfurt"]
         for title in job_titles if not(args.cats) else job_titles[:args.cats]:
             for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
                 whatjobs_extractor = WhatjobsDataExtractor(title, loc, args.jobs)
@@ -78,7 +79,7 @@ def main():
     # Extraction, transformation and upload to mongoDB for LinkedIn
     if args.linkedin:
         if args.action == 'extract' or args.action == None:
-            job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist","Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
+            job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist", "Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
             job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany", "Frankfurt, Germany"]
             for title in job_titles if not(args.cats) else job_titles[:args.cats]:
                 for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
@@ -95,8 +96,10 @@ def main():
     IntegrateCollections.integrate_to_all_jobs_list()
 
     # Upload the integrated CSV to MongoDB
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path_csv_data = os.path.join(dir_path, 'data', 'processed', 'integrated_data', 'all_jobs_list.csv')
     uploader = UploadToMongoDB()
-    uploader.upload_csv_to_mongodb()
-    
+    uploader.upload_csv_to_mongodb(path_csv_data)
+
 if __name__ == "__main__":
     main()

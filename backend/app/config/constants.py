@@ -54,5 +54,5 @@ FIELDS = {
 		"search_datetime": "search_datetime",
 		"search_keyword": "search_keyword",
 		"search_location": "search_location",
-        "language": "language" 
+        "language": "language"
 }
