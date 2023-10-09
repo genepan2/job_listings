@@ -81,7 +81,7 @@ class WhatjobsDataExtractor:
 
             # Collating the extracted data into a dictionary
             job_data = {
-                FIELDS["number"]: f"whatjobs-{WhatjobsDataExtractor.global_job_number}",
+                #FIELDS["number"]: f"whatjobs-{WhatjobsDataExtractor.global_job_number}",
                 FIELDS["company_name"]: company,
                 FIELDS["title"]: title,
                 FIELDS["location"]: location,
@@ -149,8 +149,8 @@ class WhatjobsDataExtractor:
 
 if __name__ == "__main__":
     # List of job titles and locations to search for
-    job_titles = ["data", "engineer", "software", "machine"]
-    locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich"]
+    job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist","Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
+    locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich", "rankfurt"]
 
     # For each job title and location combination, scrape the job listings
     for title in job_titles:

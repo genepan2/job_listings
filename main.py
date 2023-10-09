@@ -13,8 +13,8 @@ from etl.extract.linkedin_extractor import JobSearchLinkedInExtractor
 from etl.transform.linkedin_transformer import JobSearchLinkedInTransformer
 from etl.load.upload_linkedin import LinkedinUploader
 
-from utils.data_integration import IntegrateCollections
-
+from src.utils.data_integration import IntegrateCollections
+from etl.load.upload_integrated_data import UploadToMongoDB
 
 def min_max_cats(x):
     x = int(x)
@@ -48,8 +48,8 @@ def main():
 
     # Extraction, transformation and upload to mongoDB for WhatJobs
     if args.whatjobs:
-        job_titles = ["data", "engineer", "software", "machine"]
-        job_locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich"]
+        job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist","Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
+        job_locations = ["berlin--berlin", "cologne", "hamburg--hamburg", "munich", "Frankfurt"]
         for title in job_titles if not(args.cats) else job_titles[:args.cats]:
             for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
                 whatjobs_extractor = WhatjobsDataExtractor(title, loc, args.jobs)
@@ -60,11 +60,11 @@ def main():
 
     # Extraction, transformation and upload to mongoDB for Themuse
     if args.themuse:
-        job_titles = ["Computer and IT", "Data and Analytics", "Data Science", "IT", "Science and Engineering", "Software Engineer", "Software Engineering"]
+        job_titles = ["Data and Analytics", "Data Science"]
         if args.cats:
             job_titles = job_titles[:args.cats]
 
-        job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany"]
+        job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany", "Frankfurt, Germany"]
         if args.locations:
             job_locations = job_locations[:args.locations]
 
@@ -78,8 +78,8 @@ def main():
     # Extraction, transformation and upload to mongoDB for LinkedIn
     if args.linkedin:
         if args.action == 'extract' or args.action == None:
-            job_titles = ["Data Engineer", "Big Data Engineer", "Business Intelligence Engineer", "Machine Learning Engineer"]
-            job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany"]
+            job_titles = ["Data", "Data Engineer", "Big Data Engineer", "Data Scientist","Data Analist", "Business Intelligence Engineer", "Machine Learning Engineer"]
+            job_locations = ["Berlin, Germany", "Munich, Germany", "Hamburg, Germany", "Cologne, Germany", "Frankfurt, Germany"]
             for title in job_titles if not(args.cats) else job_titles[:args.cats]:
                 for loc in job_locations if not(args.locations) else job_locations[:args.locations]:
                     linkedin_extractor = JobSearchLinkedInExtractor(title, loc, args.jobs)
@@ -92,7 +92,11 @@ def main():
             LinkedinUploader.upload()
 
     # Merging collections in MongoDB
-    IntegrateCollections.merge_to_all_jobs_list()
+    IntegrateCollections.integrate_to_all_jobs_list()
 
+    # Upload the integrated CSV to MongoDB
+    uploader = UploadToMongoDB()
+    uploader.upload_csv_to_mongodb()
+    
 if __name__ == "__main__":
     main()

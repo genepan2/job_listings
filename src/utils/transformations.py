@@ -15,7 +15,7 @@ def transform_job_level(job_level: str = 'Entry', job_title: str = None):
       "Senior": ["senior level", "senior"],
       "Lead": ["lead"],
       "Head": ["head"],
-      "Student": ["Working Student", "student"]
+      "Student": ["Working Student", "student", "Werkstudent"]
   }
 
   for level, level_categories in job_levels_mapping.items():
@@ -43,7 +43,7 @@ def transform_job_location(job_location: str):
       if any(name in job_location for name in location_names):
           return JOB_LOCATIONS.get(location)
 
-  return JOB_LOCATIONS["unknown"]
+  return JOB_LOCATIONS["other"]
 
 
 def transform_to_isoformat(publication_date, search_datetime):
