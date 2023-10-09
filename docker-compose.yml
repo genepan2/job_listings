@@ -1,16 +1,18 @@
-version: '3.1'
+version: "3.1"
 
 services:
   api:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     depends_on:
       - mongo
     environment:
-      - MONGO_URI=mongodb://mongo:27017/job_listing_db  # Specify the database name
+      - MONGO_URI=mongodb://mongo:27017/job_listing_db # Specify the database name
     networks:
-      - app-network  # Add this to allow communication between containers
+      - app-network # Add this to allow communication between containers
 
   mongo:
     image: mongo:latest
@@ -19,13 +21,22 @@ services:
     volumes:
       - mongo-data:/data/db
     environment:
-      - MONGO_INITDB_DATABASE=job_listing_db  # Initialize a database named job_listing_db
+      - MONGO_INITDB_DATABASE=job_listing_db # Initialize a database named job_listing_db
     networks:
-      - app-network  # Add this to allow communication between containers
+      - app-network # Add this to allow communication between containers
 
-networks:  # Define a custom network
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks: # Define a custom network
   app-network:
-    name: job_listing_app-network  # Corrected the network name here
+    name: job_listing_app-network # Corrected the network name here
     driver: bridge
 
 volumes:
