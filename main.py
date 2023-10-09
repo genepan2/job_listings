@@ -13,7 +13,7 @@ from etl.extract.linkedin_extractor import JobSearchLinkedInExtractor
 from etl.transform.linkedin_transformer import JobSearchLinkedInTransformer
 from etl.load.upload_linkedin import LinkedinUploader
 
-from src.utils.merge_collections import MergeCollections
+from utils.data_integration import IntegrateCollections
 
 
 def min_max_cats(x):
@@ -92,7 +92,7 @@ def main():
             LinkedinUploader.upload()
 
     # Merging collections in MongoDB
-    MergeCollections.merge_to_all_jobs_list()
+    IntegrateCollections.merge_to_all_jobs_list()
 
 if __name__ == "__main__":
     main()
