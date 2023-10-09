@@ -9,7 +9,8 @@ JOB_LOCATIONS = {
 	"munich": "Munich",
 	"hamburg": "Hamburg",
 	"cologne": "Cologne",
-	"unknown": "Unknown",
+    "frankfurt": "Frankfurt",
+	"other": "Other",
 }
 
 JOB_LEVELS = {
