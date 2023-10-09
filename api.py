@@ -13,9 +13,9 @@ import os
 class JobLevel(str, Enum):
 	intern = "Internship"
 	entry = "Entry"
-	mid = "Mid"
+	middle = "Middle"
 	senior = "Senior"
-	unknown = "Unknown"
+	other = "Other"
 
 class JobLocation(str, Enum):
     berlin = "Berlin"
@@ -25,9 +25,9 @@ class JobLocation(str, Enum):
 
 
 class JobRequest(BaseModel):
-  keyword: Optional[str] = None
-  level: Optional[JobLevel] = None
-  location: Optional[JobLocation] = None
+  # keyword: Optional[str] = None
+  level: Optional[List[JobLevel]] = []
+  location: Optional[List[JobLocation]] = []
   age: Optional[int] = 1
   order: Optional[str] = 'asc'
   page: Optional[int] = 1
@@ -72,9 +72,9 @@ api.add_middleware(
 )
 
 @api.get('/jobs')
-def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
+def get_jobs(keyword:str, level:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10, location:List[JobLocation] = []):
   jobs = db.query_jobs(
-    keyword = keyword,
+    # keyword = keyword,
     level = level,
     location = location,
     age = age,
@@ -98,7 +98,7 @@ def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', p
 @api.post('/jobs')
 def post_jobs(req: JobRequest):
   jobs = db.query_jobs(
-    keyword = req.keyword,
+    # keyword = req.keyword,
     level = req.level,
     location = req.location,
     age = req.age,

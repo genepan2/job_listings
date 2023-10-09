@@ -15,18 +15,31 @@ class DbQuery:
         query = {}
 
         # print(self.calculate_date_from_age(age))
-
+        '''
         if keyword:
             query[FIELDS["description"]] = {"$regex": keyword, "$options": "i"}
 
-        if level:
-            query[FIELDS["level"]] = self.map_level(level)
-
-        if location:
-            query[FIELDS["location"]] = location
 
         if age:
             query[FIELDS["publish_date"]] = {"$gte": self.calculate_date_from_age(age)}
+        '''
+
+        # if level:
+        #     query[FIELDS["level"]] = self.map_level(level)
+        if level:
+            if isinstance(level, list):
+                query[FIELDS["level"]] = {"$in": [lev for lev in level]}
+            else:
+                query[FIELDS["level"]] = level
+
+        # if location:
+        #     query[FIELDS["location"]] = location
+        if location:
+            if isinstance(location, list):
+                query[FIELDS["location"]] = {"$in": [loc for loc in location]}
+            else:
+                query[FIELDS["location"]] = location
+
 
         # Sort order
         # sort_order = pymongo.ASCENDING if order == 'asc' else pymongo.DESCENDING
@@ -37,8 +50,8 @@ class DbQuery:
         limit = items_per_page
 
         # Perform the query
-        # result = self.collection.find(query, {"_id": 0}).sort(FIELDS["publish_date"], sort_order).skip(offset).limit(limit)
-        result = self.collection.find({}, {"_id": 0}).sort(FIELDS["publish_date"], sort_order).skip(offset).limit(limit)
+        result = self.collection.find(query, {"_id": 0}).sort(FIELDS["publish_date"], sort_order).skip(offset).limit(limit)
+        # result = self.collection.find({}, {"_id": 0}).sort(FIELDS["publish_date"], sort_order).skip(offset).limit(limit)
 
         # Convert query result to a list of dictionaries
         job_list = list(result)

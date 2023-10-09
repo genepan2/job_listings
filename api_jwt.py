@@ -22,13 +22,14 @@ users = []
 class UserSchema(BaseModel):
     username: str
     password: str
+    is_admin: bool = False
 
 class JobLevel(str, Enum):
 	intern = "Internship"
 	entry = "Entry"
-	mid = "Mid"
+	middle = "Middle"
 	senior = "Senior"
-	unknown = "Unknown"
+	other = "Other"
 
 class JobLocation(str, Enum):
     berlin = "Berlin"
@@ -38,9 +39,9 @@ class JobLocation(str, Enum):
 
 
 class JobRequest(BaseModel):
-  keyword: Optional[str] = None
-  level: Optional[JobLevel] = None
-  location: Optional[JobLocation] = None
+  # keyword: Optional[str] = None
+  level: Optional[List[JobLevel]] = []
+  location: Optional[List[JobLocation]] = []
   age: Optional[int] = 1
   order: Optional[str] = 'asc'
   page: Optional[int] = 1
@@ -134,6 +135,8 @@ db = DbQuery()
 origins = [
     "http://localhost:3000",  # React's default port
     "http://127.0.0.1:3000",
+    "https://localhost:3000",  # React's default port
+    "https://127.0.0.1:3000",
 ]
 
 api = FastAPI()
@@ -146,9 +149,10 @@ api.add_middleware(
 )
 
 @api.get('/jobs')
-def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
+# def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
+def get_jobs(level:str, location:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10):
   jobs = db.query_jobs(
-    keyword = keyword,
+    # keyword = keyword,
     level = level,
     location = location,
     age = age,
@@ -172,7 +176,7 @@ def get_jobs(keyword:str, level:str, location:str, age:int, order:str = 'asc', p
 @api.post('/jobs', dependencies=[Depends(JWTBearer())])
 def post_jobs(req: JobRequest):
   jobs = db.query_jobs(
-    keyword = req.keyword,
+    # keyword = req.keyword,
     level = req.level,
     location = req.location,
     age = req.age,
@@ -203,5 +207,5 @@ async def user_create(user: UserSchema = Body(...)):
 @api.post("/user/login")
 async def user_login(user: UserSchema = Body(...)):
     if check_user(user):
-        return sign_jwt(user.email)
+        return sign_jwt(user.username)
     return {"error": "Wrong login details!"}
