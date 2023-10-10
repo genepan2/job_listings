@@ -28,7 +28,7 @@ class IntegrateCollections:
         df = pd.DataFrame(all_jobs_list)
 
         # Specify the directory and file path
-        directory = "data/processed/integrated_data"
+        directory = "backend/app/data/processed/integrated_data"
         csv_file_path = os.path.join(directory, "all_jobs_list.csv")
 
         # Check if the directory exists, if not, create it
