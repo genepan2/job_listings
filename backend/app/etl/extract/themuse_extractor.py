@@ -25,7 +25,7 @@ class ThemuseDataExtractor:
         self.base_url = (f"https://www.themuse.com/api/public/jobs?category={categories_str}&location={locations_str}&page=")
 
         # Ensure the directory exists
-        self.directory_path = "data/raw/themuse_json_files"
+        self.directory_path = "backend/app/data/raw/themuse_json_files"
         if not os.path.exists(self.directory_path):
             os.makedirs(self.directory_path)
 

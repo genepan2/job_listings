@@ -29,10 +29,10 @@ class WhatjobsDataExtractor:
         self.items = items  # The number of items to scrape on each page
         self.base_url = f"https://de.whatjobs.com/jobs/{self.job_title}/{self.location}"  # The base URL for the search query
         self.num_pages_to_scrape = NUM_PAGES_TO_SCRAPE  # The number of pages to scrape for each search query
-        self.output_filename = "data/raw/whatjobs_json_files/whatjobs_raw_data.json"  # The file where the scraped data will be stored
+        self.output_filename = "backend/app/data/raw/whatjobs_json_files/whatjobs_raw_data.json"  # The file where the scraped data will be stored
 
         # Create a directory for saving the JSON files, if it doesn't already exist
-        directory_path = "data/raw/whatjobs_json_files"
+        directory_path = "backend/app/data/raw/whatjobs_json_files"
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
 

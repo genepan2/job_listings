@@ -10,8 +10,8 @@ class WhatjobsDataTransformer:
 
     def __init__(self):
         """Initialize transformer with input and output directories."""
-        self.input_directory = 'data/raw/whatjobs_json_files'
-        self.output_filename = "data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"
+        self.input_directory = 'backend/app/data/raw/whatjobs_json_files'
+        self.output_filename = "backend/app/data/processed/whatjobs_json_files/whatjobs_cleaned_data.json"
 
     def detect_language(self, text):
         """

@@ -25,7 +25,7 @@ class JobSearchLinkedInExtractor:
         self.filtered_jobs_buffer = []
 
         # Ensure the directory exists
-        self.directory_path = "data/raw/linkedin_json_files"
+        self.directory_path = "backend/app/data/raw/linkedin_json_files"
         if not os.path.exists(self.directory_path):
             os.makedirs(self.directory_path)
 

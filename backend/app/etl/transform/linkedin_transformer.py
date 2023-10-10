@@ -9,8 +9,8 @@ from src.utils.transformations import transform_job_level, transform_job_locatio
 
 class JobSearchLinkedInTransformer:
     def __init__(self):
-        self.directory_path = "data/raw/linkedin_json_files"
-        self.processed_directory_path = "data/processed/linkedin_json_files"
+        self.directory_path = "backend/app/data/raw/linkedin_json_files"
+        self.processed_directory_path = "backend/app/data/processed/linkedin_json_files"
 
     def flatten(self, lst):
         flat_list = []

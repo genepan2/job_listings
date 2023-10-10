@@ -19,8 +19,8 @@ class ThemuseDataTransformer:
 
     def __init__(self):
         """Initialize the ThemuseDataTransformer with predefined settings."""
-        self.directory_path = "data/raw/themuse_json_files"
-        self.processed_directory_path = "data/processed/themuse_json_files"
+        self.directory_path = "backend/app/data/raw/themuse_json_files"
+        self.processed_directory_path = "backend/app/data/processed/themuse_json_files"
         self.job_number = 1
 
         # Ensure the processed directory exists
