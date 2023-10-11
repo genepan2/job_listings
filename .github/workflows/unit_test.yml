@@ -1,9 +1,9 @@
 name: Unit Test
 on:
   push:
-    branches: [main]
+    branches: [Gitworkflow, main]
   pull_request:
-    branches: [main]
+    branches: [Gitworkflow, main]
 
 jobs:
   test:
@@ -13,5 +13,7 @@ jobs:
       - name: Test python Code
         run: |
           pip3 install pytest
+          pip3 install mongomock
+          pip3 install pymongo
           cd backend/tests
           pytest
