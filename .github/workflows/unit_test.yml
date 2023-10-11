@@ -1,9 +1,9 @@
 name: Unit Test
 on:
   push:
-    branches: [Gitworkflow]
+    branches: [Gitworkflow, main]
   pull_request:
-    branches: [Gitworkflow]
+    branches: [Gitworkflow, main]
 
 jobs:
   test:
