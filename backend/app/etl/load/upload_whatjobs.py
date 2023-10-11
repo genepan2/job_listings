@@ -8,4 +8,4 @@ class WhatjobsUploader:
 
         uploader = MongoDBUploader(MONGO["db"], COLLECTIONS["whatjobs"])
         uploader.upload_json_file(whatjobs_file_path)
-        uploader.close()
+        uploader.close_connection()

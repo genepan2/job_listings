@@ -8,4 +8,4 @@ class LinkedinUploader:
 
         uploader = MongoDBUploader(MONGO["db"], COLLECTIONS["linkedin"])
         uploader.upload_json_file(linkedin_file_path)
-        uploader.close()
+        uploader.close_connection()

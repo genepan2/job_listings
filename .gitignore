@@ -9,7 +9,7 @@ frontend/node_modules
 
 # Ignore files
 .env
-_*.py
 **.json
+**.csv
 **/.DS_Store
 .DS_Store
