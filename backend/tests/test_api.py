@@ -58,7 +58,7 @@ def test_post_jobs():
             items_per_page=10
         )
         # Make a request to the POST /jobs endpoint with the JobRequest instance
-        response = client.post("/jobs", json=job_request.dict())
+        response = client.post("/jobs", json=job_request.model_dump())
     
     # Assert that the response status code is 200 (OK)
     assert response.status_code == 200
