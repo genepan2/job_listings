@@ -1,9 +1,9 @@
 name: Unit Test
 on:
   push:
-    branches: [UnitTest2.0, main]
+    branches: [main]
   pull_request:
-    branches: [UnitTest2.0, main]
+    branches: [main]
 
 jobs:
   test:

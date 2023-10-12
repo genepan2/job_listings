@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from enum import Enum
 from pydantic import BaseModel
 from typing import Optional, Set, List
-from backend.app.src.utils.query_request import DbQuery
+from app.src.query_request import DbQuery
 from datetime import datetime
-from backend.app.config.constants import MISC
+from app.config.constants import MISC
 import os
 
 ####################
@@ -39,7 +39,7 @@ class JobRequest(BaseModel):
 
 def get_full_uri(route: str, req: JobRequest):
   url_params = []
-  for key, value in req.dict().items():
+  for key, value in req.model_dump().items():
       if value is not None:
         param = f"{key}={value}"
         url_params.append(param)

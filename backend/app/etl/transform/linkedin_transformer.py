@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 from langdetect import detect  
 from config.constants import FIELDS, JOB_LEVELS, JOB_LOCATIONS
-from src.utils.transformations import transform_job_level, transform_job_location, transform_to_isoformat, transform_job_title
+from src.transformations import transform_job_level, transform_job_location, transform_to_isoformat, transform_job_title
 
 
 class JobSearchLinkedInTransformer:

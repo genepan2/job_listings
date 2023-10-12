@@ -14,7 +14,7 @@ from etl.extract.linkedin_extractor import JobSearchLinkedInExtractor
 from etl.transform.linkedin_transformer import JobSearchLinkedInTransformer
 from etl.load.upload_linkedin import LinkedinUploader
 
-from src.utils.data_integration import IntegrateCollections
+from src.data_integration import IntegrateCollections
 from etl.load.upload_integrated_data import UploadToMongoDB
 from ml.predict_salary import SalaryPredictor
 

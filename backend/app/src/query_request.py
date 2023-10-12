@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from typing import List, Optional
 from datetime import datetime, timedelta
-from backend.app.config.constants import COLLECTIONS, MONGO, FIELDS, MISC
+from app.config.constants import COLLECTIONS, MONGO, FIELDS, MISC
 
 class DbQuery:
     def __init__(self, uri: str = MONGO["uri"], database_name: str = MONGO["db"], collection_name: str = COLLECTIONS["all"]):
