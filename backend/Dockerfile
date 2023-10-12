@@ -4,15 +4,15 @@ FROM python:3.9-slim
 # Set environment variables
 # Use unbuffered mode to receive logs from the output, it’s also recommended when running Python within Docker containers
 ENV PYTHONUNBUFFERED 1
-ENV NAME World  # This can be removed if not needed
+#ENV NAME World  # This can be removed if not needed
 
 # Set the working directory in the container to /app
 WORKDIR /app
 
 # Installing OS dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        gcc \
-        default-libmysqlclient-dev \
+    gcc \
+    default-libmysqlclient-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

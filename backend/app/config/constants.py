@@ -9,7 +9,7 @@ JOB_LOCATIONS = {
 	"munich": "Munich",
 	"hamburg": "Hamburg",
 	"cologne": "Cologne",
-    "frankfurt": "Frankfurt",
+	"frankfurt": "Frankfurt",
 	"other": "Other",
 }
 
@@ -19,9 +19,9 @@ JOB_LEVELS = {
 	"Middle": "Middle",
 	"Senior": "Senior",
 	"unknown": "Unknown",
-    "Lead": "Lead",
-    "Head": "Head",
-    "Student":"Student"
+	"Lead": "Lead",
+	"Head": "Head",
+	"Student": "Student"
 }
 
 COLLECTIONS = {
@@ -39,11 +39,11 @@ MONGO = {
 FIELDS = {
 		"number": "number",
 		"title": "title",
-        "description": "description",
-        "level": "level",
-        "location": "location",
+		"description": "description",
+		"level": "level",
+		"location": "location",
 		"employment": "employment",
-   	    "publish_date": "publish_date",
+		"publish_date": "publish_date",
 		"applicants": "applicants",
 		"function": "function",
 		"industries": "industries",
@@ -54,5 +54,5 @@ FIELDS = {
 		"search_datetime": "search_datetime",
 		"search_keyword": "search_keyword",
 		"search_location": "search_location",
-        "language": "language"
+		"language": "language"
 }

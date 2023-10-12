@@ -1,0 +1,7 @@
+# pymongo>=3.6.0
+pymongo
+pandas
+requests
+bs4
+langdetect
+apache-airflow-providers-mongo

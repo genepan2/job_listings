@@ -1,0 +1,1401 @@
+[2023-10-12 11:52:42,928] {scheduler_job.py:182} INFO - Started process (PID=84) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:52:42,942] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:52:42,955] {logging_mixin.py:104} INFO - [2023-10-12 11:52:42,954] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:52:43,064] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:52:50,153] {logging_mixin.py:104} INFO - [2023-10-12 11:52:50,153] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:52:50,173] {logging_mixin.py:104} INFO - [2023-10-12 11:52:50,171] {dag.py:1852} INFO - Creating ORM DAG for write_json_test
+[2023-10-12 11:52:50,187] {logging_mixin.py:104} INFO - [2023-10-12 11:52:50,187] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:52:50,211] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 7.362 seconds
+[2023-10-12 11:55:49,556] {scheduler_job.py:182} INFO - Started process (PID=47) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:55:49,568] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:55:49,576] {logging_mixin.py:104} INFO - [2023-10-12 11:55:49,574] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:55:49,657] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:55:49,744] {logging_mixin.py:104} INFO - [2023-10-12 11:55:49,744] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:55:49,848] {logging_mixin.py:104} INFO - [2023-10-12 11:55:49,848] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:55:49,891] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.350 seconds
+[2023-10-12 11:56:57,319] {scheduler_job.py:182} INFO - Started process (PID=182) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:56:57,335] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:56:57,342] {logging_mixin.py:104} INFO - [2023-10-12 11:56:57,341] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:56:57,389] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:56:57,460] {logging_mixin.py:104} INFO - [2023-10-12 11:56:57,460] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:56:57,513] {logging_mixin.py:104} INFO - [2023-10-12 11:56:57,512] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:56:57,546] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.235 seconds
+[2023-10-12 11:57:28,081] {scheduler_job.py:182} INFO - Started process (PID=238) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:57:28,086] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:57:28,088] {logging_mixin.py:104} INFO - [2023-10-12 11:57:28,088] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:57:28,121] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:57:28,156] {logging_mixin.py:104} INFO - [2023-10-12 11:57:28,156] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:57:28,181] {logging_mixin.py:104} INFO - [2023-10-12 11:57:28,181] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:57:28,199] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.125 seconds
+[2023-10-12 11:57:59,055] {scheduler_job.py:182} INFO - Started process (PID=294) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:57:59,059] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:57:59,064] {logging_mixin.py:104} INFO - [2023-10-12 11:57:59,063] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:57:59,100] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:57:59,134] {logging_mixin.py:104} INFO - [2023-10-12 11:57:59,134] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:57:59,162] {logging_mixin.py:104} INFO - [2023-10-12 11:57:59,161] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:57:59,178] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.130 seconds
+[2023-10-12 11:58:29,695] {scheduler_job.py:182} INFO - Started process (PID=360) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:58:29,701] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:58:29,705] {logging_mixin.py:104} INFO - [2023-10-12 11:58:29,705] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:58:29,772] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:58:29,857] {logging_mixin.py:104} INFO - [2023-10-12 11:58:29,857] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:58:29,916] {logging_mixin.py:104} INFO - [2023-10-12 11:58:29,916] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:58:29,950] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.262 seconds
+[2023-10-12 11:59:00,297] {scheduler_job.py:182} INFO - Started process (PID=417) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:59:00,301] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:59:00,304] {logging_mixin.py:104} INFO - [2023-10-12 11:59:00,304] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:59:00,358] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:59:00,409] {logging_mixin.py:104} INFO - [2023-10-12 11:59:00,409] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:59:00,437] {logging_mixin.py:104} INFO - [2023-10-12 11:59:00,436] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:59:00,465] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.180 seconds
+[2023-10-12 11:59:30,997] {scheduler_job.py:182} INFO - Started process (PID=472) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:59:31,001] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 11:59:31,003] {logging_mixin.py:104} INFO - [2023-10-12 11:59:31,003] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:59:31,032] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 11:59:31,076] {logging_mixin.py:104} INFO - [2023-10-12 11:59:31,076] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:59:31,104] {logging_mixin.py:104} INFO - [2023-10-12 11:59:31,104] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 11:59:31,121] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.131 seconds
+[2023-10-12 12:00:01,398] {scheduler_job.py:182} INFO - Started process (PID=537) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:00:01,403] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:00:01,407] {logging_mixin.py:104} INFO - [2023-10-12 12:00:01,406] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:00:01,453] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:00:01,496] {logging_mixin.py:104} INFO - [2023-10-12 12:00:01,495] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:00:01,532] {logging_mixin.py:104} INFO - [2023-10-12 12:00:01,532] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:00:01,556] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.168 seconds
+[2023-10-12 12:00:32,151] {scheduler_job.py:182} INFO - Started process (PID=594) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:00:32,155] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:00:32,158] {logging_mixin.py:104} INFO - [2023-10-12 12:00:32,158] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:00:32,186] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:00:32,223] {logging_mixin.py:104} INFO - [2023-10-12 12:00:32,223] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:00:32,249] {logging_mixin.py:104} INFO - [2023-10-12 12:00:32,249] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:00:32,266] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.121 seconds
+[2023-10-12 12:01:03,382] {scheduler_job.py:182} INFO - Started process (PID=651) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:01:03,385] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:01:03,388] {logging_mixin.py:104} INFO - [2023-10-12 12:01:03,388] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:01:03,435] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:01:03,482] {logging_mixin.py:104} INFO - [2023-10-12 12:01:03,482] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:01:03,522] {logging_mixin.py:104} INFO - [2023-10-12 12:01:03,522] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:01:03,539] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.164 seconds
+[2023-10-12 12:01:34,580] {scheduler_job.py:182} INFO - Started process (PID=716) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:01:34,584] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:01:34,587] {logging_mixin.py:104} INFO - [2023-10-12 12:01:34,587] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:01:34,619] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:01:34,655] {logging_mixin.py:104} INFO - [2023-10-12 12:01:34,655] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:01:34,680] {logging_mixin.py:104} INFO - [2023-10-12 12:01:34,680] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:01:34,697] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.123 seconds
+[2023-10-12 12:02:04,820] {scheduler_job.py:182} INFO - Started process (PID=772) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:02:04,824] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:02:04,826] {logging_mixin.py:104} INFO - [2023-10-12 12:02:04,826] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:02:04,857] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:02:04,892] {logging_mixin.py:104} INFO - [2023-10-12 12:02:04,891] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:02:04,917] {logging_mixin.py:104} INFO - [2023-10-12 12:02:04,916] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:02:04,933] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.119 seconds
+[2023-10-12 12:02:36,177] {scheduler_job.py:182} INFO - Started process (PID=829) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:02:36,185] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:02:36,189] {logging_mixin.py:104} INFO - [2023-10-12 12:02:36,189] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:02:36,227] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:02:36,269] {logging_mixin.py:104} INFO - [2023-10-12 12:02:36,268] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:02:36,311] {logging_mixin.py:104} INFO - [2023-10-12 12:02:36,311] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:02:36,336] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.166 seconds
+[2023-10-12 12:03:07,603] {scheduler_job.py:182} INFO - Started process (PID=886) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:03:07,611] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:03:07,614] {logging_mixin.py:104} INFO - [2023-10-12 12:03:07,614] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:03:07,680] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:03:07,754] {logging_mixin.py:104} INFO - [2023-10-12 12:03:07,754] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:03:07,833] {logging_mixin.py:104} INFO - [2023-10-12 12:03:07,832] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:03:07,888] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.298 seconds
+[2023-10-12 12:03:38,247] {scheduler_job.py:182} INFO - Started process (PID=943) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:03:38,253] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:03:38,258] {logging_mixin.py:104} INFO - [2023-10-12 12:03:38,257] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:03:38,294] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:03:38,336] {logging_mixin.py:104} INFO - [2023-10-12 12:03:38,335] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:03:38,370] {logging_mixin.py:104} INFO - [2023-10-12 12:03:38,370] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:03:38,391] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.153 seconds
+[2023-10-12 12:04:10,375] {scheduler_job.py:182} INFO - Started process (PID=1007) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:04:10,384] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:04:10,395] {logging_mixin.py:104} INFO - [2023-10-12 12:04:10,394] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:04:10,481] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:04:10,567] {logging_mixin.py:104} INFO - [2023-10-12 12:04:10,566] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:04:10,648] {logging_mixin.py:104} INFO - [2023-10-12 12:04:10,648] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:04:10,690] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.339 seconds
+[2023-10-12 12:04:40,976] {scheduler_job.py:182} INFO - Started process (PID=1064) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:04:40,988] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:04:40,992] {logging_mixin.py:104} INFO - [2023-10-12 12:04:40,991] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:04:41,071] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:04:41,196] {logging_mixin.py:104} INFO - [2023-10-12 12:04:41,196] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:04:41,248] {logging_mixin.py:104} INFO - [2023-10-12 12:04:41,247] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:04:41,306] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.340 seconds
+[2023-10-12 12:05:12,263] {scheduler_job.py:182} INFO - Started process (PID=1120) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:05:12,270] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:05:12,275] {logging_mixin.py:104} INFO - [2023-10-12 12:05:12,274] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:05:12,323] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:05:12,390] {logging_mixin.py:104} INFO - [2023-10-12 12:05:12,389] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:05:12,428] {logging_mixin.py:104} INFO - [2023-10-12 12:05:12,428] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:05:12,459] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.204 seconds
+[2023-10-12 12:05:43,630] {scheduler_job.py:182} INFO - Started process (PID=1177) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:05:43,641] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:05:43,646] {logging_mixin.py:104} INFO - [2023-10-12 12:05:43,646] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:05:43,711] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:05:43,809] {logging_mixin.py:104} INFO - [2023-10-12 12:05:43,808] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:05:43,848] {logging_mixin.py:104} INFO - [2023-10-12 12:05:43,848] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:05:43,876] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.264 seconds
+[2023-10-12 12:06:14,598] {scheduler_job.py:182} INFO - Started process (PID=1233) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:06:14,609] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:06:14,613] {logging_mixin.py:104} INFO - [2023-10-12 12:06:14,613] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:06:14,667] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:06:14,727] {logging_mixin.py:104} INFO - [2023-10-12 12:06:14,727] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:06:14,827] {logging_mixin.py:104} INFO - [2023-10-12 12:06:14,827] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:06:14,873] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.284 seconds
+[2023-10-12 12:06:45,105] {scheduler_job.py:182} INFO - Started process (PID=1289) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:06:45,110] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:06:45,116] {logging_mixin.py:104} INFO - [2023-10-12 12:06:45,114] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:06:45,170] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:06:45,230] {logging_mixin.py:104} INFO - [2023-10-12 12:06:45,229] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:06:45,295] {logging_mixin.py:104} INFO - [2023-10-12 12:06:45,294] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:06:45,330] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.236 seconds
+[2023-10-12 12:07:15,531] {scheduler_job.py:182} INFO - Started process (PID=1344) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:07:15,539] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:07:15,542] {logging_mixin.py:104} INFO - [2023-10-12 12:07:15,542] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:07:15,583] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:07:15,642] {logging_mixin.py:104} INFO - [2023-10-12 12:07:15,641] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:07:15,678] {logging_mixin.py:104} INFO - [2023-10-12 12:07:15,678] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:07:15,701] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.177 seconds
+[2023-10-12 12:07:45,959] {scheduler_job.py:182} INFO - Started process (PID=1405) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:07:45,972] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:07:45,980] {logging_mixin.py:104} INFO - [2023-10-12 12:07:45,980] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:07:46,069] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:07:46,143] {logging_mixin.py:104} INFO - [2023-10-12 12:07:46,142] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:07:46,189] {logging_mixin.py:104} INFO - [2023-10-12 12:07:46,188] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:07:46,220] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.288 seconds
+[2023-10-12 12:08:16,705] {scheduler_job.py:182} INFO - Started process (PID=1464) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:08:16,752] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:08:16,912] {logging_mixin.py:104} INFO - [2023-10-12 12:08:16,903] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:08:17,361] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:08:17,605] {logging_mixin.py:104} INFO - [2023-10-12 12:08:17,605] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:08:17,695] {logging_mixin.py:104} INFO - [2023-10-12 12:08:17,694] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:08:17,729] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 1.046 seconds
+[2023-10-12 12:08:47,941] {scheduler_job.py:182} INFO - Started process (PID=1521) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:08:47,948] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:08:47,952] {logging_mixin.py:104} INFO - [2023-10-12 12:08:47,952] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:08:47,992] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:08:48,045] {logging_mixin.py:104} INFO - [2023-10-12 12:08:48,045] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:08:48,084] {logging_mixin.py:104} INFO - [2023-10-12 12:08:48,083] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:08:48,108] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.175 seconds
+[2023-10-12 12:09:18,510] {scheduler_job.py:182} INFO - Started process (PID=1577) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:09:18,517] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:09:18,522] {logging_mixin.py:104} INFO - [2023-10-12 12:09:18,521] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:09:18,563] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:09:18,617] {logging_mixin.py:104} INFO - [2023-10-12 12:09:18,617] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:09:18,655] {logging_mixin.py:104} INFO - [2023-10-12 12:09:18,655] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:09:18,680] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.178 seconds
+[2023-10-12 12:09:49,243] {scheduler_job.py:182} INFO - Started process (PID=1634) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:09:49,248] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:09:49,251] {logging_mixin.py:104} INFO - [2023-10-12 12:09:49,250] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:09:49,280] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:09:49,312] {logging_mixin.py:104} INFO - [2023-10-12 12:09:49,312] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:09:49,339] {logging_mixin.py:104} INFO - [2023-10-12 12:09:49,339] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:09:49,354] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.117 seconds
+[2023-10-12 12:10:20,091] {scheduler_job.py:182} INFO - Started process (PID=1689) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:10:20,095] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:10:20,097] {logging_mixin.py:104} INFO - [2023-10-12 12:10:20,097] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:10:20,128] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:10:20,171] {logging_mixin.py:104} INFO - [2023-10-12 12:10:20,171] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:10:20,201] {logging_mixin.py:104} INFO - [2023-10-12 12:10:20,200] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:10:20,219] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.135 seconds
+[2023-10-12 12:10:50,707] {scheduler_job.py:182} INFO - Started process (PID=1745) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:10:50,710] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:10:50,713] {logging_mixin.py:104} INFO - [2023-10-12 12:10:50,712] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:10:50,741] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:10:50,774] {logging_mixin.py:104} INFO - [2023-10-12 12:10:50,774] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:10:50,797] {logging_mixin.py:104} INFO - [2023-10-12 12:10:50,797] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:10:50,820] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.120 seconds
+[2023-10-12 12:11:21,090] {scheduler_job.py:182} INFO - Started process (PID=1812) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:11:21,099] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:11:21,103] {logging_mixin.py:104} INFO - [2023-10-12 12:11:21,103] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:11:21,137] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:11:21,180] {logging_mixin.py:104} INFO - [2023-10-12 12:11:21,180] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:11:21,218] {logging_mixin.py:104} INFO - [2023-10-12 12:11:21,217] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:11:21,241] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.160 seconds
+[2023-10-12 12:11:51,703] {scheduler_job.py:182} INFO - Started process (PID=1868) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:11:51,707] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:11:51,710] {logging_mixin.py:104} INFO - [2023-10-12 12:11:51,710] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:11:51,740] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:11:51,775] {logging_mixin.py:104} INFO - [2023-10-12 12:11:51,775] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:11:51,800] {logging_mixin.py:104} INFO - [2023-10-12 12:11:51,800] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:11:51,816] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.119 seconds
+[2023-10-12 12:12:22,279] {scheduler_job.py:182} INFO - Started process (PID=1925) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:12:22,284] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:12:22,287] {logging_mixin.py:104} INFO - [2023-10-12 12:12:22,286] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:12:22,314] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:12:22,346] {logging_mixin.py:104} INFO - [2023-10-12 12:12:22,346] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:12:22,370] {logging_mixin.py:104} INFO - [2023-10-12 12:12:22,370] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:12:22,385] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.111 seconds
+[2023-10-12 12:12:52,831] {scheduler_job.py:182} INFO - Started process (PID=1992) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:12:52,836] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:12:52,838] {logging_mixin.py:104} INFO - [2023-10-12 12:12:52,838] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:12:52,868] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:12:52,916] {logging_mixin.py:104} INFO - [2023-10-12 12:12:52,915] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:12:52,952] {logging_mixin.py:104} INFO - [2023-10-12 12:12:52,952] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:12:52,974] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.148 seconds
+[2023-10-12 12:13:23,325] {scheduler_job.py:182} INFO - Started process (PID=2048) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:13:23,329] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:13:23,331] {logging_mixin.py:104} INFO - [2023-10-12 12:13:23,331] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:13:23,358] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:13:23,392] {logging_mixin.py:104} INFO - [2023-10-12 12:13:23,392] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:13:23,415] {logging_mixin.py:104} INFO - [2023-10-12 12:13:23,415] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:13:23,431] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.112 seconds
+[2023-10-12 12:13:53,761] {scheduler_job.py:182} INFO - Started process (PID=2105) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:13:53,764] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:13:53,766] {logging_mixin.py:104} INFO - [2023-10-12 12:13:53,766] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:13:53,796] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:13:53,834] {logging_mixin.py:104} INFO - [2023-10-12 12:13:53,834] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:13:53,859] {logging_mixin.py:104} INFO - [2023-10-12 12:13:53,859] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:13:53,873] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.119 seconds
+[2023-10-12 12:14:24,731] {scheduler_job.py:182} INFO - Started process (PID=2171) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:14:24,736] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:14:24,740] {logging_mixin.py:104} INFO - [2023-10-12 12:14:24,739] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:14:24,775] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:14:24,811] {logging_mixin.py:104} INFO - [2023-10-12 12:14:24,811] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:14:24,844] {logging_mixin.py:104} INFO - [2023-10-12 12:14:24,844] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:14:24,860] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.136 seconds
+[2023-10-12 12:14:55,555] {scheduler_job.py:182} INFO - Started process (PID=2227) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:14:55,560] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:14:55,565] {logging_mixin.py:104} INFO - [2023-10-12 12:14:55,565] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:14:55,600] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:14:55,644] {logging_mixin.py:104} INFO - [2023-10-12 12:14:55,644] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:14:55,674] {logging_mixin.py:104} INFO - [2023-10-12 12:14:55,674] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:14:55,690] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.142 seconds
+[2023-10-12 12:15:26,486] {scheduler_job.py:182} INFO - Started process (PID=2283) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:15:26,495] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:15:26,499] {logging_mixin.py:104} INFO - [2023-10-12 12:15:26,499] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:15:26,556] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:15:26,625] {logging_mixin.py:104} INFO - [2023-10-12 12:15:26,623] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:15:26,669] {logging_mixin.py:104} INFO - [2023-10-12 12:15:26,669] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:15:26,710] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.233 seconds
+[2023-10-12 12:15:57,241] {scheduler_job.py:182} INFO - Started process (PID=2350) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:15:57,261] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:15:57,265] {logging_mixin.py:104} INFO - [2023-10-12 12:15:57,264] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:15:57,304] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:15:57,339] {logging_mixin.py:104} INFO - [2023-10-12 12:15:57,339] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:15:57,364] {logging_mixin.py:104} INFO - [2023-10-12 12:15:57,364] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:15:57,381] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.145 seconds
+[2023-10-12 12:16:27,593] {scheduler_job.py:182} INFO - Started process (PID=2406) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:16:27,600] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:16:27,603] {logging_mixin.py:104} INFO - [2023-10-12 12:16:27,603] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:16:27,631] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:16:27,667] {logging_mixin.py:104} INFO - [2023-10-12 12:16:27,667] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:16:27,692] {logging_mixin.py:104} INFO - [2023-10-12 12:16:27,691] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:16:27,707] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.121 seconds
+[2023-10-12 12:16:58,519] {scheduler_job.py:182} INFO - Started process (PID=2462) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:16:58,523] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:16:58,527] {logging_mixin.py:104} INFO - [2023-10-12 12:16:58,526] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:16:58,556] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:16:58,589] {logging_mixin.py:104} INFO - [2023-10-12 12:16:58,589] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:16:58,613] {logging_mixin.py:104} INFO - [2023-10-12 12:16:58,612] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:16:58,628] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.115 seconds
+[2023-10-12 12:17:28,700] {scheduler_job.py:182} INFO - Started process (PID=2518) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:17:28,703] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:17:28,705] {logging_mixin.py:104} INFO - [2023-10-12 12:17:28,705] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:17:28,736] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:17:28,771] {logging_mixin.py:104} INFO - [2023-10-12 12:17:28,771] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:17:28,797] {logging_mixin.py:104} INFO - [2023-10-12 12:17:28,797] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:17:28,814] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.121 seconds
+[2023-10-12 12:17:59,285] {scheduler_job.py:182} INFO - Started process (PID=2592) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:17:59,340] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:17:59,360] {logging_mixin.py:104} INFO - [2023-10-12 12:17:59,360] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:17:59,497] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:17:59,577] {logging_mixin.py:104} INFO - [2023-10-12 12:17:59,577] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:17:59,648] {logging_mixin.py:104} INFO - [2023-10-12 12:17:59,647] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:17:59,689] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.420 seconds
+[2023-10-12 12:18:30,183] {scheduler_job.py:182} INFO - Started process (PID=2656) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:18:30,186] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:18:30,188] {logging_mixin.py:104} INFO - [2023-10-12 12:18:30,188] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:18:30,218] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:18:30,252] {logging_mixin.py:104} INFO - [2023-10-12 12:18:30,252] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:18:30,277] {logging_mixin.py:104} INFO - [2023-10-12 12:18:30,276] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:18:30,292] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.115 seconds
+[2023-10-12 12:19:00,607] {scheduler_job.py:182} INFO - Started process (PID=2713) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:19:00,613] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:19:00,619] {logging_mixin.py:104} INFO - [2023-10-12 12:19:00,618] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:19:00,653] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:19:00,702] {logging_mixin.py:104} INFO - [2023-10-12 12:19:00,702] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:19:00,737] {logging_mixin.py:104} INFO - [2023-10-12 12:19:00,737] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:19:00,763] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.162 seconds
+[2023-10-12 12:19:31,266] {scheduler_job.py:182} INFO - Started process (PID=2779) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:19:31,274] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:19:31,278] {logging_mixin.py:104} INFO - [2023-10-12 12:19:31,278] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:19:31,312] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:19:31,352] {logging_mixin.py:104} INFO - [2023-10-12 12:19:31,352] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:19:31,377] {logging_mixin.py:104} INFO - [2023-10-12 12:19:31,377] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:19:31,394] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.134 seconds
+[2023-10-12 12:20:01,746] {scheduler_job.py:182} INFO - Started process (PID=2835) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:20:01,750] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:20:01,753] {logging_mixin.py:104} INFO - [2023-10-12 12:20:01,753] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:20:01,781] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:20:01,815] {logging_mixin.py:104} INFO - [2023-10-12 12:20:01,815] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:20:01,874] {logging_mixin.py:104} INFO - [2023-10-12 12:20:01,874] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:20:01,937] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.197 seconds
+[2023-10-12 12:20:32,289] {scheduler_job.py:182} INFO - Started process (PID=3350) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:20:32,294] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:20:32,299] {logging_mixin.py:104} INFO - [2023-10-12 12:20:32,298] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:20:32,335] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:20:32,370] {logging_mixin.py:104} INFO - [2023-10-12 12:20:32,370] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:20:32,395] {logging_mixin.py:104} INFO - [2023-10-12 12:20:32,395] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:20:32,413] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.131 seconds
+[2023-10-12 12:21:03,044] {scheduler_job.py:182} INFO - Started process (PID=3421) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:21:03,048] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:21:03,051] {logging_mixin.py:104} INFO - [2023-10-12 12:21:03,051] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:21:03,078] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:21:03,112] {logging_mixin.py:104} INFO - [2023-10-12 12:21:03,112] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:21:03,138] {logging_mixin.py:104} INFO - [2023-10-12 12:21:03,138] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:21:03,154] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.116 seconds
+[2023-10-12 12:21:34,012] {scheduler_job.py:182} INFO - Started process (PID=3486) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:21:34,015] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:21:34,018] {logging_mixin.py:104} INFO - [2023-10-12 12:21:34,017] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:21:34,045] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:21:34,077] {logging_mixin.py:104} INFO - [2023-10-12 12:21:34,077] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:21:34,101] {logging_mixin.py:104} INFO - [2023-10-12 12:21:34,101] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:21:34,116] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.110 seconds
+[2023-10-12 12:22:04,795] {scheduler_job.py:182} INFO - Started process (PID=3547) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:22:04,799] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:22:04,803] {logging_mixin.py:104} INFO - [2023-10-12 12:22:04,802] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:22:04,834] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:22:04,875] {logging_mixin.py:104} INFO - [2023-10-12 12:22:04,875] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:22:04,906] {logging_mixin.py:104} INFO - [2023-10-12 12:22:04,906] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:22:04,927] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.139 seconds
+[2023-10-12 12:22:35,046] {scheduler_job.py:182} INFO - Started process (PID=3603) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:22:35,051] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:22:35,055] {logging_mixin.py:104} INFO - [2023-10-12 12:22:35,055] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:22:35,090] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:22:35,130] {logging_mixin.py:104} INFO - [2023-10-12 12:22:35,130] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:22:35,160] {logging_mixin.py:104} INFO - [2023-10-12 12:22:35,160] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:22:35,185] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.147 seconds
+[2023-10-12 12:23:05,301] {scheduler_job.py:182} INFO - Started process (PID=3769) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:23:05,306] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:23:05,309] {logging_mixin.py:104} INFO - [2023-10-12 12:23:05,308] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:23:05,338] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:23:05,372] {logging_mixin.py:104} INFO - [2023-10-12 12:23:05,372] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:23:05,401] {logging_mixin.py:104} INFO - [2023-10-12 12:23:05,401] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:23:05,418] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.123 seconds
+[2023-10-12 12:23:35,718] {scheduler_job.py:182} INFO - Started process (PID=3826) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:23:35,722] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:23:35,724] {logging_mixin.py:104} INFO - [2023-10-12 12:23:35,724] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:23:35,772] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:23:35,812] {logging_mixin.py:104} INFO - [2023-10-12 12:23:35,812] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:23:35,845] {logging_mixin.py:104} INFO - [2023-10-12 12:23:35,845] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:23:35,870] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.160 seconds
+[2023-10-12 12:24:06,143] {scheduler_job.py:182} INFO - Started process (PID=3881) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:24:06,148] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:24:06,155] {logging_mixin.py:104} INFO - [2023-10-12 12:24:06,154] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:24:06,183] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:24:06,217] {logging_mixin.py:104} INFO - [2023-10-12 12:24:06,217] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:24:06,242] {logging_mixin.py:104} INFO - [2023-10-12 12:24:06,241] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:24:06,256] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.119 seconds
+[2023-10-12 12:24:36,361] {scheduler_job.py:182} INFO - Started process (PID=4379) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:24:36,364] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:24:36,367] {logging_mixin.py:104} INFO - [2023-10-12 12:24:36,367] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:24:36,396] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:24:36,439] {logging_mixin.py:104} INFO - [2023-10-12 12:24:36,439] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:24:36,471] {logging_mixin.py:104} INFO - [2023-10-12 12:24:36,471] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:24:36,490] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.135 seconds
+[2023-10-12 12:25:06,786] {scheduler_job.py:182} INFO - Started process (PID=4448) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:25:06,791] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:25:06,794] {logging_mixin.py:104} INFO - [2023-10-12 12:25:06,794] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:25:06,823] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:25:06,857] {logging_mixin.py:104} INFO - [2023-10-12 12:25:06,857] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:25:06,882] {logging_mixin.py:104} INFO - [2023-10-12 12:25:06,882] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:25:06,900] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.120 seconds
+[2023-10-12 12:25:36,990] {scheduler_job.py:182} INFO - Started process (PID=4504) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:25:36,994] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:25:36,996] {logging_mixin.py:104} INFO - [2023-10-12 12:25:36,996] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:25:37,028] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:25:37,061] {logging_mixin.py:104} INFO - [2023-10-12 12:25:37,061] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:25:37,085] {logging_mixin.py:104} INFO - [2023-10-12 12:25:37,085] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:25:37,101] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.117 seconds
+[2023-10-12 12:26:07,239] {scheduler_job.py:182} INFO - Started process (PID=4625) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:26:07,245] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:26:07,249] {logging_mixin.py:104} INFO - [2023-10-12 12:26:07,248] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:26:07,279] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:26:07,320] {logging_mixin.py:104} INFO - [2023-10-12 12:26:07,320] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:26:07,347] {logging_mixin.py:104} INFO - [2023-10-12 12:26:07,346] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:26:07,363] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.131 seconds
+[2023-10-12 12:26:37,514] {scheduler_job.py:182} INFO - Started process (PID=4682) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:26:37,519] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:26:37,523] {logging_mixin.py:104} INFO - [2023-10-12 12:26:37,523] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:26:37,560] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:26:37,598] {logging_mixin.py:104} INFO - [2023-10-12 12:26:37,598] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:26:37,629] {logging_mixin.py:104} INFO - [2023-10-12 12:26:37,628] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:26:37,649] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.141 seconds
+[2023-10-12 12:27:08,141] {scheduler_job.py:182} INFO - Started process (PID=4738) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:27:08,148] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:27:08,151] {logging_mixin.py:104} INFO - [2023-10-12 12:27:08,151] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:27:08,200] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:27:08,249] {logging_mixin.py:104} INFO - [2023-10-12 12:27:08,249] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:27:08,285] {logging_mixin.py:104} INFO - [2023-10-12 12:27:08,285] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:27:08,308] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.176 seconds
+[2023-10-12 12:27:38,793] {scheduler_job.py:182} INFO - Started process (PID=5259) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:27:38,799] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:27:38,803] {logging_mixin.py:104} INFO - [2023-10-12 12:27:38,803] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:27:38,852] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:27:38,911] {logging_mixin.py:104} INFO - [2023-10-12 12:27:38,911] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:27:38,937] {logging_mixin.py:104} INFO - [2023-10-12 12:27:38,937] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:27:38,954] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.173 seconds
+[2023-10-12 12:28:09,554] {scheduler_job.py:182} INFO - Started process (PID=5319) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:28:09,559] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:28:09,562] {logging_mixin.py:104} INFO - [2023-10-12 12:28:09,562] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:28:09,597] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:28:09,630] {logging_mixin.py:104} INFO - [2023-10-12 12:28:09,630] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:28:09,654] {logging_mixin.py:104} INFO - [2023-10-12 12:28:09,654] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:28:09,669] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.122 seconds
+[2023-10-12 12:28:40,187] {scheduler_job.py:182} INFO - Started process (PID=5376) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:28:40,191] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:28:40,193] {logging_mixin.py:104} INFO - [2023-10-12 12:28:40,193] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:28:40,222] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:28:40,256] {logging_mixin.py:104} INFO - [2023-10-12 12:28:40,255] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:28:40,281] {logging_mixin.py:104} INFO - [2023-10-12 12:28:40,281] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:28:40,297] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.115 seconds
+[2023-10-12 12:29:10,378] {scheduler_job.py:182} INFO - Started process (PID=5432) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:29:10,382] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:29:10,384] {logging_mixin.py:104} INFO - [2023-10-12 12:29:10,384] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:29:10,411] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:29:10,445] {logging_mixin.py:104} INFO - [2023-10-12 12:29:10,445] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:29:10,469] {logging_mixin.py:104} INFO - [2023-10-12 12:29:10,469] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:29:10,486] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.115 seconds
+[2023-10-12 12:29:40,726] {scheduler_job.py:182} INFO - Started process (PID=5498) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:29:40,729] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:29:40,733] {logging_mixin.py:104} INFO - [2023-10-12 12:29:40,732] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:29:40,761] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:29:40,794] {logging_mixin.py:104} INFO - [2023-10-12 12:29:40,794] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:29:40,819] {logging_mixin.py:104} INFO - [2023-10-12 12:29:40,819] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:29:40,835] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.116 seconds
+[2023-10-12 12:30:11,085] {scheduler_job.py:182} INFO - Started process (PID=5555) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:30:11,090] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:30:11,092] {logging_mixin.py:104} INFO - [2023-10-12 12:30:11,092] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:30:11,121] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:30:11,155] {logging_mixin.py:104} INFO - [2023-10-12 12:30:11,155] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:30:11,179] {logging_mixin.py:104} INFO - [2023-10-12 12:30:11,179] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:30:11,193] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.114 seconds
+[2023-10-12 12:30:41,702] {scheduler_job.py:182} INFO - Started process (PID=5611) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:30:41,706] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:30:41,708] {logging_mixin.py:104} INFO - [2023-10-12 12:30:41,708] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:30:41,759] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:30:41,813] {logging_mixin.py:104} INFO - [2023-10-12 12:30:41,813] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:30:41,843] {logging_mixin.py:104} INFO - [2023-10-12 12:30:41,843] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:30:41,858] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.163 seconds
+[2023-10-12 12:31:12,408] {scheduler_job.py:182} INFO - Started process (PID=5667) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:31:12,413] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:31:12,415] {logging_mixin.py:104} INFO - [2023-10-12 12:31:12,415] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:31:12,444] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:31:12,478] {logging_mixin.py:104} INFO - [2023-10-12 12:31:12,478] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:31:12,503] {logging_mixin.py:104} INFO - [2023-10-12 12:31:12,503] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:31:12,519] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.116 seconds
+[2023-10-12 12:31:43,007] {scheduler_job.py:182} INFO - Started process (PID=5723) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:31:43,012] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:31:43,014] {logging_mixin.py:104} INFO - [2023-10-12 12:31:43,014] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:31:43,045] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:31:43,081] {logging_mixin.py:104} INFO - [2023-10-12 12:31:43,081] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:31:43,109] {logging_mixin.py:104} INFO - [2023-10-12 12:31:43,109] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:31:43,128] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.129 seconds
+[2023-10-12 12:32:13,736] {scheduler_job.py:182} INFO - Started process (PID=5787) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:32:13,743] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:32:13,747] {logging_mixin.py:104} INFO - [2023-10-12 12:32:13,747] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:32:13,807] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:32:13,878] {logging_mixin.py:104} INFO - [2023-10-12 12:32:13,878] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:32:13,920] {logging_mixin.py:104} INFO - [2023-10-12 12:32:13,919] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:32:13,959] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.231 seconds
+[2023-10-12 12:32:44,262] {scheduler_job.py:182} INFO - Started process (PID=5844) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:32:44,267] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:32:44,271] {logging_mixin.py:104} INFO - [2023-10-12 12:32:44,270] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:32:44,305] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:32:44,345] {logging_mixin.py:104} INFO - [2023-10-12 12:32:44,345] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:32:44,399] {logging_mixin.py:104} INFO - [2023-10-12 12:32:44,399] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:32:44,453] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.198 seconds
+[2023-10-12 12:33:15,009] {scheduler_job.py:182} INFO - Started process (PID=5900) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:33:15,014] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:33:15,017] {logging_mixin.py:104} INFO - [2023-10-12 12:33:15,016] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:33:15,049] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:33:15,085] {logging_mixin.py:104} INFO - [2023-10-12 12:33:15,085] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:33:15,111] {logging_mixin.py:104} INFO - [2023-10-12 12:33:15,111] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:33:15,134] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.131 seconds
+[2023-10-12 12:33:45,880] {scheduler_job.py:182} INFO - Started process (PID=5955) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:33:45,889] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:33:45,893] {logging_mixin.py:104} INFO - [2023-10-12 12:33:45,893] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:33:45,944] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:33:45,993] {logging_mixin.py:104} INFO - [2023-10-12 12:33:45,993] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:33:46,030] {logging_mixin.py:104} INFO - [2023-10-12 12:33:46,030] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:33:46,052] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.184 seconds
+[2023-10-12 12:34:16,234] {scheduler_job.py:182} INFO - Started process (PID=6011) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:34:16,240] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:34:16,243] {logging_mixin.py:104} INFO - [2023-10-12 12:34:16,243] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:34:16,275] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:34:16,319] {logging_mixin.py:104} INFO - [2023-10-12 12:34:16,319] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:34:16,354] {logging_mixin.py:104} INFO - [2023-10-12 12:34:16,354] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:34:16,375] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.149 seconds
+[2023-10-12 12:34:46,451] {scheduler_job.py:182} INFO - Started process (PID=6078) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:34:46,457] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:34:46,460] {logging_mixin.py:104} INFO - [2023-10-12 12:34:46,460] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:34:46,507] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:34:46,552] {logging_mixin.py:104} INFO - [2023-10-12 12:34:46,551] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:34:46,585] {logging_mixin.py:104} INFO - [2023-10-12 12:34:46,585] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:34:46,611] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.170 seconds
+[2023-10-12 12:35:16,789] {scheduler_job.py:182} INFO - Started process (PID=6134) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:35:16,796] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:35:16,800] {logging_mixin.py:104} INFO - [2023-10-12 12:35:16,800] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:35:16,852] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:35:16,969] {logging_mixin.py:104} INFO - [2023-10-12 12:35:16,969] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:35:17,001] {logging_mixin.py:104} INFO - [2023-10-12 12:35:17,001] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:35:17,021] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.241 seconds
+[2023-10-12 12:35:47,158] {scheduler_job.py:182} INFO - Started process (PID=6191) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:35:47,162] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:35:47,166] {logging_mixin.py:104} INFO - [2023-10-12 12:35:47,166] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:35:47,204] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:35:47,253] {logging_mixin.py:104} INFO - [2023-10-12 12:35:47,252] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:35:47,280] {logging_mixin.py:104} INFO - [2023-10-12 12:35:47,280] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:35:47,303] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.152 seconds
+[2023-10-12 12:36:17,818] {scheduler_job.py:182} INFO - Started process (PID=6247) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:36:17,822] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:36:17,825] {logging_mixin.py:104} INFO - [2023-10-12 12:36:17,825] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:36:17,853] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:36:17,885] {logging_mixin.py:104} INFO - [2023-10-12 12:36:17,885] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:36:17,909] {logging_mixin.py:104} INFO - [2023-10-12 12:36:17,909] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:36:17,926] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.114 seconds
+[2023-10-12 12:36:48,357] {scheduler_job.py:182} INFO - Started process (PID=6314) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:36:48,362] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:36:48,366] {logging_mixin.py:104} INFO - [2023-10-12 12:36:48,366] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:36:48,414] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:36:48,465] {logging_mixin.py:104} INFO - [2023-10-12 12:36:48,465] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:36:48,506] {logging_mixin.py:104} INFO - [2023-10-12 12:36:48,505] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:36:48,538] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.192 seconds
+[2023-10-12 12:37:18,906] {scheduler_job.py:182} INFO - Started process (PID=6371) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:37:18,911] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:37:18,914] {logging_mixin.py:104} INFO - [2023-10-12 12:37:18,914] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:37:18,946] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:37:19,002] {logging_mixin.py:104} INFO - [2023-10-12 12:37:19,002] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:37:19,031] {logging_mixin.py:104} INFO - [2023-10-12 12:37:19,031] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:37:19,050] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.151 seconds
+[2023-10-12 12:37:49,200] {scheduler_job.py:182} INFO - Started process (PID=6426) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:37:49,204] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:37:49,207] {logging_mixin.py:104} INFO - [2023-10-12 12:37:49,207] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:37:49,237] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:37:49,271] {logging_mixin.py:104} INFO - [2023-10-12 12:37:49,271] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:37:49,297] {logging_mixin.py:104} INFO - [2023-10-12 12:37:49,297] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:37:49,313] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.119 seconds
+[2023-10-12 12:38:19,918] {scheduler_job.py:182} INFO - Started process (PID=6493) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:38:19,936] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:38:19,940] {logging_mixin.py:104} INFO - [2023-10-12 12:38:19,939] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:38:20,008] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:38:20,059] {logging_mixin.py:104} INFO - [2023-10-12 12:38:20,059] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:38:20,127] {logging_mixin.py:104} INFO - [2023-10-12 12:38:20,127] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:38:20,189] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.286 seconds
+[2023-10-12 12:38:51,516] {scheduler_job.py:182} INFO - Started process (PID=6549) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:38:51,548] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:38:51,552] {logging_mixin.py:104} INFO - [2023-10-12 12:38:51,552] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:38:51,640] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:38:51,764] {logging_mixin.py:104} INFO - [2023-10-12 12:38:51,764] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:38:51,820] {logging_mixin.py:104} INFO - [2023-10-12 12:38:51,819] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:38:51,988] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.536 seconds
+[2023-10-12 12:39:22,204] {scheduler_job.py:182} INFO - Started process (PID=6604) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:39:22,214] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:39:22,218] {logging_mixin.py:104} INFO - [2023-10-12 12:39:22,218] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:39:22,253] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:39:22,293] {logging_mixin.py:104} INFO - [2023-10-12 12:39:22,293] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:39:22,331] {logging_mixin.py:104} INFO - [2023-10-12 12:39:22,331] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:39:22,354] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.157 seconds
+[2023-10-12 12:39:52,678] {scheduler_job.py:182} INFO - Started process (PID=6660) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:39:52,682] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:39:52,685] {logging_mixin.py:104} INFO - [2023-10-12 12:39:52,685] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:39:52,718] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:39:52,756] {logging_mixin.py:104} INFO - [2023-10-12 12:39:52,756] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:39:52,784] {logging_mixin.py:104} INFO - [2023-10-12 12:39:52,784] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:39:52,802] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.131 seconds
+[2023-10-12 12:40:23,306] {scheduler_job.py:182} INFO - Started process (PID=6727) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:40:23,310] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:40:23,312] {logging_mixin.py:104} INFO - [2023-10-12 12:40:23,312] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:40:23,343] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:40:23,380] {logging_mixin.py:104} INFO - [2023-10-12 12:40:23,379] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:40:23,408] {logging_mixin.py:104} INFO - [2023-10-12 12:40:23,408] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:40:23,431] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.132 seconds
+[2023-10-12 12:40:53,796] {scheduler_job.py:182} INFO - Started process (PID=6783) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:40:53,822] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:40:53,824] {logging_mixin.py:104} INFO - [2023-10-12 12:40:53,824] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:40:53,856] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:40:53,892] {logging_mixin.py:104} INFO - [2023-10-12 12:40:53,892] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:40:53,916] {logging_mixin.py:104} INFO - [2023-10-12 12:40:53,916] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:40:53,932] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.144 seconds
+[2023-10-12 12:41:24,196] {scheduler_job.py:182} INFO - Started process (PID=6839) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:41:24,201] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:41:24,204] {logging_mixin.py:104} INFO - [2023-10-12 12:41:24,204] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:41:24,231] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:41:24,264] {logging_mixin.py:104} INFO - [2023-10-12 12:41:24,264] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:41:24,291] {logging_mixin.py:104} INFO - [2023-10-12 12:41:24,291] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:41:24,308] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.118 seconds
+[2023-10-12 12:41:55,036] {scheduler_job.py:182} INFO - Started process (PID=6896) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:41:55,040] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:41:55,043] {logging_mixin.py:104} INFO - [2023-10-12 12:41:55,042] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:41:55,071] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:41:55,104] {logging_mixin.py:104} INFO - [2023-10-12 12:41:55,104] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:41:55,127] {logging_mixin.py:104} INFO - [2023-10-12 12:41:55,127] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:41:55,145] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.115 seconds
+[2023-10-12 12:42:25,274] {scheduler_job.py:182} INFO - Started process (PID=6962) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:42:25,278] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:42:25,281] {logging_mixin.py:104} INFO - [2023-10-12 12:42:25,281] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:42:25,311] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:42:25,345] {logging_mixin.py:104} INFO - [2023-10-12 12:42:25,345] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:42:25,370] {logging_mixin.py:104} INFO - [2023-10-12 12:42:25,370] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:42:25,387] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.119 seconds
+[2023-10-12 12:42:55,989] {scheduler_job.py:182} INFO - Started process (PID=7019) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:42:55,994] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:42:55,997] {logging_mixin.py:104} INFO - [2023-10-12 12:42:55,997] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:42:56,035] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:42:56,087] {logging_mixin.py:104} INFO - [2023-10-12 12:42:56,087] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:42:56,114] {logging_mixin.py:104} INFO - [2023-10-12 12:42:56,113] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:42:56,131] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.148 seconds
+[2023-10-12 12:43:26,872] {scheduler_job.py:182} INFO - Started process (PID=7075) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:43:26,897] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:43:26,899] {logging_mixin.py:104} INFO - [2023-10-12 12:43:26,899] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:43:26,938] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:43:26,985] {logging_mixin.py:104} INFO - [2023-10-12 12:43:26,985] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:43:27,019] {logging_mixin.py:104} INFO - [2023-10-12 12:43:27,018] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:43:27,043] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.180 seconds
+[2023-10-12 12:43:57,492] {scheduler_job.py:182} INFO - Started process (PID=7132) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:43:57,498] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:43:57,501] {logging_mixin.py:104} INFO - [2023-10-12 12:43:57,501] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:43:57,548] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:43:57,588] {logging_mixin.py:104} INFO - [2023-10-12 12:43:57,588] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:43:57,616] {logging_mixin.py:104} INFO - [2023-10-12 12:43:57,616] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:43:57,634] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.149 seconds
+[2023-10-12 12:44:27,941] {scheduler_job.py:182} INFO - Started process (PID=7198) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:44:27,945] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:44:27,948] {logging_mixin.py:104} INFO - [2023-10-12 12:44:27,947] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:44:27,999] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:44:28,060] {logging_mixin.py:104} INFO - [2023-10-12 12:44:28,060] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:44:28,092] {logging_mixin.py:104} INFO - [2023-10-12 12:44:28,092] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:44:28,116] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.185 seconds
+[2023-10-12 12:45:51,767] {scheduler_job.py:182} INFO - Started process (PID=47) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:45:51,771] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:45:51,774] {logging_mixin.py:104} INFO - [2023-10-12 12:45:51,774] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:45:51,838] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:45:51,918] {logging_mixin.py:104} INFO - [2023-10-12 12:45:51,917] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:45:52,011] {logging_mixin.py:104} INFO - [2023-10-12 12:45:52,011] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:45:52,063] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.303 seconds
+[2023-10-12 12:46:22,966] {scheduler_job.py:182} INFO - Started process (PID=102) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:46:22,970] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:46:22,973] {logging_mixin.py:104} INFO - [2023-10-12 12:46:22,973] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:46:23,010] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:46:23,057] {logging_mixin.py:104} INFO - [2023-10-12 12:46:23,057] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:46:23,094] {logging_mixin.py:104} INFO - [2023-10-12 12:46:23,094] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:46:23,115] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.159 seconds
+[2023-10-12 12:46:54,060] {scheduler_job.py:182} INFO - Started process (PID=159) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:46:54,064] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:46:54,068] {logging_mixin.py:104} INFO - [2023-10-12 12:46:54,068] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:46:54,100] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:46:54,141] {logging_mixin.py:104} INFO - [2023-10-12 12:46:54,141] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:46:54,170] {logging_mixin.py:104} INFO - [2023-10-12 12:46:54,169] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:46:54,190] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.138 seconds
+[2023-10-12 12:47:24,772] {scheduler_job.py:182} INFO - Started process (PID=216) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:47:24,781] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:47:24,788] {logging_mixin.py:104} INFO - [2023-10-12 12:47:24,788] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:47:24,840] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:47:24,905] {logging_mixin.py:104} INFO - [2023-10-12 12:47:24,905] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:47:24,938] {logging_mixin.py:104} INFO - [2023-10-12 12:47:24,937] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:47:24,971] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.214 seconds
+[2023-10-12 12:47:55,445] {scheduler_job.py:182} INFO - Started process (PID=281) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:47:55,450] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:47:55,454] {logging_mixin.py:104} INFO - [2023-10-12 12:47:55,453] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:47:55,494] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:47:55,530] {logging_mixin.py:104} INFO - [2023-10-12 12:47:55,530] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:47:55,558] {logging_mixin.py:104} INFO - [2023-10-12 12:47:55,558] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:47:55,577] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.139 seconds
+[2023-10-12 12:48:25,898] {scheduler_job.py:182} INFO - Started process (PID=345) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:48:25,903] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:48:25,905] {logging_mixin.py:104} INFO - [2023-10-12 12:48:25,905] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:48:25,935] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:48:25,984] {logging_mixin.py:104} INFO - [2023-10-12 12:48:25,983] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:48:26,009] {logging_mixin.py:104} INFO - [2023-10-12 12:48:26,008] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:48:26,025] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.133 seconds
+[2023-10-12 12:48:56,168] {scheduler_job.py:182} INFO - Started process (PID=403) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:48:56,171] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:48:56,174] {logging_mixin.py:104} INFO - [2023-10-12 12:48:56,173] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:48:56,208] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:48:56,247] {logging_mixin.py:104} INFO - [2023-10-12 12:48:56,247] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:48:56,276] {logging_mixin.py:104} INFO - [2023-10-12 12:48:56,276] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:48:56,297] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.137 seconds
+[2023-10-12 12:49:27,381] {scheduler_job.py:182} INFO - Started process (PID=459) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:49:27,388] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:49:27,397] {logging_mixin.py:104} INFO - [2023-10-12 12:49:27,397] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:49:27,479] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:49:27,843] {logging_mixin.py:104} INFO - [2023-10-12 12:49:27,843] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:49:27,963] {logging_mixin.py:104} INFO - [2023-10-12 12:49:27,963] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:49:27,986] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.615 seconds
+[2023-10-12 12:49:58,745] {scheduler_job.py:182} INFO - Started process (PID=515) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:49:58,749] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:49:58,753] {logging_mixin.py:104} INFO - [2023-10-12 12:49:58,753] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:49:58,798] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:49:58,848] {logging_mixin.py:104} INFO - [2023-10-12 12:49:58,848] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:49:58,960] {logging_mixin.py:104} INFO - [2023-10-12 12:49:58,959] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:49:59,023] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.285 seconds
+[2023-10-12 12:50:29,316] {scheduler_job.py:182} INFO - Started process (PID=579) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:50:29,321] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:50:29,327] {logging_mixin.py:104} INFO - [2023-10-12 12:50:29,327] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:50:29,370] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:50:29,423] {logging_mixin.py:104} INFO - [2023-10-12 12:50:29,422] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:50:29,466] {logging_mixin.py:104} INFO - [2023-10-12 12:50:29,466] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:50:29,488] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.182 seconds
+[2023-10-12 12:50:59,763] {scheduler_job.py:182} INFO - Started process (PID=636) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:50:59,769] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:50:59,772] {logging_mixin.py:104} INFO - [2023-10-12 12:50:59,772] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:50:59,844] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:50:59,931] {logging_mixin.py:104} INFO - [2023-10-12 12:50:59,930] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:50:59,978] {logging_mixin.py:104} INFO - [2023-10-12 12:50:59,977] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:51:00,013] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.261 seconds
+[2023-10-12 12:51:30,937] {scheduler_job.py:182} INFO - Started process (PID=693) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:51:30,943] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:51:30,946] {logging_mixin.py:104} INFO - [2023-10-12 12:51:30,946] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:51:30,984] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:51:31,024] {logging_mixin.py:104} INFO - [2023-10-12 12:51:31,024] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:51:31,056] {logging_mixin.py:104} INFO - [2023-10-12 12:51:31,055] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:51:31,076] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.147 seconds
+[2023-10-12 12:52:01,473] {scheduler_job.py:182} INFO - Started process (PID=751) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:52:01,478] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:52:01,486] {logging_mixin.py:104} INFO - [2023-10-12 12:52:01,486] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:52:01,529] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:52:01,571] {logging_mixin.py:104} INFO - [2023-10-12 12:52:01,571] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:52:01,599] {logging_mixin.py:104} INFO - [2023-10-12 12:52:01,599] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:52:01,617] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.151 seconds
+[2023-10-12 12:52:31,892] {scheduler_job.py:182} INFO - Started process (PID=814) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:52:31,900] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:52:31,903] {logging_mixin.py:104} INFO - [2023-10-12 12:52:31,902] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:52:31,937] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:52:32,012] {logging_mixin.py:104} INFO - [2023-10-12 12:52:32,012] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:52:32,052] {logging_mixin.py:104} INFO - [2023-10-12 12:52:32,052] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:52:32,069] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.184 seconds
+[2023-10-12 12:53:02,843] {scheduler_job.py:182} INFO - Started process (PID=872) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:53:02,847] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:53:02,850] {logging_mixin.py:104} INFO - [2023-10-12 12:53:02,850] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:53:02,885] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:53:02,924] {logging_mixin.py:104} INFO - [2023-10-12 12:53:02,923] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:53:02,948] {logging_mixin.py:104} INFO - [2023-10-12 12:53:02,948] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:53:02,965] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.130 seconds
+[2023-10-12 12:53:33,959] {scheduler_job.py:182} INFO - Started process (PID=928) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:53:33,967] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:53:33,978] {logging_mixin.py:104} INFO - [2023-10-12 12:53:33,977] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:53:34,037] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:53:34,129] {logging_mixin.py:104} INFO - [2023-10-12 12:53:34,129] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:53:34,213] {logging_mixin.py:104} INFO - [2023-10-12 12:53:34,213] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:53:34,244] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.296 seconds
+[2023-10-12 12:54:04,812] {scheduler_job.py:182} INFO - Started process (PID=993) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:54:04,818] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:54:04,821] {logging_mixin.py:104} INFO - [2023-10-12 12:54:04,821] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:54:04,867] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:54:04,921] {logging_mixin.py:104} INFO - [2023-10-12 12:54:04,921] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:54:04,963] {logging_mixin.py:104} INFO - [2023-10-12 12:54:04,963] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:54:04,987] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.183 seconds
+[2023-10-12 12:54:35,061] {scheduler_job.py:182} INFO - Started process (PID=1049) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:54:35,065] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:54:35,068] {logging_mixin.py:104} INFO - [2023-10-12 12:54:35,068] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:54:35,096] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:54:35,137] {logging_mixin.py:104} INFO - [2023-10-12 12:54:35,137] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:54:35,169] {logging_mixin.py:104} INFO - [2023-10-12 12:54:35,169] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:54:35,190] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.135 seconds
+[2023-10-12 12:55:05,489] {scheduler_job.py:182} INFO - Started process (PID=1105) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:55:05,494] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:55:05,496] {logging_mixin.py:104} INFO - [2023-10-12 12:55:05,496] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:55:05,524] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:55:05,558] {logging_mixin.py:104} INFO - [2023-10-12 12:55:05,558] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:55:05,584] {logging_mixin.py:104} INFO - [2023-10-12 12:55:05,584] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:55:05,601] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.118 seconds
+[2023-10-12 12:55:36,321] {scheduler_job.py:182} INFO - Started process (PID=1160) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:55:36,335] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:55:36,338] {logging_mixin.py:104} INFO - [2023-10-12 12:55:36,338] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:55:36,366] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:55:36,399] {logging_mixin.py:104} INFO - [2023-10-12 12:55:36,398] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:55:36,423] {logging_mixin.py:104} INFO - [2023-10-12 12:55:36,423] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:55:36,438] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.123 seconds
+[2023-10-12 12:56:07,082] {scheduler_job.py:182} INFO - Started process (PID=1226) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:56:07,086] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:56:07,089] {logging_mixin.py:104} INFO - [2023-10-12 12:56:07,089] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:56:07,117] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:56:07,155] {logging_mixin.py:104} INFO - [2023-10-12 12:56:07,154] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:56:07,190] {logging_mixin.py:104} INFO - [2023-10-12 12:56:07,190] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:56:07,213] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.137 seconds
+[2023-10-12 12:56:37,763] {scheduler_job.py:182} INFO - Started process (PID=1282) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:56:37,767] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:56:37,770] {logging_mixin.py:104} INFO - [2023-10-12 12:56:37,770] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:56:37,801] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:56:37,836] {logging_mixin.py:104} INFO - [2023-10-12 12:56:37,835] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:56:37,864] {logging_mixin.py:104} INFO - [2023-10-12 12:56:37,864] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:56:37,880] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.123 seconds
+[2023-10-12 12:57:07,931] {scheduler_job.py:182} INFO - Started process (PID=1337) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:57:07,935] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:57:07,937] {logging_mixin.py:104} INFO - [2023-10-12 12:57:07,937] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:57:07,965] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:57:08,000] {logging_mixin.py:104} INFO - [2023-10-12 12:57:08,000] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:57:08,026] {logging_mixin.py:104} INFO - [2023-10-12 12:57:08,026] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:57:08,041] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.117 seconds
+[2023-10-12 12:57:38,371] {scheduler_job.py:182} INFO - Started process (PID=1403) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:57:38,375] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:57:38,378] {logging_mixin.py:104} INFO - [2023-10-12 12:57:38,378] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:57:38,411] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:57:38,449] {logging_mixin.py:104} INFO - [2023-10-12 12:57:38,449] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:57:38,475] {logging_mixin.py:104} INFO - [2023-10-12 12:57:38,475] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:57:38,491] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.125 seconds
+[2023-10-12 12:58:09,197] {scheduler_job.py:182} INFO - Started process (PID=1460) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:58:09,200] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:58:09,202] {logging_mixin.py:104} INFO - [2023-10-12 12:58:09,202] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:58:09,231] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:58:09,266] {logging_mixin.py:104} INFO - [2023-10-12 12:58:09,266] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:58:09,295] {logging_mixin.py:104} INFO - [2023-10-12 12:58:09,295] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:58:09,314] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.124 seconds
+[2023-10-12 12:58:39,388] {scheduler_job.py:182} INFO - Started process (PID=1515) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:58:39,397] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:58:39,399] {logging_mixin.py:104} INFO - [2023-10-12 12:58:39,399] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:58:39,429] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:58:39,463] {logging_mixin.py:104} INFO - [2023-10-12 12:58:39,463] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:58:39,488] {logging_mixin.py:104} INFO - [2023-10-12 12:58:39,488] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:58:39,505] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.124 seconds
+[2023-10-12 12:59:09,616] {scheduler_job.py:182} INFO - Started process (PID=1571) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:59:09,619] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:59:09,622] {logging_mixin.py:104} INFO - [2023-10-12 12:59:09,622] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:59:09,650] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:59:09,685] {logging_mixin.py:104} INFO - [2023-10-12 12:59:09,684] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:59:09,709] {logging_mixin.py:104} INFO - [2023-10-12 12:59:09,709] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:59:09,726] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.116 seconds
+[2023-10-12 12:59:40,565] {scheduler_job.py:182} INFO - Started process (PID=1637) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:59:40,571] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 12:59:40,574] {logging_mixin.py:104} INFO - [2023-10-12 12:59:40,574] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:59:40,621] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 12:59:40,657] {logging_mixin.py:104} INFO - [2023-10-12 12:59:40,657] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:59:40,692] {logging_mixin.py:104} INFO - [2023-10-12 12:59:40,692] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 12:59:40,714] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.157 seconds
+[2023-10-12 13:00:11,152] {scheduler_job.py:182} INFO - Started process (PID=1693) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:00:11,156] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:00:11,159] {logging_mixin.py:104} INFO - [2023-10-12 13:00:11,159] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:00:11,191] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:00:11,230] {logging_mixin.py:104} INFO - [2023-10-12 13:00:11,230] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:00:11,262] {logging_mixin.py:104} INFO - [2023-10-12 13:00:11,262] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:00:11,289] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.144 seconds
+[2023-10-12 13:00:41,367] {scheduler_job.py:182} INFO - Started process (PID=1749) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:00:41,372] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:00:41,377] {logging_mixin.py:104} INFO - [2023-10-12 13:00:41,377] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:00:41,428] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:00:41,488] {logging_mixin.py:104} INFO - [2023-10-12 13:00:41,488] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:00:41,519] {logging_mixin.py:104} INFO - [2023-10-12 13:00:41,519] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:00:41,546] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.196 seconds
+[2023-10-12 13:01:12,237] {scheduler_job.py:182} INFO - Started process (PID=1815) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:01:12,240] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:01:12,243] {logging_mixin.py:104} INFO - [2023-10-12 13:01:12,243] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:01:12,276] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:01:12,316] {logging_mixin.py:104} INFO - [2023-10-12 13:01:12,316] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:01:12,342] {logging_mixin.py:104} INFO - [2023-10-12 13:01:12,342] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:01:12,368] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.138 seconds
+[2023-10-12 13:01:42,937] {scheduler_job.py:182} INFO - Started process (PID=1871) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:01:42,940] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:01:42,944] {logging_mixin.py:104} INFO - [2023-10-12 13:01:42,944] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:01:42,975] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:01:43,019] {logging_mixin.py:104} INFO - [2023-10-12 13:01:43,019] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:01:43,045] {logging_mixin.py:104} INFO - [2023-10-12 13:01:43,045] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:01:43,061] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.131 seconds
+[2023-10-12 13:02:13,468] {scheduler_job.py:182} INFO - Started process (PID=1927) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:02:13,475] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:02:13,480] {logging_mixin.py:104} INFO - [2023-10-12 13:02:13,479] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:02:13,517] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:02:13,555] {logging_mixin.py:104} INFO - [2023-10-12 13:02:13,555] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:02:13,583] {logging_mixin.py:104} INFO - [2023-10-12 13:02:13,583] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:02:13,605] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.145 seconds
+[2023-10-12 13:02:43,788] {scheduler_job.py:182} INFO - Started process (PID=1994) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:02:43,792] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:02:43,795] {logging_mixin.py:104} INFO - [2023-10-12 13:02:43,795] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:02:43,828] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:02:43,866] {logging_mixin.py:104} INFO - [2023-10-12 13:02:43,866] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:02:43,891] {logging_mixin.py:104} INFO - [2023-10-12 13:02:43,891] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:02:43,913] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.132 seconds
+[2023-10-12 13:03:14,469] {scheduler_job.py:182} INFO - Started process (PID=2050) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:03:14,473] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:03:14,478] {logging_mixin.py:104} INFO - [2023-10-12 13:03:14,478] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:03:14,509] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:03:14,553] {logging_mixin.py:104} INFO - [2023-10-12 13:03:14,552] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:03:14,585] {logging_mixin.py:104} INFO - [2023-10-12 13:03:14,585] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:03:14,610] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.148 seconds
+[2023-10-12 13:03:44,708] {scheduler_job.py:182} INFO - Started process (PID=2106) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:03:44,712] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:03:44,718] {logging_mixin.py:104} INFO - [2023-10-12 13:03:44,717] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:03:44,768] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:03:44,820] {logging_mixin.py:104} INFO - [2023-10-12 13:03:44,819] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:03:44,866] {logging_mixin.py:104} INFO - [2023-10-12 13:03:44,865] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:03:44,891] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.193 seconds
+[2023-10-12 13:04:15,152] {scheduler_job.py:182} INFO - Started process (PID=2171) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:04:15,166] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:04:15,172] {logging_mixin.py:104} INFO - [2023-10-12 13:04:15,171] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:04:15,223] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:04:15,268] {logging_mixin.py:104} INFO - [2023-10-12 13:04:15,268] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:04:15,300] {logging_mixin.py:104} INFO - [2023-10-12 13:04:15,299] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:04:15,336] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.197 seconds
+[2023-10-12 13:04:46,090] {scheduler_job.py:182} INFO - Started process (PID=2229) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:04:46,093] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:04:46,096] {logging_mixin.py:104} INFO - [2023-10-12 13:04:46,095] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:04:46,124] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:04:46,156] {logging_mixin.py:104} INFO - [2023-10-12 13:04:46,155] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:04:46,180] {logging_mixin.py:104} INFO - [2023-10-12 13:04:46,180] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:04:46,195] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.112 seconds
+[2023-10-12 13:05:16,726] {scheduler_job.py:182} INFO - Started process (PID=2285) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:05:16,730] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:05:16,732] {logging_mixin.py:104} INFO - [2023-10-12 13:05:16,732] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:05:16,767] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:05:16,805] {logging_mixin.py:104} INFO - [2023-10-12 13:05:16,805] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:05:16,831] {logging_mixin.py:104} INFO - [2023-10-12 13:05:16,831] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:05:16,848] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.127 seconds
+[2023-10-12 13:05:47,031] {scheduler_job.py:182} INFO - Started process (PID=2349) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:05:47,040] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:05:47,046] {logging_mixin.py:104} INFO - [2023-10-12 13:05:47,046] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:05:47,098] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:05:47,138] {logging_mixin.py:104} INFO - [2023-10-12 13:05:47,138] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:05:47,164] {logging_mixin.py:104} INFO - [2023-10-12 13:05:47,164] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:05:47,182] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.161 seconds
+[2023-10-12 13:06:17,558] {scheduler_job.py:182} INFO - Started process (PID=2406) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:06:17,568] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:06:17,574] {logging_mixin.py:104} INFO - [2023-10-12 13:06:17,574] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:06:17,698] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:06:17,739] {logging_mixin.py:104} INFO - [2023-10-12 13:06:17,739] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:06:17,769] {logging_mixin.py:104} INFO - [2023-10-12 13:06:17,769] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:06:17,790] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.244 seconds
+[2023-10-12 13:06:47,941] {scheduler_job.py:182} INFO - Started process (PID=2461) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:06:47,946] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:06:47,949] {logging_mixin.py:104} INFO - [2023-10-12 13:06:47,948] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:06:47,976] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:06:48,011] {logging_mixin.py:104} INFO - [2023-10-12 13:06:48,011] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:06:48,038] {logging_mixin.py:104} INFO - [2023-10-12 13:06:48,038] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:06:48,054] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.120 seconds
+[2023-10-12 13:07:18,565] {scheduler_job.py:182} INFO - Started process (PID=2518) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:07:18,582] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:07:18,590] {logging_mixin.py:104} INFO - [2023-10-12 13:07:18,590] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:07:18,720] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:07:18,836] {logging_mixin.py:104} INFO - [2023-10-12 13:07:18,836] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:07:18,933] {logging_mixin.py:104} INFO - [2023-10-12 13:07:18,933] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:07:19,068] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.525 seconds
+[2023-10-12 13:07:49,301] {scheduler_job.py:182} INFO - Started process (PID=2574) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:07:49,304] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:07:49,306] {logging_mixin.py:104} INFO - [2023-10-12 13:07:49,306] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:07:49,354] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:07:49,404] {logging_mixin.py:104} INFO - [2023-10-12 13:07:49,404] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:07:49,441] {logging_mixin.py:104} INFO - [2023-10-12 13:07:49,441] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:07:49,463] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.169 seconds
+[2023-10-12 13:08:19,686] {scheduler_job.py:182} INFO - Started process (PID=2631) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:08:19,692] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:08:19,701] {logging_mixin.py:104} INFO - [2023-10-12 13:08:19,699] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:08:19,799] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:08:19,876] {logging_mixin.py:104} INFO - [2023-10-12 13:08:19,876] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:08:19,946] {logging_mixin.py:104} INFO - [2023-10-12 13:08:19,945] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:08:19,975] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.303 seconds
+[2023-10-12 13:08:50,343] {scheduler_job.py:182} INFO - Started process (PID=2691) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:08:50,349] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:08:50,352] {logging_mixin.py:104} INFO - [2023-10-12 13:08:50,352] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:08:50,393] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:08:50,473] {logging_mixin.py:104} INFO - [2023-10-12 13:08:50,472] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:08:50,520] {logging_mixin.py:104} INFO - [2023-10-12 13:08:50,520] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:08:50,556] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.223 seconds
+[2023-10-12 13:09:20,832] {scheduler_job.py:182} INFO - Started process (PID=2751) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:09:20,839] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:09:20,843] {logging_mixin.py:104} INFO - [2023-10-12 13:09:20,843] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:09:20,883] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:09:20,936] {logging_mixin.py:104} INFO - [2023-10-12 13:09:20,936] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:09:20,970] {logging_mixin.py:104} INFO - [2023-10-12 13:09:20,970] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:09:20,991] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.167 seconds
+[2023-10-12 13:09:51,193] {scheduler_job.py:182} INFO - Started process (PID=2807) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:09:51,199] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:09:51,202] {logging_mixin.py:104} INFO - [2023-10-12 13:09:51,202] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:09:51,239] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:09:51,278] {logging_mixin.py:104} INFO - [2023-10-12 13:09:51,278] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:09:51,308] {logging_mixin.py:104} INFO - [2023-10-12 13:09:51,307] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:09:51,326] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.141 seconds
+[2023-10-12 13:10:21,638] {scheduler_job.py:182} INFO - Started process (PID=2864) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:10:21,643] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:10:21,646] {logging_mixin.py:104} INFO - [2023-10-12 13:10:21,646] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:10:21,680] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:10:21,720] {logging_mixin.py:104} INFO - [2023-10-12 13:10:21,719] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:10:21,750] {logging_mixin.py:104} INFO - [2023-10-12 13:10:21,750] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:10:21,770] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.139 seconds
+[2023-10-12 13:10:52,331] {scheduler_job.py:182} INFO - Started process (PID=2920) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:10:52,335] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:10:52,338] {logging_mixin.py:104} INFO - [2023-10-12 13:10:52,338] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:10:52,371] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:10:52,415] {logging_mixin.py:104} INFO - [2023-10-12 13:10:52,415] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:10:52,442] {logging_mixin.py:104} INFO - [2023-10-12 13:10:52,442] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:10:52,460] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.136 seconds
+[2023-10-12 13:11:22,720] {scheduler_job.py:182} INFO - Started process (PID=2985) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:11:22,731] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:11:22,740] {logging_mixin.py:104} INFO - [2023-10-12 13:11:22,737] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:11:22,872] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:11:22,956] {logging_mixin.py:104} INFO - [2023-10-12 13:11:22,955] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:11:23,016] {logging_mixin.py:104} INFO - [2023-10-12 13:11:23,016] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:11:23,054] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.347 seconds
+[2023-10-12 13:11:53,154] {scheduler_job.py:182} INFO - Started process (PID=3042) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:11:53,158] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:11:53,162] {logging_mixin.py:104} INFO - [2023-10-12 13:11:53,162] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:11:53,201] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:11:53,242] {logging_mixin.py:104} INFO - [2023-10-12 13:11:53,241] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:11:53,273] {logging_mixin.py:104} INFO - [2023-10-12 13:11:53,273] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:11:53,294] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.148 seconds
+[2023-10-12 13:12:23,632] {scheduler_job.py:182} INFO - Started process (PID=3098) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:12:23,637] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:12:23,640] {logging_mixin.py:104} INFO - [2023-10-12 13:12:23,639] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:12:23,690] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:12:23,739] {logging_mixin.py:104} INFO - [2023-10-12 13:12:23,739] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:12:23,780] {logging_mixin.py:104} INFO - [2023-10-12 13:12:23,780] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:12:23,802] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.178 seconds
+[2023-10-12 13:12:54,053] {scheduler_job.py:182} INFO - Started process (PID=3154) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:12:54,057] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:12:54,063] {logging_mixin.py:104} INFO - [2023-10-12 13:12:54,063] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:12:54,101] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:12:54,145] {logging_mixin.py:104} INFO - [2023-10-12 13:12:54,145] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:12:54,177] {logging_mixin.py:104} INFO - [2023-10-12 13:12:54,177] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:12:54,199] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.153 seconds
+[2023-10-12 13:13:24,617] {scheduler_job.py:182} INFO - Started process (PID=3210) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:13:24,634] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:13:24,637] {logging_mixin.py:104} INFO - [2023-10-12 13:13:24,637] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:13:24,697] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:13:24,751] {logging_mixin.py:104} INFO - [2023-10-12 13:13:24,750] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:13:24,789] {logging_mixin.py:104} INFO - [2023-10-12 13:13:24,789] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:13:24,811] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.204 seconds
+[2023-10-12 13:13:55,430] {scheduler_job.py:182} INFO - Started process (PID=3276) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:13:55,440] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:13:55,446] {logging_mixin.py:104} INFO - [2023-10-12 13:13:55,444] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:13:55,524] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:13:55,571] {logging_mixin.py:104} INFO - [2023-10-12 13:13:55,571] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:13:55,615] {logging_mixin.py:104} INFO - [2023-10-12 13:13:55,615] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:13:55,649] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.245 seconds
+[2023-10-12 13:14:25,891] {scheduler_job.py:182} INFO - Started process (PID=3332) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:14:25,896] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:14:25,901] {logging_mixin.py:104} INFO - [2023-10-12 13:14:25,900] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:14:25,944] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:14:26,004] {logging_mixin.py:104} INFO - [2023-10-12 13:14:26,004] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:14:26,038] {logging_mixin.py:104} INFO - [2023-10-12 13:14:26,038] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:14:26,058] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.177 seconds
+[2023-10-12 13:14:56,150] {scheduler_job.py:182} INFO - Started process (PID=3388) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:14:56,155] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:14:56,157] {logging_mixin.py:104} INFO - [2023-10-12 13:14:56,157] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:14:56,208] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:14:56,252] {logging_mixin.py:104} INFO - [2023-10-12 13:14:56,252] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:14:56,286] {logging_mixin.py:104} INFO - [2023-10-12 13:14:56,286] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:14:56,315] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.175 seconds
+[2023-10-12 13:15:26,437] {scheduler_job.py:182} INFO - Started process (PID=3443) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:15:26,449] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:15:26,451] {logging_mixin.py:104} INFO - [2023-10-12 13:15:26,451] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:15:26,494] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:15:26,549] {logging_mixin.py:104} INFO - [2023-10-12 13:15:26,549] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:15:26,580] {logging_mixin.py:104} INFO - [2023-10-12 13:15:26,580] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:15:26,600] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.182 seconds
+[2023-10-12 13:15:56,703] {scheduler_job.py:182} INFO - Started process (PID=3510) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:15:56,707] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:15:56,710] {logging_mixin.py:104} INFO - [2023-10-12 13:15:56,710] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:15:56,746] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:15:56,788] {logging_mixin.py:104} INFO - [2023-10-12 13:15:56,787] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:15:56,834] {logging_mixin.py:104} INFO - [2023-10-12 13:15:56,834] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:15:56,852] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.158 seconds
+[2023-10-12 13:16:27,157] {scheduler_job.py:182} INFO - Started process (PID=3566) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:16:27,162] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:16:27,165] {logging_mixin.py:104} INFO - [2023-10-12 13:16:27,165] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:16:27,198] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:16:27,234] {logging_mixin.py:104} INFO - [2023-10-12 13:16:27,234] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:16:27,263] {logging_mixin.py:104} INFO - [2023-10-12 13:16:27,263] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:16:27,282] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.133 seconds
+[2023-10-12 13:16:57,352] {scheduler_job.py:182} INFO - Started process (PID=3621) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:16:57,356] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:16:57,359] {logging_mixin.py:104} INFO - [2023-10-12 13:16:57,359] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:16:57,401] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:16:57,460] {logging_mixin.py:104} INFO - [2023-10-12 13:16:57,460] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:16:57,503] {logging_mixin.py:104} INFO - [2023-10-12 13:16:57,502] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:16:57,528] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.184 seconds
+[2023-10-12 13:17:28,117] {scheduler_job.py:182} INFO - Started process (PID=3677) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:17:28,125] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:17:28,128] {logging_mixin.py:104} INFO - [2023-10-12 13:17:28,128] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:17:28,164] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:17:28,207] {logging_mixin.py:104} INFO - [2023-10-12 13:17:28,207] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:17:28,237] {logging_mixin.py:104} INFO - [2023-10-12 13:17:28,236] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:17:28,268] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.160 seconds
+[2023-10-12 13:17:58,634] {scheduler_job.py:182} INFO - Started process (PID=3734) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:17:58,640] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:17:58,645] {logging_mixin.py:104} INFO - [2023-10-12 13:17:58,644] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:17:58,690] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:17:58,744] {logging_mixin.py:104} INFO - [2023-10-12 13:17:58,744] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:17:58,795] {logging_mixin.py:104} INFO - [2023-10-12 13:17:58,795] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:17:58,820] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.196 seconds
+[2023-10-12 13:18:29,630] {scheduler_job.py:182} INFO - Started process (PID=3790) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:18:29,635] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:18:29,637] {logging_mixin.py:104} INFO - [2023-10-12 13:18:29,637] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:18:29,675] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:18:29,716] {logging_mixin.py:104} INFO - [2023-10-12 13:18:29,715] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:18:29,748] {logging_mixin.py:104} INFO - [2023-10-12 13:18:29,748] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:18:29,771] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.147 seconds
+[2023-10-12 13:19:00,100] {scheduler_job.py:182} INFO - Started process (PID=3857) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:19:00,105] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:19:00,109] {logging_mixin.py:104} INFO - [2023-10-12 13:19:00,109] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:19:00,148] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:19:00,190] {logging_mixin.py:104} INFO - [2023-10-12 13:19:00,190] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:19:00,220] {logging_mixin.py:104} INFO - [2023-10-12 13:19:00,220] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:19:00,242] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.149 seconds
+[2023-10-12 13:19:32,699] {scheduler_job.py:182} INFO - Started process (PID=3907) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:19:32,724] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:19:32,793] {logging_mixin.py:104} INFO - [2023-10-12 13:19:32,773] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:19:32,943] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:19:33,071] {logging_mixin.py:104} INFO - [2023-10-12 13:19:33,070] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:19:33,202] {logging_mixin.py:104} INFO - [2023-10-12 13:19:33,202] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:19:33,316] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.641 seconds
+[2023-10-12 13:20:04,340] {scheduler_job.py:182} INFO - Started process (PID=3961) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:20:04,344] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:20:04,348] {logging_mixin.py:104} INFO - [2023-10-12 13:20:04,348] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:20:04,388] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:20:04,432] {logging_mixin.py:104} INFO - [2023-10-12 13:20:04,432] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:20:04,462] {logging_mixin.py:104} INFO - [2023-10-12 13:20:04,461] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:20:04,491] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.159 seconds
+[2023-10-12 13:20:34,959] {scheduler_job.py:182} INFO - Started process (PID=4022) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:20:34,965] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:20:34,969] {logging_mixin.py:104} INFO - [2023-10-12 13:20:34,968] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:20:35,007] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:20:35,055] {logging_mixin.py:104} INFO - [2023-10-12 13:20:35,055] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:20:35,092] {logging_mixin.py:104} INFO - [2023-10-12 13:20:35,091] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:20:35,111] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.161 seconds
+[2023-10-12 13:21:05,205] {scheduler_job.py:182} INFO - Started process (PID=4078) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:21:05,212] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:21:05,219] {logging_mixin.py:104} INFO - [2023-10-12 13:21:05,219] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:21:05,331] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:21:05,387] {logging_mixin.py:104} INFO - [2023-10-12 13:21:05,387] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:21:05,427] {logging_mixin.py:104} INFO - [2023-10-12 13:21:05,427] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:21:05,451] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.257 seconds
+[2023-10-12 13:21:35,668] {scheduler_job.py:182} INFO - Started process (PID=4133) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:21:35,674] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:21:35,685] {logging_mixin.py:104} INFO - [2023-10-12 13:21:35,685] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:21:35,737] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:21:35,791] {logging_mixin.py:104} INFO - [2023-10-12 13:21:35,790] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:21:35,836] {logging_mixin.py:104} INFO - [2023-10-12 13:21:35,836] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:21:35,862] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.203 seconds
+[2023-10-12 13:22:06,036] {scheduler_job.py:182} INFO - Started process (PID=4189) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:22:06,043] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:22:06,046] {logging_mixin.py:104} INFO - [2023-10-12 13:22:06,046] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:22:06,088] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:22:06,140] {logging_mixin.py:104} INFO - [2023-10-12 13:22:06,140] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:22:06,174] {logging_mixin.py:104} INFO - [2023-10-12 13:22:06,174] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:22:06,201] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.174 seconds
+[2023-10-12 13:22:36,405] {scheduler_job.py:182} INFO - Started process (PID=4245) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:22:36,409] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:22:36,415] {logging_mixin.py:104} INFO - [2023-10-12 13:22:36,414] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:22:36,455] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:22:36,524] {logging_mixin.py:104} INFO - [2023-10-12 13:22:36,524] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:22:36,560] {logging_mixin.py:104} INFO - [2023-10-12 13:22:36,559] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:22:36,600] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.203 seconds
+[2023-10-12 13:23:06,904] {scheduler_job.py:182} INFO - Started process (PID=4301) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:23:06,908] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:23:06,910] {logging_mixin.py:104} INFO - [2023-10-12 13:23:06,910] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:23:06,946] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:23:06,987] {logging_mixin.py:104} INFO - [2023-10-12 13:23:06,987] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:23:07,016] {logging_mixin.py:104} INFO - [2023-10-12 13:23:07,015] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:23:07,045] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.149 seconds
+[2023-10-12 13:23:37,348] {scheduler_job.py:182} INFO - Started process (PID=4357) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:23:37,353] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:23:37,360] {logging_mixin.py:104} INFO - [2023-10-12 13:23:37,360] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:23:37,395] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:23:37,439] {logging_mixin.py:104} INFO - [2023-10-12 13:23:37,439] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:23:37,469] {logging_mixin.py:104} INFO - [2023-10-12 13:23:37,469] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:23:37,492] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.152 seconds
+[2023-10-12 13:24:07,910] {scheduler_job.py:182} INFO - Started process (PID=4422) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:24:07,916] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:24:07,919] {logging_mixin.py:104} INFO - [2023-10-12 13:24:07,919] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:24:07,960] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:24:08,003] {logging_mixin.py:104} INFO - [2023-10-12 13:24:08,003] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:24:08,037] {logging_mixin.py:104} INFO - [2023-10-12 13:24:08,037] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:24:08,059] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.157 seconds
+[2023-10-12 13:24:38,284] {scheduler_job.py:182} INFO - Started process (PID=4479) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:24:38,293] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:24:38,297] {logging_mixin.py:104} INFO - [2023-10-12 13:24:38,297] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:24:38,367] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:24:38,455] {logging_mixin.py:104} INFO - [2023-10-12 13:24:38,455] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:24:38,524] {logging_mixin.py:104} INFO - [2023-10-12 13:24:38,522] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:24:38,610] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.338 seconds
+[2023-10-12 13:25:08,949] {scheduler_job.py:182} INFO - Started process (PID=4534) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:25:08,958] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:25:08,963] {logging_mixin.py:104} INFO - [2023-10-12 13:25:08,963] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:25:09,012] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:25:09,065] {logging_mixin.py:104} INFO - [2023-10-12 13:25:09,065] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:25:09,103] {logging_mixin.py:104} INFO - [2023-10-12 13:25:09,102] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:25:09,131] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.190 seconds
+[2023-10-12 13:25:39,514] {scheduler_job.py:182} INFO - Started process (PID=4590) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:25:39,519] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:25:39,522] {logging_mixin.py:104} INFO - [2023-10-12 13:25:39,522] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:25:39,561] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:25:39,605] {logging_mixin.py:104} INFO - [2023-10-12 13:25:39,605] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:25:39,634] {logging_mixin.py:104} INFO - [2023-10-12 13:25:39,634] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:25:39,655] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.147 seconds
+[2023-10-12 13:26:10,551] {scheduler_job.py:182} INFO - Started process (PID=4646) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:26:10,563] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:26:10,571] {logging_mixin.py:104} INFO - [2023-10-12 13:26:10,571] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:26:10,657] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:26:10,714] {logging_mixin.py:104} INFO - [2023-10-12 13:26:10,714] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:26:10,748] {logging_mixin.py:104} INFO - [2023-10-12 13:26:10,747] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:26:10,794] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.253 seconds
+[2023-10-12 13:26:41,107] {scheduler_job.py:182} INFO - Started process (PID=4702) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:26:41,112] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:26:41,116] {logging_mixin.py:104} INFO - [2023-10-12 13:26:41,116] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:26:41,157] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:26:41,205] {logging_mixin.py:104} INFO - [2023-10-12 13:26:41,205] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:26:41,242] {logging_mixin.py:104} INFO - [2023-10-12 13:26:41,242] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:26:41,268] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.169 seconds
+[2023-10-12 13:27:11,764] {scheduler_job.py:182} INFO - Started process (PID=4758) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:27:11,768] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:27:11,771] {logging_mixin.py:104} INFO - [2023-10-12 13:27:11,771] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:27:11,809] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:27:11,848] {logging_mixin.py:104} INFO - [2023-10-12 13:27:11,847] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:27:11,880] {logging_mixin.py:104} INFO - [2023-10-12 13:27:11,880] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:27:11,899] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.143 seconds
+[2023-10-12 13:27:42,107] {scheduler_job.py:182} INFO - Started process (PID=4814) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:27:42,112] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:27:42,115] {logging_mixin.py:104} INFO - [2023-10-12 13:27:42,115] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:27:42,150] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:27:42,196] {logging_mixin.py:104} INFO - [2023-10-12 13:27:42,195] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:27:42,227] {logging_mixin.py:104} INFO - [2023-10-12 13:27:42,227] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:27:42,247] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.147 seconds
+[2023-10-12 13:28:12,846] {scheduler_job.py:182} INFO - Started process (PID=4879) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:28:12,852] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:28:12,856] {logging_mixin.py:104} INFO - [2023-10-12 13:28:12,856] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:28:12,899] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:28:12,943] {logging_mixin.py:104} INFO - [2023-10-12 13:28:12,942] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:28:12,973] {logging_mixin.py:104} INFO - [2023-10-12 13:28:12,973] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:28:12,996] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.163 seconds
+[2023-10-12 13:28:43,119] {scheduler_job.py:182} INFO - Started process (PID=4935) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:28:43,131] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:28:43,137] {logging_mixin.py:104} INFO - [2023-10-12 13:28:43,136] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:28:43,181] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:28:43,237] {logging_mixin.py:104} INFO - [2023-10-12 13:28:43,236] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:28:43,269] {logging_mixin.py:104} INFO - [2023-10-12 13:28:43,269] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:28:43,293] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.187 seconds
+[2023-10-12 13:29:13,991] {scheduler_job.py:182} INFO - Started process (PID=4990) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:29:13,995] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:29:13,999] {logging_mixin.py:104} INFO - [2023-10-12 13:29:13,999] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:29:14,050] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:29:14,095] {logging_mixin.py:104} INFO - [2023-10-12 13:29:14,095] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:29:14,138] {logging_mixin.py:104} INFO - [2023-10-12 13:29:14,137] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:29:14,163] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.181 seconds
+[2023-10-12 13:29:44,692] {scheduler_job.py:182} INFO - Started process (PID=5046) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:29:44,696] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:29:44,701] {logging_mixin.py:104} INFO - [2023-10-12 13:29:44,700] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:29:44,750] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:29:44,791] {logging_mixin.py:104} INFO - [2023-10-12 13:29:44,791] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:29:44,826] {logging_mixin.py:104} INFO - [2023-10-12 13:29:44,825] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:29:44,848] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.163 seconds
+[2023-10-12 13:30:15,423] {scheduler_job.py:182} INFO - Started process (PID=5102) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:30:15,427] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:30:15,430] {logging_mixin.py:104} INFO - [2023-10-12 13:30:15,430] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:30:15,480] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:30:15,533] {logging_mixin.py:104} INFO - [2023-10-12 13:30:15,532] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:30:15,568] {logging_mixin.py:104} INFO - [2023-10-12 13:30:15,568] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:30:15,592] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.178 seconds
+[2023-10-12 13:30:46,180] {scheduler_job.py:182} INFO - Started process (PID=5158) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:30:46,189] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:30:46,193] {logging_mixin.py:104} INFO - [2023-10-12 13:30:46,193] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:30:46,240] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:30:46,294] {logging_mixin.py:104} INFO - [2023-10-12 13:30:46,294] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:30:46,337] {logging_mixin.py:104} INFO - [2023-10-12 13:30:46,337] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:30:46,357] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.187 seconds
+[2023-10-12 13:31:16,986] {scheduler_job.py:182} INFO - Started process (PID=5222) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:31:16,996] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:31:17,000] {logging_mixin.py:104} INFO - [2023-10-12 13:31:17,000] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:31:17,052] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:31:17,102] {logging_mixin.py:104} INFO - [2023-10-12 13:31:17,102] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:31:17,140] {logging_mixin.py:104} INFO - [2023-10-12 13:31:17,140] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:31:17,161] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.182 seconds
+[2023-10-12 13:31:47,330] {scheduler_job.py:182} INFO - Started process (PID=5279) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:31:47,335] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:31:47,338] {logging_mixin.py:104} INFO - [2023-10-12 13:31:47,338] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:31:47,390] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:31:47,435] {logging_mixin.py:104} INFO - [2023-10-12 13:31:47,435] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:31:47,510] {logging_mixin.py:104} INFO - [2023-10-12 13:31:47,510] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:31:47,641] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.319 seconds
+[2023-10-12 13:32:18,109] {scheduler_job.py:182} INFO - Started process (PID=5336) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:32:18,114] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:32:18,118] {logging_mixin.py:104} INFO - [2023-10-12 13:32:18,118] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:32:18,153] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:32:18,193] {logging_mixin.py:104} INFO - [2023-10-12 13:32:18,193] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:32:18,224] {logging_mixin.py:104} INFO - [2023-10-12 13:32:18,224] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:32:18,244] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.143 seconds
+[2023-10-12 13:32:48,837] {scheduler_job.py:182} INFO - Started process (PID=5392) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:32:48,841] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:32:48,844] {logging_mixin.py:104} INFO - [2023-10-12 13:32:48,844] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:32:48,885] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:32:48,928] {logging_mixin.py:104} INFO - [2023-10-12 13:32:48,928] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:32:48,965] {logging_mixin.py:104} INFO - [2023-10-12 13:32:48,965] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:32:48,991] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.162 seconds
+[2023-10-12 13:33:19,207] {scheduler_job.py:182} INFO - Started process (PID=5448) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:33:19,227] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:33:19,235] {logging_mixin.py:104} INFO - [2023-10-12 13:33:19,234] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:33:19,283] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:33:19,331] {logging_mixin.py:104} INFO - [2023-10-12 13:33:19,330] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:33:19,363] {logging_mixin.py:104} INFO - [2023-10-12 13:33:19,363] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:33:19,388] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.193 seconds
+[2023-10-12 13:33:49,694] {scheduler_job.py:182} INFO - Started process (PID=5500) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:33:49,701] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:33:49,705] {logging_mixin.py:104} INFO - [2023-10-12 13:33:49,704] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:33:49,752] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:33:49,846] {logging_mixin.py:104} INFO - [2023-10-12 13:33:49,845] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:33:49,905] {logging_mixin.py:104} INFO - [2023-10-12 13:33:49,905] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:33:49,931] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.247 seconds
+[2023-10-12 13:34:20,298] {scheduler_job.py:182} INFO - Started process (PID=5554) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:34:20,303] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:34:20,306] {logging_mixin.py:104} INFO - [2023-10-12 13:34:20,306] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:34:20,341] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:34:20,400] {logging_mixin.py:104} INFO - [2023-10-12 13:34:20,400] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:34:20,436] {logging_mixin.py:104} INFO - [2023-10-12 13:34:20,436] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:34:20,461] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.174 seconds
+[2023-10-12 13:34:50,906] {scheduler_job.py:182} INFO - Started process (PID=5609) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:34:50,915] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:34:50,920] {logging_mixin.py:104} INFO - [2023-10-12 13:34:50,920] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:34:50,968] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:34:51,064] {logging_mixin.py:104} INFO - [2023-10-12 13:34:51,064] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:34:51,114] {logging_mixin.py:104} INFO - [2023-10-12 13:34:51,113] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:34:51,145] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.261 seconds
+[2023-10-12 13:35:21,769] {scheduler_job.py:182} INFO - Started process (PID=5675) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:35:21,777] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:35:21,783] {logging_mixin.py:104} INFO - [2023-10-12 13:35:21,782] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:35:21,837] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:35:21,888] {logging_mixin.py:104} INFO - [2023-10-12 13:35:21,887] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:35:21,924] {logging_mixin.py:104} INFO - [2023-10-12 13:35:21,924] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:35:21,949] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.194 seconds
+[2023-10-12 13:35:52,705] {scheduler_job.py:182} INFO - Started process (PID=5732) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:35:52,715] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:35:52,721] {logging_mixin.py:104} INFO - [2023-10-12 13:35:52,721] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:35:52,778] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:35:52,830] {logging_mixin.py:104} INFO - [2023-10-12 13:35:52,830] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:35:52,864] {logging_mixin.py:104} INFO - [2023-10-12 13:35:52,864] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:35:52,889] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.192 seconds
+[2023-10-12 13:36:23,375] {scheduler_job.py:182} INFO - Started process (PID=5787) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:36:23,382] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:36:23,386] {logging_mixin.py:104} INFO - [2023-10-12 13:36:23,385] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:36:23,427] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:36:23,477] {logging_mixin.py:104} INFO - [2023-10-12 13:36:23,477] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:36:23,511] {logging_mixin.py:104} INFO - [2023-10-12 13:36:23,511] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:36:23,530] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.165 seconds
+[2023-10-12 13:36:54,035] {scheduler_job.py:182} INFO - Started process (PID=5843) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:36:54,041] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:36:54,044] {logging_mixin.py:104} INFO - [2023-10-12 13:36:54,044] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:36:54,092] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:36:54,143] {logging_mixin.py:104} INFO - [2023-10-12 13:36:54,143] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:36:54,180] {logging_mixin.py:104} INFO - [2023-10-12 13:36:54,179] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:36:54,212] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.185 seconds
+[2023-10-12 13:37:24,367] {scheduler_job.py:182} INFO - Started process (PID=5898) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:37:24,373] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:37:24,377] {logging_mixin.py:104} INFO - [2023-10-12 13:37:24,376] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:37:24,415] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:37:24,459] {logging_mixin.py:104} INFO - [2023-10-12 13:37:24,458] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:37:24,490] {logging_mixin.py:104} INFO - [2023-10-12 13:37:24,490] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:37:24,510] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.150 seconds
+[2023-10-12 13:37:54,687] {scheduler_job.py:182} INFO - Started process (PID=5954) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:37:54,693] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:37:54,698] {logging_mixin.py:104} INFO - [2023-10-12 13:37:54,698] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:37:54,741] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:37:54,797] {logging_mixin.py:104} INFO - [2023-10-12 13:37:54,797] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:37:54,832] {logging_mixin.py:104} INFO - [2023-10-12 13:37:54,832] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:37:54,858] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.179 seconds
+[2023-10-12 13:38:25,314] {scheduler_job.py:182} INFO - Started process (PID=6010) to work on /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:38:25,321] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/dummy_dag.py for tasks to queue
+[2023-10-12 13:38:25,326] {logging_mixin.py:104} INFO - [2023-10-12 13:38:25,326] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:38:25,370] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['write_json_test']) retrieved from /opt/airflow/dags/dummy_dag.py
+[2023-10-12 13:38:25,442] {logging_mixin.py:104} INFO - [2023-10-12 13:38:25,442] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:38:25,486] {logging_mixin.py:104} INFO - [2023-10-12 13:38:25,486] {dag.py:2306} INFO - Setting next_dagrun for write_json_test to None
+[2023-10-12 13:38:25,526] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/dummy_dag.py took 0.220 seconds

@@ -1,0 +1,37 @@
+[2023-10-10 17:30:20,859] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: write_json_test.write_json 2023-10-10T17:30:19.586637+00:00 [queued]>
+[2023-10-10 17:30:20,879] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: write_json_test.write_json 2023-10-10T17:30:19.586637+00:00 [queued]>
+[2023-10-10 17:30:20,882] {taskinstance.py:1087} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-10 17:30:20,884] {taskinstance.py:1088} INFO - Starting attempt 1 of 2
+[2023-10-10 17:30:20,887] {taskinstance.py:1089} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-10 17:30:20,911] {taskinstance.py:1107} INFO - Executing <Task(PythonOperator): write_json> on 2023-10-10T17:30:19.586637+00:00
+[2023-10-10 17:30:20,926] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'write_json_test', 'write_json', '2023-10-10T17:30:19.586637+00:00', '--job-id', '6', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dummy_dag.py', '--cfg-path', '/tmp/tmpqwwkf8se', '--error-file', '/tmp/tmpy08_nav4']
+[2023-10-10 17:30:20,938] {standard_task_runner.py:77} INFO - Job 6: Subtask write_json
+[2023-10-10 17:30:20,918] {standard_task_runner.py:52} INFO - Started process 1015 to run task
+[2023-10-10 17:30:21,055] {logging_mixin.py:104} INFO - Running <TaskInstance: write_json_test.write_json 2023-10-10T17:30:19.586637+00:00 [running]> on host 639abfbfd4e2
+[2023-10-10 17:30:21,175] {taskinstance.py:1302} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=you
+AIRFLOW_CTX_DAG_ID=write_json_test
+AIRFLOW_CTX_TASK_ID=write_json
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-10T17:30:19.586637+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-10T17:30:19.586637+00:00
+[2023-10-10 17:30:21,177] {taskinstance.py:1501} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1157, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1331, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1361, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 150, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 161, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dummy_dag.py", line 35, in write_json_file
+    os.makedirs(dir_path)
+  File "/usr/local/lib/python3.6/os.py", line 220, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/path_in_container/'
+[2023-10-10 17:30:21,185] {taskinstance.py:1551} INFO - Marking task as UP_FOR_RETRY. dag_id=write_json_test, task_id=write_json, execution_date=20231010T173019, start_date=20231010T173020, end_date=20231010T173021
+[2023-10-10 17:30:21,244] {local_task_job.py:151} INFO - Task exited with return code 1

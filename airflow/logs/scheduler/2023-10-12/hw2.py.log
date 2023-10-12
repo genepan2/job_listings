@@ -1,0 +1,1394 @@
+[2023-10-12 11:52:02,566] {scheduler_job.py:182} INFO - Started process (PID=54) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:52:02,580] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:52:02,588] {logging_mixin.py:104} INFO - [2023-10-12 11:52:02,588] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:52:03,307] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:52:42,257] {logging_mixin.py:104} INFO - [2023-10-12 11:52:42,256] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:52:42,288] {logging_mixin.py:104} INFO - [2023-10-12 11:52:42,286] {dag.py:1852} INFO - Creating ORM DAG for hw2
+[2023-10-12 11:52:42,311] {logging_mixin.py:104} INFO - [2023-10-12 11:52:42,311] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:52:42,342] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 39.789 seconds
+[2023-10-12 11:55:47,957] {scheduler_job.py:182} INFO - Started process (PID=44) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:55:47,965] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:55:47,974] {logging_mixin.py:104} INFO - [2023-10-12 11:55:47,974] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:55:48,426] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:55:48,479] {logging_mixin.py:104} INFO - [2023-10-12 11:55:48,479] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:55:48,517] {logging_mixin.py:104} INFO - [2023-10-12 11:55:48,517] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:55:48,544] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.606 seconds
+[2023-10-12 11:56:55,753] {scheduler_job.py:182} INFO - Started process (PID=178) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:56:55,758] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:56:55,762] {logging_mixin.py:104} INFO - [2023-10-12 11:56:55,761] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:56:56,910] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:56:57,016] {logging_mixin.py:104} INFO - [2023-10-12 11:56:57,016] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:56:57,076] {logging_mixin.py:104} INFO - [2023-10-12 11:56:57,075] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:56:57,110] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 1.374 seconds
+[2023-10-12 11:57:27,583] {scheduler_job.py:182} INFO - Started process (PID=235) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:57:27,588] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:57:27,591] {logging_mixin.py:104} INFO - [2023-10-12 11:57:27,590] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:57:27,818] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:57:27,850] {logging_mixin.py:104} INFO - [2023-10-12 11:57:27,850] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:57:27,874] {logging_mixin.py:104} INFO - [2023-10-12 11:57:27,874] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:57:27,890] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.313 seconds
+[2023-10-12 11:57:58,544] {scheduler_job.py:182} INFO - Started process (PID=291) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:57:58,548] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:57:58,551] {logging_mixin.py:104} INFO - [2023-10-12 11:57:58,551] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:57:58,779] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:57:58,815] {logging_mixin.py:104} INFO - [2023-10-12 11:57:58,815] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:57:58,840] {logging_mixin.py:104} INFO - [2023-10-12 11:57:58,840] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:57:58,856] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.319 seconds
+[2023-10-12 11:58:29,229] {scheduler_job.py:182} INFO - Started process (PID=355) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:58:29,233] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:58:29,235] {logging_mixin.py:104} INFO - [2023-10-12 11:58:29,235] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:58:29,501] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:58:29,543] {logging_mixin.py:104} INFO - [2023-10-12 11:58:29,543] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:58:29,573] {logging_mixin.py:104} INFO - [2023-10-12 11:58:29,572] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:58:29,591] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.368 seconds
+[2023-10-12 11:58:59,775] {scheduler_job.py:182} INFO - Started process (PID=414) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:58:59,779] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:58:59,783] {logging_mixin.py:104} INFO - [2023-10-12 11:58:59,782] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:59:00,019] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:59:00,068] {logging_mixin.py:104} INFO - [2023-10-12 11:59:00,068] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:59:00,113] {logging_mixin.py:104} INFO - [2023-10-12 11:59:00,113] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:59:00,149] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.381 seconds
+[2023-10-12 11:59:30,490] {scheduler_job.py:182} INFO - Started process (PID=469) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 11:59:30,497] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 11:59:30,502] {logging_mixin.py:104} INFO - [2023-10-12 11:59:30,502] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 11:59:30,742] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 11:59:30,775] {logging_mixin.py:104} INFO - [2023-10-12 11:59:30,774] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 11:59:30,799] {logging_mixin.py:104} INFO - [2023-10-12 11:59:30,798] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 11:59:30,817] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.333 seconds
+[2023-10-12 12:00:01,004] {scheduler_job.py:182} INFO - Started process (PID=532) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:00:01,008] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:00:01,011] {logging_mixin.py:104} INFO - [2023-10-12 12:00:01,010] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:00:01,252] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:00:01,289] {logging_mixin.py:104} INFO - [2023-10-12 12:00:01,289] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:00:01,319] {logging_mixin.py:104} INFO - [2023-10-12 12:00:01,318] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:00:01,344] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.346 seconds
+[2023-10-12 12:00:31,534] {scheduler_job.py:182} INFO - Started process (PID=591) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:00:31,539] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:00:31,544] {logging_mixin.py:104} INFO - [2023-10-12 12:00:31,544] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:00:31,766] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:00:31,805] {logging_mixin.py:104} INFO - [2023-10-12 12:00:31,804] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:00:31,835] {logging_mixin.py:104} INFO - [2023-10-12 12:00:31,835] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:00:31,854] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.328 seconds
+[2023-10-12 12:01:02,316] {scheduler_job.py:182} INFO - Started process (PID=648) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:01:02,322] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:01:02,329] {logging_mixin.py:104} INFO - [2023-10-12 12:01:02,328] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:01:02,854] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:01:02,893] {logging_mixin.py:104} INFO - [2023-10-12 12:01:02,893] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:01:02,935] {logging_mixin.py:104} INFO - [2023-10-12 12:01:02,935] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:01:02,956] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.648 seconds
+[2023-10-12 12:01:33,864] {scheduler_job.py:182} INFO - Started process (PID=713) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:01:33,872] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:01:33,876] {logging_mixin.py:104} INFO - [2023-10-12 12:01:33,876] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:01:34,128] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:01:34,164] {logging_mixin.py:104} INFO - [2023-10-12 12:01:34,164] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:01:34,189] {logging_mixin.py:104} INFO - [2023-10-12 12:01:34,189] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:01:34,211] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.359 seconds
+[2023-10-12 12:02:04,311] {scheduler_job.py:182} INFO - Started process (PID=768) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:02:04,316] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:02:04,318] {logging_mixin.py:104} INFO - [2023-10-12 12:02:04,318] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:02:04,548] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:02:04,581] {logging_mixin.py:104} INFO - [2023-10-12 12:02:04,581] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:02:04,605] {logging_mixin.py:104} INFO - [2023-10-12 12:02:04,605] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:02:04,622] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.318 seconds
+[2023-10-12 12:02:35,570] {scheduler_job.py:182} INFO - Started process (PID=826) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:02:35,577] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:02:35,580] {logging_mixin.py:104} INFO - [2023-10-12 12:02:35,580] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:02:35,803] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:02:35,839] {logging_mixin.py:104} INFO - [2023-10-12 12:02:35,838] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:02:35,865] {logging_mixin.py:104} INFO - [2023-10-12 12:02:35,865] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:02:35,885] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.322 seconds
+[2023-10-12 12:03:06,519] {scheduler_job.py:182} INFO - Started process (PID=883) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:03:06,525] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:03:06,531] {logging_mixin.py:104} INFO - [2023-10-12 12:03:06,531] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:03:07,036] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:03:07,093] {logging_mixin.py:104} INFO - [2023-10-12 12:03:07,093] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:03:07,138] {logging_mixin.py:104} INFO - [2023-10-12 12:03:07,138] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:03:07,166] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.657 seconds
+[2023-10-12 12:03:37,487] {scheduler_job.py:182} INFO - Started process (PID=940) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:03:37,494] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:03:37,497] {logging_mixin.py:104} INFO - [2023-10-12 12:03:37,497] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:03:37,796] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:03:37,847] {logging_mixin.py:104} INFO - [2023-10-12 12:03:37,847] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:03:37,878] {logging_mixin.py:104} INFO - [2023-10-12 12:03:37,878] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:03:37,914] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.435 seconds
+[2023-10-12 12:04:08,659] {scheduler_job.py:182} INFO - Started process (PID=1004) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:04:08,670] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:04:08,676] {logging_mixin.py:104} INFO - [2023-10-12 12:04:08,675] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:04:09,261] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:04:09,373] {logging_mixin.py:104} INFO - [2023-10-12 12:04:09,373] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:04:09,489] {logging_mixin.py:104} INFO - [2023-10-12 12:04:09,488] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:04:09,554] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.932 seconds
+[2023-10-12 12:04:39,806] {scheduler_job.py:182} INFO - Started process (PID=1060) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:04:39,812] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:04:39,817] {logging_mixin.py:104} INFO - [2023-10-12 12:04:39,817] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:04:40,214] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:04:40,283] {logging_mixin.py:104} INFO - [2023-10-12 12:04:40,282] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:04:40,330] {logging_mixin.py:104} INFO - [2023-10-12 12:04:40,330] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:04:40,359] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.564 seconds
+[2023-10-12 12:05:11,197] {scheduler_job.py:182} INFO - Started process (PID=1117) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:05:11,203] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:05:11,211] {logging_mixin.py:104} INFO - [2023-10-12 12:05:11,210] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:05:11,705] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:05:11,761] {logging_mixin.py:104} INFO - [2023-10-12 12:05:11,760] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:05:11,804] {logging_mixin.py:104} INFO - [2023-10-12 12:05:11,803] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:05:11,836] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.667 seconds
+[2023-10-12 12:05:41,904] {scheduler_job.py:182} INFO - Started process (PID=1173) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:05:41,911] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:05:41,914] {logging_mixin.py:104} INFO - [2023-10-12 12:05:41,914] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:05:42,285] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:05:42,363] {logging_mixin.py:104} INFO - [2023-10-12 12:05:42,362] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:05:42,425] {logging_mixin.py:104} INFO - [2023-10-12 12:05:42,425] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:05:42,459] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.565 seconds
+[2023-10-12 12:06:12,527] {scheduler_job.py:182} INFO - Started process (PID=1229) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:06:12,532] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:06:12,539] {logging_mixin.py:104} INFO - [2023-10-12 12:06:12,538] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:06:12,839] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:06:12,889] {logging_mixin.py:104} INFO - [2023-10-12 12:06:12,889] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:06:12,923] {logging_mixin.py:104} INFO - [2023-10-12 12:06:12,923] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:06:12,947] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.427 seconds
+[2023-10-12 12:06:43,271] {scheduler_job.py:182} INFO - Started process (PID=1285) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:06:43,278] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:06:43,283] {logging_mixin.py:104} INFO - [2023-10-12 12:06:43,282] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:06:43,695] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:06:43,760] {logging_mixin.py:104} INFO - [2023-10-12 12:06:43,760] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:06:43,798] {logging_mixin.py:104} INFO - [2023-10-12 12:06:43,797] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:06:43,823] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.562 seconds
+[2023-10-12 12:07:14,243] {scheduler_job.py:182} INFO - Started process (PID=1341) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:07:14,252] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:07:14,255] {logging_mixin.py:104} INFO - [2023-10-12 12:07:14,255] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:07:14,635] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:07:14,688] {logging_mixin.py:104} INFO - [2023-10-12 12:07:14,687] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:07:14,728] {logging_mixin.py:104} INFO - [2023-10-12 12:07:14,728] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:07:14,752] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.525 seconds
+[2023-10-12 12:07:45,060] {scheduler_job.py:182} INFO - Started process (PID=1397) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:07:45,071] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:07:45,081] {logging_mixin.py:104} INFO - [2023-10-12 12:07:45,081] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:07:45,546] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:07:45,600] {logging_mixin.py:104} INFO - [2023-10-12 12:07:45,600] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:07:45,771] {logging_mixin.py:104} INFO - [2023-10-12 12:07:45,771] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:07:45,844] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.809 seconds
+[2023-10-12 12:08:16,696] {scheduler_job.py:182} INFO - Started process (PID=1463) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:08:17,062] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:08:17,077] {logging_mixin.py:104} INFO - [2023-10-12 12:08:17,073] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:08:17,851] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:08:17,921] {logging_mixin.py:104} INFO - [2023-10-12 12:08:17,920] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:08:17,993] {logging_mixin.py:104} INFO - [2023-10-12 12:08:17,993] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:08:18,043] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 1.419 seconds
+[2023-10-12 12:08:48,191] {scheduler_job.py:182} INFO - Started process (PID=1522) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:08:48,201] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:08:48,208] {logging_mixin.py:104} INFO - [2023-10-12 12:08:48,207] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:08:48,574] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:08:48,642] {logging_mixin.py:104} INFO - [2023-10-12 12:08:48,642] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:08:48,695] {logging_mixin.py:104} INFO - [2023-10-12 12:08:48,695] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:08:48,727] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.550 seconds
+[2023-10-12 12:09:19,643] {scheduler_job.py:182} INFO - Started process (PID=1579) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:09:19,650] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:09:19,654] {logging_mixin.py:104} INFO - [2023-10-12 12:09:19,653] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:09:19,951] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:09:20,001] {logging_mixin.py:104} INFO - [2023-10-12 12:09:20,001] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:09:20,040] {logging_mixin.py:104} INFO - [2023-10-12 12:09:20,040] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:09:20,062] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.428 seconds
+[2023-10-12 12:09:50,350] {scheduler_job.py:182} INFO - Started process (PID=1635) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:09:50,355] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:09:50,358] {logging_mixin.py:104} INFO - [2023-10-12 12:09:50,358] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:09:50,576] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:09:50,613] {logging_mixin.py:104} INFO - [2023-10-12 12:09:50,613] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:09:50,638] {logging_mixin.py:104} INFO - [2023-10-12 12:09:50,638] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:09:50,659] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.314 seconds
+[2023-10-12 12:10:21,196] {scheduler_job.py:182} INFO - Started process (PID=1690) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:10:21,201] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:10:21,204] {logging_mixin.py:104} INFO - [2023-10-12 12:10:21,204] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:10:21,458] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:10:21,492] {logging_mixin.py:104} INFO - [2023-10-12 12:10:21,492] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:10:21,517] {logging_mixin.py:104} INFO - [2023-10-12 12:10:21,517] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:10:21,533] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.343 seconds
+[2023-10-12 12:10:51,770] {scheduler_job.py:182} INFO - Started process (PID=1746) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:10:51,774] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:10:51,776] {logging_mixin.py:104} INFO - [2023-10-12 12:10:51,776] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:10:51,997] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:10:52,030] {logging_mixin.py:104} INFO - [2023-10-12 12:10:52,030] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:10:52,069] {logging_mixin.py:104} INFO - [2023-10-12 12:10:52,069] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:10:52,088] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.324 seconds
+[2023-10-12 12:11:22,180] {scheduler_job.py:182} INFO - Started process (PID=1813) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:11:22,184] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:11:22,187] {logging_mixin.py:104} INFO - [2023-10-12 12:11:22,186] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:11:22,445] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:11:22,501] {logging_mixin.py:104} INFO - [2023-10-12 12:11:22,501] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:11:22,538] {logging_mixin.py:104} INFO - [2023-10-12 12:11:22,538] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:11:22,557] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.383 seconds
+[2023-10-12 12:11:52,810] {scheduler_job.py:182} INFO - Started process (PID=1869) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:11:52,813] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:11:52,817] {logging_mixin.py:104} INFO - [2023-10-12 12:11:52,817] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:11:53,047] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:11:53,084] {logging_mixin.py:104} INFO - [2023-10-12 12:11:53,084] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:11:53,108] {logging_mixin.py:104} INFO - [2023-10-12 12:11:53,108] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:11:53,130] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.329 seconds
+[2023-10-12 12:12:23,374] {scheduler_job.py:182} INFO - Started process (PID=1933) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:12:23,378] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:12:23,381] {logging_mixin.py:104} INFO - [2023-10-12 12:12:23,381] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:12:23,598] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:12:23,634] {logging_mixin.py:104} INFO - [2023-10-12 12:12:23,634] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:12:23,661] {logging_mixin.py:104} INFO - [2023-10-12 12:12:23,660] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:12:23,679] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.312 seconds
+[2023-10-12 12:12:53,899] {scheduler_job.py:182} INFO - Started process (PID=1993) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:12:53,903] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:12:53,905] {logging_mixin.py:104} INFO - [2023-10-12 12:12:53,905] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:12:54,124] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:12:54,157] {logging_mixin.py:104} INFO - [2023-10-12 12:12:54,157] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:12:54,180] {logging_mixin.py:104} INFO - [2023-10-12 12:12:54,180] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:12:54,196] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.303 seconds
+[2023-10-12 12:13:24,392] {scheduler_job.py:182} INFO - Started process (PID=2049) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:13:24,398] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:13:24,401] {logging_mixin.py:104} INFO - [2023-10-12 12:13:24,401] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:13:24,638] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:13:24,684] {logging_mixin.py:104} INFO - [2023-10-12 12:13:24,683] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:13:24,744] {logging_mixin.py:104} INFO - [2023-10-12 12:13:24,743] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:13:24,785] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.401 seconds
+[2023-10-12 12:13:54,861] {scheduler_job.py:182} INFO - Started process (PID=2106) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:13:54,871] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:13:54,874] {logging_mixin.py:104} INFO - [2023-10-12 12:13:54,874] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:13:55,175] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:13:55,259] {logging_mixin.py:104} INFO - [2023-10-12 12:13:55,259] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:13:55,289] {logging_mixin.py:104} INFO - [2023-10-12 12:13:55,289] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:13:55,309] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.457 seconds
+[2023-10-12 12:14:25,829] {scheduler_job.py:182} INFO - Started process (PID=2172) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:14:25,833] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:14:25,836] {logging_mixin.py:104} INFO - [2023-10-12 12:14:25,836] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:14:26,080] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:14:26,114] {logging_mixin.py:104} INFO - [2023-10-12 12:14:26,114] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:14:26,139] {logging_mixin.py:104} INFO - [2023-10-12 12:14:26,139] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:14:26,156] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.333 seconds
+[2023-10-12 12:14:56,610] {scheduler_job.py:182} INFO - Started process (PID=2228) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:14:56,614] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:14:56,617] {logging_mixin.py:104} INFO - [2023-10-12 12:14:56,617] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:14:56,838] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:14:56,872] {logging_mixin.py:104} INFO - [2023-10-12 12:14:56,872] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:14:56,898] {logging_mixin.py:104} INFO - [2023-10-12 12:14:56,898] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:14:56,914] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.311 seconds
+[2023-10-12 12:15:27,709] {scheduler_job.py:182} INFO - Started process (PID=2284) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:15:27,717] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:15:27,721] {logging_mixin.py:104} INFO - [2023-10-12 12:15:27,721] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:15:27,989] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:15:28,030] {logging_mixin.py:104} INFO - [2023-10-12 12:15:28,030] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:15:28,056] {logging_mixin.py:104} INFO - [2023-10-12 12:15:28,056] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:15:28,073] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.372 seconds
+[2023-10-12 12:15:58,266] {scheduler_job.py:182} INFO - Started process (PID=2351) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:15:58,269] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:15:58,271] {logging_mixin.py:104} INFO - [2023-10-12 12:15:58,271] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:15:58,523] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:15:58,560] {logging_mixin.py:104} INFO - [2023-10-12 12:15:58,560] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:15:58,586] {logging_mixin.py:104} INFO - [2023-10-12 12:15:58,586] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:15:58,602] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.344 seconds
+[2023-10-12 12:16:28,708] {scheduler_job.py:182} INFO - Started process (PID=2407) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:16:28,717] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:16:28,720] {logging_mixin.py:104} INFO - [2023-10-12 12:16:28,720] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:16:28,959] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:16:28,993] {logging_mixin.py:104} INFO - [2023-10-12 12:16:28,993] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:16:29,018] {logging_mixin.py:104} INFO - [2023-10-12 12:16:29,018] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:16:29,034] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.333 seconds
+[2023-10-12 12:16:59,584] {scheduler_job.py:182} INFO - Started process (PID=2463) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:16:59,589] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:16:59,592] {logging_mixin.py:104} INFO - [2023-10-12 12:16:59,592] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:16:59,856] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:16:59,897] {logging_mixin.py:104} INFO - [2023-10-12 12:16:59,897] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:16:59,938] {logging_mixin.py:104} INFO - [2023-10-12 12:16:59,938] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:16:59,960] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.387 seconds
+[2023-10-12 12:17:30,820] {scheduler_job.py:182} INFO - Started process (PID=2528) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:17:30,830] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:17:30,836] {logging_mixin.py:104} INFO - [2023-10-12 12:17:30,834] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:17:31,113] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:17:31,161] {logging_mixin.py:104} INFO - [2023-10-12 12:17:31,161] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:17:31,187] {logging_mixin.py:104} INFO - [2023-10-12 12:17:31,187] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:17:31,209] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.413 seconds
+[2023-10-12 12:18:01,487] {scheduler_job.py:182} INFO - Started process (PID=2593) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:18:01,495] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:18:01,499] {logging_mixin.py:104} INFO - [2023-10-12 12:18:01,499] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:18:01,852] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:18:01,898] {logging_mixin.py:104} INFO - [2023-10-12 12:18:01,898] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:18:01,950] {logging_mixin.py:104} INFO - [2023-10-12 12:18:01,950] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:18:01,976] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.498 seconds
+[2023-10-12 12:18:32,261] {scheduler_job.py:182} INFO - Started process (PID=2657) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:18:32,265] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:18:32,268] {logging_mixin.py:104} INFO - [2023-10-12 12:18:32,268] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:18:32,540] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:18:32,576] {logging_mixin.py:104} INFO - [2023-10-12 12:18:32,576] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:18:32,607] {logging_mixin.py:104} INFO - [2023-10-12 12:18:32,607] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:18:32,629] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.373 seconds
+[2023-10-12 12:19:02,717] {scheduler_job.py:182} INFO - Started process (PID=2721) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:19:02,725] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:19:02,740] {logging_mixin.py:104} INFO - [2023-10-12 12:19:02,737] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:19:03,082] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:19:03,120] {logging_mixin.py:104} INFO - [2023-10-12 12:19:03,120] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:19:03,146] {logging_mixin.py:104} INFO - [2023-10-12 12:19:03,146] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:19:03,184] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.473 seconds
+[2023-10-12 12:19:33,351] {scheduler_job.py:182} INFO - Started process (PID=2781) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:19:33,354] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:19:33,357] {logging_mixin.py:104} INFO - [2023-10-12 12:19:33,356] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:19:33,630] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:19:33,665] {logging_mixin.py:104} INFO - [2023-10-12 12:19:33,665] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:19:33,696] {logging_mixin.py:104} INFO - [2023-10-12 12:19:33,696] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:19:33,724] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.380 seconds
+[2023-10-12 12:20:03,865] {scheduler_job.py:182} INFO - Started process (PID=2836) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:20:03,871] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:20:03,874] {logging_mixin.py:104} INFO - [2023-10-12 12:20:03,874] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:20:04,127] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:20:04,165] {logging_mixin.py:104} INFO - [2023-10-12 12:20:04,165] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:20:04,188] {logging_mixin.py:104} INFO - [2023-10-12 12:20:04,188] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:20:04,203] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.344 seconds
+[2023-10-12 12:20:34,394] {scheduler_job.py:182} INFO - Started process (PID=3351) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:20:34,398] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:20:34,400] {logging_mixin.py:104} INFO - [2023-10-12 12:20:34,400] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:20:34,634] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:20:34,669] {logging_mixin.py:104} INFO - [2023-10-12 12:20:34,669] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:20:34,694] {logging_mixin.py:104} INFO - [2023-10-12 12:20:34,693] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:20:34,711] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.322 seconds
+[2023-10-12 12:21:05,148] {scheduler_job.py:182} INFO - Started process (PID=3422) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:21:05,152] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:21:05,155] {logging_mixin.py:104} INFO - [2023-10-12 12:21:05,154] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:21:05,381] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:21:05,420] {logging_mixin.py:104} INFO - [2023-10-12 12:21:05,420] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:21:05,444] {logging_mixin.py:104} INFO - [2023-10-12 12:21:05,444] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:21:05,461] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.319 seconds
+[2023-10-12 12:21:36,128] {scheduler_job.py:182} INFO - Started process (PID=3487) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:21:36,133] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:21:36,135] {logging_mixin.py:104} INFO - [2023-10-12 12:21:36,135] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:21:36,439] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:21:36,490] {logging_mixin.py:104} INFO - [2023-10-12 12:21:36,490] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:21:36,517] {logging_mixin.py:104} INFO - [2023-10-12 12:21:36,517] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:21:36,546] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.427 seconds
+[2023-10-12 12:22:06,891] {scheduler_job.py:182} INFO - Started process (PID=3548) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:22:06,904] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:22:06,907] {logging_mixin.py:104} INFO - [2023-10-12 12:22:06,907] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:22:07,281] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:22:07,324] {logging_mixin.py:104} INFO - [2023-10-12 12:22:07,324] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:22:07,352] {logging_mixin.py:104} INFO - [2023-10-12 12:22:07,352] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:22:07,367] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.491 seconds
+[2023-10-12 12:22:38,178] {scheduler_job.py:182} INFO - Started process (PID=3614) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:22:38,182] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:22:38,185] {logging_mixin.py:104} INFO - [2023-10-12 12:22:38,185] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:22:38,439] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:22:38,472] {logging_mixin.py:104} INFO - [2023-10-12 12:22:38,472] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:22:38,497] {logging_mixin.py:104} INFO - [2023-10-12 12:22:38,497] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:22:38,516] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.344 seconds
+[2023-10-12 12:23:09,491] {scheduler_job.py:182} INFO - Started process (PID=3770) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:23:09,496] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:23:09,499] {logging_mixin.py:104} INFO - [2023-10-12 12:23:09,498] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:23:09,805] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:23:09,854] {logging_mixin.py:104} INFO - [2023-10-12 12:23:09,854] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:23:09,886] {logging_mixin.py:104} INFO - [2023-10-12 12:23:09,885] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:23:09,913] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.432 seconds
+[2023-10-12 12:23:40,950] {scheduler_job.py:182} INFO - Started process (PID=3827) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:23:40,955] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:23:40,957] {logging_mixin.py:104} INFO - [2023-10-12 12:23:40,957] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:23:41,219] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:23:41,258] {logging_mixin.py:104} INFO - [2023-10-12 12:23:41,258] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:23:41,291] {logging_mixin.py:104} INFO - [2023-10-12 12:23:41,290] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:23:41,312] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.368 seconds
+[2023-10-12 12:24:12,184] {scheduler_job.py:182} INFO - Started process (PID=3892) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:24:12,190] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:24:12,193] {logging_mixin.py:104} INFO - [2023-10-12 12:24:12,192] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:24:12,426] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:24:12,468] {logging_mixin.py:104} INFO - [2023-10-12 12:24:12,468] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:24:12,497] {logging_mixin.py:104} INFO - [2023-10-12 12:24:12,497] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:24:12,516] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.340 seconds
+[2023-10-12 12:24:43,407] {scheduler_job.py:182} INFO - Started process (PID=4385) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:24:43,411] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:24:43,414] {logging_mixin.py:104} INFO - [2023-10-12 12:24:43,414] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:24:43,662] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:24:43,706] {logging_mixin.py:104} INFO - [2023-10-12 12:24:43,706] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:24:43,733] {logging_mixin.py:104} INFO - [2023-10-12 12:24:43,733] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:24:43,751] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.350 seconds
+[2023-10-12 12:25:13,977] {scheduler_job.py:182} INFO - Started process (PID=4458) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:25:13,985] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:25:13,988] {logging_mixin.py:104} INFO - [2023-10-12 12:25:13,988] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:25:14,260] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:25:14,305] {logging_mixin.py:104} INFO - [2023-10-12 12:25:14,305] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:25:14,334] {logging_mixin.py:104} INFO - [2023-10-12 12:25:14,334] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:25:14,354] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.384 seconds
+[2023-10-12 12:25:45,134] {scheduler_job.py:182} INFO - Started process (PID=4520) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:25:45,142] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:25:45,146] {logging_mixin.py:104} INFO - [2023-10-12 12:25:45,145] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:25:45,390] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:25:45,425] {logging_mixin.py:104} INFO - [2023-10-12 12:25:45,425] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:25:45,450] {logging_mixin.py:104} INFO - [2023-10-12 12:25:45,450] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:25:45,467] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.342 seconds
+[2023-10-12 12:26:16,483] {scheduler_job.py:182} INFO - Started process (PID=4627) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:26:16,487] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:26:16,490] {logging_mixin.py:104} INFO - [2023-10-12 12:26:16,490] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:26:16,724] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:26:16,767] {logging_mixin.py:104} INFO - [2023-10-12 12:26:16,767] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:26:16,800] {logging_mixin.py:104} INFO - [2023-10-12 12:26:16,800] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:26:16,820] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.343 seconds
+[2023-10-12 12:26:47,666] {scheduler_job.py:182} INFO - Started process (PID=4693) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:26:47,673] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:26:47,676] {logging_mixin.py:104} INFO - [2023-10-12 12:26:47,675] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:26:47,986] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:26:48,045] {logging_mixin.py:104} INFO - [2023-10-12 12:26:48,045] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:26:48,075] {logging_mixin.py:104} INFO - [2023-10-12 12:26:48,075] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:26:48,093] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.434 seconds
+[2023-10-12 12:27:18,327] {scheduler_job.py:182} INFO - Started process (PID=5205) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:27:18,331] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:27:18,333] {logging_mixin.py:104} INFO - [2023-10-12 12:27:18,333] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:27:18,558] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:27:18,590] {logging_mixin.py:104} INFO - [2023-10-12 12:27:18,590] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:27:18,615] {logging_mixin.py:104} INFO - [2023-10-12 12:27:18,615] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:27:18,630] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.310 seconds
+[2023-10-12 12:27:48,961] {scheduler_job.py:182} INFO - Started process (PID=5262) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:27:48,964] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:27:48,966] {logging_mixin.py:104} INFO - [2023-10-12 12:27:48,966] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:27:49,210] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:27:49,245] {logging_mixin.py:104} INFO - [2023-10-12 12:27:49,245] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:27:49,269] {logging_mixin.py:104} INFO - [2023-10-12 12:27:49,268] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:27:49,286] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.333 seconds
+[2023-10-12 12:28:19,857] {scheduler_job.py:182} INFO - Started process (PID=5331) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:28:19,869] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:28:19,874] {logging_mixin.py:104} INFO - [2023-10-12 12:28:19,873] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:28:20,199] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:28:20,250] {logging_mixin.py:104} INFO - [2023-10-12 12:28:20,250] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:28:20,281] {logging_mixin.py:104} INFO - [2023-10-12 12:28:20,280] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:28:20,302] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.461 seconds
+[2023-10-12 12:28:50,362] {scheduler_job.py:182} INFO - Started process (PID=5387) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:28:50,366] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:28:50,368] {logging_mixin.py:104} INFO - [2023-10-12 12:28:50,368] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:28:50,600] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:28:50,634] {logging_mixin.py:104} INFO - [2023-10-12 12:28:50,634] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:28:50,658] {logging_mixin.py:104} INFO - [2023-10-12 12:28:50,658] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:28:50,673] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.317 seconds
+[2023-10-12 12:29:20,715] {scheduler_job.py:182} INFO - Started process (PID=5443) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:29:20,720] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:29:20,722] {logging_mixin.py:104} INFO - [2023-10-12 12:29:20,722] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:29:20,980] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:29:21,022] {logging_mixin.py:104} INFO - [2023-10-12 12:29:21,022] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:29:21,049] {logging_mixin.py:104} INFO - [2023-10-12 12:29:21,049] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:29:21,066] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.356 seconds
+[2023-10-12 12:29:51,903] {scheduler_job.py:182} INFO - Started process (PID=5510) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:29:51,906] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:29:51,909] {logging_mixin.py:104} INFO - [2023-10-12 12:29:51,909] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:29:52,296] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:29:52,346] {logging_mixin.py:104} INFO - [2023-10-12 12:29:52,346] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:29:52,379] {logging_mixin.py:104} INFO - [2023-10-12 12:29:52,378] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:29:52,404] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.507 seconds
+[2023-10-12 12:30:23,321] {scheduler_job.py:182} INFO - Started process (PID=5566) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:30:23,325] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:30:23,328] {logging_mixin.py:104} INFO - [2023-10-12 12:30:23,328] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:30:23,571] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:30:23,604] {logging_mixin.py:104} INFO - [2023-10-12 12:30:23,604] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:30:23,630] {logging_mixin.py:104} INFO - [2023-10-12 12:30:23,630] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:30:23,646] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.332 seconds
+[2023-10-12 12:30:53,998] {scheduler_job.py:182} INFO - Started process (PID=5622) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:30:54,007] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:30:54,012] {logging_mixin.py:104} INFO - [2023-10-12 12:30:54,012] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:30:54,245] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:30:54,279] {logging_mixin.py:104} INFO - [2023-10-12 12:30:54,279] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:30:54,303] {logging_mixin.py:104} INFO - [2023-10-12 12:30:54,303] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:30:54,318] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.328 seconds
+[2023-10-12 12:31:24,564] {scheduler_job.py:182} INFO - Started process (PID=5678) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:31:24,569] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:31:24,572] {logging_mixin.py:104} INFO - [2023-10-12 12:31:24,572] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:31:24,823] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:31:24,861] {logging_mixin.py:104} INFO - [2023-10-12 12:31:24,861] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:31:24,889] {logging_mixin.py:104} INFO - [2023-10-12 12:31:24,889] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:31:24,908] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.353 seconds
+[2023-10-12 12:31:55,273] {scheduler_job.py:182} INFO - Started process (PID=5734) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:31:55,277] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:31:55,281] {logging_mixin.py:104} INFO - [2023-10-12 12:31:55,281] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:31:55,506] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:31:55,542] {logging_mixin.py:104} INFO - [2023-10-12 12:31:55,542] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:31:55,567] {logging_mixin.py:104} INFO - [2023-10-12 12:31:55,567] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:31:55,584] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.318 seconds
+[2023-10-12 12:32:25,955] {scheduler_job.py:182} INFO - Started process (PID=5789) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:32:25,962] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:32:25,966] {logging_mixin.py:104} INFO - [2023-10-12 12:32:25,965] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:32:26,296] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:32:26,339] {logging_mixin.py:104} INFO - [2023-10-12 12:32:26,339] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:32:26,364] {logging_mixin.py:104} INFO - [2023-10-12 12:32:26,364] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:32:26,381] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.435 seconds
+[2023-10-12 12:32:56,690] {scheduler_job.py:182} INFO - Started process (PID=5854) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:32:56,701] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:32:56,705] {logging_mixin.py:104} INFO - [2023-10-12 12:32:56,705] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:32:57,119] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:32:57,166] {logging_mixin.py:104} INFO - [2023-10-12 12:32:57,166] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:32:57,213] {logging_mixin.py:104} INFO - [2023-10-12 12:32:57,213] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:32:57,248] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.577 seconds
+[2023-10-12 12:33:27,427] {scheduler_job.py:182} INFO - Started process (PID=5911) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:33:27,431] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:33:27,434] {logging_mixin.py:104} INFO - [2023-10-12 12:33:27,433] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:33:27,700] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:33:27,745] {logging_mixin.py:104} INFO - [2023-10-12 12:33:27,745] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:33:27,781] {logging_mixin.py:104} INFO - [2023-10-12 12:33:27,781] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:33:27,806] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.386 seconds
+[2023-10-12 12:33:58,220] {scheduler_job.py:182} INFO - Started process (PID=5966) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:33:58,226] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:33:58,230] {logging_mixin.py:104} INFO - [2023-10-12 12:33:58,229] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:33:58,462] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:33:58,496] {logging_mixin.py:104} INFO - [2023-10-12 12:33:58,496] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:33:58,522] {logging_mixin.py:104} INFO - [2023-10-12 12:33:58,522] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:33:58,562] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.348 seconds
+[2023-10-12 12:34:29,540] {scheduler_job.py:182} INFO - Started process (PID=6022) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:34:29,545] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:34:29,548] {logging_mixin.py:104} INFO - [2023-10-12 12:34:29,548] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:34:29,988] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:34:30,047] {logging_mixin.py:104} INFO - [2023-10-12 12:34:30,047] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:34:30,074] {logging_mixin.py:104} INFO - [2023-10-12 12:34:30,074] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:34:30,093] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.559 seconds
+[2023-10-12 12:35:00,606] {scheduler_job.py:182} INFO - Started process (PID=6089) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:35:00,621] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:35:00,625] {logging_mixin.py:104} INFO - [2023-10-12 12:35:00,624] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:35:01,080] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:35:01,134] {logging_mixin.py:104} INFO - [2023-10-12 12:35:01,134] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:35:01,186] {logging_mixin.py:104} INFO - [2023-10-12 12:35:01,186] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:35:01,234] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.637 seconds
+[2023-10-12 12:35:31,966] {scheduler_job.py:182} INFO - Started process (PID=6145) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:35:31,971] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:35:31,975] {logging_mixin.py:104} INFO - [2023-10-12 12:35:31,974] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:35:32,419] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:35:32,462] {logging_mixin.py:104} INFO - [2023-10-12 12:35:32,462] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:35:32,518] {logging_mixin.py:104} INFO - [2023-10-12 12:35:32,518] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:35:32,542] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.584 seconds
+[2023-10-12 12:36:03,510] {scheduler_job.py:182} INFO - Started process (PID=6202) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:36:03,514] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:36:03,516] {logging_mixin.py:104} INFO - [2023-10-12 12:36:03,516] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:36:03,746] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:36:03,782] {logging_mixin.py:104} INFO - [2023-10-12 12:36:03,782] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:36:03,813] {logging_mixin.py:104} INFO - [2023-10-12 12:36:03,813] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:36:03,831] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.327 seconds
+[2023-10-12 12:36:33,988] {scheduler_job.py:182} INFO - Started process (PID=6267) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:36:33,992] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:36:33,995] {logging_mixin.py:104} INFO - [2023-10-12 12:36:33,995] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:36:34,216] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:36:34,262] {logging_mixin.py:104} INFO - [2023-10-12 12:36:34,262] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:36:34,293] {logging_mixin.py:104} INFO - [2023-10-12 12:36:34,293] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:36:34,316] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.336 seconds
+[2023-10-12 12:37:04,764] {scheduler_job.py:182} INFO - Started process (PID=6325) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:37:04,768] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:37:04,771] {logging_mixin.py:104} INFO - [2023-10-12 12:37:04,770] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:37:05,011] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:37:05,045] {logging_mixin.py:104} INFO - [2023-10-12 12:37:05,045] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:37:05,072] {logging_mixin.py:104} INFO - [2023-10-12 12:37:05,072] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:37:05,090] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.332 seconds
+[2023-10-12 12:37:35,257] {scheduler_job.py:182} INFO - Started process (PID=6382) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:37:35,261] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:37:35,263] {logging_mixin.py:104} INFO - [2023-10-12 12:37:35,263] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:37:35,506] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:37:35,568] {logging_mixin.py:104} INFO - [2023-10-12 12:37:35,568] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:37:35,605] {logging_mixin.py:104} INFO - [2023-10-12 12:37:35,604] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:37:35,622] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.372 seconds
+[2023-10-12 12:38:06,518] {scheduler_job.py:182} INFO - Started process (PID=6448) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:38:06,523] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:38:06,527] {logging_mixin.py:104} INFO - [2023-10-12 12:38:06,527] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:38:06,789] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:38:06,828] {logging_mixin.py:104} INFO - [2023-10-12 12:38:06,828] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:38:06,862] {logging_mixin.py:104} INFO - [2023-10-12 12:38:06,862] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:38:06,888] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.379 seconds
+[2023-10-12 12:38:37,429] {scheduler_job.py:182} INFO - Started process (PID=6504) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:38:37,432] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:38:37,435] {logging_mixin.py:104} INFO - [2023-10-12 12:38:37,435] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:38:37,657] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:38:37,689] {logging_mixin.py:104} INFO - [2023-10-12 12:38:37,689] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:38:37,715] {logging_mixin.py:104} INFO - [2023-10-12 12:38:37,715] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:38:37,734] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.312 seconds
+[2023-10-12 12:39:07,909] {scheduler_job.py:182} INFO - Started process (PID=6560) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:39:07,913] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:39:07,915] {logging_mixin.py:104} INFO - [2023-10-12 12:39:07,915] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:39:08,192] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:39:08,247] {logging_mixin.py:104} INFO - [2023-10-12 12:39:08,247] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:39:08,278] {logging_mixin.py:104} INFO - [2023-10-12 12:39:08,277] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:39:08,295] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.393 seconds
+[2023-10-12 12:39:38,517] {scheduler_job.py:182} INFO - Started process (PID=6616) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:39:38,521] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:39:38,524] {logging_mixin.py:104} INFO - [2023-10-12 12:39:38,524] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:39:38,891] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:39:38,948] {logging_mixin.py:104} INFO - [2023-10-12 12:39:38,948] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:39:38,974] {logging_mixin.py:104} INFO - [2023-10-12 12:39:38,974] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:39:38,991] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.483 seconds
+[2023-10-12 12:40:09,454] {scheduler_job.py:182} INFO - Started process (PID=6682) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:40:09,458] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:40:09,461] {logging_mixin.py:104} INFO - [2023-10-12 12:40:09,461] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:40:09,711] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:40:09,751] {logging_mixin.py:104} INFO - [2023-10-12 12:40:09,751] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:40:09,787] {logging_mixin.py:104} INFO - [2023-10-12 12:40:09,786] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:40:09,808] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.360 seconds
+[2023-10-12 12:40:40,080] {scheduler_job.py:182} INFO - Started process (PID=6739) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:40:40,083] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:40:40,085] {logging_mixin.py:104} INFO - [2023-10-12 12:40:40,085] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:40:40,309] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:40:40,342] {logging_mixin.py:104} INFO - [2023-10-12 12:40:40,342] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:40:40,367] {logging_mixin.py:104} INFO - [2023-10-12 12:40:40,366] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:40:40,383] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.309 seconds
+[2023-10-12 12:41:11,280] {scheduler_job.py:182} INFO - Started process (PID=6796) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:41:11,285] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:41:11,288] {logging_mixin.py:104} INFO - [2023-10-12 12:41:11,288] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:41:11,606] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:41:11,641] {logging_mixin.py:104} INFO - [2023-10-12 12:41:11,641] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:41:11,667] {logging_mixin.py:104} INFO - [2023-10-12 12:41:11,667] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:41:11,690] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.418 seconds
+[2023-10-12 12:41:42,008] {scheduler_job.py:182} INFO - Started process (PID=6859) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:41:42,015] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:41:42,020] {logging_mixin.py:104} INFO - [2023-10-12 12:41:42,020] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:41:42,541] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:41:42,593] {logging_mixin.py:104} INFO - [2023-10-12 12:41:42,593] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:41:42,637] {logging_mixin.py:104} INFO - [2023-10-12 12:41:42,637] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:41:42,696] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.707 seconds
+[2023-10-12 12:42:13,277] {scheduler_job.py:182} INFO - Started process (PID=6919) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:42:13,284] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:42:13,289] {logging_mixin.py:104} INFO - [2023-10-12 12:42:13,289] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:42:13,655] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:42:13,741] {logging_mixin.py:104} INFO - [2023-10-12 12:42:13,741] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:42:13,838] {logging_mixin.py:104} INFO - [2023-10-12 12:42:13,838] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:42:13,895] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.625 seconds
+[2023-10-12 12:42:44,273] {scheduler_job.py:182} INFO - Started process (PID=6977) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:42:44,278] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:42:44,282] {logging_mixin.py:104} INFO - [2023-10-12 12:42:44,281] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:42:44,543] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:42:44,580] {logging_mixin.py:104} INFO - [2023-10-12 12:42:44,579] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:42:44,609] {logging_mixin.py:104} INFO - [2023-10-12 12:42:44,609] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:42:44,631] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.366 seconds
+[2023-10-12 12:43:15,117] {scheduler_job.py:182} INFO - Started process (PID=7033) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:43:15,122] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:43:15,124] {logging_mixin.py:104} INFO - [2023-10-12 12:43:15,124] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:43:15,401] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:43:15,444] {logging_mixin.py:104} INFO - [2023-10-12 12:43:15,444] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:43:15,483] {logging_mixin.py:104} INFO - [2023-10-12 12:43:15,483] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:43:15,508] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.398 seconds
+[2023-10-12 12:43:45,893] {scheduler_job.py:182} INFO - Started process (PID=7099) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:43:45,911] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:43:45,932] {logging_mixin.py:104} INFO - [2023-10-12 12:43:45,931] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:43:46,200] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:43:46,239] {logging_mixin.py:104} INFO - [2023-10-12 12:43:46,238] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:43:46,268] {logging_mixin.py:104} INFO - [2023-10-12 12:43:46,268] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:43:46,289] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.403 seconds
+[2023-10-12 12:44:16,589] {scheduler_job.py:182} INFO - Started process (PID=7157) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:44:16,595] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:44:16,597] {logging_mixin.py:104} INFO - [2023-10-12 12:44:16,597] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:44:16,841] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:44:16,875] {logging_mixin.py:104} INFO - [2023-10-12 12:44:16,875] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:44:16,904] {logging_mixin.py:104} INFO - [2023-10-12 12:44:16,904] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:44:16,921] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.339 seconds
+[2023-10-12 12:45:50,761] {scheduler_job.py:182} INFO - Started process (PID=44) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:45:50,779] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:45:50,783] {logging_mixin.py:104} INFO - [2023-10-12 12:45:50,783] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:45:51,397] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:45:51,469] {logging_mixin.py:104} INFO - [2023-10-12 12:45:51,469] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:45:51,510] {logging_mixin.py:104} INFO - [2023-10-12 12:45:51,510] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:45:51,551] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.812 seconds
+[2023-10-12 12:46:22,358] {scheduler_job.py:182} INFO - Started process (PID=99) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:46:22,362] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:46:22,365] {logging_mixin.py:104} INFO - [2023-10-12 12:46:22,365] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:46:22,623] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:46:22,683] {logging_mixin.py:104} INFO - [2023-10-12 12:46:22,682] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:46:22,711] {logging_mixin.py:104} INFO - [2023-10-12 12:46:22,711] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:46:22,730] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.379 seconds
+[2023-10-12 12:46:53,485] {scheduler_job.py:182} INFO - Started process (PID=156) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:46:53,488] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:46:53,492] {logging_mixin.py:104} INFO - [2023-10-12 12:46:53,491] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:46:53,762] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:46:53,799] {logging_mixin.py:104} INFO - [2023-10-12 12:46:53,799] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:46:53,824] {logging_mixin.py:104} INFO - [2023-10-12 12:46:53,824] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:46:53,847] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.372 seconds
+[2023-10-12 12:47:24,112] {scheduler_job.py:182} INFO - Started process (PID=213) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:47:24,118] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:47:24,121] {logging_mixin.py:104} INFO - [2023-10-12 12:47:24,120] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:47:24,472] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:47:24,537] {logging_mixin.py:104} INFO - [2023-10-12 12:47:24,536] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:47:24,604] {logging_mixin.py:104} INFO - [2023-10-12 12:47:24,603] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:47:24,657] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.555 seconds
+[2023-10-12 12:47:54,861] {scheduler_job.py:182} INFO - Started process (PID=276) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:47:54,865] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:47:54,870] {logging_mixin.py:104} INFO - [2023-10-12 12:47:54,870] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:47:55,130] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:47:55,165] {logging_mixin.py:104} INFO - [2023-10-12 12:47:55,165] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:47:55,196] {logging_mixin.py:104} INFO - [2023-10-12 12:47:55,196] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:47:55,218] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.363 seconds
+[2023-10-12 12:48:25,381] {scheduler_job.py:182} INFO - Started process (PID=342) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:48:25,385] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:48:25,387] {logging_mixin.py:104} INFO - [2023-10-12 12:48:25,387] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:48:25,622] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:48:25,657] {logging_mixin.py:104} INFO - [2023-10-12 12:48:25,657] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:48:25,682] {logging_mixin.py:104} INFO - [2023-10-12 12:48:25,682] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:48:25,700] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.325 seconds
+[2023-10-12 12:48:55,772] {scheduler_job.py:182} INFO - Started process (PID=400) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:48:55,776] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:48:55,778] {logging_mixin.py:104} INFO - [2023-10-12 12:48:55,778] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:48:56,025] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:48:56,061] {logging_mixin.py:104} INFO - [2023-10-12 12:48:56,060] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:48:56,090] {logging_mixin.py:104} INFO - [2023-10-12 12:48:56,090] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:48:56,106] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.342 seconds
+[2023-10-12 12:49:26,171] {scheduler_job.py:182} INFO - Started process (PID=456) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:49:26,176] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:49:26,180] {logging_mixin.py:104} INFO - [2023-10-12 12:49:26,180] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:49:26,476] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:49:26,528] {logging_mixin.py:104} INFO - [2023-10-12 12:49:26,528] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:49:26,574] {logging_mixin.py:104} INFO - [2023-10-12 12:49:26,574] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:49:26,595] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.431 seconds
+[2023-10-12 12:49:57,351] {scheduler_job.py:182} INFO - Started process (PID=512) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:49:57,357] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:49:57,360] {logging_mixin.py:104} INFO - [2023-10-12 12:49:57,360] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:49:57,602] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:49:57,635] {logging_mixin.py:104} INFO - [2023-10-12 12:49:57,635] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:49:57,663] {logging_mixin.py:104} INFO - [2023-10-12 12:49:57,663] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:49:57,681] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.342 seconds
+[2023-10-12 12:50:27,913] {scheduler_job.py:182} INFO - Started process (PID=568) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:50:27,917] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:50:27,920] {logging_mixin.py:104} INFO - [2023-10-12 12:50:27,920] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:50:28,171] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:50:28,212] {logging_mixin.py:104} INFO - [2023-10-12 12:50:28,212] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:50:28,242] {logging_mixin.py:104} INFO - [2023-10-12 12:50:28,242] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:50:28,261] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.356 seconds
+[2023-10-12 12:50:58,956] {scheduler_job.py:182} INFO - Started process (PID=633) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:50:58,976] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:50:58,981] {logging_mixin.py:104} INFO - [2023-10-12 12:50:58,980] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:50:59,327] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:50:59,395] {logging_mixin.py:104} INFO - [2023-10-12 12:50:59,395] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:50:59,434] {logging_mixin.py:104} INFO - [2023-10-12 12:50:59,434] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:50:59,459] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.512 seconds
+[2023-10-12 12:51:30,331] {scheduler_job.py:182} INFO - Started process (PID=690) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:51:30,335] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:51:30,338] {logging_mixin.py:104} INFO - [2023-10-12 12:51:30,338] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:51:30,624] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:51:30,682] {logging_mixin.py:104} INFO - [2023-10-12 12:51:30,682] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:51:30,720] {logging_mixin.py:104} INFO - [2023-10-12 12:51:30,720] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:51:30,738] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.415 seconds
+[2023-10-12 12:52:00,902] {scheduler_job.py:182} INFO - Started process (PID=748) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:52:00,914] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:52:00,919] {logging_mixin.py:104} INFO - [2023-10-12 12:52:00,919] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:52:01,170] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:52:01,215] {logging_mixin.py:104} INFO - [2023-10-12 12:52:01,215] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:52:01,252] {logging_mixin.py:104} INFO - [2023-10-12 12:52:01,252] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:52:01,266] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.369 seconds
+[2023-10-12 12:52:31,477] {scheduler_job.py:182} INFO - Started process (PID=811) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:52:31,485] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:52:31,488] {logging_mixin.py:104} INFO - [2023-10-12 12:52:31,488] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:52:31,730] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:52:31,766] {logging_mixin.py:104} INFO - [2023-10-12 12:52:31,766] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:52:31,796] {logging_mixin.py:104} INFO - [2023-10-12 12:52:31,796] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:52:31,839] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.368 seconds
+[2023-10-12 12:53:02,356] {scheduler_job.py:182} INFO - Started process (PID=870) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:53:02,360] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:53:02,365] {logging_mixin.py:104} INFO - [2023-10-12 12:53:02,365] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:53:02,634] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:53:02,669] {logging_mixin.py:104} INFO - [2023-10-12 12:53:02,669] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:53:02,694] {logging_mixin.py:104} INFO - [2023-10-12 12:53:02,694] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:53:02,710] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.361 seconds
+[2023-10-12 12:53:33,103] {scheduler_job.py:182} INFO - Started process (PID=926) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:53:33,131] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:53:33,133] {logging_mixin.py:104} INFO - [2023-10-12 12:53:33,133] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:53:33,504] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:53:33,553] {logging_mixin.py:104} INFO - [2023-10-12 12:53:33,553] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:53:33,600] {logging_mixin.py:104} INFO - [2023-10-12 12:53:33,600] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:53:33,637] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.560 seconds
+[2023-10-12 12:54:03,846] {scheduler_job.py:182} INFO - Started process (PID=988) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:54:03,851] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:54:03,855] {logging_mixin.py:104} INFO - [2023-10-12 12:54:03,855] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:54:04,126] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:54:04,228] {logging_mixin.py:104} INFO - [2023-10-12 12:54:04,228] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:54:04,277] {logging_mixin.py:104} INFO - [2023-10-12 12:54:04,277] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:54:04,336] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.497 seconds
+[2023-10-12 12:54:34,888] {scheduler_job.py:182} INFO - Started process (PID=1047) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:54:34,892] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:54:34,895] {logging_mixin.py:104} INFO - [2023-10-12 12:54:34,895] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:54:35,157] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:54:35,203] {logging_mixin.py:104} INFO - [2023-10-12 12:54:35,203] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:54:35,234] {logging_mixin.py:104} INFO - [2023-10-12 12:54:35,234] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:54:35,254] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.375 seconds
+[2023-10-12 12:55:05,334] {scheduler_job.py:182} INFO - Started process (PID=1103) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:55:05,338] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:55:05,340] {logging_mixin.py:104} INFO - [2023-10-12 12:55:05,340] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:55:05,577] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:55:05,612] {logging_mixin.py:104} INFO - [2023-10-12 12:55:05,612] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:55:05,637] {logging_mixin.py:104} INFO - [2023-10-12 12:55:05,637] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:55:05,653] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.324 seconds
+[2023-10-12 12:55:36,161] {scheduler_job.py:182} INFO - Started process (PID=1158) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:55:36,166] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:55:36,169] {logging_mixin.py:104} INFO - [2023-10-12 12:55:36,168] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:55:36,404] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:55:36,438] {logging_mixin.py:104} INFO - [2023-10-12 12:55:36,438] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:55:36,463] {logging_mixin.py:104} INFO - [2023-10-12 12:55:36,463] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:55:36,478] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.323 seconds
+[2023-10-12 12:56:06,922] {scheduler_job.py:182} INFO - Started process (PID=1224) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:56:06,926] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:56:06,929] {logging_mixin.py:104} INFO - [2023-10-12 12:56:06,928] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:56:07,176] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:56:07,235] {logging_mixin.py:104} INFO - [2023-10-12 12:56:07,235] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:56:07,274] {logging_mixin.py:104} INFO - [2023-10-12 12:56:07,274] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:56:07,303] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.387 seconds
+[2023-10-12 12:56:37,579] {scheduler_job.py:182} INFO - Started process (PID=1280) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:56:37,585] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:56:37,610] {logging_mixin.py:104} INFO - [2023-10-12 12:56:37,609] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:56:37,847] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:56:37,880] {logging_mixin.py:104} INFO - [2023-10-12 12:56:37,880] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:56:37,908] {logging_mixin.py:104} INFO - [2023-10-12 12:56:37,907] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:56:37,922] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.350 seconds
+[2023-10-12 12:57:08,080] {scheduler_job.py:182} INFO - Started process (PID=1338) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:57:08,083] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:57:08,085] {logging_mixin.py:104} INFO - [2023-10-12 12:57:08,085] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:57:08,312] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:57:08,347] {logging_mixin.py:104} INFO - [2023-10-12 12:57:08,346] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:57:08,378] {logging_mixin.py:104} INFO - [2023-10-12 12:57:08,377] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:57:08,400] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.326 seconds
+[2023-10-12 12:57:38,531] {scheduler_job.py:182} INFO - Started process (PID=1404) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:57:38,535] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:57:38,538] {logging_mixin.py:104} INFO - [2023-10-12 12:57:38,538] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:57:38,759] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:57:38,795] {logging_mixin.py:104} INFO - [2023-10-12 12:57:38,795] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:57:38,823] {logging_mixin.py:104} INFO - [2023-10-12 12:57:38,823] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:57:38,838] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.313 seconds
+[2023-10-12 12:58:09,014] {scheduler_job.py:182} INFO - Started process (PID=1458) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:58:09,018] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:58:09,021] {logging_mixin.py:104} INFO - [2023-10-12 12:58:09,021] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:58:09,273] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:58:09,311] {logging_mixin.py:104} INFO - [2023-10-12 12:58:09,311] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:58:09,360] {logging_mixin.py:104} INFO - [2023-10-12 12:58:09,360] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:58:09,376] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.369 seconds
+[2023-10-12 12:58:39,546] {scheduler_job.py:182} INFO - Started process (PID=1516) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:58:39,550] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:58:39,553] {logging_mixin.py:104} INFO - [2023-10-12 12:58:39,553] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:58:39,767] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:58:39,799] {logging_mixin.py:104} INFO - [2023-10-12 12:58:39,799] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:58:39,823] {logging_mixin.py:104} INFO - [2023-10-12 12:58:39,823] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:58:39,838] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.298 seconds
+[2023-10-12 12:59:10,766] {scheduler_job.py:182} INFO - Started process (PID=1572) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:59:10,771] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:59:10,773] {logging_mixin.py:104} INFO - [2023-10-12 12:59:10,773] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:59:11,034] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:59:11,082] {logging_mixin.py:104} INFO - [2023-10-12 12:59:11,082] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:59:11,113] {logging_mixin.py:104} INFO - [2023-10-12 12:59:11,113] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:59:11,147] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.387 seconds
+[2023-10-12 12:59:41,741] {scheduler_job.py:182} INFO - Started process (PID=1638) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 12:59:41,746] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 12:59:41,749] {logging_mixin.py:104} INFO - [2023-10-12 12:59:41,749] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 12:59:42,001] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 12:59:42,039] {logging_mixin.py:104} INFO - [2023-10-12 12:59:42,039] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 12:59:42,063] {logging_mixin.py:104} INFO - [2023-10-12 12:59:42,063] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 12:59:42,079] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.346 seconds
+[2023-10-12 13:00:12,322] {scheduler_job.py:182} INFO - Started process (PID=1694) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:00:12,326] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:00:12,329] {logging_mixin.py:104} INFO - [2023-10-12 13:00:12,329] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:00:12,588] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:00:12,624] {logging_mixin.py:104} INFO - [2023-10-12 13:00:12,623] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:00:12,653] {logging_mixin.py:104} INFO - [2023-10-12 13:00:12,652] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:00:12,668] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.352 seconds
+[2023-10-12 13:00:42,752] {scheduler_job.py:182} INFO - Started process (PID=1751) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:00:42,756] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:00:42,759] {logging_mixin.py:104} INFO - [2023-10-12 13:00:42,759] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:00:43,016] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:00:43,067] {logging_mixin.py:104} INFO - [2023-10-12 13:00:43,067] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:00:43,092] {logging_mixin.py:104} INFO - [2023-10-12 13:00:43,092] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:00:43,109] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.363 seconds
+[2023-10-12 13:01:13,409] {scheduler_job.py:182} INFO - Started process (PID=1816) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:01:13,413] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:01:13,416] {logging_mixin.py:104} INFO - [2023-10-12 13:01:13,416] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:01:13,678] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:01:13,712] {logging_mixin.py:104} INFO - [2023-10-12 13:01:13,711] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:01:13,737] {logging_mixin.py:104} INFO - [2023-10-12 13:01:13,737] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:01:13,753] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.351 seconds
+[2023-10-12 13:01:43,947] {scheduler_job.py:182} INFO - Started process (PID=1872) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:01:43,952] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:01:43,955] {logging_mixin.py:104} INFO - [2023-10-12 13:01:43,955] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:01:44,239] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:01:44,278] {logging_mixin.py:104} INFO - [2023-10-12 13:01:44,278] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:01:44,302] {logging_mixin.py:104} INFO - [2023-10-12 13:01:44,302] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:01:44,317] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.377 seconds
+[2023-10-12 13:02:14,637] {scheduler_job.py:182} INFO - Started process (PID=1936) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:02:14,641] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:02:14,644] {logging_mixin.py:104} INFO - [2023-10-12 13:02:14,644] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:02:14,919] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:02:14,962] {logging_mixin.py:104} INFO - [2023-10-12 13:02:14,962] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:02:15,000] {logging_mixin.py:104} INFO - [2023-10-12 13:02:15,000] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:02:15,020] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.389 seconds
+[2023-10-12 13:02:45,100] {scheduler_job.py:182} INFO - Started process (PID=1996) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:02:45,105] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:02:45,108] {logging_mixin.py:104} INFO - [2023-10-12 13:02:45,107] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:02:45,329] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:02:45,361] {logging_mixin.py:104} INFO - [2023-10-12 13:02:45,360] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:02:45,386] {logging_mixin.py:104} INFO - [2023-10-12 13:02:45,386] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:02:45,408] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.313 seconds
+[2023-10-12 13:03:15,469] {scheduler_job.py:182} INFO - Started process (PID=2051) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:03:15,472] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:03:15,475] {logging_mixin.py:104} INFO - [2023-10-12 13:03:15,475] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:03:15,712] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:03:15,748] {logging_mixin.py:104} INFO - [2023-10-12 13:03:15,748] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:03:15,788] {logging_mixin.py:104} INFO - [2023-10-12 13:03:15,788] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:03:15,802] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.340 seconds
+[2023-10-12 13:03:45,956] {scheduler_job.py:182} INFO - Started process (PID=2107) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:03:45,975] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:03:45,983] {logging_mixin.py:104} INFO - [2023-10-12 13:03:45,977] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:03:46,271] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:03:46,347] {logging_mixin.py:104} INFO - [2023-10-12 13:03:46,346] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:03:46,392] {logging_mixin.py:104} INFO - [2023-10-12 13:03:46,392] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:03:46,425] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.484 seconds
+[2023-10-12 13:04:16,603] {scheduler_job.py:182} INFO - Started process (PID=2173) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:04:16,609] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:04:16,613] {logging_mixin.py:104} INFO - [2023-10-12 13:04:16,613] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:04:16,898] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:04:16,936] {logging_mixin.py:104} INFO - [2023-10-12 13:04:16,936] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:04:16,961] {logging_mixin.py:104} INFO - [2023-10-12 13:04:16,960] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:04:16,979] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.387 seconds
+[2023-10-12 13:04:47,235] {scheduler_job.py:182} INFO - Started process (PID=2230) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:04:47,238] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:04:47,242] {logging_mixin.py:104} INFO - [2023-10-12 13:04:47,242] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:04:47,514] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:04:47,549] {logging_mixin.py:104} INFO - [2023-10-12 13:04:47,549] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:04:47,575] {logging_mixin.py:104} INFO - [2023-10-12 13:04:47,575] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:04:47,591] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.364 seconds
+[2023-10-12 13:05:17,742] {scheduler_job.py:182} INFO - Started process (PID=2286) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:05:17,745] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:05:17,749] {logging_mixin.py:104} INFO - [2023-10-12 13:05:17,749] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:05:18,061] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:05:18,113] {logging_mixin.py:104} INFO - [2023-10-12 13:05:18,113] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:05:18,151] {logging_mixin.py:104} INFO - [2023-10-12 13:05:18,151] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:05:18,178] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.444 seconds
+[2023-10-12 13:05:48,272] {scheduler_job.py:182} INFO - Started process (PID=2353) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:05:48,278] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:05:48,281] {logging_mixin.py:104} INFO - [2023-10-12 13:05:48,281] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:05:48,636] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:05:48,671] {logging_mixin.py:104} INFO - [2023-10-12 13:05:48,671] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:05:48,696] {logging_mixin.py:104} INFO - [2023-10-12 13:05:48,696] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:05:48,713] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.447 seconds
+[2023-10-12 13:06:18,808] {scheduler_job.py:182} INFO - Started process (PID=2407) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:06:18,819] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:06:18,824] {logging_mixin.py:104} INFO - [2023-10-12 13:06:18,823] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:06:19,129] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:06:19,175] {logging_mixin.py:104} INFO - [2023-10-12 13:06:19,175] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:06:19,201] {logging_mixin.py:104} INFO - [2023-10-12 13:06:19,201] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:06:19,218] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.425 seconds
+[2023-10-12 13:06:49,306] {scheduler_job.py:182} INFO - Started process (PID=2463) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:06:49,312] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:06:49,316] {logging_mixin.py:104} INFO - [2023-10-12 13:06:49,316] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:06:49,682] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:06:49,732] {logging_mixin.py:104} INFO - [2023-10-12 13:06:49,720] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:06:49,769] {logging_mixin.py:104} INFO - [2023-10-12 13:06:49,769] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:06:49,813] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.528 seconds
+[2023-10-12 13:07:20,147] {scheduler_job.py:182} INFO - Started process (PID=2519) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:07:20,159] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:07:20,171] {logging_mixin.py:104} INFO - [2023-10-12 13:07:20,170] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:07:22,060] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:07:22,172] {logging_mixin.py:104} INFO - [2023-10-12 13:07:22,172] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:07:22,223] {logging_mixin.py:104} INFO - [2023-10-12 13:07:22,223] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:07:22,260] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 2.139 seconds
+[2023-10-12 13:07:52,521] {scheduler_job.py:182} INFO - Started process (PID=2576) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:07:52,525] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:07:52,529] {logging_mixin.py:104} INFO - [2023-10-12 13:07:52,529] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:07:52,808] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:07:52,851] {logging_mixin.py:104} INFO - [2023-10-12 13:07:52,850] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:07:52,885] {logging_mixin.py:104} INFO - [2023-10-12 13:07:52,885] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:07:52,921] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.407 seconds
+[2023-10-12 13:08:23,041] {scheduler_job.py:182} INFO - Started process (PID=2640) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:08:23,046] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:08:23,050] {logging_mixin.py:104} INFO - [2023-10-12 13:08:23,049] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:08:23,332] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:08:23,372] {logging_mixin.py:104} INFO - [2023-10-12 13:08:23,372] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:08:23,402] {logging_mixin.py:104} INFO - [2023-10-12 13:08:23,402] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:08:23,422] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.390 seconds
+[2023-10-12 13:08:53,624] {scheduler_job.py:182} INFO - Started process (PID=2697) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:08:53,628] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:08:53,633] {logging_mixin.py:104} INFO - [2023-10-12 13:08:53,632] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:08:53,985] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:08:54,031] {logging_mixin.py:104} INFO - [2023-10-12 13:08:54,031] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:08:54,060] {logging_mixin.py:104} INFO - [2023-10-12 13:08:54,060] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:08:54,082] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.465 seconds
+[2023-10-12 13:09:24,237] {scheduler_job.py:182} INFO - Started process (PID=2754) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:09:24,242] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:09:24,247] {logging_mixin.py:104} INFO - [2023-10-12 13:09:24,247] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:09:24,523] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:09:24,570] {logging_mixin.py:104} INFO - [2023-10-12 13:09:24,569] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:09:24,604] {logging_mixin.py:104} INFO - [2023-10-12 13:09:24,604] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:09:24,624] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.395 seconds
+[2023-10-12 13:09:55,584] {scheduler_job.py:182} INFO - Started process (PID=2810) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:09:55,590] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:09:55,599] {logging_mixin.py:104} INFO - [2023-10-12 13:09:55,597] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:09:55,950] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:09:55,993] {logging_mixin.py:104} INFO - [2023-10-12 13:09:55,992] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:09:56,029] {logging_mixin.py:104} INFO - [2023-10-12 13:09:56,029] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:09:56,056] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.482 seconds
+[2023-10-12 13:10:26,314] {scheduler_job.py:182} INFO - Started process (PID=2878) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:10:26,323] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:10:26,328] {logging_mixin.py:104} INFO - [2023-10-12 13:10:26,328] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:10:26,698] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:10:26,743] {logging_mixin.py:104} INFO - [2023-10-12 13:10:26,743] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:10:26,781] {logging_mixin.py:104} INFO - [2023-10-12 13:10:26,781] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:10:26,818] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.512 seconds
+[2023-10-12 13:10:57,721] {scheduler_job.py:182} INFO - Started process (PID=2934) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:10:57,725] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:10:57,731] {logging_mixin.py:104} INFO - [2023-10-12 13:10:57,730] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:10:58,138] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:10:58,207] {logging_mixin.py:104} INFO - [2023-10-12 13:10:58,207] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:10:58,256] {logging_mixin.py:104} INFO - [2023-10-12 13:10:58,256] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:10:58,280] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.568 seconds
+[2023-10-12 13:11:28,335] {scheduler_job.py:182} INFO - Started process (PID=2990) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:11:28,345] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:11:28,348] {logging_mixin.py:104} INFO - [2023-10-12 13:11:28,347] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:11:28,767] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:11:28,828] {logging_mixin.py:104} INFO - [2023-10-12 13:11:28,828] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:11:28,871] {logging_mixin.py:104} INFO - [2023-10-12 13:11:28,871] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:11:28,896] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.572 seconds
+[2023-10-12 13:11:58,986] {scheduler_job.py:182} INFO - Started process (PID=3047) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:11:58,992] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:11:58,996] {logging_mixin.py:104} INFO - [2023-10-12 13:11:58,995] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:11:59,374] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:11:59,421] {logging_mixin.py:104} INFO - [2023-10-12 13:11:59,421] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:11:59,451] {logging_mixin.py:104} INFO - [2023-10-12 13:11:59,451] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:11:59,473] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.494 seconds
+[2023-10-12 13:12:30,074] {scheduler_job.py:182} INFO - Started process (PID=3103) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:12:30,081] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:12:30,087] {logging_mixin.py:104} INFO - [2023-10-12 13:12:30,087] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:12:30,629] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:12:30,702] {logging_mixin.py:104} INFO - [2023-10-12 13:12:30,702] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:12:30,736] {logging_mixin.py:104} INFO - [2023-10-12 13:12:30,736] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:12:30,767] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.700 seconds
+[2023-10-12 13:13:00,903] {scheduler_job.py:182} INFO - Started process (PID=3170) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:13:00,907] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:13:00,911] {logging_mixin.py:104} INFO - [2023-10-12 13:13:00,911] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:13:01,217] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:13:01,273] {logging_mixin.py:104} INFO - [2023-10-12 13:13:01,273] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:13:01,332] {logging_mixin.py:104} INFO - [2023-10-12 13:13:01,332] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:13:01,357] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.466 seconds
+[2023-10-12 13:13:31,537] {scheduler_job.py:182} INFO - Started process (PID=3226) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:13:31,544] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:13:31,548] {logging_mixin.py:104} INFO - [2023-10-12 13:13:31,548] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:13:31,857] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:13:31,913] {logging_mixin.py:104} INFO - [2023-10-12 13:13:31,912] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:13:31,944] {logging_mixin.py:104} INFO - [2023-10-12 13:13:31,944] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:13:31,968] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.438 seconds
+[2023-10-12 13:14:02,034] {scheduler_job.py:182} INFO - Started process (PID=3281) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:14:02,041] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:14:02,044] {logging_mixin.py:104} INFO - [2023-10-12 13:14:02,044] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:14:02,473] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:14:02,526] {logging_mixin.py:104} INFO - [2023-10-12 13:14:02,526] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:14:02,559] {logging_mixin.py:104} INFO - [2023-10-12 13:14:02,559] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:14:02,577] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.552 seconds
+[2023-10-12 13:14:33,297] {scheduler_job.py:182} INFO - Started process (PID=3338) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:14:33,305] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:14:33,308] {logging_mixin.py:104} INFO - [2023-10-12 13:14:33,308] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:14:33,667] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:14:33,704] {logging_mixin.py:104} INFO - [2023-10-12 13:14:33,704] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:14:33,731] {logging_mixin.py:104} INFO - [2023-10-12 13:14:33,731] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:14:33,747] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.466 seconds
+[2023-10-12 13:15:03,844] {scheduler_job.py:182} INFO - Started process (PID=3404) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:15:03,854] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:15:03,863] {logging_mixin.py:104} INFO - [2023-10-12 13:15:03,862] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:15:04,182] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:15:04,224] {logging_mixin.py:104} INFO - [2023-10-12 13:15:04,224] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:15:04,255] {logging_mixin.py:104} INFO - [2023-10-12 13:15:04,255] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:15:04,275] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.446 seconds
+[2023-10-12 13:15:34,442] {scheduler_job.py:182} INFO - Started process (PID=3461) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:15:34,447] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:15:34,450] {logging_mixin.py:104} INFO - [2023-10-12 13:15:34,450] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:15:34,716] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:15:34,752] {logging_mixin.py:104} INFO - [2023-10-12 13:15:34,752] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:15:34,782] {logging_mixin.py:104} INFO - [2023-10-12 13:15:34,781] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:15:34,800] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.365 seconds
+[2023-10-12 13:16:05,503] {scheduler_job.py:182} INFO - Started process (PID=3518) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:16:05,508] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:16:05,513] {logging_mixin.py:104} INFO - [2023-10-12 13:16:05,513] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:16:05,771] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:16:05,810] {logging_mixin.py:104} INFO - [2023-10-12 13:16:05,810] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:16:05,837] {logging_mixin.py:104} INFO - [2023-10-12 13:16:05,837] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:16:05,858] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.361 seconds
+[2023-10-12 13:16:35,966] {scheduler_job.py:182} INFO - Started process (PID=3574) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:16:35,973] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:16:35,980] {logging_mixin.py:104} INFO - [2023-10-12 13:16:35,979] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:16:36,268] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:16:36,321] {logging_mixin.py:104} INFO - [2023-10-12 13:16:36,321] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:16:36,351] {logging_mixin.py:104} INFO - [2023-10-12 13:16:36,351] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:16:36,374] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.415 seconds
+[2023-10-12 13:17:06,428] {scheduler_job.py:182} INFO - Started process (PID=3629) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:17:06,433] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:17:06,436] {logging_mixin.py:104} INFO - [2023-10-12 13:17:06,436] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:17:06,862] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:17:06,918] {logging_mixin.py:104} INFO - [2023-10-12 13:17:06,918] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:17:06,954] {logging_mixin.py:104} INFO - [2023-10-12 13:17:06,953] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:17:06,975] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.555 seconds
+[2023-10-12 13:17:37,656] {scheduler_job.py:182} INFO - Started process (PID=3695) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:17:37,664] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:17:37,671] {logging_mixin.py:104} INFO - [2023-10-12 13:17:37,670] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:17:38,050] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:17:38,093] {logging_mixin.py:104} INFO - [2023-10-12 13:17:38,093] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:17:38,128] {logging_mixin.py:104} INFO - [2023-10-12 13:17:38,128] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:17:38,155] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.507 seconds
+[2023-10-12 13:18:08,338] {scheduler_job.py:182} INFO - Started process (PID=3754) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:18:08,342] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:18:08,345] {logging_mixin.py:104} INFO - [2023-10-12 13:18:08,345] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:18:08,623] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:18:08,671] {logging_mixin.py:104} INFO - [2023-10-12 13:18:08,671] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:18:08,704] {logging_mixin.py:104} INFO - [2023-10-12 13:18:08,704] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:18:08,741] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.410 seconds
+[2023-10-12 13:18:39,683] {scheduler_job.py:182} INFO - Started process (PID=3810) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:18:39,697] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:18:39,703] {logging_mixin.py:104} INFO - [2023-10-12 13:18:39,702] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:18:39,986] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:18:40,025] {logging_mixin.py:104} INFO - [2023-10-12 13:18:40,025] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:18:40,056] {logging_mixin.py:104} INFO - [2023-10-12 13:18:40,056] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:18:40,077] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.403 seconds
+[2023-10-12 13:19:10,244] {scheduler_job.py:182} INFO - Started process (PID=3868) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:19:10,249] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:19:10,252] {logging_mixin.py:104} INFO - [2023-10-12 13:19:10,252] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:19:10,641] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:19:10,689] {logging_mixin.py:104} INFO - [2023-10-12 13:19:10,689] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:19:10,774] {logging_mixin.py:104} INFO - [2023-10-12 13:19:10,774] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:19:10,803] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.568 seconds
+[2023-10-12 13:19:41,870] {scheduler_job.py:182} INFO - Started process (PID=3921) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:19:41,889] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:19:41,951] {logging_mixin.py:104} INFO - [2023-10-12 13:19:41,951] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:19:43,496] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:19:43,615] {logging_mixin.py:104} INFO - [2023-10-12 13:19:43,615] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:19:43,725] {logging_mixin.py:104} INFO - [2023-10-12 13:19:43,724] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:19:43,820] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 2.126 seconds
+[2023-10-12 13:20:14,844] {scheduler_job.py:182} INFO - Started process (PID=3977) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:20:14,865] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:20:14,894] {logging_mixin.py:104} INFO - [2023-10-12 13:20:14,890] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:20:15,601] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:20:15,711] {logging_mixin.py:104} INFO - [2023-10-12 13:20:15,710] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:20:16,192] {logging_mixin.py:104} INFO - [2023-10-12 13:20:16,192] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:20:16,328] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 1.570 seconds
+[2023-10-12 13:20:47,259] {scheduler_job.py:182} INFO - Started process (PID=4045) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:20:47,269] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:20:47,277] {logging_mixin.py:104} INFO - [2023-10-12 13:20:47,276] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:20:47,698] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:20:47,794] {logging_mixin.py:104} INFO - [2023-10-12 13:20:47,794] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:20:47,832] {logging_mixin.py:104} INFO - [2023-10-12 13:20:47,832] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:20:47,864] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.613 seconds
+[2023-10-12 13:21:18,074] {scheduler_job.py:182} INFO - Started process (PID=4103) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:21:18,099] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:21:18,102] {logging_mixin.py:104} INFO - [2023-10-12 13:21:18,102] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:21:18,503] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:21:18,553] {logging_mixin.py:104} INFO - [2023-10-12 13:21:18,553] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:21:18,587] {logging_mixin.py:104} INFO - [2023-10-12 13:21:18,587] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:21:18,612] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.549 seconds
+[2023-10-12 13:21:49,647] {scheduler_job.py:182} INFO - Started process (PID=4160) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:21:49,652] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:21:49,655] {logging_mixin.py:104} INFO - [2023-10-12 13:21:49,654] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:21:49,964] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:21:50,010] {logging_mixin.py:104} INFO - [2023-10-12 13:21:50,010] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:21:50,039] {logging_mixin.py:104} INFO - [2023-10-12 13:21:50,039] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:21:50,058] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.419 seconds
+[2023-10-12 13:22:21,081] {scheduler_job.py:182} INFO - Started process (PID=4216) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:22:21,086] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:22:21,091] {logging_mixin.py:104} INFO - [2023-10-12 13:22:21,091] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:22:21,419] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:22:21,530] {logging_mixin.py:104} INFO - [2023-10-12 13:22:21,530] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:22:21,575] {logging_mixin.py:104} INFO - [2023-10-12 13:22:21,574] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:22:21,596] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.521 seconds
+[2023-10-12 13:22:52,575] {scheduler_job.py:182} INFO - Started process (PID=4272) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:22:52,590] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:22:52,606] {logging_mixin.py:104} INFO - [2023-10-12 13:22:52,606] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:22:53,211] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:22:53,257] {logging_mixin.py:104} INFO - [2023-10-12 13:22:53,257] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:22:53,304] {logging_mixin.py:104} INFO - [2023-10-12 13:22:53,303] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:22:53,325] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.766 seconds
+[2023-10-12 13:23:24,119] {scheduler_job.py:182} INFO - Started process (PID=4337) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:23:24,125] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:23:24,129] {logging_mixin.py:104} INFO - [2023-10-12 13:23:24,129] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:23:24,626] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:23:24,697] {logging_mixin.py:104} INFO - [2023-10-12 13:23:24,696] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:23:24,776] {logging_mixin.py:104} INFO - [2023-10-12 13:23:24,775] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:23:24,807] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.704 seconds
+[2023-10-12 13:23:55,604] {scheduler_job.py:182} INFO - Started process (PID=4395) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:23:55,614] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:23:55,622] {logging_mixin.py:104} INFO - [2023-10-12 13:23:55,622] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:23:55,997] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:23:56,050] {logging_mixin.py:104} INFO - [2023-10-12 13:23:56,049] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:23:56,096] {logging_mixin.py:104} INFO - [2023-10-12 13:23:56,096] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:23:56,120] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.525 seconds
+[2023-10-12 13:24:26,284] {scheduler_job.py:182} INFO - Started process (PID=4451) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:24:26,292] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:24:26,296] {logging_mixin.py:104} INFO - [2023-10-12 13:24:26,295] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:24:26,595] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:24:26,641] {logging_mixin.py:104} INFO - [2023-10-12 13:24:26,641] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:24:26,676] {logging_mixin.py:104} INFO - [2023-10-12 13:24:26,676] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:24:26,697] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.420 seconds
+[2023-10-12 13:24:57,359] {scheduler_job.py:182} INFO - Started process (PID=4507) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:24:57,364] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:24:57,367] {logging_mixin.py:104} INFO - [2023-10-12 13:24:57,367] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:24:57,736] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:24:57,795] {logging_mixin.py:104} INFO - [2023-10-12 13:24:57,795] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:24:57,855] {logging_mixin.py:104} INFO - [2023-10-12 13:24:57,855] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:24:57,945] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.595 seconds
+[2023-10-12 13:25:28,101] {scheduler_job.py:182} INFO - Started process (PID=4563) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:25:28,110] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:25:28,114] {logging_mixin.py:104} INFO - [2023-10-12 13:25:28,114] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:25:28,815] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:25:28,894] {logging_mixin.py:104} INFO - [2023-10-12 13:25:28,893] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:25:28,940] {logging_mixin.py:104} INFO - [2023-10-12 13:25:28,940] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:25:29,009] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.920 seconds
+[2023-10-12 13:25:59,221] {scheduler_job.py:182} INFO - Started process (PID=4619) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:25:59,228] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:25:59,233] {logging_mixin.py:104} INFO - [2023-10-12 13:25:59,232] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:25:59,650] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:25:59,723] {logging_mixin.py:104} INFO - [2023-10-12 13:25:59,723] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:25:59,773] {logging_mixin.py:104} INFO - [2023-10-12 13:25:59,773] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:25:59,801] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.588 seconds
+[2023-10-12 13:26:30,205] {scheduler_job.py:182} INFO - Started process (PID=4675) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:26:30,211] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:26:30,214] {logging_mixin.py:104} INFO - [2023-10-12 13:26:30,214] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:26:30,559] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:26:30,623] {logging_mixin.py:104} INFO - [2023-10-12 13:26:30,622] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:26:30,669] {logging_mixin.py:104} INFO - [2023-10-12 13:26:30,669] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:26:30,708] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.512 seconds
+[2023-10-12 13:27:00,892] {scheduler_job.py:182} INFO - Started process (PID=4740) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:27:00,898] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:27:00,905] {logging_mixin.py:104} INFO - [2023-10-12 13:27:00,904] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:27:01,444] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:27:01,504] {logging_mixin.py:104} INFO - [2023-10-12 13:27:01,504] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:27:01,549] {logging_mixin.py:104} INFO - [2023-10-12 13:27:01,549] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:27:01,579] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.694 seconds
+[2023-10-12 13:27:32,139] {scheduler_job.py:182} INFO - Started process (PID=4797) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:27:32,153] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:27:32,158] {logging_mixin.py:104} INFO - [2023-10-12 13:27:32,157] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:27:32,550] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:27:32,598] {logging_mixin.py:104} INFO - [2023-10-12 13:27:32,598] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:27:32,646] {logging_mixin.py:104} INFO - [2023-10-12 13:27:32,646] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:27:32,672] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.551 seconds
+[2023-10-12 13:28:02,796] {scheduler_job.py:182} INFO - Started process (PID=4853) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:28:02,799] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:28:02,803] {logging_mixin.py:104} INFO - [2023-10-12 13:28:02,803] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:28:03,134] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:28:03,192] {logging_mixin.py:104} INFO - [2023-10-12 13:28:03,192] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:28:03,234] {logging_mixin.py:104} INFO - [2023-10-12 13:28:03,234] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:28:03,265] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.478 seconds
+[2023-10-12 13:28:33,463] {scheduler_job.py:182} INFO - Started process (PID=4908) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:28:33,473] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:28:33,481] {logging_mixin.py:104} INFO - [2023-10-12 13:28:33,480] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:28:33,819] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:28:33,868] {logging_mixin.py:104} INFO - [2023-10-12 13:28:33,868] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:28:33,904] {logging_mixin.py:104} INFO - [2023-10-12 13:28:33,903] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:28:33,927] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.473 seconds
+[2023-10-12 13:29:04,073] {scheduler_job.py:182} INFO - Started process (PID=4963) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:29:04,078] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:29:04,082] {logging_mixin.py:104} INFO - [2023-10-12 13:29:04,082] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:29:04,686] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:29:04,745] {logging_mixin.py:104} INFO - [2023-10-12 13:29:04,744] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:29:04,791] {logging_mixin.py:104} INFO - [2023-10-12 13:29:04,790] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:29:04,828] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.763 seconds
+[2023-10-12 13:29:35,288] {scheduler_job.py:182} INFO - Started process (PID=5019) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:29:35,293] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:29:35,296] {logging_mixin.py:104} INFO - [2023-10-12 13:29:35,296] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:29:35,576] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:29:35,622] {logging_mixin.py:104} INFO - [2023-10-12 13:29:35,621] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:29:35,655] {logging_mixin.py:104} INFO - [2023-10-12 13:29:35,655] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:29:35,683] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.402 seconds
+[2023-10-12 13:30:06,026] {scheduler_job.py:182} INFO - Started process (PID=5075) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:30:06,031] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:30:06,036] {logging_mixin.py:104} INFO - [2023-10-12 13:30:06,035] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:30:06,461] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:30:06,530] {logging_mixin.py:104} INFO - [2023-10-12 13:30:06,529] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:30:06,572] {logging_mixin.py:104} INFO - [2023-10-12 13:30:06,572] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:30:06,610] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.593 seconds
+[2023-10-12 13:30:37,244] {scheduler_job.py:182} INFO - Started process (PID=5142) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:30:37,260] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:30:37,264] {logging_mixin.py:104} INFO - [2023-10-12 13:30:37,264] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:30:37,656] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:30:37,710] {logging_mixin.py:104} INFO - [2023-10-12 13:30:37,710] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:30:37,767] {logging_mixin.py:104} INFO - [2023-10-12 13:30:37,766] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:30:37,797] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.564 seconds
+[2023-10-12 13:31:08,396] {scheduler_job.py:182} INFO - Started process (PID=5198) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:31:08,401] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:31:08,405] {logging_mixin.py:104} INFO - [2023-10-12 13:31:08,404] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:31:08,847] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:31:08,907] {logging_mixin.py:104} INFO - [2023-10-12 13:31:08,907] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:31:08,963] {logging_mixin.py:104} INFO - [2023-10-12 13:31:08,963] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:31:08,993] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.606 seconds
+[2023-10-12 13:31:39,418] {scheduler_job.py:182} INFO - Started process (PID=5253) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:31:39,426] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:31:39,430] {logging_mixin.py:104} INFO - [2023-10-12 13:31:39,430] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:31:39,775] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:31:39,825] {logging_mixin.py:104} INFO - [2023-10-12 13:31:39,825] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:31:39,857] {logging_mixin.py:104} INFO - [2023-10-12 13:31:39,857] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:31:39,881] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.472 seconds
+[2023-10-12 13:32:10,365] {scheduler_job.py:182} INFO - Started process (PID=5309) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:32:10,375] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:32:10,385] {logging_mixin.py:104} INFO - [2023-10-12 13:32:10,384] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:32:10,739] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:32:10,807] {logging_mixin.py:104} INFO - [2023-10-12 13:32:10,806] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:32:10,888] {logging_mixin.py:104} INFO - [2023-10-12 13:32:10,888] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:32:10,931] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.582 seconds
+[2023-10-12 13:32:41,444] {scheduler_job.py:182} INFO - Started process (PID=5366) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:32:41,450] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:32:41,454] {logging_mixin.py:104} INFO - [2023-10-12 13:32:41,454] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:32:41,803] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:32:41,866] {logging_mixin.py:104} INFO - [2023-10-12 13:32:41,866] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:32:41,897] {logging_mixin.py:104} INFO - [2023-10-12 13:32:41,897] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:32:41,921] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.483 seconds
+[2023-10-12 13:33:12,276] {scheduler_job.py:182} INFO - Started process (PID=5422) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:33:12,280] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:33:12,284] {logging_mixin.py:104} INFO - [2023-10-12 13:33:12,284] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:33:12,626] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:33:12,682] {logging_mixin.py:104} INFO - [2023-10-12 13:33:12,682] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:33:12,728] {logging_mixin.py:104} INFO - [2023-10-12 13:33:12,728] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:33:12,754] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.485 seconds
+[2023-10-12 13:33:43,183] {scheduler_job.py:182} INFO - Started process (PID=5488) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:33:43,187] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:33:43,191] {logging_mixin.py:104} INFO - [2023-10-12 13:33:43,191] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:33:43,497] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:33:43,554] {logging_mixin.py:104} INFO - [2023-10-12 13:33:43,554] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:33:43,596] {logging_mixin.py:104} INFO - [2023-10-12 13:33:43,596] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:33:43,626] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.452 seconds
+[2023-10-12 13:34:13,843] {scheduler_job.py:182} INFO - Started process (PID=5543) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:34:13,848] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:34:13,853] {logging_mixin.py:104} INFO - [2023-10-12 13:34:13,852] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:34:14,152] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:34:14,198] {logging_mixin.py:104} INFO - [2023-10-12 13:34:14,197] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:34:14,235] {logging_mixin.py:104} INFO - [2023-10-12 13:34:14,235] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:34:14,264] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.428 seconds
+[2023-10-12 13:34:44,416] {scheduler_job.py:182} INFO - Started process (PID=5599) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:34:44,427] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:34:44,433] {logging_mixin.py:104} INFO - [2023-10-12 13:34:44,432] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:34:44,782] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:34:44,825] {logging_mixin.py:104} INFO - [2023-10-12 13:34:44,825] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:34:44,863] {logging_mixin.py:104} INFO - [2023-10-12 13:34:44,863] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:34:44,890] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.485 seconds
+[2023-10-12 13:35:15,370] {scheduler_job.py:182} INFO - Started process (PID=5656) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:35:15,375] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:35:15,383] {logging_mixin.py:104} INFO - [2023-10-12 13:35:15,381] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:35:15,721] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:35:15,764] {logging_mixin.py:104} INFO - [2023-10-12 13:35:15,764] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:35:15,798] {logging_mixin.py:104} INFO - [2023-10-12 13:35:15,798] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:35:15,823] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.464 seconds
+[2023-10-12 13:35:46,073] {scheduler_job.py:182} INFO - Started process (PID=5712) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:35:46,077] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:35:46,081] {logging_mixin.py:104} INFO - [2023-10-12 13:35:46,080] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:35:46,458] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:35:46,529] {logging_mixin.py:104} INFO - [2023-10-12 13:35:46,529] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:35:46,567] {logging_mixin.py:104} INFO - [2023-10-12 13:35:46,567] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:35:46,741] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.677 seconds
+[2023-10-12 13:36:16,888] {scheduler_job.py:182} INFO - Started process (PID=5774) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:36:16,893] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:36:16,896] {logging_mixin.py:104} INFO - [2023-10-12 13:36:16,896] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:36:17,237] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:36:17,297] {logging_mixin.py:104} INFO - [2023-10-12 13:36:17,295] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:36:17,339] {logging_mixin.py:104} INFO - [2023-10-12 13:36:17,339] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:36:17,370] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.492 seconds
+[2023-10-12 13:36:47,502] {scheduler_job.py:182} INFO - Started process (PID=5833) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:36:47,512] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:36:47,517] {logging_mixin.py:104} INFO - [2023-10-12 13:36:47,517] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:36:47,918] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:36:47,992] {logging_mixin.py:104} INFO - [2023-10-12 13:36:47,992] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:36:48,027] {logging_mixin.py:104} INFO - [2023-10-12 13:36:48,027] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:36:48,051] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.568 seconds
+[2023-10-12 13:37:18,945] {scheduler_job.py:182} INFO - Started process (PID=5888) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:37:18,949] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:37:18,954] {logging_mixin.py:104} INFO - [2023-10-12 13:37:18,954] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:37:19,309] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:37:19,354] {logging_mixin.py:104} INFO - [2023-10-12 13:37:19,354] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:37:19,392] {logging_mixin.py:104} INFO - [2023-10-12 13:37:19,392] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:37:19,415] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.480 seconds
+[2023-10-12 13:37:50,021] {scheduler_job.py:182} INFO - Started process (PID=5944) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:37:50,034] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:37:50,038] {logging_mixin.py:104} INFO - [2023-10-12 13:37:50,038] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:37:50,417] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:37:50,476] {logging_mixin.py:104} INFO - [2023-10-12 13:37:50,476] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:37:50,528] {logging_mixin.py:104} INFO - [2023-10-12 13:37:50,528] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:37:50,559] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.549 seconds
+[2023-10-12 13:38:21,504] {scheduler_job.py:182} INFO - Started process (PID=6000) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:38:21,510] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:38:21,518] {logging_mixin.py:104} INFO - [2023-10-12 13:38:21,517] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:38:21,896] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:38:21,943] {logging_mixin.py:104} INFO - [2023-10-12 13:38:21,943] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:38:21,977] {logging_mixin.py:104} INFO - [2023-10-12 13:38:21,976] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:38:22,000] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.506 seconds
+[2023-10-12 13:38:52,525] {scheduler_job.py:182} INFO - Started process (PID=6056) to work on /opt/airflow/dags/hw2.py
+[2023-10-12 13:38:52,532] {scheduler_job.py:633} INFO - Processing file /opt/airflow/dags/hw2.py for tasks to queue
+[2023-10-12 13:38:52,537] {logging_mixin.py:104} INFO - [2023-10-12 13:38:52,536] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/hw2.py
+[2023-10-12 13:38:52,995] {scheduler_job.py:643} INFO - DAG(s) dict_keys(['hw2']) retrieved from /opt/airflow/dags/hw2.py
+[2023-10-12 13:38:53,054] {logging_mixin.py:104} INFO - [2023-10-12 13:38:53,054] {dag.py:1833} INFO - Sync 1 DAGs
+[2023-10-12 13:38:53,092] {logging_mixin.py:104} INFO - [2023-10-12 13:38:53,092] {dag.py:2306} INFO - Setting next_dagrun for hw2 to None
+[2023-10-12 13:38:53,118] {scheduler_job.py:190} INFO - Processing /opt/airflow/dags/hw2.py took 0.604 seconds

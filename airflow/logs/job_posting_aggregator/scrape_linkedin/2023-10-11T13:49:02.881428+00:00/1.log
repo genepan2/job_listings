@@ -1,0 +1,29 @@
+[2023-10-11 13:49:30,389] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: job_posting_aggregator.scrape_linkedin 2023-10-11T13:49:02.881428+00:00 [queued]>
+[2023-10-11 13:49:30,408] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: job_posting_aggregator.scrape_linkedin 2023-10-11T13:49:02.881428+00:00 [queued]>
+[2023-10-11 13:49:30,410] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 13:49:30,412] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2023-10-11 13:49:30,416] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 13:49:30,439] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): scrape_linkedin> on 2023-10-11T13:49:02.881428+00:00
+[2023-10-11 13:49:30,451] {standard_task_runner.py:52} INFO - Started process 5067 to run task
+[2023-10-11 13:49:30,462] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'job_posting_aggregator', 'scrape_linkedin', '2023-10-11T13:49:02.881428+00:00', '--job-id', '27', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/get_jobs_data.py', '--cfg-path', '/tmp/tmpkqglq6cb', '--error-file', '/tmp/tmpl0ar4pcu']
+[2023-10-11 13:49:30,465] {standard_task_runner.py:77} INFO - Job 27: Subtask scrape_linkedin
+[2023-10-11 13:49:30,567] {logging_mixin.py:104} INFO - Running <TaskInstance: job_posting_aggregator.scrape_linkedin 2023-10-11T13:49:02.881428+00:00 [running]> on host 62cfcfb44bb5
+[2023-10-11 13:49:30,705] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=you
+AIRFLOW_CTX_DAG_ID=job_posting_aggregator
+AIRFLOW_CTX_TASK_ID=scrape_linkedin
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-11T13:49:02.881428+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-11T13:49:02.881428+00:00
+[2023-10-11 13:49:36,082] {get_jobs_data.py:137} INFO - https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/3704998318
+[2023-10-11 13:49:36,088] {get_jobs_data.py:145} INFO - publish_date: 1 month ago
+[2023-10-11 13:49:36,764] {get_jobs_data.py:137} INFO - https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/3705729043
+[2023-10-11 13:49:36,768] {get_jobs_data.py:145} INFO - publish_date: 1 month ago
+[2023-10-11 13:49:36,786] {get_jobs_data.py:200} INFO - 2023-10-11T13:49:36.786745
+[2023-10-11 13:49:36,789] {get_jobs_data.py:200} INFO - Berlin, Germany
+[2023-10-11 13:49:36,790] {get_jobs_data.py:200} INFO - Data Engineer
+[2023-10-11 13:49:36,802] {python.py:151} INFO - Done. Returned value was: None
+[2023-10-11 13:49:36,823] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=job_posting_aggregator, task_id=scrape_linkedin, execution_date=20231011T134902, start_date=20231011T134930, end_date=20231011T134936
+[2023-10-11 13:49:36,882] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-10-11 13:49:36,921] {local_task_job.py:151} INFO - Task exited with return code 0

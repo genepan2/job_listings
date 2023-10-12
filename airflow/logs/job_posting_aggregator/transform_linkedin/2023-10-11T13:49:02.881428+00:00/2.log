@@ -1,0 +1,32 @@
+[2023-10-11 13:52:42,029] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: job_posting_aggregator.transform_linkedin 2023-10-11T13:49:02.881428+00:00 [queued]>
+[2023-10-11 13:52:42,049] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: job_posting_aggregator.transform_linkedin 2023-10-11T13:49:02.881428+00:00 [queued]>
+[2023-10-11 13:52:42,051] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 13:52:42,053] {taskinstance.py:1068} INFO - Starting attempt 2 of 2
+[2023-10-11 13:52:42,057] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 13:52:42,077] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): transform_linkedin> on 2023-10-11T13:49:02.881428+00:00
+[2023-10-11 13:52:42,087] {standard_task_runner.py:52} INFO - Started process 5253 to run task
+[2023-10-11 13:52:42,095] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'job_posting_aggregator', 'transform_linkedin', '2023-10-11T13:49:02.881428+00:00', '--job-id', '29', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/get_jobs_data.py', '--cfg-path', '/tmp/tmpw2zxakjs', '--error-file', '/tmp/tmpw6hlswhi']
+[2023-10-11 13:52:42,097] {standard_task_runner.py:77} INFO - Job 29: Subtask transform_linkedin
+[2023-10-11 13:52:42,169] {logging_mixin.py:104} INFO - Running <TaskInstance: job_posting_aggregator.transform_linkedin 2023-10-11T13:49:02.881428+00:00 [running]> on host 62cfcfb44bb5
+[2023-10-11 13:52:42,247] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=you
+AIRFLOW_CTX_DAG_ID=job_posting_aggregator
+AIRFLOW_CTX_TASK_ID=transform_linkedin
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-11T13:49:02.881428+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-11T13:49:02.881428+00:00
+[2023-10-11 13:52:42,285] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:42,994] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:43,034] {get_jobs_data.py:372} INFO - 3 months ago
+[2023-10-11 13:52:43,077] {get_jobs_data.py:252} INFO - Error detecting language. Error: expected string or bytes-like object
+[2023-10-11 13:52:43,079] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:43,109] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:43,143] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:43,177] {get_jobs_data.py:252} INFO - Error detecting language. Error: expected string or bytes-like object
+[2023-10-11 13:52:43,179] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:43,211] {get_jobs_data.py:372} INFO - 1 month ago
+[2023-10-11 13:52:43,270] {python.py:151} INFO - Done. Returned value was: None
+[2023-10-11 13:52:43,304] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=job_posting_aggregator, task_id=transform_linkedin, execution_date=20231011T134902, start_date=20231011T135242, end_date=20231011T135243
+[2023-10-11 13:52:43,347] {taskinstance.py:1245} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-11 13:52:43,393] {local_task_job.py:151} INFO - Task exited with return code 0

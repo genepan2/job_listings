@@ -1,0 +1,23 @@
+[2023-10-11 10:34:53,323] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: write_json_test_two.write_json 2023-10-11T10:34:52+00:00 [queued]>
+[2023-10-11 10:34:53,345] {taskinstance.py:896} INFO - Dependencies all met for <TaskInstance: write_json_test_two.write_json 2023-10-11T10:34:52+00:00 [queued]>
+[2023-10-11 10:34:53,347] {taskinstance.py:1087} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 10:34:53,348] {taskinstance.py:1088} INFO - Starting attempt 1 of 2
+[2023-10-11 10:34:53,350] {taskinstance.py:1089} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-11 10:34:53,361] {taskinstance.py:1107} INFO - Executing <Task(PythonOperator): write_json> on 2023-10-11T10:34:52+00:00
+[2023-10-11 10:34:53,376] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'write_json_test_two', 'write_json', '2023-10-11T10:34:52+00:00', '--job-id', '18', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dummy_dag_2.py', '--cfg-path', '/tmp/tmpjpn6mzv3', '--error-file', '/tmp/tmpcc9krfis']
+[2023-10-11 10:34:53,369] {standard_task_runner.py:52} INFO - Started process 54702 to run task
+[2023-10-11 10:34:53,379] {standard_task_runner.py:77} INFO - Job 18: Subtask write_json
+[2023-10-11 10:34:53,454] {logging_mixin.py:104} INFO - Running <TaskInstance: write_json_test_two.write_json 2023-10-11T10:34:52+00:00 [running]> on host add09587d53f
+[2023-10-11 10:34:53,533] {taskinstance.py:1302} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=you
+AIRFLOW_CTX_DAG_ID=write_json_test_two
+AIRFLOW_CTX_TASK_ID=write_json
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-11T10:34:52+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-11T10:34:52+00:00
+[2023-10-11 10:34:53,543] {dummy_dag_2.py:47} INFO - JSON file written successfully to /opt/***/data/test.json!
+[2023-10-11 10:34:53,544] {python.py:151} INFO - Done. Returned value was: None
+[2023-10-11 10:34:53,561] {taskinstance.py:1211} INFO - Marking task as SUCCESS. dag_id=write_json_test_two, task_id=write_json, execution_date=20231011T103452, start_date=20231011T103453, end_date=20231011T103453
+[2023-10-11 10:34:53,593] {taskinstance.py:1265} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-11 10:34:53,638] {local_task_job.py:151} INFO - Task exited with return code 0
