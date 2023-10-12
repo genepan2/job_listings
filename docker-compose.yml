@@ -29,8 +29,9 @@ x-airflow-common: &airflow-common
     # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- pymongo pandas requests bs4 langdetect airflow.providers.mongo}
     # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- pymongo pandas requests bs4 langdetect}
     # AIRFLOW_CONN_MONGO_DEFAULT: mongo://${MONGO_ROOT_USERNAME:-root}:${MONGO_ROOT_PASSWORD:-rootpassword}@mongo:27017/%3FauthSource%3Dadmin
-    AIRFLOW_CONN_MONGO_DEFAULT: mongodb://mongo:27017/job_listing_db
-    # MONGO_URI: mongodb://mongo:27017/job_listing_db
+    AIRFLOW_CONN_MONGO_DEFAULT: mongodb://mongo:27017/${MONGO_DB_NAME}
+    AIRFLOW_CONN_MONGO_JOBS_MONGODB: mongodb://mongo:27017/${MONGO_DB_NAME}
+    # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
     # INTEGRATION_MONGO: true
   volumes:
     - ./airflow/dags:/opt/airflow/dags
@@ -54,15 +55,17 @@ x-airflow-common: &airflow-common
 
 services:
   api:
+    # image: python:3.9-slim
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    depends_on:
-      - mongo
+    # depends_on:
+    #   mongo:
+    #     condition: service_healthy
     environment:
-      MONGO_URI: mongodb://mongo:27017/job_listing_db
+      MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
     # networks:
     #   - app-network
 

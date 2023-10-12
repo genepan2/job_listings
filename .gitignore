@@ -6,6 +6,9 @@ _temp
 .DS_Store
 .trunk
 frontend/node_modules
+airflow/logs
+airflow/data
+airflow/dags/__pycache__
 
 # Ignore files
 .env
