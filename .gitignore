@@ -11,5 +11,6 @@ frontend/node_modules
 .env
 **.json
 **.csv
+*.csv
 **/.DS_Store
 .DS_Store

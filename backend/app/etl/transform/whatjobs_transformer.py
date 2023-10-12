@@ -77,6 +77,11 @@ class WhatjobsDataTransformer:
                             continue
 
                     all_jobs.extend(jobs)
+        
+        # Check if the directory exists, if not, create it
+        output_directory = os.path.dirname(self.output_filename)
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory)
 
         with open(self.output_filename, "w") as outfile:
             json.dump(all_jobs, outfile, ensure_ascii=False, indent=4)

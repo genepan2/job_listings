@@ -37,7 +37,7 @@ class UploadToMongoDB:
         self.db["all_jobs_list"].insert_many(data)
 
         # Print the total number of documents inserted
-        print(f"Uploaded {len(data)} documents to 'predicted_jobs_list' collection.")
+        print(f"Uploaded {len(data)} documents to 'all_jobs_list' collection.")
 
         self.client.close()
 
