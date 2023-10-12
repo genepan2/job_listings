@@ -1,9 +1,9 @@
 name: Unit Test
 on:
   push:
-    branches: [Gitworkflow, main]
+    branches: [UnitTest2.0, main]
   pull_request:
-    branches: [Gitworkflow, main]
+    branches: [UnitTest2.0, main]
 
 jobs:
   test:
@@ -15,5 +15,7 @@ jobs:
           pip3 install pytest
           pip3 install mongomock
           pip3 install pymongo
+          pip3 install fastapi
+          pip3 install httpx
           cd backend/tests
           pytest
