@@ -14,8 +14,9 @@ from etl.extract.linkedin_extractor import JobSearchLinkedInExtractor
 from etl.transform.linkedin_transformer import JobSearchLinkedInTransformer
 from etl.load.upload_linkedin import LinkedinUploader
 
-from src.utils.data_integration import IntegrateCollections
+from src.data_integration import IntegrateCollections
 from etl.load.upload_integrated_data import UploadToMongoDB
+from ml.predict_salary import SalaryPredictor
 
 def min_max_cats(x):
     x = int(x)
@@ -95,9 +96,14 @@ def main():
     # Merging collections in MongoDB
     IntegrateCollections.integrate_to_all_jobs_list()
 
+    # Create an instance of SalaryPredictor
+    salary_predictor = SalaryPredictor()   
+    # Call the predict_and_map_salaries 
+    salary_predictor.predict_and_map_salaries()
+
     # Upload the integrated CSV to MongoDB
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    path_csv_data = os.path.join(dir_path, 'data', 'processed', 'integrated_data', 'all_jobs_list.csv')
+    path_csv_data = os.path.join(dir_path, 'data', 'processed', 'integrated_data', 'predicted_jobs_list.csv')
     uploader = UploadToMongoDB()
     uploader.upload_csv_to_mongodb(path_csv_data)
 

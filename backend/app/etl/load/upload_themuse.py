@@ -8,4 +8,4 @@ class ThemuseUploader:
 
         uploader = MongoDBUploader(MONGO["db"], COLLECTIONS["themuse"])
         uploader.upload_json_file(themuse_file_path)
-        uploader.close()
+        uploader.close_connection()

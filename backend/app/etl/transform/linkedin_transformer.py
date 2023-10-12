@@ -2,9 +2,9 @@ import re
 import json
 import os
 from datetime import datetime
-from langdetect import detect  # Ensure to install langdetect library
+from langdetect import detect  
 from config.constants import FIELDS, JOB_LEVELS, JOB_LOCATIONS
-from src.utils.transformations import transform_job_level, transform_job_location, transform_to_isoformat, transform_job_title
+from src.transformations import transform_job_level, transform_job_location, transform_to_isoformat, transform_job_title
 
 
 class JobSearchLinkedInTransformer:
@@ -71,7 +71,7 @@ class JobSearchLinkedInTransformer:
             cleaned_data.append(cleaned_job)
         return cleaned_data
 
-    def clean_filename(self, string, replace = False):
+    def clean_filename(self, string, replace=False):
         pattern = "[,!.\-: ]"
         if replace == False:
             filename = re.sub(pattern, "_", string)
@@ -79,14 +79,20 @@ class JobSearchLinkedInTransformer:
             filename = re.sub(pattern, "", string)
         return filename.lower().replace("__", "_")
 
-    def create_file_name(self, isRaw = False, type = "json"):
+    def create_file_name(self, isRaw=False, type="json"):
         path = self.directory_path if isRaw else self.processed_directory_path
         return f"{path}/linkedin_cleaned_data.json"
 
-    def save_jobs(self, data, type = "json"):
-        file_name = self.create_file_name(isRaw=False)  
+    def save_jobs(self, data, type="json"):
+        file_name = self.create_file_name(isRaw=False)
+        
+        # Check if the directory exists, if not, create it
+        directory = os.path.dirname(file_name)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
         with open(file_name, "w") as json_file:
-            json.dump(data, json_file, indent = 4)
+            json.dump(data, json_file, indent=4)
 
     def run_all(self):
         data_raw = self.load()

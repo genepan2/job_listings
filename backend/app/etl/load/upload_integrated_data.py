@@ -8,7 +8,7 @@ class UploadToMongoDB:
         self.client = MongoClient(self.mongo_uri)
         self.db = self.client["job_listing_db"]
 
-    def upload_csv_to_mongodb(self, csv_file_path="backend/app/data/processed/integrated_data/all_jobs_list.csv"):
+    def upload_csv_to_mongodb(self, csv_file_path="backend/app/data/processed/integrated_data/predicted_jobs_list.csv"):
         """
         Upload the content of a CSV file to a MongoDB collection.
 

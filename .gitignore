@@ -12,7 +12,8 @@ airflow/dags/__pycache__
 
 # Ignore files
 .env
-_*.py
 **.json
+**.csv
+*.csv
 **/.DS_Store
 .DS_Store
