@@ -42,7 +42,8 @@ MONGO = {
 	# "uri": "mongodb://localhost:27017/",
 	# "uri": "mongodb://0.0.0.0:27017/",
 	"uri": "mongodb://mongo:27017/",
-	"db": "job_listing_db"
+	"db": "job_listing_db",
+    "conn_id": "jobs_mongodb"
 }
 
 JOB_LOCATIONS = {
@@ -491,9 +492,26 @@ def upload_linkedin_jobs():
 
 def load_linkedin_to_mongodb():
     linkedin_file_path = os.path.join(PATH_PROCESSED, 'linkedin_json', 'linkedin_cleaned_data.json')
-    mongo = MongoHook(mongo_conn_id='jobs_mongodb')
+
+    mongo = MongoHook(mongo_conn_id=MONGO["conn_id"])
     collection = mongo.get_collection(COLLECTIONS["linkedin"], MONGO["db"])
-    collection.insert_one({'key': 'value'})  # Example insertion
+
+    # if ("url" not in collection.getIndexes()):
+    #     collection.createIndex([("url", 1)], unique=True)
+
+    try:
+        with open(linkedin_file_path, 'r') as file:
+            data = json.load(file)
+
+            if isinstance(data, list):
+                collection.insert_many(data)
+            else:
+                collection.insert_one(data)
+
+            logging.info(f"Loaded jobs from {os.path.basename(linkedin_file_path)} to {MONGO['db']}.{COLLECTIONS['linkedin']}")
+
+    except Exception as e:
+        logging.error(f"An error occurred while loading {linkedin_file_path}: {e}")
 
 ############################
 ## DAG
