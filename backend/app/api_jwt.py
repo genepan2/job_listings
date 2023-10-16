@@ -82,7 +82,7 @@ def decode_jwt(token: str):
 
 def get_full_uri(route: str, req: JobRequest):
   url_params = []
-  for key, value in req.dict().items():
+  for key, value in req.model_dump().items():
       if value is not None:
         param = f"{key}={value}"
         url_params.append(param)
