@@ -4,11 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
 from enum import Enum
-from src.query_request import DbQuery
+from app.src.query_request import DbQuery
 from typing import Optional, Set, List
 import jwt
 import time
-from config.constants import MISC
+from app.config.constants import MISC
 
 ####################
 
