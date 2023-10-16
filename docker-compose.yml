@@ -52,8 +52,8 @@ x-airflow-common: &airflow-common
       condition: service_healthy
     # mongo:
     #   condition: service_healthy
-  # networks:
-  #   - app-network
+  profiles:
+    - backend
 
 services:
   api:
@@ -94,6 +94,8 @@ services:
       timeout: 10s
       retries: 5
       start_period: 20s
+    profiles:
+      - backend
 
   mongo:
     image: mongo:latest
@@ -113,6 +115,7 @@ services:
       # test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
       test:
         [
+          "CMD",
           "echo",
           "db.runCommand('ping').ok",
           "|",
@@ -125,6 +128,8 @@ services:
       timeout: 30s
       retries: 30
       start_period: 40s
+    profiles:
+      - backend
 
   frontend:
     build:
@@ -137,6 +142,8 @@ services:
         condition: service_healthy
       api:
         condition: service_healthy
+    profiles:
+      - frontend
 
   postgres:
     image: postgres:13
@@ -151,6 +158,8 @@ services:
       interval: 5s
       retries: 5
     restart: always
+    profiles:
+      - backend
 
   redis:
     image: redis:latest
@@ -162,6 +171,8 @@ services:
       timeout: 30s
       retries: 50
     restart: always
+    profiles:
+      - backend
 
   airflow-webserver:
     <<: *airflow-common
