@@ -33,7 +33,7 @@ COLLECTIONS = {
 }
 
 MONGO = {
-	"uri": "mongodb://localhost:27017/",
+	"uri": os.environ.get('MONGO_URI', 'mongodb://localhost:27017/'),
 	# "db": os.environ["MONGO_DB_NAME"]
 	"db": os.environ.get('MONGO_DB_NAME', 'job_listing_db')
 }
