@@ -10,8 +10,11 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Installing OS dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y --no-install-recommends \
 	gcc \
+	curl \
+	wget \
 	default-libmysqlclient-dev \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
@@ -40,5 +43,9 @@ EXPOSE 8000
 
 
 # Run api.py when the container launches
-# CMD ["uvicorn", "api:api", "--host", "0.0.0.0", "--port", "8000"]
-CMD ["uvicorn", "api_jwt:api", "--ssl-keyfile", "./cert/key-no-pass.pem", "--ssl-certfile", "./cert/cert.pem"]
+CMD ["uvicorn", "api:api", "--host", "0.0.0.0", "--port", "8000"]
+
+# NOT WORKING YET...
+# CMD ["uvicorn", "api_jwt:api", "--ssl-keyfile", "./cert/key-no-pass.pem", "--ssl-certfile", "./cert/cert.pem", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["uvicorn", "api_jwt:api", "--ssl-keyfile", "./cert/key-no-pass.pem", "--ssl-certfile", "./cert/cert.pem"]
+# CMD ["uvicorn", "api_jwt:api", "--ssl-keyfile", "./cert/key-no-pass.pem", "--ssl-certfile", "./cert/cert.pem", "--host", "127.0.0.1", "--port", "443"]

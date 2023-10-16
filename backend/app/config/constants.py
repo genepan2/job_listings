@@ -1,4 +1,4 @@
-
+import os
 
 MISC = {
 	"items_per_page": 10
@@ -25,15 +25,15 @@ JOB_LEVELS = {
 }
 
 COLLECTIONS = {
-	"themuse": "themuse_jobs_collected",
-	"whatjobs": "whatjobs_jobs_collected",
-	"linkedin": "linkedin_jobs_collected",
-	"all": "all_jobs_list"
+	"themuse": "jobs_themuse",
+	"whatjobs": "jobs_whatjobs",
+	"linkedin": "jobs_linkedin",
+	"all": os.environ["MONGO_COLLECTION_ALL"]
 }
 
 MONGO = {
 	"uri": "mongodb://localhost:27017/",
-	"db": "job_listing_db"
+	"db": os.environ["MONGO_DB_NAME"]
 }
 
 FIELDS = {

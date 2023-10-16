@@ -52,11 +52,12 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/jobs" element={
+            {/* <Route path="/jobs" element={
                 <ProtectedRoute>
                     <JobsListing filters={filters} setFilters={setFilters} jobs={jobs} />
                 </ProtectedRoute>
-            }/>
+            }/> */}
+            <Route path="/jobs" element={<JobsListing filters={filters} setFilters={setFilters} jobs={jobs} />}/>
         </Routes>
     </Router>
 
