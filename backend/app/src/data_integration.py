@@ -1,25 +1,26 @@
 import pandas as pd
 from pymongo import MongoClient
 import os
+from config.constants import COLLECTIONS, MONGO
 
 class IntegrateCollections:
     @staticmethod
-    def integrate_to_all_jobs_list(mongo_uri='mongodb://localhost:27017/'):
+    def integrate_to_all_jobs_list(mongo_uri=MONGO["uri"]):
         """
         Merge the contents of 'themuse_jobs_collected', 'whatjobs_jobs_collected',
         and 'linkedin_jobs_collected' into a CSV file 'all_jobs_list.csv'.
         """
         client = MongoClient(mongo_uri)
-        db = client["job_listing_db"]
+        db = client[MONGO["db"]]
 
         # Retrieve documents from 'themuse_jobs_collected'
-        themuse_jobs = list(db["themuse_jobs_collected"].find())
+        themuse_jobs = list(db[COLLECTIONS["themuse"]].find())
 
         # Retrieve documents from 'whatjobs_jobs_collected'
-        whatjobs_jobs = list(db["whatjobs_jobs_collected"].find())
+        whatjobs_jobs = list(db[COLLECTIONS["whatjobs"]].find())
 
         # Retrieve documents from 'linkedin_jobs_collected'
-        linkedin_jobs = list(db["linkedin_jobs_collected"].find())
+        linkedin_jobs = list(db[COLLECTIONS["linkedin"]].find())
 
         # Combine all job listings into one list
         all_jobs_list = themuse_jobs + whatjobs_jobs + linkedin_jobs
