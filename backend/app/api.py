@@ -71,6 +71,10 @@ api.add_middleware(
     allow_headers=["*"],
 )
 
+@api.get("/health")
+def read_health():
+    return {"status": "1"}
+
 @api.get('/jobs')
 def get_jobs(keyword:str, level:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10, location:List[JobLocation] = []):
   jobs = db.query_jobs(
