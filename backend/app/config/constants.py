@@ -28,12 +28,14 @@ COLLECTIONS = {
 	"themuse": "jobs_themuse",
 	"whatjobs": "jobs_whatjobs",
 	"linkedin": "jobs_linkedin",
-	"all": os.environ["MONGO_COLLECTION_ALL"]
+	# "all": os.environ["MONGO_COLLECTION_ALL"]
+	"all": os.environ.get('MONGO_COLLECTION_ALL', 'jobs_all')
 }
 
 MONGO = {
 	"uri": "mongodb://localhost:27017/",
-	"db": os.environ["MONGO_DB_NAME"]
+	# "db": os.environ["MONGO_DB_NAME"]
+	"db": os.environ.get('MONGO_DB_NAME', 'job_listing_db')
 }
 
 FIELDS = {
