@@ -1,11 +1,20 @@
 from pymongo import MongoClient
 from typing import List, Optional
 from datetime import datetime, timedelta
-from app.config.constants import COLLECTIONS, MONGO, FIELDS, MISC
+# from app.config.constants import COLLECTIONS, MONGO, FIELDS, MISC
+from config.constants import COLLECTIONS, MONGO, FIELDS, MISC
 
 class DbQuery:
     def __init__(self, uri: str = MONGO["uri"], database_name: str = MONGO["db"], collection_name: str = COLLECTIONS["all"]):
+        # print(uri)
+        # print(database_name)
+        # print(collection_name)
         self.client = MongoClient(uri)
+        # self.uri = uri
+        # self.database = self.client[database_name]
+        # self.collection = self.database[collection_name]
+        # self.client = MongoClient('mongodb://localhost:27017/')
+        self.uri = uri
         self.database = self.client[database_name]
         self.collection = self.database[collection_name]
 
@@ -55,28 +64,13 @@ class DbQuery:
 
         # Convert query result to a list of dictionaries
         job_list = list(result)
+        print(len(job_list))
+
+        # print(self.uri)
+        # print(self.database)
+        # print(self.collection)
 
         return job_list
-
-    def map_level(self, level):
-        if level == 'junior':
-            return "Junior Level"
-        elif level == 'mid':
-            return "Mid Level"
-        elif level == 'senior':
-            return "Senior Level"
-
-    def map_location(self, location: str):
-        location = location.lower()
-
-        if location == 'berlin':
-            return "Berlin, Germany"
-        elif location == 'munich':
-            return "Munich, Germany"
-        elif location == 'hamburg':
-            return "Hamburg, Germany"
-        elif location == 'cologne':
-            return "Cologne, Germany"
 
     def calculate_date_from_age(self, age_in_days: int) -> datetime:
         current_date = datetime.now()

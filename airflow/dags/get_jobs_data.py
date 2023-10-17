@@ -75,11 +75,11 @@ COLLECTIONS = {
 	"themuse": "jobs_themuse",
 	"whatjobs": "jobs_whatjobs",
 	"linkedin": "jobs_linkedin",
-	"all": "all_jobs"
+	"all": os.environ.get('MONGO_COLLECTION_ALL', 'jobs_all')
 }
 
 MONGO = {
-	"uri": "mongodb://mongo:27017/",
+	"uri": os.environ.get('MONGO_URI', 'mongodb://mongo:27017/'),
 	"db": "job_listing_db",
     "conn_id": "jobs_mongodb"
 }

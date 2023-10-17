@@ -20,8 +20,8 @@ function StickyNavbar() {
   }, []);
 
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
+    <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -30,7 +30,7 @@ function StickyNavbar() {
         <Link to="/stats" className="flex items-center">
           Stats
         </Link>
-      </Typography>
+      </Typography> */}
       <Typography
         as="li"
         variant="small"
@@ -46,7 +46,7 @@ function StickyNavbar() {
 
   return (
     // <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
-      <Navbar className="sticky top-0 z-10  max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 col-span-12 border-1 border-b border-gray-400" shadow={false}>
+      <Navbar className="sticky top-0 z-10 max-w-full col-span-12 px-4 py-2 border-gray-400 border-solid rounded-none border-b-1 lg:px-8 lg:py-4" shadow={false}>
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
@@ -56,7 +56,7 @@ function StickyNavbar() {
             Job Listings
           </Typography>
           <div className="flex items-center gap-4">
-            <div className="mr-4 hidden lg:block">{navList}</div>
+            <div className="hidden mr-4 lg:block">{navList}</div>
             {/* <Button
               variant="gradient"
               size="sm"
@@ -66,7 +66,7 @@ function StickyNavbar() {
             </Button> */}
             <IconButton
               variant="text"
-              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+              className="w-6 h-6 ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
               ripple={false}
               onClick={() => setOpenNav(!openNav)}
             >
@@ -74,7 +74,7 @@ function StickyNavbar() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -88,7 +88,7 @@ function StickyNavbar() {
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -103,12 +103,12 @@ function StickyNavbar() {
             </IconButton>
           </div>
         </div>
-        <MobileNav open={openNav}>
+        {/* <MobileNav open={openNav}>
           {navList}
           <Button variant="gradient" size="sm" fullWidth className="mb-2">
             <span>Buy Now</span>
           </Button>
-        </MobileNav>
+        </MobileNav> */}
       </Navbar>
 
     // </div>

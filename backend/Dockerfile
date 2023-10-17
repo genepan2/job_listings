@@ -43,7 +43,7 @@ EXPOSE 8000
 
 
 # Run api.py when the container launches
-CMD ["uvicorn", "api:api", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "api:api", "--reload", "--host", "0.0.0.0", "--port", "8000"]
 
 # NOT WORKING YET...
 # CMD ["uvicorn", "api_jwt:api", "--ssl-keyfile", "./cert/key-no-pass.pem", "--ssl-certfile", "./cert/cert.pem", "--host", "0.0.0.0", "--port", "8000"]

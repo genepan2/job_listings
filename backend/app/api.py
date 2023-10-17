@@ -60,6 +60,10 @@ db = DbQuery(mongo_uri)
 origins = [
     "http://localhost:3000",  # React's default port
     "http://127.0.0.1:3000",
+    "http://0.0.0.0:3000",
+    "http://frontend:3000",  # React's default port
+    "http://localhost:3001",  # React's default port
+    "http://127.0.0.1:3001",
 ]
 
 api = FastAPI()
@@ -110,7 +114,7 @@ def post_jobs(req: JobRequest):
     page = req.page,
     items_per_page = req.items_per_page
   )
-
+  # print(jobs)
   full_uri = get_full_uri('/jobs', req)
 
   result = {
@@ -119,6 +123,7 @@ def post_jobs(req: JobRequest):
       "url": full_uri
     },
     "data": jobs
+    # "data": {"teeest"}
   }
 
   return result

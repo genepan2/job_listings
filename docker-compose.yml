@@ -1,5 +1,6 @@
 # version: "3.1"
-version: "3.4"
+# version: "3.4"
+version: "3.8"
 
 x-airflow-common: &airflow-common
   # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.2.1}
@@ -52,8 +53,8 @@ x-airflow-common: &airflow-common
       condition: service_healthy
     mongo:
       condition: service_healthy
-  profiles:
-    - backend
+  # profiles:
+  #   - backend
 
 services:
   api:
@@ -63,13 +64,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend/app:/app
     depends_on:
       mongo:
         condition: service_healthy
     environment:
-      MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
-      MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL}
-      MONGO_DB_NAME: ${MONGO_DB_NAME}
+      # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
+      MONGO_URI: mongodb://mongo:27017/
+      MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL:-jobs_all}
+      MONGO_DB_NAME: ${MONGO_DB_NAME:-job_listing_db}
     healthcheck:
       # test: [
       #     "CMD",
@@ -94,8 +98,8 @@ services:
       timeout: 10s
       retries: 5
       start_period: 20s
-    profiles:
-      - backend
+    # profiles:
+    #   - backend
 
   mongo:
     image: mongo:latest
@@ -125,8 +129,8 @@ services:
       timeout: 30s
       retries: 30
       start_period: 40s
-    profiles:
-      - backend
+    # profiles:
+    #   - backend
 
   frontend:
     build:
@@ -139,8 +143,8 @@ services:
         condition: service_healthy
       api:
         condition: service_healthy
-    profiles:
-      - frontend
+    # profiles:
+    #   - frontend
 
   postgres:
     image: postgres:13
@@ -155,8 +159,8 @@ services:
       interval: 5s
       retries: 5
     restart: always
-    profiles:
-      - backend
+    # profiles:
+    #   - backend
 
   redis:
     image: redis:latest
@@ -168,8 +172,8 @@ services:
       timeout: 30s
       retries: 50
     restart: always
-    profiles:
-      - backend
+    # profiles:
+    #   - backend
 
   airflow-webserver:
     <<: *airflow-common
