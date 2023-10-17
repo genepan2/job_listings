@@ -1,10 +1,10 @@
 # README
 
-## Project Overview
+## Project Overview 🌐
 
-The job_listing project is a comprehensive solution for job listing, retrieval, and management. It consists of a backend application for data processing, an Airflow setup for workflow management, a frontend application for user interaction, and MongoDB for data storage. The project is containerized using Docker for easy deployment and scalability. 
+The job_listing project is a comprehensive solution for job listing, retrieval, and management. It consists of a backend application for data processing, an Airflow setup for workflow management, a frontend application for user interaction, and MongoDB for data storage. Salary Prediction with Classification Model. The project is containerized using Docker for easy deployment and scalability. 
 
-## Technologies
+## 🛠️Technologies
 
 Backend: Python
 
@@ -20,7 +20,7 @@ Uni Test: Pytest
 
 Deployment: Git Action, Docker Hub, AWS
 
-## Stages
+## 🔄Stages
 
 Data Collection
 
@@ -32,7 +32,7 @@ Automation
 
 Deployment
 
-## Setup and Installation
+## 🔧Setup and Installation
 
 Clone the Repository
 
@@ -44,13 +44,13 @@ Build and Start the Docker Containers
 
 `docker compose --profile frontend --profile backend up`
 
-## Access the Application
+## 🚀Access the Application
 
 Frontend: Open a web browser and navigate to `http://localhost:3000`
 
 Backend API: Send requests to `http://localhost:8000`
 
-## How to Use the API (secure)
+## 🔒How to Use the API (secure)
 
 You need to start the uvicorn server with the nessaccery private key and certificate:
 `python3 -m uvicorn api_jwt:api --reload --ssl-keyfile ./cert/key-no-pass.pem --ssl-certfile ./cert/cert.pem`
@@ -70,14 +70,16 @@ The API will return you token which will be valid for 10 hours (only because dev
 Then you need to add this to the header:
 Authorization: Bearer YOURTOKEN
 
-## Testing
+## 🧪Testing
 Backend Tests
 
 `cd backend`
 
 `pytest`
 
-## Contributions
+## 🤝Contributions
 
 Feel free to fork the project, create a feature branch, and submit a pull request. Ensure that your code has proper comments and passes all the existing tests.
 
+## 📜 License
+This project is licensed under the MIT License.
