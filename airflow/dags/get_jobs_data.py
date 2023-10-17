@@ -1053,10 +1053,9 @@ dag = DAG(
     tags=["jobs", "project"],
     default_args=default_args,
     description='Scrape various sources for job postings',
-    # schedule_interval=timedelta(days=1),  # This means the DAG will run daily. Adjust as needed.
-    # schedule_interval=timedelta(hours=4),  # This means the DAG will run every 4 hour
-    schedule_interval=None,  # This means the DAG will run daily. Adjust as needed.
-    start_date=datetime(2023, 10, 1),  # Adjust your start date accordingly
+    # schedule_interval=None,
+    schedule_interval=timedelta(hours=2),
+    start_date=datetime(2023, 10, 1),
     catchup=False,
 )
 
