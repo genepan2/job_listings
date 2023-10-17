@@ -138,6 +138,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    volumes:
+      - ./frontend/src:/src
     depends_on:
       mongo:
         condition: service_healthy
