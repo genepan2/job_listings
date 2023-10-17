@@ -1,27 +1,56 @@
-# job_search LinkedIn Job Scraper README
+# README
 
-This repository contains a Python script to scrape job details from LinkedIn based on a user-provided keyword. The script collects job IDs for the given keyword, retrieves detailed information for each job, and saves the data to a CSV file with a unique name. Additionally, the script eliminates any blank rows from the CSV file and displays the job details as a DataFrame.
+## Project Overview
 
-# Prerequisites
+The job_listing project is a comprehensive solution for job listing, retrieval, and management. It consists of a backend application for data processing, an Airflow setup for workflow management, a frontend application for user interaction, and MongoDB for data storage. The project is containerized using Docker for easy deployment and scalability. 
 
-Before running the script, ensure you have the following:
+## Technologies
 
-Python 3.x installed on your system.
-Required Python libraries: requests, beautifulsoup4, and pandas. You can install them using pip:
+Backend: Python
 
-`pip install requests beautifulsoup4 pandas`
+Frontend: ReactJS
 
-# How to Use
+Workflow Management: Airflow
 
-The script will prompt you to enter a keyword for the job search. Input the desired keyword and press Enter.
+Database: MongoDB
 
-The script will proceed to scrape job details from LinkedIn based on the provided keyword.
+Containerization: Docker
 
-Once the scraping is complete, the script will display the job details in a tabular format.
+Uni Test: Pytest
 
-The data will be saved to a CSV file with a unique name, such as 'jobs1.csv', 'jobs2.csv', and so on. The file will be created in the same directory as the script.
+Deployment: Git Action, Docker Hub, AWS
 
-# How to Use the API (secure)
+## Stages
+
+Data Collection
+
+Data Processing
+
+Data Consumption
+
+Automation
+
+Deployment
+
+## Setup and Installation
+
+Clone the Repository
+
+`git clone https://github.com/leviGab001/job_listing`
+
+`cd job_listing`
+
+Build and Start the Docker Containers
+
+`docker compose --profile frontend --profile backend up`
+
+## Access the Application
+
+Frontend: Open a web browser and navigate to `http://localhost:3000`
+
+Backend API: Send requests to `http://localhost:8000`
+
+## How to Use the API (secure)
 
 You need to start the uvicorn server with the nessaccery private key and certificate:
 `python3 -m uvicorn api_jwt:api --reload --ssl-keyfile ./cert/key-no-pass.pem --ssl-certfile ./cert/cert.pem`
@@ -41,20 +70,14 @@ The API will return you token which will be valid for 10 hours (only because dev
 Then you need to add this to the header:
 Authorization: Bearer YOURTOKEN
 
-# Important Notes
+## Testing
+Backend Tests
 
-The script may take some time to complete, depending on the number of job listings retrieved from LinkedIn.
+`cd backend`
 
-The User-Agent header is provided in the script to simulate a request from a web browser. However, LinkedIn's website structure might change over time, so there is a possibility that the script may stop working if LinkedIn updates its code.
+`pytest`
 
-This script is intended for educational and personal use only. Be mindful of LinkedIn's terms of service and don't abuse or overuse the scraping functionality.
+## Contributions
 
-# License
+Feel free to fork the project, create a feature branch, and submit a pull request. Ensure that your code has proper comments and passes all the existing tests.
 
-This script is provided under the MIT License. You are free to modify and use it as per the license terms.
-
-# Contributions
-
-If you find any issues or have suggestions to improve the script, feel free to create an issue or submit a pull request.
-
-Happy job scraping!
