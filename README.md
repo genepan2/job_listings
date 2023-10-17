@@ -75,7 +75,7 @@ Authorization: Bearer YOURTOKEN
 ## 🧪Testing
 Backend Tests
 
-`cd backend`
+`cd backend/tests`
 
 `pytest`
 
