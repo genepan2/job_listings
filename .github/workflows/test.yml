@@ -28,6 +28,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       PRIVATE_SSH_KEY: ${{ secrets.AWS_SSH_KEY }}
       SERVER_PUBLIC_IP: ${{ secrets.HOSTNAME }}
+      SERVER_USER_NAME: ${{ secrets.USER_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,7 +44,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOSTNAME }}
-          username: ubuntu
+          username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.AWS_SSH_KEY }}
           envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
           script: |
