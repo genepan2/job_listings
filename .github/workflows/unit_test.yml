@@ -1,4 +1,4 @@
-name: Unit Test
+name: Unit-Test
 on:
   push:
     branches: [main]
@@ -19,3 +19,4 @@ jobs:
           pip3 install httpx
           cd backend/tests
           pytest
+          
