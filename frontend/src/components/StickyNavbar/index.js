@@ -46,7 +46,7 @@ function StickyNavbar() {
 
   return (
     // <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
-      <Navbar className="sticky top-0 z-10 max-w-full col-span-12 px-4 py-2 border-gray-400 border-solid rounded-none border-b-1 lg:px-8 lg:py-4" shadow={false}>
+      <Navbar className="sticky top-0 z-10 max-w-full col-span-12 px-4 py-2 border-b-2 border-gray-400 border-solid rounded-none lg:px-8 lg:py-4" shadow={false}>
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
