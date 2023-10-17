@@ -14,6 +14,8 @@ Workflow Management: Airflow
 
 Database: MongoDB
 
+Machine Learning: Sklearn
+
 Containerization: Docker
 
 Uni Test: Pytest
