@@ -1,58 +1,69 @@
+# Name of the GitHub Actions workflow
 name: CI/CD Pipeline
 
+# The workflow is triggered on push or pull request to the main branch
 on:
   push:
     branches:
-      - main
+      - main  # This workflow gets triggered when changes are pushed to the main branch
   pull_request:
     branches:
-      - main
+      - main  # This workflow also gets triggered on pull requests to the main branch
 
+# Jobs to be executed in the workflow
 jobs:
+  
+  # First job to run unit tests
   unit-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # The type of runner that the job will run on
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3  # Checks-out your repository under $GITHUB_WORKSPACE
+      
+      # This step installs the required dependencies and runs unit tests
       - name: Install Dependencies and Run Unit Tests
         run: |
-          pip3 install pytest mongomock pymongo fastapi httpx
-          cd backend/tests
-          pytest
+          pip3 install pytest mongomock pymongo fastapi httpx  # Install dependencies
+          cd backend/tests  # Navigate to the tests directory
+          pytest  # Run the tests using pytest
 
+  # Second job to build, push, and deploy the Docker image
   build-push-deploy:
-    runs-on: ubuntu-latest
-    needs: unit-test
+    runs-on: ubuntu-latest  # The type of runner that the job will run on
+    needs: unit-test  # This job depends on the successful completion of the unit-test job
+    
+    # Environmental variables used in this job
     env:
-      AWS_REGION: us-east-1
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      PRIVATE_SSH_KEY: ${{ secrets.AWS_SSH_KEY }}
-      SERVER_PUBLIC_IP: ${{ secrets.HOSTNAME }}
-      SERVER_USER_NAME: ${{ secrets.USER_NAME }}
+      AWS_REGION: us-east-1  # AWS region
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # AWS access key ID
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # AWS secret access key
+      PRIVATE_SSH_KEY: ${{ secrets.AWS_SSH_KEY }}  # Private SSH key for accessing the server
+      SERVER_PUBLIC_IP: ${{ secrets.HOSTNAME }}  # Server's public IP address
+      SERVER_USER_NAME: ${{ secrets.USER_NAME }}  # Username for the server
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Checks-out your repository under $GITHUB_WORKSPACE
 
+      # This step builds the Docker image and pushes it to the Docker registry
       - name: Build and Push Docker Image
         run: |
-          # Build and push the Docker image
-          docker build -t levigab/job_listing-api:latest-Deploy-v2 ./backend
-          docker login -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWD }}
-          docker push levigab/job_listing-api:latest-Deploy-v2
+          docker build -t levigab/job_listing-api:latest-Deploy-v2 ./backend  # Build the Docker image
+          docker login -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWD }}  # Login to the Docker registry
+          docker push levigab/job_listing-api:latest-Deploy-v2  # Push the image to the Docker registry
 
+      # This step deploys the Docker image to the server
       - name: Deploy Docker Image
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@master  # This action allows executing SSH commands
         with:
-          host: ${{ secrets.HOSTNAME }}
-          username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.AWS_SSH_KEY }}
-          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
+          host: ${{ secrets.HOSTNAME }}  # The hostname of the server to deploy to
+          username: ${{ secrets.USER_NAME }}  # The username to use for SSH
+          key: ${{ secrets.AWS_SSH_KEY }}  # The SSH key to use
+          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION  # Environment variables to pass to the script
           script: |
-            # Restart Docker, remove previous containers/images, and run the new image
-            sudo systemctl restart docker
-            sleep 5
-            sudo docker rm -f fastapi
-            sudo docker rmi levigab/job_listing-api:latest-Deploy-v2
-            sleep 5
-            sudo docker run -d -p 8000:8000 levigab/job_listing-api:latest-Deploy-v2
-            sudo docker ps
+            sudo systemctl restart docker  # Restart Docker on the server
+            sleep 5  # Wait for 5 seconds
+            sudo docker rm -f fastapi  # Remove the previous Docker container
+            sudo docker rmi levigab/job_listing-api:latest-Deploy-v2  # Remove the previous Docker image
+            sleep 5  # Wait for 5 seconds
+            sudo docker run -d -p 8000:8000 levigab/job_listing-api:latest-Deploy-v2  # Run the new Docker image
+            sudo docker ps  # List the running Docker containers
