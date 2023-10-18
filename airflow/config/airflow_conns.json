@@ -1,0 +1,12 @@
+{
+  "jobs_mongodb": {
+    "conn_type": "mongo",
+    "description": "Connection to the Job Listings",
+    "login": "",
+    "password": null,
+    "host": "mongo",
+    "port": 27017,
+    "schema": "",
+    "extra": ""
+  }
+}

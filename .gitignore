@@ -9,10 +9,12 @@ frontend/node_modules
 airflow/logs
 airflow/data
 airflow/dags/__pycache__
+backend/app/data
+backend/app/data
 
 # Ignore files
 .env
-**.json
+# **.json
 **.csv
 *.csv
 **/.DS_Store
