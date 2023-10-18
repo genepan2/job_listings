@@ -72,8 +72,10 @@ services:
     environment:
       # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
       MONGO_URI: mongodb://mongo:27017/
-      MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL:-jobs_all}
-      MONGO_DB_NAME: ${MONGO_DB_NAME:-job_listing_db}
+      MONGO_COLLECTION_ALL: jobs_all
+      MONGO_DB_NAME: job_listing_db
+      #MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL:-jobs_all}
+      #MONGO_DB_NAME: ${MONGO_DB_NAME:-job_listing_db}
     healthcheck:
       # test: [
       #     "CMD",
