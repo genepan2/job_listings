@@ -1,0 +1,42 @@
+{
+  "search_keyword_linkedin": [
+    "Data Engineer",
+    "Big Data Engineer",
+    "Data Scientist",
+    "Data Analist",
+    "Business Intelligence Engineer",
+    "Machine Learning Engineer"
+  ],
+  "search_location_linkedin": [
+    "Berlin, Germany",
+    "Munich, Germany",
+    "Hamburg, Germany",
+    "Cologne, Germany",
+    "Frankfurt, Germany"
+  ],
+  "search_keyword_whatjobs": [
+    "Data",
+    "Data Engineer",
+    "Big Data Engineer",
+    "Data Scientist",
+    "Data Analist",
+    "Business Intelligence Engineer",
+    "Machine Learning Engineer"
+  ],
+  "search_location_whatjobs": [
+    "berlin--berlin",
+    "cologne",
+    "hamburg--hamburg",
+    "munich",
+    "frankfurt"
+  ],
+  "search_keyword_themuse": ["Data and Analytics", "Data Science"],
+  "search_location_themuse": [
+    "Berlin, Germany",
+    "Munich, Germany",
+    "Hamburg, Germany",
+    "Cologne, Germany",
+    "Frankfurt, Germany"
+  ],
+  "jobs_to_load": 10
+}
