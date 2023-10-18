@@ -23,7 +23,7 @@ jobs:
 
       - name: Build and Push MongoDB Image
         run: |
-          docker build -t mongo:${GITHUB_SHA} ./path-to-your-mongodb-context
+          docker build -t mongo:${GITHUB_SHA}
           docker tag mongo:${GITHUB_SHA} mongo:latest
           docker login -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWD }}
           docker push mongo:latest
