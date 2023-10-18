@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
+from airflow.operators.bash_operator import BashOperator
 from datetime import datetime, timedelta
 from airflow.models import Variable
 from airflow.providers.mongo.hooks.mongo import MongoHook
@@ -634,6 +635,7 @@ class SalaryPredictor:
         self.X_train = pd.read_csv(self.X_train_path)
 
     def one_hot_encode_data(self):
+        # logging.info("Columns in the DataFrame: %s", self.job_listing_df.columns)
         job_listing_selected = self.job_listing_df[['location', 'title', 'language', 'level']].copy()
         job_listing_encoded = pd.get_dummies(job_listing_selected)
         return job_listing_encoded
@@ -1035,6 +1037,20 @@ def load_records_to_main_collection():
 
 ####################################################################################
 ####################################################################################
+## BASH Methods
+####################################################################################
+####################################################################################
+
+move_raw_json_files_to_archive = '''
+current_time=$(date "+%Y-%m-%d_%H-%M-%S")
+archive_dir="/opt/airflow/data/archive/${current_time}"
+mkdir -p "${archive_dir}"
+find /opt/airflow/data/raw -type f -name '*.json' -exec mv {} "${archive_dir}" \;
+'''
+
+
+####################################################################################
+####################################################################################
 ## DAG
 ####################################################################################
 ####################################################################################
@@ -1142,6 +1158,12 @@ t95 = PythonOperator(
     dag=dag,
 )
 
+t97 = BashOperator(
+    task_id='archive_raw_files',
+    bash_command=move_raw_json_files_to_archive,
+    dag=dag,
+)
+
 
 ####################################################################################
 ####################################################################################
@@ -1160,11 +1182,11 @@ chain(t10, t11, t12)
 chain(t20, t21, t22)
 chain(t30, t31, t32)
 
-chain(m10, t90, t95)
+chain(m10, t90, t95, t97)
 
 cross_downstream([t10, t20, t30], [t11, t21, t31])
 cross_downstream([t11, t21, t31], [t12, t22, t32])
-cross_downstream([t12, t22, t32], [m10, t90, t95])
+cross_downstream([t12, t22, t32], [m10, t90, t95, t97])
 # cross_downstream([t12, t22, t32], [m10, t90])
 
 
