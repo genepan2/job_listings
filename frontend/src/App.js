@@ -17,14 +17,16 @@ import './App.css';
 
 function App() {
   const [jobs, setJobs] = useState([]);
+  const [stats, setStats] = useState({});
   const [filters, setFilters] = useState({
     //   keyword: '',
       level: [],
       location: [],
+      language: [],
       age: 1,
       order: 'asc',
       page: 1,
-      items_per_page: 10
+      items_per_page: 100
   });
 
 //   const navigate = useNavigate();
@@ -32,13 +34,11 @@ function App() {
 
   useEffect(() => {
       const fetchJobs = async () => {
-          console.log("filters")
-          console.log(filters)
           try {
               const response = await axiosInstance.post('/jobs', filters);
-            //   console.log("ssdfsdgf")
-            //   console.log(response)
               setJobs(response.data.data);
+              setStats(response.data.stats);
+              console.log(response.data.stats)
           } catch (error) {
               console.error("Error fetching jobs:", error);
           }
@@ -57,7 +57,8 @@ function App() {
                     <JobsListing filters={filters} setFilters={setFilters} jobs={jobs} />
                 </ProtectedRoute>
             }/> */}
-            <Route path="/jobs" element={<JobsListing filters={filters} setFilters={setFilters} jobs={jobs} />}/>
+            <Route path="/" element={<JobsListing filters={filters} setFilters={setFilters} jobs={jobs} stats={stats} />}/>
+            <Route path="/jobs" element={<JobsListing filters={filters} setFilters={setFilters} jobs={jobs} stats={stats} />}/>
         </Routes>
     </Router>
 

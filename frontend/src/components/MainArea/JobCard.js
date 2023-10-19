@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 function JobCard( {job} ) {
   return (
-    <Card className="mt-0 w-full text-left border-1 border-b border-gray-400 rounded-none hover:bg-gray-100" shadow={false}>
+    <Card className="w-full mt-0 text-left border-b border-gray-400 rounded-none border-1 hover:bg-gray-100" shadow={false}>
       <CardBody>
           {/* <Chip size="md" color="pink" variant="outlined" value= /> */}
         <Typography variant="h5" color="blue-gray" className="mb-2">
@@ -46,30 +46,30 @@ function JobCard( {job} ) {
 // function JobCard({ job }) {
 //     return (
 // 			<div
-// 				class="block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+// 				className="block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
 // 				<div
-// 					class="border-b-2 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50">
+// 					className="px-6 py-3 border-b-2 border-neutral-100 dark:border-neutral-600 dark:text-neutral-50">
 // 					Featured
 // 				</div>
-// 				<div class="p-6">
+// 				<div className="p-6">
 // 					<h5
-// 						class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+// 						className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
 // 						{job.job_title}
 // 					</h5>
-// 					<p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+// 					<p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
 // 						{job.job_description.substring(0, 300)}... <span>read more</span>
 // 					</p>
 // 					<button
 // 						type="button"
 // 						href="#"
-// 						class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+// 						className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
 // 						data-te-ripple-init
 // 						data-te-ripple-color="light">
 // 						Go somewhere
 // 					</button>
 // 				</div>
 // 				<div
-// 					class="border-t-2 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50">
+// 					className="px-6 py-3 border-t-2 border-neutral-100 dark:border-neutral-600 dark:text-neutral-50">
 // 					{job.publishDate}
 // 				</div>
 // 			</div>

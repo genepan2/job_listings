@@ -3,17 +3,17 @@ import StickyNavbar from '../StickyNavbar'
 
 const LayoutSidebar = ({ sidebar, mainContent }) => {
 	return (
-		<div className="h-screen grid grid-cols-12 gap-0">
-			<header className="row-auto col-span-12">
+		<div className="grid h-screen grid-cols-12 gap-0">
+			<header className="col-span-12 row-auto">
 				<StickyNavbar />
 			</header>
-			<div className="row-auto col-span-12 grid grid-cols-12 grid-flow-col gap-0 w-full">
-				<aside class="text-white col-span-3 border-1 border-r border-gray-400">
+			<div className="grid w-full grid-flow-col grid-cols-12 col-span-12 row-auto gap-0">
+				<aside className="col-span-3 text-white border-r border-gray-400 border-1">
 					{sidebar}
-				{/* <nav class="w-56 flex">
+				{/* <nav className="flex w-56">
 				</nav> */}
 				</aside>
-				<main class="grid col-span-9">
+				<main className="grid col-span-9">
 					{mainContent}
 				</main>
 			</div>

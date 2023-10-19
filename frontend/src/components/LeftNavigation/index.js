@@ -11,23 +11,27 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-// import {
-//   PresentationChartBarIcon,
-//   ShoppingBagIcon,
-//   UserCircleIcon,
-//   Cog6ToothIcon,
-//   InboxIcon,
-//   PowerIcon,
-// } from "@heroicons/react/24/solid";
-// import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import {
+  PresentationChartBarIcon,
+  ShoppingBagIcon,
+  UserCircleIcon,
+  Cog6ToothIcon,
+  InboxIcon,
+  PowerIcon,
+  MapPinIcon,
+  TrophyIcon,
+  LanguageIcon,
+} from "@heroicons/react/24/solid";
+import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+
 import { Checkbox } from "@material-tailwind/react";
 
-function MultiLevelSidebar({ setFilters }) {
-  // const [open, setOpen] = React.useState(0);
+function MultiLevelSidebar({ setFilters, stats }) {
+  const [open, setOpen] = React.useState(0);
 
-  // const handleOpen = (value) => {
-  //   setOpen(open === value ? 0 : value);
-  // };
+  const handleOpen = (value) => {
+    setOpen(open === value ? 0 : value);
+  };
 
   const handleFilterChange = (filterType, value) => {
     setFilters(prevFilters => {
@@ -46,96 +50,210 @@ function MultiLevelSidebar({ setFilters }) {
     });
   };
 
+  const locations = ["Berlin",   "Munich",   "Hamburg",   "Cologne", "Frankfurt", "Other"];
+  const levels = ["Internship",   "Entry",   "Middle",   "Senior",   "Other"]
+  const languages = ["English", "German"]
+
+  const filterConfig = [
+    {
+      title: 'Location',
+      icon: <MapPinIcon className="w-5 h-5" />,
+      identifier: 'locations',
+    },
+    {
+      title: 'Level',
+      icon: <TrophyIcon className="w-5 h-5" />,
+      identifier: 'levels',
+    },
+    {
+      title: 'Language',
+      icon: <LanguageIcon className="w-5 h-5" />,
+      identifier: 'language',
+    },
+    // ... other filters
+  ];
+
   return (
+    <Card className="h-[calc(100vh-2rem)] w-full p-4" shadow={false}>
+      <div className="p-4 mb-2">
+        <Typography variant="h5" color="blue-gray">
+          Filter
+        </Typography>
+      </div>
+      <List>
+      {/* {filterConfig.map((filter, filterIndex) => (
+        <Accordion
+          open={open === filterIndex}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform ${open === filterIndex ? "rotate-180" : ""}`}
+            />
+          }
+        >
+          <ListItem className="p-0" selected={open === filterIndex}>
+            <AccordionHeader onClick={() => handleOpen(filterIndex)} className="p-3 border-b-0">
+              <ListItemPrefix>
+                {filter.icon}
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal">
+                {filter.title}
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1">
+            <List className="gap-0 p-0">
+              {Object.keys(stats[filter.identifier]).map((option, index) => (
+                <ListItem key={index}>
+                  <Checkbox
+                    label={option}
+                    value={option}
+                    containerProps={{
+                      className: "p-0 px-3",
+                    }}
+                    className="p-0"
+                    onChange={(e) => handleFilterChange(filter.identifier, e.target.value)}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </AccordionBody>
+        </Accordion>
+      ))} */}
 
-      <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 text-left" shadow={false}>
-        <div className="mb-2 p-4">
-          <Typography variant="h5" color="blue-gray">
-            Filter
-          </Typography>
-        </div>
-        <div>
-          <div className="flex w-full"><Checkbox label="Berlin" value="Berlin" onChange={(e) => handleFilterChange('location', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Munich" value="Munich" onChange={(e) => handleFilterChange('location', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Hamburg" value="Hamburg" onChange={(e) => handleFilterChange('location', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Cologne" value="Cologne" onChange={(e) => handleFilterChange('location', e.target.value)} /></div>
-        </div>
-        <div>
-          <div className="flex w-full"><Checkbox label="Internship" value="Internship" onChange={(e) => handleFilterChange('level', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Entry" value="Entry" onChange={(e) => handleFilterChange('level', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Middle" value="Middle" onChange={(e) => handleFilterChange('level', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Senior" value="Senior" onChange={(e) => handleFilterChange('level', e.target.value)} /></div>
-          <div className="flex w-full"><Checkbox label="Other" value="Other" onChange={(e) => handleFilterChange('level', e.target.value)} /></div>
-        </div>
-      </Card>
-
+        <Accordion
+          open={open === 1}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform ${open === 1 ? "rotate-180" : ""}`}
+            />
+          }
+        >
+          <ListItem className="p-0" selected={open === 1}>
+            <AccordionHeader onClick={() => handleOpen(1)} className="p-3 border-b-0">
+              <ListItemPrefix>
+                <MapPinIcon className="w-5 h-5" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal">
+                Location
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1">
+            <List className="gap-0 p-0">
+              {
+              locations.map((location, index) => (
+                <ListItem key={index}>
+                  <Checkbox
+                    // label={location}
+                    label={location + (stats["locations"][location] ? " (" + stats["locations"][location] + ")" : " (0)")}
+                    value={location}
+                    containerProps={{
+                      className: "p-0 px-3",
+                    }}
+                    className="p-0"
+                    onChange={(e) => handleFilterChange('location', e.target.value)}
+                  />
+                </ListItem>
+              ))
+              }
+            </List>
+          </AccordionBody>
+        </Accordion>
+        <Accordion
+          open={open === 2}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
+            />
+          }
+        >
+          <ListItem className="p-0" selected={open === 2}>
+            <AccordionHeader onClick={() => handleOpen(2)} className="p-3 border-b-0">
+              <ListItemPrefix>
+                <TrophyIcon className="w-5 h-5" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal">
+                Level
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1">
+            <List className="p-0">
+              {
+              levels.map((level, index) => (
+                <ListItem>
+                  <Checkbox
+                    // label={level}
+                    label={level + (stats["levels"][level] ? " (" + stats["levels"][level] + ")" : " (0)")}
+                    value={level}
+                    containerProps={{
+                      className: "p-0 px-3",
+                    }}
+                    className="p-0"
+                    onChange={(e) => handleFilterChange('level', e.target.value)}
+                  />
+                </ListItem>
+              ))
+              }
+            </List>
+          </AccordionBody>
+        </Accordion>
+        <Accordion
+          open={open === 3}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform ${open === 3 ? "rotate-180" : ""}`}
+            />
+          }
+        >
+          <ListItem className="p-0" selected={open === 3}>
+            <AccordionHeader onClick={() => handleOpen(3)} className="p-3 border-b-0">
+              <ListItemPrefix>
+                <LanguageIcon className="w-5 h-5" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal">
+                Language
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1">
+            <List className="p-0">
+              {
+              languages.map((language, index) => (
+                <ListItem>
+                  <Checkbox
+                    // label={language}
+                    label={language + (stats["languages"][language] ? " (" + stats["languages"][language] + ")" : " (0)")}
+                    value={language}
+                    containerProps={{
+                      className: "p-0 px-3",
+                    }}
+                    className="p-0"
+                    onChange={(e) => handleFilterChange('language', e.target.value)}
+                  />
+                </ListItem>
+              ))
+              }
+            </List>
+          </AccordionBody>
+        </Accordion>
+        {/* <ListItem>
+          <ListItemPrefix>
+            <InboxIcon className="w-5 h-5" />
+          </ListItemPrefix>
+          Inbox
+          <ListItemSuffix>
+            <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+          </ListItemSuffix>
+        </ListItem> */}
+      </List>
+    </Card>
   );
 }
 
+
 export default MultiLevelSidebar;
-
-// function LeftNavigation({ setFilters }) {
-//   const handleFilterChange = (filterType, value) => {
-//       setFilters(prevFilters => ({
-//           ...prevFilters,
-//           [filterType]: value
-//       }));
-//   };
-
-//   return (
-//       <div className="left-nav">
-//           {/* <div className="filter-container">
-//               <p>Source</p>
-//               <label>
-//                   <input type="checkbox" value="themuse" onChange={(e) => handleFilterChange('source', e.target.value)} /> TheMuse
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="whatjobs" onChange={(e) => handleFilterChange('source', e.target.value)} /> WhatJobs
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="linkedin" onChange={(e) => handleFilterChange('source', e.target.value)} /> linkedIn
-//               </label>
-//           </div> */}
-
-//           <div className="filter-container">
-//               <p>Location</p>
-//               <label>
-//                   <input type="checkbox" value="Berlin" onChange={(e) => handleFilterChange('location', e.target.value)} /> Berlin
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Munich" onChange={(e) => handleFilterChange('location', e.target.value)} /> Munich
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Hamburg" onChange={(e) => handleFilterChange('location', e.target.value)} /> Hamburg
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Cologne" onChange={(e) => handleFilterChange('location', e.target.value)} /> Cologne
-//               </label>
-//           </div>
-
-//           <div className="filter-container">
-//               <p>Job Level</p>
-//               <label>
-//                   <input type="checkbox" value="Intern" onChange={(e) => handleFilterChange('level', e.target.value)} /> Internship
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Entry" onChange={(e) => handleFilterChange('level', e.target.value)} /> Entry
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Mid" onChange={(e) => handleFilterChange('level', e.target.value)} /> Mid
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Senior" onChange={(e) => handleFilterChange('level', e.target.value)} /> Senior
-//               </label>
-//               <label>
-//                   <input type="checkbox" value="Unknown" onChange={(e) => handleFilterChange('level', e.target.value)} /> Unknown
-//               </label>
-//           </div>
-
-//           {/* ... rest of the code ... */}
-//       </div>
-//   );
-// }
-
-
-// export default LeftNavigation;
