@@ -46,13 +46,6 @@ x-airflow-common: &airflow-common
     # - ./airflow/requirements.txt:/opt/airflow/requirements.txt
     # - ./airflow/config/airflow.cfg:/opt/airflow/airflow.cfg
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
-  depends_on:
-    redis:
-      condition: service_healthy
-    postgres:
-      condition: service_healthy
-    mongo:
-      condition: service_healthy
   # profiles:
   #   - backend
 
@@ -142,11 +135,6 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend/src:/src
-    depends_on:
-      mongo:
-        condition: service_healthy
-      api:
-        condition: service_healthy
     # profiles:
     #   - frontend
 
