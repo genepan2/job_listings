@@ -63,7 +63,7 @@ jobs:
  
           docker-compose push 
       # Airflow images are not to be deployes below as they are to heavy for the AWS ECS instance, it crashes
-      - name: Deploy Docker Images MongoDB
+      - name: Deploy Docker Image MongoDB
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOSTNAME }}
@@ -78,7 +78,7 @@ jobs:
             sudo docker pull levigab/mongo:latest
             sudo docker run -d -p 27017:27017 levigab/mongo:latest
 
-      - name: Deploy Docker Images API
+      - name: Deploy Docker Image API
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOSTNAME }}
@@ -93,7 +93,7 @@ jobs:
             sudo docker pull levigab/job_listing-api:latest
             sudo docker run -d -p 8000:8000 levigab/job_listing-api:latest
 
-      - name: Deploy Docker Images Frontend
+      - name: Deploy Docker Image Frontend
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOSTNAME }}
@@ -123,7 +123,7 @@ jobs:
             sudo docker pull levigab/postgres:13
             sudo docker run -d levigab/postgres:13
 
-      - name: Deploy Docker Images Redis
+      - name: Deploy Docker Image Redis
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOSTNAME }}
