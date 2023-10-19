@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 from unittest.mock import patch
-from app.api import api, DbQuery, JobRequest, JobLevel, JobLocation
+from api import api, DbQuery, JobRequest, JobLevel, JobLocation
 
 # Instantiate the TestClient with the FastAPI application instance
 client = TestClient(api)

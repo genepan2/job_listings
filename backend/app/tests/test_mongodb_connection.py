@@ -1,6 +1,6 @@
 import pytest
 import mongomock
-from app.config.mongodb_connection import MongoDBUploader 
+from config.mongodb_connection import MongoDBUploader 
 import json
 
 # Fixture to create a MongoDBUploader instance and set it up for testing
