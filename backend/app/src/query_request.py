@@ -6,20 +6,14 @@ from config.constants import COLLECTIONS, MONGO, FIELDS, MISC
 
 class DbQuery:
     def __init__(self, uri: str = MONGO["uri"], database_name: str = MONGO["db"], collection_name: str = COLLECTIONS["all"]):
-        # print(uri)
-        # print(database_name)
-        # print(collection_name)
         self.client = MongoClient(uri)
-        # self.uri = uri
-        # self.database = self.client[database_name]
-        # self.collection = self.database[collection_name]
-        # self.client = MongoClient('mongodb://localhost:27017/')
         self.uri = uri
         self.database = self.client[database_name]
         self.collection = self.database[collection_name]
 
     def query_jobs(self, keyword: Optional[str] = None, level: Optional[str] = None,
-                   location: Optional[str] = None, age: Optional[int] = None,
+                   location: Optional[str] = None, language: Optional[str] = None,
+                   age: Optional[int] = None,
                    order: str = 'asc', page: int = 1, items_per_page: int = MISC["items_per_page"]) -> List[dict]:
         query = {}
 
@@ -49,6 +43,12 @@ class DbQuery:
             else:
                 query[FIELDS["location"]] = location
 
+        if language:
+            if isinstance(language, list):
+                query[FIELDS["language"]] = {"$in": [lang for lang in language]}
+            else:
+                query[FIELDS["language"]] = language
+
 
         # Sort order
         # sort_order = pymongo.ASCENDING if order == 'asc' else pymongo.DESCENDING
@@ -62,15 +62,37 @@ class DbQuery:
         result = self.collection.find(query, {"_id": 0}).sort(FIELDS["publish_date"], sort_order).skip(offset).limit(limit)
         # result = self.collection.find({}, {"_id": 0}).sort(FIELDS["publish_date"], sort_order).skip(offset).limit(limit)
 
-        # Convert query result to a list of dictionaries
-        job_list = list(result)
-        print(len(job_list))
 
-        # print(self.uri)
-        # print(self.database)
-        # print(self.collection)
+        # Now, create an aggregation pipeline that includes the current query for stats calculation.
+        stats_pipeline = [
+            {"$match": query},  # This line ensures stats are calculated based on the current query
+            {
+                "$facet": {
+                    "levels": [{"$group": {"_id": "$level", "count": {"$sum": 1}}}],
+                    "languages": [{"$group": {"_id": "$language", "count": {"$sum": 1}}}],
+                    "locations": [{"$group": {"_id": "$location", "count": {"$sum": 1}}}],
+                }
+            }
+        ]
 
-        return job_list
+        # stats_result = self.collection.aggregate(stats_pipeline)
+        aggregate_result = list(self.collection.aggregate(stats_pipeline))
+        facet_result = aggregate_result[0]
+
+        levels_stats = {entry["_id"]: entry["count"] for entry in facet_result["levels"]}
+        languages_stats = {entry["_id"]: entry["count"] for entry in facet_result["languages"]}
+        locations_stats = {entry["_id"]: entry["count"] for entry in facet_result["locations"]}
+
+        stats = {
+            "levels": levels_stats,
+            "languages": languages_stats,
+            "locations": locations_stats,
+        }
+
+        data = list(result)
+        # stats = {entry["_id"]: entry["count"] for entry in stats_result}
+
+        return {"data": data, "stats": stats}
 
     def calculate_date_from_age(self, age_in_days: int) -> datetime:
         current_date = datetime.now()

@@ -95,14 +95,14 @@ JOB_LOCATIONS = {
 }
 
 JOB_LEVELS = {
-	"Intern": "Internship",
-	"Entry": "Entry",
-	"Middle": "Middle",
-	"Senior": "Senior",
+	"intern": "Internship",
+	"entry": "Entry",
+	"middle": "Middle",
+	"senior": "Senior",
 	"unknown": "Unknown",
-	"Lead": "Lead",
-	"Head": "Head",
-	"Student": "Student"
+	"lead": "Lead",
+	"head": "Head",
+	"student": "Student"
 }
 
 FIELDS = {

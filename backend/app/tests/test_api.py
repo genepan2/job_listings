@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 from unittest.mock import patch
-from app.api import api, DbQuery, JobRequest, JobLevel, JobLocation
+from api import api, DbQuery, JobRequest, JobLevel, JobLocation
 
 # Instantiate the TestClient with the FastAPI application instance
 client = TestClient(api)
@@ -34,7 +34,7 @@ def test_get_jobs():
                 "location": ["Berlin", "Munich"]
             }
         )
-        
+
     # Assert that the response status code is 200 (OK)
     assert response.status_code == 200
     # Assert that the data returned in the response matches the sample data
@@ -59,7 +59,7 @@ def test_post_jobs():
         )
         # Make a request to the POST /jobs endpoint with the JobRequest instance
         response = client.post("/jobs", json=job_request.model_dump())
-    
+
     # Assert that the response status code is 200 (OK)
     assert response.status_code == 200
     # Assert that the data returned in the response matches the sample data
