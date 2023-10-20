@@ -62,7 +62,7 @@ jobs:
           docker login -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWD }}  # Login to the Docker registry
  
           docker-compose push 
-      # Airflow images are not to be deployed below as they are to heavy for the AWS ECS instance, it crashes the instance
+      # Airflow images are not to be deployed below because they are to heavy for the AWS ECS instance, it crashes the instance
       - name: Deploy Docker Image MongoDB
         uses: appleboy/ssh-action@master
         with:
@@ -137,5 +137,3 @@ jobs:
             sleep 10
             sudo docker pull levigab/redis:latest
             sudo docker run -d -p 6379:6379 levigab/redis:latest
-            sleep 10
-            sudo docker container ls
