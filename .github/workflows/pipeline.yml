@@ -137,3 +137,5 @@ jobs:
             sleep 10
             sudo docker pull levigab/redis:latest
             sudo docker run -d -p 6379:6379 levigab/redis:latest
+            sleep 10
+            sudo docker container ls
