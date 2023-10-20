@@ -66,6 +66,10 @@ jobs:
       - name: Deploy Docker Image MongoDB
         uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
           script: |
             # Deploy and run MongoDB image
             sudo docker rm -f levigab/mongo
@@ -77,6 +81,10 @@ jobs:
       - name: Deploy Docker Image API
         uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
           script: |
             # Deploy and run API image
             sudo docker rm -f levigab/job_listing-api
@@ -88,6 +96,10 @@ jobs:
       - name: Deploy Docker Image Frontend
         uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
           script: |
             # Deploy and run Frontend image
             sudo docker rm -f levigab/job_listing-frontend
@@ -99,6 +111,10 @@ jobs:
       - name: Deploy Docker Images Postgres
         uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
           script: |
             # Deploy and run Postgres image
             sudo docker rm -f levigab/postgres
@@ -110,6 +126,10 @@ jobs:
       - name: Deploy Docker Image Redis
         uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          envs: AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION
           script: |
             # Deploy and run Redis image
             sudo docker rm -f levigab/redis
