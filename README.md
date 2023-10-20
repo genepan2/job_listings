@@ -44,7 +44,7 @@ Clone the Repository
 
 Build and Start the Docker Containers
 
-`docker compose --profile frontend --profile backend up`
+`docker compose up --build`
 
 ## 🚀Access the Application
 
