@@ -70,6 +70,7 @@ This script focuses on testing the MongoDB connection and operations, particular
 
 **CI/CD Pipeline with GitHub Actions** 
 
+
 [![CI/CD Pipeline](https://github.com/leviGab001/job_listings/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/leviGab001/job_listings/actions/workflows/pipeline.yml)
 
 The pipeline is designed for robustness, ensuring that **new deployments only occur after successful unit tests.**
