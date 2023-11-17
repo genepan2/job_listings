@@ -48,21 +48,29 @@ GitHub Actions CI/CD pipeline workflow is configured to automatically execute un
 
 **Test Scripts**
 
-`/backend/app/tests/test_api.py`: This script contains unit tests for the FastAPI application. It tests the API endpoints to ensure they return the expected data and status codes. Key features tested include:
+**test_api.py** 
+
+This script contains unit tests for the FastAPI application. It tests the API endpoints to ensure they return the expected data and status codes. Key features tested include:
 
 * Mocking database queries to isolate the API layer.
 * Testing the GET request to /jobs endpoint.
 * Ensuring the API returns the correct response and status code.
+* File Location: `/backend/app/tests/test_api.py`
 
-``/backend/app/tests/test_mongodb_connection.py``: This script focuses on testing the MongoDB connection and operations, particularly for the MongoDBUploader class. It includes:
+**test_mongodb_connection.py** 
+
+This script focuses on testing the MongoDB connection and operations, particularly for the MongoDBUploader class. It includes:
 
 * A pytest fixture to create a mock instance of MongoDBUploader.
 * Use of mongomock to simulate a MongoDB environment for testing.
 * Tests to ensure proper setup and operations of the MongoDB connection and data handling functions.
+* File Location: ``/backend/app/tests/test_mongodb_connection.py``
 
-## 🛫Deployment
+## 🛫Deployment 
 
-**CI/CD Pipeline with GitHub Actions**
+**CI/CD Pipeline with GitHub Actions** 
+
+[![CI/CD Pipeline](https://github.com/leviGab001/job_listings/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/leviGab001/job_listings/actions/workflows/pipeline.yml)
 
 The pipeline is designed for robustness, ensuring that **new deployments only occur after successful unit tests.**
 
@@ -70,15 +78,11 @@ The pipeline is designed for robustness, ensuring that **new deployments only oc
 
 The deployment process is fully automated, reducing the risk of human error and ensuring consistent setups.
 
-**Deployment Process**
 
-**Job Dependency:** The deployment job (build-push-deploy) waits for the successful completion of the unit-test job before it starts.
+**Steps for Deployment**
 
-**Environment Variables:** Sets up necessary environment variables such as AWS credentials, server IP, and user details, securely stored in GitHub secrets.
+**Job Dependency:** The deployment job **'build-push-deploy'** waits for the successful completion of the **'unit-test'** job before it starts.
 
-**Steps for Deployment:**
-
-**Repository Checkout:** The job begins by checking out the codebase.
 **Docker Image Build and Push:**
 * Builds Docker images for various components of the application using docker-compose.
 * Tags and pushes these images to a Docker registry.
