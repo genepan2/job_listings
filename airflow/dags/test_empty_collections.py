@@ -17,8 +17,8 @@ COLLECTIONS = {
   "themuse": "jobs_themuse",
   "whatjobs": "jobs_whatjobs",
   "linkedin": "jobs_linkedin",
-  "test": "test",
-  "all": "all_jobs"
+  # "test": "test",
+  "all": "jobs_jobs"
 }
 
 MONGO = {

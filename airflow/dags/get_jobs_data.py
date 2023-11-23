@@ -95,14 +95,14 @@ JOB_LOCATIONS = {
 }
 
 JOB_LEVELS = {
-	"intern": "Internship",
-	"entry": "Entry",
-	"middle": "Middle",
-	"senior": "Senior",
-	"unknown": "Unknown",
-	"lead": "Lead",
-	"head": "Head",
-	"student": "Student"
+	"Intern": "Internship",
+	"Entry": "Entry",
+	"Middle": "Middle",
+	"Senior": "Senior",
+	"Unknown": "Unknown",
+	"Lead": "Lead",
+	"Head": "Head",
+	"Student": "Student"
 }
 
 FIELDS = {
@@ -811,19 +811,34 @@ def transform_to_isoformat(publication_date, search_datetime):
     # If none of the formats match, raise an exception or return a default value as needed
     raise ValueError("Unable to parse publication_date")
 
+# def transform_job_title(title: str):
+#     to_remove_genders = ["(f/m/x)", "(m/f/d)", "(f/m/d)", "(m/w/d)", "(w/m/d)", "(M/W/D)", "m/f/d", "(w/m/x)", "(all genders!)", "(all genders)", "(All Genders)"]
+#     to_remove_level = [
+#         "(Junior)", "Junior", "(Entry Level)"
+#         "(Senior)", "Senior", "(Senior Level)"
+#         "Intern",
+#         "Working Student"
+#         ]
+
+#     title_parts = [part for part in title.split() if part not in to_remove_genders]
+#     title_parts = [part for part in title_parts if part not in to_remove_level]
+
+#     cleaned_title = ' '.join(title_parts)
+#     cleaned_title = ' '.join(cleaned_title.split())
+
+#     return cleaned_title
+
 def transform_job_title(title: str):
     to_remove_genders = ["(f/m/x)", "(m/f/d)", "(f/m/d)", "(m/w/d)", "(w/m/d)", "(M/W/D)", "m/f/d", "(w/m/x)", "(all genders!)", "(all genders)", "(All Genders)"]
-    to_remove_level = [
-        "(Junior)", "Junior", "(Entry Level)"
-        "(Senior)", "Senior", "(Senior Level)"
-        "Intern",
-        "Working Student"
-        ]
+    to_remove_levels = ["(Junior)", "Junior", "(Entry Level)", "(Senior)", "Senior", "(Senior Level)", "Intern", "Working Student"]
 
-    title_parts = [part for part in title.split() if part not in to_remove_genders]
-    title_parts = [part for part in title_parts if part not in to_remove_level]
+    to_remove = to_remove_genders + to_remove_levels
 
-    cleaned_title = ' '.join(title_parts)
+    cleaned_title = title
+    for phrase in to_remove:
+        cleaned_title = cleaned_title.replace(phrase, '')
+
+
     cleaned_title = ' '.join(cleaned_title.split())
 
     return cleaned_title

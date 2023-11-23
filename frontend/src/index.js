@@ -11,7 +11,10 @@ const customTheme = {
 
 }
 
+
 root.render(
+
+
   <React.StrictMode>
     <ThemeProvider value={customTheme}>
       <App />

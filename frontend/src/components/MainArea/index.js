@@ -106,7 +106,9 @@ function MainArea({ jobs }) {
                     const classes = isLast
                       ? "p-4"
                       : "p-4 border-b border-blue-gray-50";
-
+                    if (!title || !level || !location) {
+                      return null; // null means nothing will be rendered for this item.
+                    }
                     return (
                       <tr key={index}>
                         <td className={classes}>
@@ -184,7 +186,7 @@ function MainArea({ jobs }) {
                               <PencilIcon className="w-4 h-4" />
                             </IconButton>
                           </Tooltip> */}
-                            <a href={url}>
+                            <a href={url} rel="noreferrer" target="_blank">
                                 <Button
                                     size="sm"
                                     variant="outlined"
@@ -200,7 +202,7 @@ function MainArea({ jobs }) {
               </tbody>
             </table>
           </CardBody>
-          <CardFooter className="flex items-center justify-between p-4 border-t border-blue-gray-50">
+          {/* <CardFooter className="flex items-center justify-between p-4 border-t border-blue-gray-50">
             <Button variant="outlined" size="sm">
               Previous
             </Button>
@@ -230,7 +232,7 @@ function MainArea({ jobs }) {
             <Button variant="outlined" size="sm">
               Next
             </Button>
-          </CardFooter>
+          </CardFooter> */}
         </Card>
     );
 }
