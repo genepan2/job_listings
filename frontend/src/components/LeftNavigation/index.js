@@ -146,8 +146,14 @@ function MultiLevelSidebar({ setFilters, stats }) {
               locations.map((location, index) => (
                 <ListItem key={index}>
                   <Checkbox
-                    // label={location}
-                    label={location + (stats["locations"][location] ? " (" + stats["locations"][location] + ")" : " (0)")}
+                    label={
+                      location +
+                      (
+                        stats && stats["locations"] && stats["locations"][location]
+                          ? ` (${stats["locations"][location]})`
+                          : " (0)"
+                      )
+                    }
                     value={location}
                     containerProps={{
                       className: "p-0 px-3",
@@ -186,8 +192,14 @@ function MultiLevelSidebar({ setFilters, stats }) {
               levels.map((level, index) => (
                 <ListItem>
                   <Checkbox
-                    // label={level}
-                    label={level + (stats["levels"][level] ? " (" + stats["levels"][level] + ")" : " (0)")}
+                    label={
+                      level +
+                      (
+                        stats && stats["levels"] && stats["levels"][level]
+                          ? ` (${stats["levels"][level]})`
+                          : " (0)"
+                      )
+                    }
                     value={level}
                     containerProps={{
                       className: "p-0 px-3",
@@ -226,8 +238,14 @@ function MultiLevelSidebar({ setFilters, stats }) {
               languages.map((language, index) => (
                 <ListItem>
                   <Checkbox
-                    // label={language}
-                    label={language + (stats["languages"][language] ? " (" + stats["languages"][language] + ")" : " (0)")}
+                    label={
+                      language +
+                      (
+                        stats && stats["languages"] && stats["languages"][language]
+                          ? ` (${stats["languages"][language]})`
+                          : " (0)"
+                      )
+                    }
                     value={language}
                     containerProps={{
                       className: "p-0 px-3",

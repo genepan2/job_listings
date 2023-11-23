@@ -24,7 +24,7 @@ function App() {
       location: [],
       language: [],
       age: 1,
-      order: 'asc',
+      order: 'desc',
       page: 1,
       items_per_page: 100
   });
@@ -33,18 +33,19 @@ function App() {
 //   const axiosInstance = createAxiosInstance(navigate);
 
   useEffect(() => {
-      const fetchJobs = async () => {
-          try {
-              const response = await axiosInstance.post('/jobs', filters);
-              setJobs(response.data.data);
-              setStats(response.data.stats);
-              console.log(response.data.stats)
-          } catch (error) {
-              console.error("Error fetching jobs:", error);
-          }
-      };
+    document.title = 'Job Listings';
+    const fetchJobs = async () => {
+        try {
+            const response = await axiosInstance.post('/jobs', filters);
+            setJobs(response.data.data);
+            setStats(response.data.stats);
+            console.log(response.data.stats)
+        } catch (error) {
+            console.error("Error fetching jobs:", error);
+        }
+    };
 
-      fetchJobs();
+    fetchJobs();
   }, [filters]);
 
   return (
