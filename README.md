@@ -1,87 +1,58 @@
 # README
 
-## Project Overview 🌐
+## Description
 
-The job_listing project is a comprehensive solution for job listing, retrieval, and management. It consists of a backend application for data processing, an Airflow setup for workflow management, a frontend application for user interaction, and MongoDB for data storage. Salary Prediction with Classification Model. The project is containerized using Docker for easy deployment and scalability. 
+### Overview
 
-## 🛠️Technologies
+This project is a culmination of the skills and knowledge acquired during the [Datascientest](https://github.com/DataScientest) Bootcamp, showcasing our ability to apply data engineering principles in a real-world scenario, beyond the confines of structured learning modules.
 
-Backend: Python
+### Project Objective
 
-Frontend: ReactJS
+The primary objective of this project is to demonstrate a comprehensive understanding of data engineering by aggregating job postings from diverse sources, namely TheMuse, WhatJobs, and LinkedIn. Our approach involves a meticulous process of data cleaning and transformation, ensuring the information is both accurate and useful.
 
+### Key Features
+
+- **Data Aggregation:** Collates job postings from multiple platforms to provide a broad perspective of the job market.
+- **Data Transformation:** Employs advanced techniques to clean and convert data into a structured and analyzable format.
+- **User-Friendly Interface:** Presents the processed data through an intuitive and accessible interface, enhancing user experience.
+- **Automation:** Streamlines the entire process, from data collection to presentation, ensuring efficiency and consistency.
+- **Machine Learning Integration:** Utilizes machine learning algorithms to predict job salaries, adding a predictive dimension to our data analysis.
+
+### Technologies
+
+Backend: Python, FastAPI
+Frontend: ReactJS, TailwindCSS
 Workflow Management: Airflow
-
 Database: MongoDB
-
 Machine Learning: Sklearn
-
 Containerization: Docker
-
 Uni Test: Pytest
-
 Deployment: Git Action, Docker Hub, AWS
 
-## 🔄Stages
+## Setup and Installation
 
-Data Collection
+1. Clone the Repository
+   `git clone https://github.com/leviGab001/job_listing`
+2. Create the .env file from the provided .env_example
+3. Build the Docker Images and run start the containers
+   `docker compose up --build`
+4. Wait till all container run and are healthy (Screenshot?)
+5. Open the UI in your browser:
+   `http://localhost:3000`
+6. Open Airflow to see the orchestration:
+   `http://localhost:8080`
 
-Data Processing
+## Testing
 
-Data Consumption
-
-Automation
-
-Deployment
-
-## 🔧Setup and Installation
-
-Clone the Repository
-
-`git clone https://github.com/leviGab001/job_listing`
-
-`cd job_listing`
-
-Build and Start the Docker Containers
-
-`docker compose --profile frontend --profile backend up`
-
-## 🚀Access the Application
-
-Frontend: Open a web browser and navigate to `http://localhost:3000`
-
-Backend API: Send requests to `http://localhost:8000`
-
-## 🔒How to Use the API (secure)
-
-You need to start the uvicorn server with the nessaccery private key and certificate:
-`python3 -m uvicorn api_jwt:api --reload --ssl-keyfile ./cert/key-no-pass.pem --ssl-certfile ./cert/cert.pem`
-
-Because this certificate is self-signed, all the good browsers won't accept it. So you will see at the beginning a warning.
-
-The first thing you need to do with this API, you need to create an user account. So first go to the route
-`https://127.0.0.1/user/signup`
-
-The payload should consist of:
-{
-"username": "YOURUSERNAME",
-"password": "YOURPASSWORD"
-}
-The API will return you token which will be valid for 10 hours (only because development, typicaly much shorter period).
-
-Then you need to add this to the header:
-Authorization: Bearer YOURTOKEN
-
-## 🧪Testing
 Backend Tests
 
 `cd backend/tests`
-
 `pytest`
 
-## 🤝Contributions
+## Contributions
 
 Feel free to fork the project, create a feature branch, and submit a pull request. Ensure that your code has proper comments and passes all the existing tests.
 
-## 📜 License
+## License
+
 This project is licensed under the MIT License.
