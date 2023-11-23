@@ -14,7 +14,7 @@ class DbQuery:
     def query_jobs(self, keyword: Optional[str] = None, level: Optional[str] = None,
                    location: Optional[str] = None, language: Optional[str] = None,
                    age: Optional[int] = None,
-                   order: str = 'asc', page: int = 1, items_per_page: int = MISC["items_per_page"]) -> List[dict]:
+                   order: str = 'desc', page: int = 1, items_per_page: int = MISC["items_per_page"]) -> List[dict]:
         query = {}
 
         # print(self.calculate_date_from_age(age))
