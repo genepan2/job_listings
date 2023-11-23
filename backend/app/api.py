@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from enum import Enum
 from pydantic import BaseModel
 from typing import Optional, Set, List
-from config.constants import MISC
 from src.query_request import DbQuery
 from datetime import datetime
+from config.constants import MISC
 import os
 
 ####################
@@ -22,21 +22,12 @@ class JobLocation(str, Enum):
     munich = "Munich"
     hamburg = "Hamburg"
     cologne = "Cologne"
-    frankfurt = "Frankfurt"
-    other = "Other"
-
-class JobLanguages(str, Enum):
-    english = "English"
-    german = "German"
-    other = "Other"
-
 
 
 class JobRequest(BaseModel):
   # keyword: Optional[str] = None
   level: Optional[List[JobLevel]] = []
   location: Optional[List[JobLocation]] = []
-  language: Optional[List[JobLanguages]] = []
   age: Optional[int] = 1
   order: Optional[str] = 'asc'
   page: Optional[int] = 1
@@ -89,12 +80,11 @@ def read_health():
     return {"status": "1"}
 
 @api.get('/jobs')
-def get_jobs(keyword:str, level:str, language:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10, location:List[JobLocation] = []):
+def get_jobs(keyword:str, level:str, age:int, order:str = 'asc', page:int=1, items_per_page:int=10, location:List[JobLocation] = []):
   jobs = db.query_jobs(
     # keyword = keyword,
     level = level,
     location = location,
-    language = language,
     age = age,
     order = order,
     page = page,
@@ -119,7 +109,6 @@ def post_jobs(req: JobRequest):
     # keyword = req.keyword,
     level = req.level,
     location = req.location,
-    language = req.language,
     age = req.age,
     order = req.order,
     page = req.page,
@@ -128,15 +117,12 @@ def post_jobs(req: JobRequest):
   # print(jobs)
   full_uri = get_full_uri('/jobs', req)
 
-  # print(jobs)
-
   result = {
     "meta": {
       "datetime": datetime.now(),
       "url": full_uri
     },
-    "data": jobs["data"],
-    "stats": jobs["stats"]
+    "data": jobs
     # "data": {"teeest"}
   }
 

@@ -1,12 +1,6 @@
-# version: "3.1"
-# version: "3.4"
 version: "3.8"
 
 x-airflow-common: &airflow-common
-  # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.2.1}
-  # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.6.1}
-  # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.7.1}
-  # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.1.1}
   build:
     context: ./airflow
     dockerfile: Dockerfile
@@ -46,18 +40,12 @@ x-airflow-common: &airflow-common
     # - ./airflow/requirements.txt:/opt/airflow/requirements.txt
     # - ./airflow/config/airflow.cfg:/opt/airflow/airflow.cfg
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
-  depends_on:
-    redis:
-      condition: service_healthy
-    postgres:
-      condition: service_healthy
-    mongo:
-      condition: service_healthy
   # profiles:
   #   - backend
 
 services:
   api:
+    image: levigab/job_listing-api:latest
     # image: python:3.9-slim
     build:
       context: ./backend
@@ -66,9 +54,6 @@ services:
       - "8000:8000"
     volumes:
       - ./backend/app:/app
-    depends_on:
-      mongo:
-        condition: service_healthy
     environment:
       # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
       MONGO_URI: mongodb://mongo:27017/
@@ -104,7 +89,7 @@ services:
     #   - backend
 
   mongo:
-    image: mongo:latest
+    image: levigab/mongo:latest
     ports:
       - "27017:27017"
     volumes:
@@ -135,6 +120,7 @@ services:
     #   - backend
 
   frontend:
+    image: levigab/job_listing-frontend:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -142,16 +128,12 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend/src:/src
-    depends_on:
-      mongo:
-        condition: service_healthy
-      api:
-        condition: service_healthy
+
     # profiles:
     #   - frontend
 
   postgres:
-    image: postgres:13
+    image: levigab/postgres:13
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -167,7 +149,8 @@ services:
     #   - backend
 
   redis:
-    image: redis:latest
+    image: levigab/redis:latest
+
     ports:
       - 6379:6379
     healthcheck:
@@ -181,6 +164,7 @@ services:
 
   airflow-webserver:
     <<: *airflow-common
+    image: levigab/job_listing-airflow-webserver:latest
     command: webserver
     ports:
       - 8080:8080
@@ -193,6 +177,7 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
+    image: levigab/job_listing-airflow-scheduler:latest
     command: scheduler
     # command: bash -c "pip install -r /opt/airflow/requirements.txt && airflow scheduler"
     # command: /bin/bash -c "/opt/airflow/init_scheduler.sh"
@@ -210,6 +195,7 @@ services:
 
   airflow-worker:
     <<: *airflow-common
+    image: levigab/job_listing-airflow-worker:latest
     command: celery worker
     ports:
       - 8793:8793
@@ -224,6 +210,7 @@ services:
 
   airflow-init:
     <<: *airflow-common
+    image: levigab/job_listing-airflow-init:latest
     # command: version
     # command: bash -c "airflow variables import /opt/airflow/variables.json && airflow version"
     command: bash -c "/opt/airflow/config/airflow_init.sh"
@@ -235,8 +222,9 @@ services:
       _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD:-airflow}
       _AIRFLOW_WWW_USER_EMAIL: ${AIRFLOW_WWW_EMAIL:-someemail@gmail.com}
 
-  flower:
+  airflow-flower:
     <<: *airflow-common
+    image: levigab/job_listing-airflow-flower:latest
     command: celery flower
     ports:
       - 5555:5555
