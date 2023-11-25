@@ -4,7 +4,6 @@ FROM python:3.9-slim
 # Set environment variables
 # Use unbuffered mode to receive logs from the output, it’s also recommended when running Python within Docker containers
 ENV PYTHONUNBUFFERED 1
-#ENV NAME World  # This can be removed if not needed
 
 # Set the working directory in the container to /app
 WORKDIR /app
