@@ -29,19 +29,31 @@ Containerization: Docker
 Uni Test: Pytest
 Deployment: Git Action, Docker Hub, AWS
 
-
 ## Setup and Installation
 
 1. Clone the Repository
-   `git clone https://github.com/leviGab001/job_listing`
-2. Create the .env file from the provided .env_example
-3. Build the Docker Images and run start the containers
-   `docker compose up --build`
-4. Wait till all container run and are healthy (Screenshot?)
-5. Open the UI in your browser:
-   `http://localhost:3000`
-6. Open Airflow to see the orchestration:
-   `http://localhost:8080`
+
+   - Run command: `git clone https://github.com/leviGab001/job_listing`
+   - Navigate to the project directory: `cd job_listing`
+
+2. Create the .env File
+
+   - Copy the file: `cp .env.example .env.`
+   - Modify the environment variables
+
+3. Build Docker Images and Start Containers
+
+   - Run command: `docker compose -f docker-compose.dev.yml up --build`
+   - All 9 containers should start. To check if all are running and are healthy run `docker compose -f docker-compose.dev.yml ps`
+     ![job-listings--screenshot--docker-containers-healthy](https://github.com/leviGab001/job_listings/assets/10182052/388e0a02-7899-41da-8492-92f8c26518e8)
+
+4. Access the Application UI
+
+   - Open your web browser and go to `http://localhost:3000` to access the application's user interface.
+
+5. Access Airflow
+   - Open your web browser and go to `http://localhost:8080`
+   - The default credentials are `airflow/airflow`. You can change them in the .env file.
 
 ## Unit Tests
 
@@ -49,25 +61,25 @@ GitHub Actions CI/CD pipeline workflow is configured to automatically execute un
 
 **Test Scripts**
 
-**test_api.py** 
+**test_api.py**
 
 This script contains unit tests for the FastAPI application. It tests the API endpoints to ensure they return the expected data and status codes. Key features tested include:
 
-* Mocking database queries to isolate the API layer.
-* Testing the GET request to /jobs endpoint.
-* Ensuring the API returns the correct response and status code.
-* File Location: `/backend/app/tests/test_api.py`
+- Mocking database queries to isolate the API layer.
+- Testing the GET request to /jobs endpoint.
+- Ensuring the API returns the correct response and status code.
+- File Location: `/backend/app/tests/test_api.py`
 
-**test_mongodb_connection.py** 
+**test_mongodb_connection.py**
 
 This script focuses on testing the MongoDB connection and operations, particularly for the MongoDBUploader class. It includes:
 
-* A pytest fixture to create a mock instance of MongoDBUploader.
-* Use of mongomock to simulate a MongoDB environment for testing.
-* Tests to ensure proper setup and operations of the MongoDB connection and data handling functions.
-* File Location: ``/backend/app/tests/test_mongodb_connection.py``
+- A pytest fixture to create a mock instance of MongoDBUploader.
+- Use of mongomock to simulate a MongoDB environment for testing.
+- Tests to ensure proper setup and operations of the MongoDB connection and data handling functions.
+- File Location: `/backend/app/tests/test_mongodb_connection.py`
 
-## Deployment 
+## Deployment
 
 **CI/CD Pipeline with GitHub Actions** [![CI/CD Pipeline](https://github.com/leviGab001/job_listings/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/leviGab001/job_listings/actions/workflows/pipeline.yml)
 
@@ -79,24 +91,25 @@ The pipeline is designed for robustness, ensuring that **new deployments only oc
 
 The deployment process is fully automated, reducing the risk of human error and ensuring consistent setups.
 
-
 **Steps for Deployment**
 
 **Job Dependency:** The deployment job **'build-push-deploy'** waits for the successful completion of the **'unit-test'** job before it starts.
 
 **Docker Image Build and Push:**
-* Builds Docker images for various components of the application using docker-compose.
-* Tags and pushes these images to a Docker registry.
+
+- Builds Docker images for various components of the application using docker-compose.
+- Tags and pushes these images to a Docker registry.
 
 **Deployment to Server:**
-* Uses ``appleboy/ssh-action`` to SSH into the server.
-* Sequentially deploys several Docker images, including MongoDB, API, Frontend, Postgres, and Redis.
-* Each deployment step involves removing any existing container, pulling the latest image, and running the container with the appropriate configurations.
+
+- Uses `appleboy/ssh-action` to SSH into the server.
+- Sequentially deploys several Docker images, including MongoDB, API, Frontend, Postgres, and Redis.
+- Each deployment step involves removing any existing container, pulling the latest image, and running the container with the appropriate configurations.
 
 **Security and Best Practices**
-* All sensitive credentials are managed through GitHub secrets, ensuring security and confidentiality.
-* The deployment process is modular, allowing for independent updating of different components of the application.
 
+- All sensitive credentials are managed through GitHub secrets, ensuring security and confidentiality.
+- The deployment process is modular, allowing for independent updating of different components of the application.
 
 ## Contributions
 

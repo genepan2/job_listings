@@ -8,8 +8,6 @@ x-airflow-common: &airflow-common
     AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
-    # AIRFLOW_CONN_MONGO_DEFAULT: mongodb://mongo:27017/${MONGO_DB_NAME}
-    # AIRFLOW_CONN_JOBS_MONGODB: mongodb://mongo:27017/${MONGO_DB_NAME}
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__FERNET_KEY: ""
@@ -23,11 +21,6 @@ x-airflow-common: &airflow-common
     AIRFLOW__SMTP__SMTP_USER: ${AIRFLOW__SMTP__SMTP_USER}
     _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_WWW_USERNAME}
     _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD}
-    # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- pymongo pandas requests bs4 langdetect airflow.providers.mongo}
-    # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- pymongo pandas requests bs4 langdetect}
-    # AIRFLOW_CONN_MONGO_DEFAULT: mongo://${MONGO_ROOT_USERNAME:-root}:${MONGO_ROOT_PASSWORD:-rootpassword}@mongo:27017/%3FauthSource%3Dadmin
-    # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
-    # INTEGRATION_MONGO: true
   volumes:
     - ./airflow/config:/opt/airflow/config
     - ./airflow/dags:/opt/airflow/dags
@@ -35,18 +28,19 @@ x-airflow-common: &airflow-common
     - ./airflow/logs:/opt/airflow/logs
     - ./airflow/ml:/opt/airflow/ml
     - ./airflow/plugins:/opt/airflow/plugins
-    # - ./airflow/variables.json:/opt/airflow/variables.json
-    # - ./airflow/init_scheduler.sh:/opt/airflow/init_scheduler.sh
-    # - ./airflow/requirements.txt:/opt/airflow/requirements.txt
-    # - ./airflow/config/airflow.cfg:/opt/airflow/airflow.cfg
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
+  depends_on:
+    redis:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
+    mongo:
+      condition: service_healthy
   # profiles:
   #   - backend
 
 services:
   api:
-    image: levigab/job_listing-api:latest
-    # image: python:3.9-slim
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -57,30 +51,10 @@ services:
     environment:
       # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
       MONGO_URI: mongodb://mongo:27017/
-      MONGO_COLLECTION_ALL: jobs_all
-      MONGO_DB_NAME: job_listing_db
-      #MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL:-jobs_all}
-      #MONGO_DB_NAME: ${MONGO_DB_NAME:-job_listing_db}
+      MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL:-jobs_all}
+      MONGO_DB_NAME: ${MONGO_DB_NAME:-job_listing_db}
     healthcheck:
-      # test: [
-      #     "CMD",
-      #     "curl --fail http://0.0.0.0:8000/health || exit 1",
-      #     # "curl --fail --cacert ./cert/cert.pem https://0.0.0.0:8000/health || exit 1",
-      #   ]
-      # test: ["CMD-SHELL", "wget --quiet --spider http://0.0.0.0:8000/health || exit 1"]
-      # test: ["CMD-SHELL", "curl --fail http://0.0.0.0:8000/health || exit 1"]
-      test: [
-          "CMD-SHELL",
-          # "curl --fail --cacert ./cert/cert.pem https://0.0.0.0:8000/health || exit 1",
-          # "curl --fail --cacert ./backend/cert/cert.pem https://0.0.0.0:8000/health || exit 1",
-          # "curl --cacert ./backend/cert/cert.pem https://1270.0.0.1:443/health || exit 1",
-          "curl --fail http://0.0.0.0:8000/health || exit 1",
-        ]
-      # test:
-      #   [
-      #     "CMD-SHELL",
-      #     "wget --no-verbose --tries=1 http://0.0.0.0:8000/health || exit 1",
-      #   ]
+      test: ["CMD-SHELL", "curl --fail http://0.0.0.0:8000/health || exit 1"]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -89,7 +63,7 @@ services:
     #   - backend
 
   mongo:
-    image: levigab/mongo:latest
+    image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
@@ -120,7 +94,6 @@ services:
     #   - backend
 
   frontend:
-    image: levigab/job_listing-frontend:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -128,12 +101,16 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend/src:/src
-
+    depends_on:
+      mongo:
+        condition: service_healthy
+      api:
+        condition: service_healthy
     # profiles:
     #   - frontend
 
   postgres:
-    image: levigab/postgres:13
+    image: postgres:13
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -149,8 +126,7 @@ services:
     #   - backend
 
   redis:
-    image: levigab/redis:latest
-
+    image: redis:latest
     ports:
       - 6379:6379
     healthcheck:
@@ -164,7 +140,6 @@ services:
 
   airflow-webserver:
     <<: *airflow-common
-    image: levigab/job_listing-airflow-webserver:latest
     command: webserver
     ports:
       - 8080:8080
@@ -177,11 +152,7 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
-    image: levigab/job_listing-airflow-scheduler:latest
     command: scheduler
-    # command: bash -c "pip install -r /opt/airflow/requirements.txt && airflow scheduler"
-    # command: /bin/bash -c "/opt/airflow/init_scheduler.sh"
-    # command: bash -c "/opt/airflow/init_scheduler.sh"
     healthcheck:
       test:
         [
@@ -195,7 +166,6 @@ services:
 
   airflow-worker:
     <<: *airflow-common
-    image: levigab/job_listing-airflow-worker:latest
     command: celery worker
     ports:
       - 8793:8793
@@ -210,9 +180,6 @@ services:
 
   airflow-init:
     <<: *airflow-common
-    image: levigab/job_listing-airflow-init:latest
-    # command: version
-    # command: bash -c "airflow variables import /opt/airflow/variables.json && airflow version"
     command: bash -c "/opt/airflow/config/airflow_init.sh"
     environment:
       <<: *airflow-common-env
@@ -224,7 +191,6 @@ services:
 
   airflow-flower:
     <<: *airflow-common
-    image: levigab/job_listing-airflow-flower:latest
     command: celery flower
     ports:
       - 5555:5555
@@ -234,15 +200,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-
-# networks:
-#   default:
-#     external: true
-#     driver: bridge
-# app-network:
-#   name: jobs-app-network
-#   external: true
-#   driver: bridge
 
 volumes:
   mongo-data:
