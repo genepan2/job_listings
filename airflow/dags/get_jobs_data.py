@@ -1,12 +1,12 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
-from datetime import datetime, timedelta
 from airflow.models import Variable
 from airflow.providers.mongo.hooks.mongo import MongoHook
 from airflow.models.baseoperator import chain, cross_downstream
 from airflow.exceptions import AirflowException
 
+from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 from langdetect import detect
@@ -810,23 +810,6 @@ def transform_to_isoformat(publication_date, search_datetime):
 
     # If none of the formats match, raise an exception or return a default value as needed
     raise ValueError("Unable to parse publication_date")
-
-# def transform_job_title(title: str):
-#     to_remove_genders = ["(f/m/x)", "(m/f/d)", "(f/m/d)", "(m/w/d)", "(w/m/d)", "(M/W/D)", "m/f/d", "(w/m/x)", "(all genders!)", "(all genders)", "(All Genders)"]
-#     to_remove_level = [
-#         "(Junior)", "Junior", "(Entry Level)"
-#         "(Senior)", "Senior", "(Senior Level)"
-#         "Intern",
-#         "Working Student"
-#         ]
-
-#     title_parts = [part for part in title.split() if part not in to_remove_genders]
-#     title_parts = [part for part in title_parts if part not in to_remove_level]
-
-#     cleaned_title = ' '.join(title_parts)
-#     cleaned_title = ' '.join(cleaned_title.split())
-
-#     return cleaned_title
 
 def transform_job_title(title: str):
     to_remove_genders = ["(f/m/x)", "(m/f/d)", "(f/m/d)", "(m/w/d)", "(w/m/d)", "(M/W/D)", "m/f/d", "(w/m/x)", "(all genders!)", "(all genders)", "(All Genders)"]
