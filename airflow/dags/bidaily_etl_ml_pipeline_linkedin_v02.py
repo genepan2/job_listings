@@ -1,35 +1,17 @@
 from airflow import DAG
 from airflow.decorators import task
-# from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
 from airflow.models import Variable
-
-# from airflow.providers.mongo.hooks.mongo import MongoHook
-# from airflow.models.baseoperator import chain, cross_downstream
-# from airflow.exceptions import AirflowException
-
-from datetime import datetime, timedelta
+from datetime import timedelta
 import pendulum
 import json
-# import logging
-
-
 from common.JobListings.ExtractorLinkedIn import ExtractorLinkedIn as Extractor
 from common.JobListings.TransformerLinkedIn import TransformerLinkedIn as Transoformer
 from common.JobListings.SalaryPredictor import SalaryPredictor
 import common.JobListings.HelperDatabase as HelperDatabase
 import common.JobListings.HelperUtils as HelperUtils
 
-
-from common.JobListings.constants import COLLECTIONS
-
 SOURCE_NAME = "linkedin"
-
-####################################################################################
-####################################################################################
-# Airflow Variable
-####################################################################################
-####################################################################################
 
 keywords_linkedin = json.loads(Variable.get("search_keyword_linkedin"))
 locations_linkedin = json.loads(Variable.get("search_location_linkedin"))
@@ -46,20 +28,12 @@ else:
         raise ValueError(
             f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}")
 
-
-####################################################################################
-####################################################################################
-# Tasks Methods
-####################################################################################
-####################################################################################
-
 move_raw_json_files_to_archive = '''
 current_time=$(date "+%Y-%m-%d_%H-%M-%S")
 archive_dir="/opt/airflow/data/archive/${current_time}"
 mkdir -p "${archive_dir}"
 find /opt/airflow/data/raw/linkedin_json -type f -name '*.json' -exec mv {} "${archive_dir}" \;
 '''
-
 
 default_args = {
     'owner': 'admin',
