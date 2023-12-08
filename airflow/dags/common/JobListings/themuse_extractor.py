@@ -12,8 +12,6 @@ class ThemuseDataExtractor:
         locations_str = "&location=".join([urllib.parse.quote(loc) for loc in locations])
         self.items = items
         self.base_url = (f"https://www.themuse.com/api/public/jobs?category={categories_str}&location={locations_str}&page=")
-
-        # Ensure the directory exists
         self.directory_path = os.path.join(PATH['data_raw'], 'themuse_json')
         if not os.path.exists(self.directory_path):
             os.makedirs(self.directory_path)
@@ -36,12 +34,10 @@ class ThemuseDataExtractor:
                 logging.info(exception)
                 break
 
-        # if there is an limit on the jobs, let'S shuffle them first
         if self.items:
             random.shuffle(job_buffer)
             job_buffer = job_buffer[:self.items]
 
-        # Save the extracted job data to a JSON file
         with open(f"{self.directory_path}/themuse_raw_data.json", 'w') as json_file:
             json.dump(job_buffer, json_file, indent=4)
 
