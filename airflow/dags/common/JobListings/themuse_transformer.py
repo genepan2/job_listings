@@ -20,7 +20,6 @@ class ThemuseDataTransformer:
         job_description = HelperTransform.transform_strip_html_tags(job.get("contents", ""))
 
         transformed_job = {
-            #FIELDS["number"]: f"themuse-{self.job_number}",
             FIELDS["title"]: HelperTransform.transform_job_title(job.get("name", "")),
             FIELDS["company_name"]: job.get("company", {}).get("name", ""),
             FIELDS["location"]: HelperTransform.transform_job_location(job.get("locations", [{}])[0].get("name", "")) if job.get("locations") else "",
