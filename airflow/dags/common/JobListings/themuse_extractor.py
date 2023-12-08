@@ -4,7 +4,8 @@ import os
 import urllib.parse
 import random
 import logging
-from common.JobListings.constants import *
+from common.JobListings.constants import PATH
+
 
 class ThemuseDataExtractor:
     def __init__(self, categories:list , locations: list, items: int = None):
