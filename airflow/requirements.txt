@@ -4,6 +4,7 @@ requests
 bs4
 langdetect
 unicodedata2
+pendulum
 
 # airflow
 apache-airflow-providers-mongo
