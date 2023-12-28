@@ -21,6 +21,10 @@ x-airflow-common: &airflow-common
     AIRFLOW__SMTP__SMTP_USER: ${AIRFLOW__SMTP__SMTP_USER}
     _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_WWW_USERNAME}
     _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD}
+    MINIO_ROOT_ACCESS_KEY: ${MINIO_ROOT_ACCESS_KEY}
+    MINIO_ROOT_SECRET_KEY: ${MINIO_ROOT_SECRET_KEY}
+    MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+    MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
   volumes:
     - ./airflow/config:/opt/airflow/config
     - ./airflow/dags:/opt/airflow/dags
@@ -34,8 +38,8 @@ x-airflow-common: &airflow-common
       condition: service_healthy
     postgres:
       condition: service_healthy
-    mongo:
-      condition: service_healthy
+    # mongo:
+    #   condition: service_healthy
   # profiles:
   #   - backend
 
@@ -131,12 +135,15 @@ services:
     image: "minio/minio:latest"
     volumes:
       - ./.storage/minio:/data
+      - ./minio:/init
     ports:
       - 9000:9000
       - 9001:9001
     environment:
-      MINIO_ACCESS_KEY: ${MINIO_ACCES_KEY}
-      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_SECRET_KEY}
+      MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+      MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
     command: server /data --console-address ":9001"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
@@ -195,9 +202,9 @@ services:
     <<: *airflow-common
     command: webserver
     ports:
-      - 8080:8080
+      - 8090:8080
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      test: ["CMD", "curl", "--fail", "http://localhost:8090/health"]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -236,7 +243,7 @@ services:
     command: bash -c "/opt/airflow/config/airflow_init.sh"
     environment:
       <<: *airflow-common-env
-      _AIRFLOW_DB_UPGRADE: "true"
+      _AIRFLOW_DB_MIGRATE: "true"
       _AIRFLOW_WWW_USER_CREATE: "false"
       _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_WWW_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD:-airflow}
