@@ -1,13 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-import re
 import json
 import logging
 from datetime import datetime
+import pandas as pd
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
 from common.JobListings.constants import PATH, FIELDS
+from common.JobListings.HelperStorage import store_df_to_s3
+from common.JobListings.HelperUtils import create_key_name
 
 
 class ExtractorLinkedIn:
@@ -39,7 +41,15 @@ class ExtractorLinkedIn:
         job_details = [self.get_job_details(
             job_id, search) for job_id in job_ids]
 
-        self.save_jobs(job_details, "json")
+        df = pd.DataFrame(job_details)
+
+        # self.save_jobs(job_details, "json")
+
+        file_name = create_key_name(
+            'linkedin', self.search_location, self.search_keyword)
+        bucket = 'bronze'
+
+        store_df_to_s3(df, file_name, bucket)
 
     # Function to get job IDs from LinkedIn for a given keyword
     def get_job_ids(self, keyword, location):
@@ -148,27 +158,17 @@ class ExtractorLinkedIn:
             FIELDS["search_location"]: search["location"]
         }
 
-    def clean_filename(self, string, replace=False):
-        # note the backslash in front of the "-". otherwise it means from to.
-        pattern = "[,!.\-: ]"
-        logging.info(string)
-        if replace == False:
-            filename = re.sub(pattern, "_", string)
-        else:
-            filename = re.sub(pattern, "", string)
+    # def create_file_name(self, isRaw=False, type="json"):
+    #     path = self.directory_path
+    #     now = self.clean_filename(datetime.now().isoformat(), True)
+    #     location = self.clean_filename(self.search_location)
+    #     keyword = self.clean_filename(self.search_keyword)
+    #     # file_number = self.file_number
 
-        return filename.lower().replace("__", "_")
+    #     # return f"{path}/linkedin_{'raw_' if isRaw else ''}{now}_{location}_{keyword}_{file_number}.{type}"
+    #     return f"{path}/linkedin_{'raw_' if isRaw else ''}{now}_{location}_{keyword}.{type}"
 
-    def create_file_name(self, isRaw=False, type="json"):
-        path = self.directory_path
-        now = self.clean_filename(datetime.now().isoformat(), True)
-        location = self.clean_filename(self.search_location)
-        keyword = self.clean_filename(self.search_keyword)
-        file_number = self.file_number
-
-        return f"{path}/linkedin_{'raw_' if isRaw else ''}{now}_{location}_{keyword}_{file_number}.{type}"
-
-    def save_jobs(self, data, type="json"):
-        file_name = self.create_file_name(True)
-        with open(file_name, "w") as json_file:
-            json.dump(data, json_file, indent=4)
+    # def save_jobs(self, data, type="json"):
+    #     file_name = self.create_file_name(True)
+    #     with open(file_name, "w") as json_file:
+    #         json.dump(data, json_file, indent=4)

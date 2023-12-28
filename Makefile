@@ -1,6 +1,6 @@
 .PHONY: airflow spark hive scale-spark minio superset down dev
 
-dev: minio spark hive airflow
+dev: minio spark airflow
 
 pull:
 	docker-compose pull
@@ -28,7 +28,9 @@ minio:
 	docker-compose up -d minio
 
 airflow:
-	docker-compose up -d airflow
+	docker-compose up -d airflow-webserver
+	docker-compose up -d airflow-scheduler
+	docker-compose up -d airflow-worker
 
 spark:
 	docker-compose up -d spark-master

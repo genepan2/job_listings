@@ -5,6 +5,9 @@ bs4
 langdetect
 unicodedata2
 pendulum
+boto3
+pyspark
+delta
 
 # airflow
 apache-airflow-providers-mongo

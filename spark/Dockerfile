@@ -19,10 +19,11 @@ RUN apt-get update -y && apt-get install -y libzbar-dev bash gcc git libc-dev cu
     && apt-get clean
 
 # install spark
-RUN curl -o spark-3.1.1-bin-hadoop3.2.tgz https://archive.apache.org/dist/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz && \
-    tar -xzvf spark-3.1.1-bin-hadoop3.2.tgz && \
+# RUN curl -o spark-3.1.1-bin-hadoop3.2.tgz https://archive.apache.org/dist/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz && \
+RUN curl -o spark-3.3.4-bin-hadoop3.tgz https://archive.apache.org/dist/spark/spark-3.3.4/spark-3.3.4-bin-hadoop3.tgz && \
+    tar -xzvf spark-3.3.4-bin-hadoop3.tgz && \
     mv spark-3.1.1-bin-hadoop3.2 /opt/spark && \
-    rm -rf spark-3.1.1-bin-hadoop3.2.tgz
+    rm -rf spark-3.3.4-bin-hadoop3.tgz
 
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin

@@ -5,6 +5,7 @@ _temp
 .vscode
 .DS_Store
 .trunk
+.storage/minio
 frontend/node_modules
 airflow/logs
 airflow/data
