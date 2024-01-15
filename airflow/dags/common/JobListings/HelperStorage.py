@@ -10,8 +10,8 @@ from datetime import datetime, timedelta
 
 # Create a boto3 client with MinIO configuration
 
-AWS_ACCESSS_KEY = os.getenv('MINIO_ACCESSS_KEY')
-AWS_SECRET_KEY = os.getenv('MINIO_SECRET_KEY')
+AWS_ACCESS_KEY = os.getenv('MINIO_ROOT_ACCESS_KEY')
+AWS_SECRET_KEY = os.getenv('MINIO_ROOT_SECRET_KEY')
 MINIO_IP_ADDRESS = socket.gethostbyname("minio")
 
 HOURS_DELTA = 36
