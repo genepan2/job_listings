@@ -7,10 +7,13 @@ import unicodedata
 from datetime import datetime
 from common.JobListings.constants import FIELDS, PATH
 
-WHATJOBS_NUM_PAGES_TO_SCRAPE = 1  # The number of pages to be scraped from each search result
+# The number of pages to be scraped from each search result
+WHATJOBS_NUM_PAGES_TO_SCRAPE = 1
+
 
 class WhatjobsDataExtractor:
-    global_job_number = 1   # Class level attribute to ensure each job gets a unique identifier
+    # Class level attribute to ensure each job gets a unique identifier
+    global_job_number = 1
     all_jobs = []  # Class level attribute to store all jobs across different job titles and locations
 
     def __init__(self, job_title, location, items=None):
@@ -18,8 +21,10 @@ class WhatjobsDataExtractor:
         self.location = location
         self.items = items
         self.base_url = f"https://de.whatjobs.com/jobs/{self.job_title}/{self.location}"
-        self.num_pages_to_scrape = WHATJOBS_NUM_PAGES_TO_SCRAPE  # The number of pages to scrape for each search query
-        self.output_filename = os.path.join(PATH['data_raw'], 'whatjobs_json', 'whatjobs_raw_data.json')
+        # The number of pages to scrape for each search query
+        self.num_pages_to_scrape = WHATJOBS_NUM_PAGES_TO_SCRAPE
+        self.output_filename = os.path.join(
+            PATH['data_raw'], 'whatjobs_json', 'whatjobs_raw_data.json')
 
         # Create a directory for saving the JSON files, if it doesn't already exist
         directory_path = os.path.join(PATH['data_raw'], 'whatjobs_json')
@@ -42,20 +47,25 @@ class WhatjobsDataExtractor:
             title = title_element.text.strip() if title_element else "N/A"
 
             location_element = job.find("div", class_="posR")
-            location = location_element.text.split(' ', 1)[1].strip() if location_element else "N/A"
+            location = location_element.text.split(
+                ' ', 1)[1].strip() if location_element else "N/A"
 
             company_element = job.find("span", class_="wjIcon24 companyName")
-            company = company_element.find_parent('div').text.strip() if company_element else "N/A"
+            company = company_element.find_parent(
+                'div').text.strip() if company_element else "N/A"
 
             date_published_element = job.find("span", class_="wjIcon24 jobAge")
-            date_published = date_published_element.find_parent('div').text.strip() if date_published_element else "N/A"
+            date_published = date_published_element.find_parent(
+                'div').text.strip() if date_published_element else "N/A"
 
             description_element = job.find("span", class_="jDesc")
-            job_url = description_element.find_next('a')['href'] if description_element else "N/A"
-            full_description = self.get_full_description(job_url)  # Get the full description using the URL
+            job_url = description_element.find_next(
+                'a')['href'] if description_element else "N/A"
+            full_description = self.get_full_description(
+                job_url)  # Get the full description using the URL
 
             job_data = {
-                #FIELDS["number"]: f"whatjobs-{WhatjobsDataExtractor.global_job_number}",
+                # FIELDS["number"]: f"whatjobs-{WhatjobsDataExtractor.global_job_number}",
                 FIELDS["company_name"]: company,
                 FIELDS["title"]: title,
                 FIELDS["location"]: location,
@@ -69,15 +79,18 @@ class WhatjobsDataExtractor:
 
             # Adding the job data dictionary to the jobs_data list
             jobs_data.append(job_data)
-            WhatjobsDataExtractor.global_job_number += 1  # Incrementing the global job number
+            # Incrementing the global job number
+            WhatjobsDataExtractor.global_job_number += 1
 
         return jobs_data
 
     def scrape_all_pages(self):
         # Loop through all the pages specified by num_pages_to_scrape
         for page in range(1, self.num_pages_to_scrape + 1):
-            page_url = f"{self.base_url}?page={page}"  # Forming the URL for each page
-            jobs_on_page = self.scrape_page(page_url)  # Scraping the job data from the page
+            # Forming the URL for each page
+            page_url = f"{self.base_url}?page={page}"
+            # Scraping the job data from the page
+            jobs_on_page = self.scrape_page(page_url)
 
             # If no job data is returned, break the loop
             if not jobs_on_page:
@@ -88,8 +101,10 @@ class WhatjobsDataExtractor:
 
         # Save the aggregated jobs data to a JSON file
         with open(self.output_filename, "w") as outfile:
-            json.dump(WhatjobsDataExtractor.all_jobs, outfile, ensure_ascii=False, indent=4)
-        logging.info(f"Saved all {len(WhatjobsDataExtractor.all_jobs)} jobs in '{self.output_filename}'.")
+            json.dump(WhatjobsDataExtractor.all_jobs,
+                      outfile, ensure_ascii=False, indent=4)
+        logging.info(
+            f"Saved all {len(WhatjobsDataExtractor.all_jobs)} jobs in '{self.output_filename}'.")
 
     def get_full_description(self, url):
         response = requests.get(url)
