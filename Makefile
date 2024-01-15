@@ -1,4 +1,11 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev
+.PHONY: airflow spark hive scale-spark minio superset down dev init copy
+
+copy:
+	./copy-constants.sh
+
+init:
+	./copy-constants.sh
+	docker-compose up airflow-init
 
 dev: minio spark airflow
 
@@ -17,8 +24,8 @@ ps:
 down:
 	docker-compose down -v
 
-jars_dl:
-	sh jarfile_download.sh
+dl_jars:
+	sh download_jarfiles.sh
 
 clear-images:
 	docker image prune --filter="dangling=true"
@@ -34,7 +41,7 @@ airflow:
 
 spark:
 	docker-compose up -d spark-master
-	sleep 2
+	sleep 10
 	docker-compose up -d spark-worker
 
 scale-spark:
