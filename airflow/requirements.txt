@@ -6,11 +6,13 @@ langdetect
 unicodedata2
 pendulum
 boto3
-pyspark
+# pyspark==3.3.4
+pyspark==3.5.0
 delta
 
 # airflow
 apache-airflow-providers-mongo
+apache-airflow-providers-apache-spark
 
 # machine learning
 joblib
