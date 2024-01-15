@@ -8,6 +8,7 @@ x-airflow-common: &airflow-common
     AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    AIRFLOW_CONN_SPARK_DEFAULT: "spark://spark-master:7077?deploy-mode=client&spark-binary=spark-submit"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__FERNET_KEY: ""
@@ -25,6 +26,7 @@ x-airflow-common: &airflow-common
     MINIO_ROOT_SECRET_KEY: ${MINIO_ROOT_SECRET_KEY}
     MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
     MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+    SPARK_HISTORY_LOG_DIR: ${SPARK_HISTORY_LOG_DIR}
   volumes:
     - ./airflow/config:/opt/airflow/config
     - ./airflow/dags:/opt/airflow/dags
@@ -121,6 +123,12 @@ services:
       - 7077:7077
       - 8080:8080
       - 18080:18080
+    environment:
+      MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+      MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+    volumes:
+      - ./spark/jobs:/home/ubuntu/jobs_listings
+      # - shared-data:/home/ubuntu/jobs_listings/shared
     command: sh spark-master.sh
 
   spark-worker:
@@ -128,6 +136,12 @@ services:
     restart: unless-stopped
     ports:
       - "8081-8085:8081"
+    environment:
+      MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+      MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+    volumes:
+      - ./spark/jobs:/home/ubuntu/jobs_listings
+      # - shared-data:/home/ubuntu/jobs_listings/shared
     command: sh spark-worker.sh
 
   minio:
@@ -144,6 +158,7 @@ services:
       MINIO_SECRET_KEY: ${MINIO_ROOT_SECRET_KEY}
       MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
       MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+      SPARK_HISTORY_LOG_DIR: ${SPARK_HISTORY_LOG_DIR}
     command: server /data --console-address ":9001"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
@@ -264,3 +279,4 @@ services:
 volumes:
   mongo-data:
   postgres-db-volume:
+  shared-data: {}
