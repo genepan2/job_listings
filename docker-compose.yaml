@@ -128,7 +128,6 @@ services:
       MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
     volumes:
       - ./spark/jobs:/home/ubuntu/jobs_listings
-      # - shared-data:/home/ubuntu/jobs_listings/shared
     command: sh spark-master.sh
 
   spark-worker:
@@ -141,7 +140,6 @@ services:
       MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
     volumes:
       - ./spark/jobs:/home/ubuntu/jobs_listings
-      # - shared-data:/home/ubuntu/jobs_listings/shared
     command: sh spark-worker.sh
 
   minio:
@@ -166,23 +164,23 @@ services:
       timeout: 20s
       retries: 3
 
-  mariadb: #for hive metastore
-    image: mariadb:latest
-    # image: mariadb/columnstore:latest
-    ports:
-      - 3306:3306
-    environment:
-      USE_S3_STORAGE: 0
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+  # mariadb: #for hive metastore
+  #   image: mariadb:latest
+  #   # image: mariadb/columnstore:latest
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     USE_S3_STORAGE: 0
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
 
-  hive:
-    build: ./hive
-    restart: unless-stopped
-    ports:
-      - 9083:9083
+  # hive:
+  #   build: ./hive
+  #   restart: unless-stopped
+  #   ports:
+  #     - 9083:9083
 
   postgres:
     image: postgres:13
@@ -279,4 +277,3 @@ services:
 volumes:
   mongo-data:
   postgres-db-volume:
-  shared-data: {}
