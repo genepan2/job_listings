@@ -64,13 +64,13 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    @task(task_id="extract_linkedin")
-    def extract_linkedin_jobs():
-        for keyword in keywords_linkedin:
-            for location in locations_linkedin:
-                scraper = Extractor(keyword, location, JOBS_TO_GET)
-                scraper.scrape_jobs()
-    extract = extract_linkedin_jobs()
+    # @task(task_id="extract_linkedin")
+    # def extract_linkedin_jobs():
+    #     for keyword in keywords_linkedin:
+    #         for location in locations_linkedin:
+    #             scraper = Extractor(keyword, location, JOBS_TO_GET)
+    #             scraper.scrape_jobs()
+    # extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
     # @task(task_id="extract_linkedin")
@@ -111,6 +111,8 @@ with DAG(
             "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
             "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
             "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
+            # todo: tuning configurations -> research
+            # "spark.sql.shuffle.partitions": 200
         }
         # executor_memory='2g',
         # executor_cores=2,
@@ -141,5 +143,6 @@ with DAG(
     # )
 
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
-    extract
+    # extract
     # extract >> transform_spark
+    transform_spark
