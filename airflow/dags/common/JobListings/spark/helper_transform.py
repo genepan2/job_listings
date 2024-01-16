@@ -58,8 +58,7 @@ def transform_job_location(job_location: str):
 
 
 def transform_to_isoformat(publication_date, search_datetime):
-    logging.info(publication_date)
-    print(publication_date)
+    # todo: why logging.info() is not working here???
     today_names = ["today", "heute"]
     yesterday_names = ["yesterday", "gestern"]
 
@@ -118,7 +117,6 @@ def transform_to_isoformat(publication_date, search_datetime):
             pass  # Try the next format
 
     # If none of the formats match, raise an exception or return a default value as needed
-    logging.info(f"This Date seems not alright: {publication_date}")
     raise ValueError(f"Unable to parse publication_date: {publication_date}")
 
 
