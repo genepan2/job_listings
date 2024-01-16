@@ -5,11 +5,11 @@ from airflow.models import Variable
 from datetime import datetime, timedelta
 import pendulum
 import json
-from common.JobListings.whatjobs_extractor import WhatjobsDataExtractor as Extractor
-from common.JobListings.whatjobs_transformer import WhatjobsDataTransformer as Transformer
-from common.JobListings.SalaryPredictor import SalaryPredictor
-import common.JobListings.HelperDatabase as HelperDatabase
-import common.JobListings.HelperUtils as HelperUtils
+from common.JobListings.extractor_whatjobs import ExtractorWhatjobs as Extractor
+from common.JobListings.transformer_whatjobs import TransformerWhatjobs as Transformer
+from common.JobListings.predictor_salary import PredictorSalary
+import common.JobListings.helper_database as HelperDatabase
+import common.JobListings.helper_utils as HelperUtils
 
 SOURCE_NAME = "whatjobs"
 
@@ -24,7 +24,8 @@ else:
     try:
         JOBS_TO_GET = int(jobs_to_load)
     except ValueError:
-        raise ValueError(f"Expected 'jobs_to_load_whatjobs' to be an integer or 'None', got: {jobs_to_load}")
+        raise ValueError(
+            f"Expected 'jobs_to_load_whatjobs' to be an integer or 'None', got: {jobs_to_load}")
 
 move_raw_json_files_to_archive = '''
 current_time=$(date "+%Y-%m-%d_%H-%M-%S")
@@ -68,7 +69,8 @@ with DAG(
 
     @task(task_id="load_whatjobs")
     def load_whatjobs_to_mongodb():
-        file_path = HelperUtils.construct_file_path_for_data_source(SOURCE_NAME)
+        file_path = HelperUtils.construct_file_path_for_data_source(
+            SOURCE_NAME)
         HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
     load_temp = load_whatjobs_to_mongodb()
 

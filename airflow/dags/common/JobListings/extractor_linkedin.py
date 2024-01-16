@@ -1,15 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
-import os
-import json
 import logging
 from datetime import datetime
 import pandas as pd
 
-# from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
-from common.JobListings.constants import PATH, FIELDS
-from common.JobListings.HelperStorage import store_df_to_s3
-from common.JobListings.HelperUtils import create_key_name
+from common.JobListings.constants import FIELDS
+from common.JobListings.helper_storage import store_df_to_s3
+from common.JobListings.helper_utils import create_key_name
+
+SOURCE_NAME = 'linkedin'
 
 
 class ExtractorLinkedIn:
@@ -17,56 +16,27 @@ class ExtractorLinkedIn:
         self.items = items
         self.search_keyword = keyword
         self.search_location = location
-        self.keywords = keyword
-        self.locations = location
         # self.base_url = f'https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={keyword}&location={location}&currentJobId=3638465660&start={page}'
         self.base_url = f'https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={keyword}&location={location}&currentJobId=3791051102&start={page}'
-        self.file_number = 1
-        self.job_number = 1
-        self.filtered_jobs_buffer = []
-        self.job_details_buffer = []  # List to store job details
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
         }
 
-        # Ensure the directory exists
-        self.directory_path = os.path.join(PATH['data_raw'], 'linkedin_json')
-        if not os.path.exists(self.directory_path):
-            os.makedirs(self.directory_path)
-
     def scrape_jobs(self):
-        # job_ids = self.get_job_ids(self.search_keyword, self.search_location)
+        job_ids = self.get_job_ids(self.search_keyword, self.search_location)
 
-        # search = {
-        #     "keyword": self.search_keyword,
-        #     "location": self.search_location
-        # }
+        search = {
+            "keyword": self.search_keyword,
+            "location": self.search_location
+        }
 
-        # job_details = [self.get_job_details(
-        #     job_id, search) for job_id in job_ids]
+        job_details = [self.get_job_details(
+            job_id, search) for job_id in job_ids]
 
-        # df = pd.DataFrame(job_details)
-
-        for keyword in self.keywords:
-            for location in self.locations:
-                job_ids = self.get_job_ids(keyword, location)
-                search = {
-                    "keyword": keyword,
-                    "location": location
-                }
-                job_details = [self.get_job_details(
-                    job_id, search) for job_id in job_ids]
-
-                # Append job details to the buffer
-                self.job_details_buffer.extend(job_details)
-
-        # Create a DataFrame from job details
-        df = pd.DataFrame(self.job_details_buffer)
-
-        # self.save_jobs(job_details, "json")
+        df = pd.DataFrame(job_details)
 
         file_name = create_key_name(
-            'linkedin', self.search_location[0], self.search_keyword[0])
+            SOURCE_NAME, self.search_location, self.search_keyword)
         bucket = 'bronze'
         logging.info(file_name)
 
@@ -101,15 +71,11 @@ class ExtractorLinkedIn:
 
         job_linkedin_url = target_url
 
-        logging.info(job_linkedin_url)
-
         amount_applicants_elem = soup.select_one(".num-applicants__caption")
         amount_applicants = amount_applicants_elem.text if amount_applicants_elem is not None else None
 
         publish_date_elem = soup.select_one(".posted-time-ago__text")
         publish_date = publish_date_elem.text.strip() if publish_date_elem else None
-
-        logging.info(f"publish_date: {publish_date}")
 
         job_criteria_items = soup.find_all(
             "li", {"class": "description__job-criteria-item"})
@@ -178,18 +144,3 @@ class ExtractorLinkedIn:
             FIELDS["search_keyword"]: search["keyword"],
             FIELDS["search_location"]: search["location"]
         }
-
-    # def create_file_name(self, isRaw=False, type="json"):
-    #     path = self.directory_path
-    #     now = self.clean_filename(datetime.now().isoformat(), True)
-    #     location = self.clean_filename(self.search_location)
-    #     keyword = self.clean_filename(self.search_keyword)
-    #     # file_number = self.file_number
-
-    #     # return f"{path}/linkedin_{'raw_' if isRaw else ''}{now}_{location}_{keyword}_{file_number}.{type}"
-    #     return f"{path}/linkedin_{'raw_' if isRaw else ''}{now}_{location}_{keyword}.{type}"
-
-    # def save_jobs(self, data, type="json"):
-    #     file_name = self.create_file_name(True)
-    #     with open(file_name, "w") as json_file:
-    #         json.dump(data, json_file, indent=4)

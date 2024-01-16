@@ -7,11 +7,11 @@ import pendulum
 import json
 
 # Import Themuse specific classes
-from common.JobListings.themuse_extractor import ThemuseDataExtractor as Extractor
-from common.JobListings.themuse_transformer import ThemuseDataTransformer as Transformer
-from common.JobListings.SalaryPredictor import SalaryPredictor
-import common.JobListings.HelperDatabase as HelperDatabase
-import common.JobListings.HelperUtils as HelperUtils
+from common.JobListings.extractor_themuse import ExtractorThemuse as Extractor
+from common.JobListings.transformer_themuse import TransformerThemuse as Transformer
+from common.JobListings.predictor_salary import PredictorSalary
+import common.JobListings.helper_database as HelperDatabase
+import common.JobListings.helper_utils as HelperUtils
 
 from common.JobListings.constants import COLLECTIONS
 

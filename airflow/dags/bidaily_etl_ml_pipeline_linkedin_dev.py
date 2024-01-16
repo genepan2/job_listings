@@ -9,16 +9,17 @@ import json
 import os
 import socket
 
-from common.JobListings.ExtractorLinkedIn import ExtractorLinkedIn as Extractor
-from common.JobListings.TransformerLinkedIn import TransformerLinkedIn as Transoformer
-from common.JobListings.SalaryPredictor import SalaryPredictor
-import common.JobListings.HelperDatabase as HelperDatabase
-import common.JobListings.HelperUtils as HelperUtils
+from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
+# from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
+from common.JobListings.predictor_salary import PredictorSalary
+import common.JobListings.helper_database as HelperDatabase
+import common.JobListings.helper_utils as HelperUtils
 
 SOURCE_NAME = "linkedin"
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
 SPARK_HISTORY_LOG_DIR = os.getenv('SPARK_HISTORY_LOG_DIR')
+# not sure whether this is realy necassery
 MINIO_IP_ADDRESS = socket.gethostbyname("minio")
 
 keywords_linkedin = json.loads(Variable.get("search_keyword_linkedin"))
@@ -85,31 +86,13 @@ with DAG(
     # transform = transform_linkedin_jobs()
 
     transform_spark = SparkSubmitOperator(
-        task_id='transform_linkedin_spark',
-        conn_id='spark_dev',  # Connection to Spark cluster
-        # application='/home/ubuntu/jobs_listings/transform_jobs.py', #this is pointing to the spark container (not working)
+        task_id=f"transform_{SOURCE_NAME}_spark",
+        conn_id='jobs_spark_conn',
         application='./dags/common/JobListings/spark/transform_jobs.py',
         py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
-        # jars='./dags/jars/aws-java-sdk-1.11.534.jar,./dags/jars/aws-java-sdk-bundle-1.11.901.jar,./dags/jars/delta-core_2.12-2.2.0.jar,./dags/jars/mariadb-java-client-3.1.4.jar,./dags/jars/hadoop-aws-3.3.4.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.4.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.13-2.3.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.4.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.13-2.3.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.2.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.2.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.13-2.2.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.2.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.12-2.2.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.2.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.610.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.2.jar',
-        # jars='./dags/jars/aws-java-sdk-1.12.262.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/delta-storage-2.4.0.jar',
-        # jars='./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.4.jar',
-        # jars='./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/mariadb-java-client-3.3.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/delta-storage-2.4.0.jar',
-        # jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.634.jar,./dags/jars/delta-core_2.13-2.4.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.6.jar',
-        # jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.634.jar,./dags/jars/delta-iceberg_2.12-3.0.0.jar,./dags/jars/hadoop-aws-3.3.6.jar',
-        # jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.367.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/hadoop-aws-3.3.6.jar,./dags/jars/hadoop-common-3.3.6.jar',
-        # jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.634.jar,./dags/jars/delta-core_2.12-2.4.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.6.jar,./dags/jars/hadoop-common-3.3.6.jar',
-        # jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.634.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.6.jar,./dags/jars/hadoop-common-3.3.6.jar',
+        # not sure about the "mariadb-java-client-3.3.2.jar"
         jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
-        # Additional options:
-        # Arguments for your application
-        application_args=['LinkedInTransformer', 'linkedin', 'silver'],
+        application_args=[f"{SOURCE_NAME}Transformer", SOURCE_NAME],
         conf={
             "spark.network.timeout": "10000s",
             #  "hive.metastore.uris": hive_metastore,
@@ -123,18 +106,17 @@ with DAG(
             "spark.hadoop.fs.s3a.access.key": AWS_SPARK_ACCESS_KEY,
             "spark.hadoop.fs.s3a.secret.key": AWS_SPARK_SECRET_KEY,
             "spark.hadoop.fs.s3a.path.style.access": "true",
-            #  "spark.history.fs.logDirectory": "s3a://spark/",
             "spark.history.fs.logDirectory": f"s3a://{SPARK_HISTORY_LOG_DIR}/",
             "spark.sql.files.ignoreMissingFiles": "true",
             "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
             "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
             "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
+            # todo: tuning configurations -> research
+            # "spark.sql.shuffle.partitions": 200
         }
         # executor_memory='2g',
         # executor_cores=2,
         # driver_memory='2g',
-        # ...
-        # dag=dag
     )
 
     # @task(task_id="load_linkedin")
@@ -162,6 +144,5 @@ with DAG(
 
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
-    # extract >> transform
     # extract >> transform_spark
     transform_spark
