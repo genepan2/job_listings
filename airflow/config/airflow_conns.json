@@ -9,9 +9,9 @@
     "schema": "",
     "extra": ""
   },
-  "spark_dev": {
+  "jobs_spark_conn": {
     "conn_type": "spark",
-    "description": "This is used for Spark connection. Development purposes.",
+    "description": "This is used for Spark connection.",
     "login": "",
     "password": null,
     "host": "spark://spark-master",
