@@ -7,7 +7,7 @@ import logging
 from common.JobListings.constants import PATH
 
 
-class ThemuseDataExtractor:
+class ExtractorThemuse:
     def __init__(self, categories: list, locations: list, items: int = None):
         categories_str = "&category=".join(
             [urllib.parse.quote(cat) for cat in categories])

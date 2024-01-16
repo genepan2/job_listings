@@ -11,10 +11,10 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
 from common.JobListings.constants import PATH, COLLECTIONS
-import common.JobListings.HelperDatabase as HelperDatabase
+import common.JobListings.helper_database as HelperDatabase
 
 
-class SalaryPredictor:
+class PredictorSalary:
     def __init__(self, source_name):
         logging.info(source_name)
         # self.model_path = 'backend/app/ml/reglog_model.pkl'

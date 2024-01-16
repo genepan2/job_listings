@@ -9,11 +9,11 @@ import json
 import os
 import socket
 
-from common.JobListings.ExtractorLinkedIn import ExtractorLinkedIn as Extractor
-from common.JobListings.TransformerLinkedIn import TransformerLinkedIn as Transoformer
-from common.JobListings.SalaryPredictor import SalaryPredictor
-import common.JobListings.HelperDatabase as HelperDatabase
-import common.JobListings.HelperUtils as HelperUtils
+from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
+# from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
+from common.JobListings.predictor_salary import PredictorSalary
+import common.JobListings.helper_database as HelperDatabase
+import common.JobListings.helper_utils as HelperUtils
 
 SOURCE_NAME = "linkedin"
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')

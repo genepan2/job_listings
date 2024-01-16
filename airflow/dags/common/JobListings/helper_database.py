@@ -5,7 +5,7 @@ import os
 import json
 import logging
 
-import common.JobListings.HelperUtils as HelperUtils
+import common.JobListings.helper_utils as HelperUtils
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
 from common.JobListings.constants import COLLECTIONS, MONGO

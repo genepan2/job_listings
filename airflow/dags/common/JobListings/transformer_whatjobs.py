@@ -2,10 +2,10 @@ import json
 import os
 import logging
 from common.JobListings.constants import PATH, FIELDS
-import common.JobListings.HelperTransform as HelperTransform
+import common.JobListings.helper_transform as HelperTransform
 
 
-class WhatjobsDataTransformer:
+class TransformerWhatjobs:
     def __init__(self):
         self.input_directory = os.path.join(PATH['data_raw'], 'whatjobs_json')
         self.output_filename = os.path.join(

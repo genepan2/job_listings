@@ -11,7 +11,7 @@ from common.JobListings.constants import FIELDS, PATH
 WHATJOBS_NUM_PAGES_TO_SCRAPE = 1
 
 
-class WhatjobsDataExtractor:
+class ExtractorWhatjobs:
     # Class level attribute to ensure each job gets a unique identifier
     global_job_number = 1
     all_jobs = []  # Class level attribute to store all jobs across different job titles and locations

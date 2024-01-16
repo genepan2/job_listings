@@ -2,10 +2,10 @@ import json
 from datetime import datetime
 import os
 from common.JobListings.constants import PATH, FIELDS
-import common.JobListings.HelperTransform as HelperTransform
+import common.JobListings.helper_transform as HelperTransform
 
 
-class ThemuseDataTransformer:
+class TransformerThemuse:
     def __init__(self):
         self.directory_path = os.path.join(PATH['data_raw'], 'themuse_json')
         self.processed_directory_path = os.path.join(

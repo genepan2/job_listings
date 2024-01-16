@@ -5,8 +5,8 @@ from datetime import datetime
 import pandas as pd
 
 from common.JobListings.constants import FIELDS
-from common.JobListings.HelperStorage import store_df_to_s3
-from common.JobListings.HelperUtils import create_key_name
+from common.JobListings.helper_storage import store_df_to_s3
+from common.JobListings.helper_utils import create_key_name
 
 SOURCE_NAME = 'linkedin'
 
