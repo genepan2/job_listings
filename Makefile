@@ -4,8 +4,10 @@ copy:
 	./copy-constants.sh
 
 init:
-	./copy-constants.sh
 	docker-compose up airflow-init
+
+init_minio:
+	docker-compose exec minio bash ./init/minio-init.sh
 
 dev: minio spark airflow
 
