@@ -8,5 +8,15 @@
     "port": 27017,
     "schema": "",
     "extra": ""
+  },
+  "spark_dev": {
+    "conn_type": "spark",
+    "description": "This is used for Spark connection. Development purposes.",
+    "login": "",
+    "password": null,
+    "host": "spark://spark-master",
+    "port": 7077,
+    "schema": "",
+    "extra": ""
   }
 }

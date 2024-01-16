@@ -30,7 +30,8 @@ else:
     try:
         JOBS_TO_GET = int(jobs_to_load)
     except ValueError:
-        raise ValueError(f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}")
+        raise ValueError(
+            f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}")
 
 # Archive command
 move_raw_json_files_to_archive = '''
@@ -77,7 +78,8 @@ with DAG(
 
     @task(task_id="load_themuse")
     def load_themuse_to_mongodb():
-        file_path = HelperUtils.construct_file_path_for_data_source(SOURCE_NAME)
+        file_path = HelperUtils.construct_file_path_for_data_source(
+            SOURCE_NAME)
         HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
     load_temp = load_themuse_to_mongodb()
 

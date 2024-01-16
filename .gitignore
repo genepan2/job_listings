@@ -10,7 +10,7 @@ frontend/node_modules
 airflow/logs
 airflow/data
 airflow/dags/__pycache__
-backend/app/data
+airflow/dags/jars
 backend/app/data
 
 # Ignore files

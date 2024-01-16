@@ -1,6 +1,5 @@
 #FROM python:3.7-slim-stretch
-# FROM python:3.9-bullseye
-FROM python:3.8.18-bullseye
+FROM python:3.9-bullseye
 
 # Install OpenJDK 11
 RUN mkdir -p /usr/share/man/man1 && mkdir -p /usr/share/man/man1 && \
@@ -21,17 +20,16 @@ RUN apt-get update -y && apt-get install -y libzbar-dev bash gcc git libc-dev cu
 
 # install spark
 # RUN curl -o spark-3.1.1-bin-hadoop3.2.tgz https://archive.apache.org/dist/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz && \
-# RUN curl -o spark-3.3.4-bin-hadoop3.tgz https://archive.apache.org/dist/spark/spark-3.3.4/spark-3.3.4-bin-hadoop3.tgz && \
-# RUN curl -o spark-3.5.0-bin-hadoop3-scala2.13.tgz https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3-scala2.13.tgz && \
-RUN curl -o spark-3.5.0-bin-hadoop3.tgz https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3.tgz && \
-    tar -xzvf spark-3.5.0-bin-hadoop3.tgz && \
-    mv spark-3.5.0-bin-hadoop3 /opt/spark && \
-    rm -rf spark-3.5.0-bin-hadoop3.tgz
+RUN curl -o spark-3.3.4-bin-hadoop3.tgz https://archive.apache.org/dist/spark/spark-3.3.4/spark-3.3.4-bin-hadoop3.tgz && \
+    # RUN curl -o spark-3.5.0-bin-hadoop3-scala2.13.tgz https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3-scala2.13.tgz && \
+    tar -xzvf spark-3.3.4-bin-hadoop3.tgz && \
+    mv spark-3.3.4-bin-hadoop3 /opt/spark && \
+    rm -rf spark-3.3.4-bin-hadoop3.tgz
 
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
 ENV PATH=$PATH:$SPARK_HOME/sbin
-ENV PYTHONPATH=$SPARK_HOME/python3:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH
+ENV PYTHONPATH=$SPARK_HOME/python3:$SPARK_HOME/python3/lib/py4j-0.10.7-src.zip:$PYTHONPATH
 RUN mkdir -p /opt/spark/history
 COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 
