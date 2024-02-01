@@ -16,6 +16,10 @@ import common.JobListings.helper_database as HelperDatabase
 import common.JobListings.helper_utils as HelperUtils
 
 SOURCE_NAME = "linkedin"
+BUCKET_FROM = 'bronze'
+BUCKET_TO = 'silver'
+DELTA_MINUTES = 300
+
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
 SPARK_HISTORY_LOG_DIR = os.getenv('SPARK_HISTORY_LOG_DIR')
@@ -64,13 +68,13 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    # @task(task_id="extract_linkedin")
-    # def extract_linkedin_jobs():
-    #     for keyword in keywords_linkedin:
-    #         for location in locations_linkedin:
-    #             scraper = Extractor(keyword, location, JOBS_TO_GET)
-    #             scraper.scrape_jobs()
-    # extract = extract_linkedin_jobs()
+    @task(task_id="extract_linkedin")
+    def extract_linkedin_jobs():
+        for keyword in keywords_linkedin:
+            for location in locations_linkedin:
+                scraper = Extractor(keyword, location, JOBS_TO_GET)
+                scraper.scrape_jobs()
+    extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
     # @task(task_id="extract_linkedin")
@@ -92,7 +96,8 @@ with DAG(
         py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
         # not sure about the "mariadb-java-client-3.3.2.jar"
         jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
-        application_args=[f"{SOURCE_NAME}Transformer", SOURCE_NAME],
+        application_args=[f"{SOURCE_NAME}Transformer",
+                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, DELTA_MINUTES],
         conf={
             "spark.network.timeout": "10000s",
             #  "hive.metastore.uris": hive_metastore,
@@ -119,30 +124,7 @@ with DAG(
         # driver_memory='2g',
     )
 
-    # @task(task_id="load_linkedin")
-    # def load_linkedin_to_mongodb():
-    #     file_path = HelperUtils.construct_file_path_for_data_source(
-    #         SOURCE_NAME)
-    #     HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
-    # load_temp = load_linkedin_to_mongodb()
-
-    # @task(task_id="predict_salary_linkedin")
-    # def ml_predict_salary():
-    #     predictor = SalaryPredictor(SOURCE_NAME)
-    #     predictor.predict_and_map_salaries()
-    # predict_salary = ml_predict_salary()
-
-    # @task(task_id="load_data_to_main")
-    # def load_linkedin_to_main_collection():
-    #     HelperDatabase.load_records_to_main_collection(SOURCE_NAME)
-    # load_main = load_linkedin_to_main_collection()
-
-    # cleanup_raw = BashOperator(
-    #     task_id='archive_raw_linkedin_files',
-    #     bash_command=move_raw_json_files_to_archive,
-    # )
-
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
-    # extract >> transform_spark
-    transform_spark
+    extract >> transform_spark
+    # transform_spark
