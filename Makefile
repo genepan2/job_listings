@@ -1,4 +1,4 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev init copy
+.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris
 
 copy:
 	./copy-constants.sh
@@ -53,6 +53,14 @@ hive:
 	docker-compose up -d mariadb
 	sleep 2
 	docker-compose up -d hive
+
+doris:
+	docker-compose up -d doris-fe
+	sleep 10
+	docker-compose up -d doris-be
+
+dl_doris:
+	sh download_doris.sh
 
 # presto-cluster:
 # 	docker-compose up -d presto presto-worker
