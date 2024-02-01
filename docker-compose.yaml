@@ -7,13 +7,13 @@ x-airflow-common: &airflow-common
   environment: &airflow-common-env
     AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
-    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres-airflow/airflow
     AIRFLOW_CONN_SPARK_DEFAULT: "spark://spark-master:7077?deploy-mode=client&spark-binary=spark-submit"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__FERNET_KEY: ""
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
     AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 30
     AIRFLOW__SMTP__SMTP_HOST: ${AIRFLOW__SMTP__SMTP_HOST}
     AIRFLOW__SMTP__SMTP_MAIL_FROM: ${AIRFLOW__SMTP__SMTP_MAIL_FROM}
@@ -38,7 +38,7 @@ x-airflow-common: &airflow-common
   depends_on:
     redis:
       condition: service_healthy
-    postgres:
+    postgres-airflow:
       condition: service_healthy
     # mongo:
     #   condition: service_healthy
@@ -182,14 +182,14 @@ services:
   #   ports:
   #     - 9083:9083
 
-  postgres:
+  postgres-airflow:
     image: postgres:13
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
     volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
+      - postgres-db-volume-af:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
@@ -274,6 +274,46 @@ services:
       retries: 5
     restart: always
 
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      # - ./postgres/data:/var/lib/postgresql/data
+      - postgres-db-volume-dw:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-pgpass}
+      - POSTGRES_USER=${POSTGRES_USER:-pguser}
+      - POSTGRES_DB=${POSTGRES_DB:-pgdb}
+    # command: bash -c "/docker-entrypoint-initdb.d/init.sql"
+
+  # doris-fe:
+  #   image: apache/doris:2.0.0_alpha-fe-x86_64
+  #   hostname: doris-fe
+  #   environment:
+  #   - FE_SERVERS=fe1:${INTRANET_IP}:9010
+  #   - FE_ID=1
+  #   volumes:
+  #   - ./doris/data/fe/doris-meta/:/opt/apache-doris/fe/doris-meta/
+  #   - ./doris/data/fe/log/:/opt/apache-doris/fe/log/
+  #   - ./doris/conf/fe.conf:/opt/apache-doris/fe/conf/fe.conf
+  #   network_mode: host
+
+  # doris-be:
+  #   image: apache/doris:2.0.0_alpha-be-x86_64
+  #   hostname: doris-be
+  #   environment:
+  #   - FE_SERVERS=fe1:${INTRANET_IP}:9010
+  #   - BE_ADDR=${INTRANET_IP}:9050
+  #   volumes:
+  #   - ./doris/data/be/storage/:/opt/apache-doris/be/storage/
+  #   - ./doris/data/be/script/:/docker-entrypoint-initdb.d/
+  #   depends_on:
+  #     - doris-fe
+  #   network_mode: host
+
 volumes:
   mongo-data:
-  postgres-db-volume:
+  postgres-db-volume-af:
+  postgres-db-volume-dw:
