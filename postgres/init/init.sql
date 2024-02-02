@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS dimLanguages (
     Name VARCHAR(255)
 );
 
-CREATE TYPE SourceTypeEnum AS ENUM ('origin', 'meta');
+CREATE TYPE SourceTypeEnum AS ENUM ('origin', 'meta', 'hybrid');
 CREATE TABLE IF NOT EXISTS dimSources (
     SourceId SERIAL PRIMARY KEY,
     Name VARCHAR(255),
@@ -132,3 +132,67 @@ CREATE TABLE IF NOT EXISTS fctJobListings (
     ListingDurationDays INT,
     ScrapeDurationMilliseconds INT
 );
+
+
+---------------------
+-- INSERT Initial Data
+
+INSERT INTO dimLocations (City, Country) VALUES
+('Other', 'Global'),
+('Remote', 'Global'),
+('Hybrid', 'Global'),
+('Berlin', 'Germany'),
+('Munich', 'Germany'),
+('Hamburg', 'Germany'),
+('Cologne', 'Germany'),
+('Frankfurt', 'Germany');
+
+INSERT INTO dimLanguages (Name) VALUES
+('Other'),
+('English'),
+('German');
+
+INSERT INTO dimSources (Name, Url, Type, isApi) VALUES
+('LinkedIn', 'https://www.linkedin.com/', 'origin', false),
+('WhatJobs', 'https://de.whatjobs.com/', 'meta', false),
+('TheMuse', 'https://www.themuse.com/', 'meta', true);
+
+INSERT INTO dimJobLevels (Name) VALUES
+('Other'),
+('Student'),
+('Internship'),
+('Entry'),
+('Middle'),
+('Senior'),
+('Lead'),
+('Head');
+
+INSERT INTO dimSearchKeywords (Name) VALUES
+('Other'),
+('Big Data Engineer'),
+('Business Intelligence Engineer'),
+('Data Analyst'),
+('Data and Analytics'),
+('Data Engineer'),
+('Data Science'),
+('Data Scientist'),
+('Data'),
+('Machine Learning Engineer');
+
+INSERT INTO dimEmployments (Name) VALUES
+('Other'),
+('Full-time'),
+('Part-time'),
+('Contract');
+
+INSERT INTO dimIndustries (Name) VALUES
+('Other'),
+('IT Services and IT Consulting'),
+('Technology, Information and Internet'),
+('Information Technology & Services'),
+('Computer and Network Security'),
+('Computer Games'),
+('Computer Hardware'),
+('Computer Networking'),
+('Computer Software'),
+('Consumer Electronics');
