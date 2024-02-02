@@ -18,7 +18,7 @@ import common.JobListings.helper_utils as HelperUtils
 SOURCE_NAME = "linkedin"
 BUCKET_FROM = 'bronze'
 BUCKET_TO = 'silver'
-DELTA_MINUTES = 300
+DELTA_MINUTES = 600
 
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
@@ -68,13 +68,13 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    @task(task_id="extract_linkedin")
-    def extract_linkedin_jobs():
-        for keyword in keywords_linkedin:
-            for location in locations_linkedin:
-                scraper = Extractor(keyword, location, JOBS_TO_GET)
-                scraper.scrape_jobs()
-    extract = extract_linkedin_jobs()
+    # @task(task_id="extract_linkedin")
+    # def extract_linkedin_jobs():
+    #     for keyword in keywords_linkedin:
+    #         for location in locations_linkedin:
+    #             scraper = Extractor(keyword, location, JOBS_TO_GET)
+    #             scraper.scrape_jobs()
+    # extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
     # @task(task_id="extract_linkedin")
@@ -97,7 +97,7 @@ with DAG(
         # not sure about the "mariadb-java-client-3.3.2.jar"
         jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
         application_args=[f"{SOURCE_NAME}Transformer",
-                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, DELTA_MINUTES],
+                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
         conf={
             "spark.network.timeout": "10000s",
             #  "hive.metastore.uris": hive_metastore,
@@ -126,5 +126,5 @@ with DAG(
 
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
-    extract >> transform_spark
-    # transform_spark
+    # extract >> transform_spark
+    transform_spark
