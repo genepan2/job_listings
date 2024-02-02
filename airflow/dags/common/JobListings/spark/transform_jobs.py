@@ -16,44 +16,74 @@ import boto3
 import socket
 import pandas as pd
 
-AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
-AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
-MINIO_IP_ADDRESS = socket.gethostbyname("minio")
-SPARK_MASTER_IP_ADDRESS = socket.gethostbyname("spark-master")
+# AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
+# AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
+# MINIO_IP_ADDRESS = socket.gethostbyname("minio")
+# SPARK_MASTER_IP_ADDRESS = socket.gethostbyname("spark-master")
 
 BUCKET_FROM = 'bronze'
 BUCKET_TO = 'silver'
 DELTA_MINUTES = 300
 
 
-class SparkTransformer:
-    def __init__(self, args):
-        self.spark_session_name = args[1]
-        self.source_name = args[2]
+class SparkSessionManager:
+    def __init__(self, appname):
+        self.appname = appname
+        self.spark_session = None
 
-    def get_spark_session(self, appname):
+    def get_spark_session(self):
+        if self.spark_session is None:
+            self.spark_session = SparkSession.builder.appName(
+                self.appname).getOrCreate()
+        return self.spark_session
 
-        spark = (SparkSession.builder
-                 .appName(appname)
-                 #  .enableHiveSupport()
-                 .getOrCreate())
-        return spark
+    def stop_spark_session(self):
+        if self.spark_session is not None:
+            self.spark_session.stop()
+            self.spark_session = None
+
+    def start(self):
+        self.get_spark_session()
+
+    def stop(self):
+        self.stop_spark_session()
+
+
+class S3ClientManager:
+    def __init__(self, acces_key, secret_key, endpoint_url):
+        # self.AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
+        # self.AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
+        # self.MINIO_IP_ADDRESS = socket.gethostbyname("minio")
+        self.acces_key = acces_key
+        self.secret_key = secret_key
+        self.endpoint_url = endpoint_url
 
     def get_boto_client(self):
         try:
             return boto3.client(
                 's3',
-                aws_access_key_id=AWS_SPARK_ACCESS_KEY,
-                aws_secret_access_key=AWS_SPARK_SECRET_KEY,
-                endpoint_url=f"http://{MINIO_IP_ADDRESS}:9000"
+                aws_access_key_id=self.acces_key,
+                aws_secret_access_key=self.secret_key,
+                endpoint_url=self.endpoint_url
             )
         except Exception as e:
             logging.error(f"Error creating S3 client: {str(e)}")
             raise
 
+
+class FileProcessing:
+    def __init__(self, s3_client, bucket_name, source_name, delta_minutes):
+        self.s3_client = s3_client
+        self.bucket_name = bucket_name
+        self.source_name = source_name
+        self.delta_minutes = delta_minutes
+
+    def load_recent_files(self):
+        return self.merge_recent_files_to_df(self.bucket_name, self.source_name)
+
     def is_file_recent(self, filename):
         now = datetime.now()
-        hoursdelta = now - timedelta(minutes=DELTA_MINUTES)
+        hoursdelta = now - timedelta(minutes=self.delta_minutes)
         try:
             # filename format should be 'source_raw_datetime_location_keyword'
             filename_splitted = filename.split('_')
@@ -65,9 +95,9 @@ class SparkTransformer:
             return False
 
     def get_recent_files_from_s3(self, bucket_name, source_name):
-        s3_client = self.get_boto_client()
+        # s3_client = self.get_boto_client()
 
-        all_files = s3_client.list_objects_v2(
+        all_files = self.s3_client.list_objects_v2(
             Bucket=bucket_name, Prefix=F"{source_name}_raw")
         # if len(all_files) == 0:
         #     raise AirflowFailException(
@@ -86,12 +116,13 @@ class SparkTransformer:
         return recent_files
 
     def merge_recent_files_to_df(self, bucket_name, source_name):
-        s3_client = self.get_boto_client()
+        # s3_client = self.get_boto_client()
         recent_files = self.get_recent_files_from_s3(bucket_name, source_name)
-
         df_list = []
+
         for file_key in recent_files:
-            response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
+            response = self.s3_client.get_object(
+                Bucket=bucket_name, Key=file_key)
             file_content = response['Body'].read()
             df = pd.read_csv(BytesIO(file_content))
             # logging.info(f"Columns in file {file_key}: {df.columns.tolist()}")
@@ -112,12 +143,20 @@ class SparkTransformer:
     #     # df = df.drop("Unnamed: 0", axis=1)
     #     return df
 
+
+class DataStorage:
     def save_to_delta(self, df, target_path):
         # overwrite mode is important, otherwise errors
         df.write.format("delta").mode("overwrite").save(target_path)
 
-    def load_recent_files(self, bucket_name, source_name):
-        return self.merge_recent_files_to_df(bucket_name, source_name)
+    def save_as_csv(self, df, target_path):
+        df.write.csv(target_path, mode="overwrite", header=True)
+
+
+class DataTransformation:
+    def __init__(self, args):
+        self.spark_session_name = args[1]
+        self.source_name = args[2]
 
     def transform_job_level(self, level, title):
         return HelperTransform.transform_job_level(level, title) if level else JOB_LEVELS["middle"]
@@ -159,19 +198,19 @@ class SparkTransformer:
             .withColumn("language", transform_detect_language_udf(col("description"))) \
             .withColumn("linkedin_id", clean_linkedin_id_udf(col("linkedin_id"))) \
             .withColumn("company_linkedin_url", clean_company_linkedin_url_udf(col("company_linkedin_url"))) \
-            .withColumnRenamed("Unnamed: 0", "Index")  # important, otherwise error. spark needs all columns to be named
+            .withColumnRenamed("Unnamed: 0", "index")  # important, otherwise error. spark needs all columns to be named
 
         return df_cleaned
 
-    def transform(self, df, source_name):
-        if source_name == 'linkedin':
+    def transform(self, df):
+        if self.source_name == 'linkedin':
             return self.transform_source_linkedin(df)
-        # elif source_name == 'themuse':
+        # elif self.source_name == 'themuse':
         #     return self.transform_source_themuse(df)
-        # elif source_name == 'whatjobs':
+        # elif self.source_name == 'whatjobs':
         #     return self.transform_source_whatjobs(df)
         else:
-            raise ValueError(f"Unsupported data source: {source_name}")
+            raise ValueError(f"Unsupported data source: {self.source_name}")
 
     def get_df_schema_source_linkedin(self):
         schema = StructType([
@@ -206,31 +245,67 @@ class SparkTransformer:
         else:
             raise ValueError(f"Unsupported data source: {source_name}")
 
-    def main(self):
-        # get the parameters from SparkSubmitOperator
+    # def main(self):
+    #     # get the parameters from SparkSubmitOperator
+    #     spark = self.get_spark_session(self.spark_session_name)
+    #     data_raw = self.load_recent_files(BUCKET_FROM, self.source_name)
 
-        spark = self.get_spark_session(self.spark_session_name)
-        data_raw = self.load_recent_files(BUCKET_FROM, self.source_name)
-        # logging.info("data_raw:")
-        # logging.info(data_raw.printSchema())
+    #     # convert pandas df to spark df
+    #     schema = self.get_df_schema(self.source_name)
+    #     spark_df = spark.createDataFrame(data_raw, schema=schema)
 
-        # convert pandas df to spark df
-        schema = self.get_df_schema(self.source_name)
-        spark_df = spark.createDataFrame(data_raw, schema=schema)
-        logging.info("spark_df:")
-        logging.info(spark_df.printSchema())
+    #     data_clean = self.transform(spark_df, self.source_name)
 
-        data_clean = self.transform(spark_df, self.source_name)
-        logging.info("data_clean:")
-        logging.info(data_clean.printSchema())
+    #     target_path_delta = f"s3a://{BUCKET_TO}/{self.source_name}_data"
+    #     self.save_to_delta(data_clean, target_path_delta)
 
-        target_path = f"s3a://{BUCKET_TO}/{self.source_name}_data"
-        self.save_to_delta(data_clean, target_path)
+    #     # save as CSV for loading into PostgreSQL
+    #     # timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+    #     target_path_csv = f"s3a://{BUCKET_TO}/{self.source_name}_data_csv"
+    #     self.save_as_csv(data_clean, target_path_csv)
 
-        spark.stop()
+    #     spark.stop()
 
 
 if __name__ == "__main__":
-    transformer = SparkTransformer(sys.argv)
-    transformer.main()
-    # main(sys.argv)
+    args = sys.argv
+    appname = args[1]
+    source_name = args[2]
+    bucket_from = args[3]
+    bucket_to = args[4]
+    delta_minutes = int(args[5])
+
+    spark_manager = SparkSessionManager(appname)
+    spark_session = spark_manager.get_spark_session()
+
+    AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
+    AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
+    MINIO_IP_ADDRESS = socket.gethostbyname("minio")
+    SPARK_MASTER_IP_ADDRESS = socket.gethostbyname("spark-master")
+
+    s3_client_manager = S3ClientManager(
+        AWS_SPARK_ACCESS_KEY, AWS_SPARK_SECRET_KEY, f"http://{MINIO_IP_ADDRESS}:9000")
+    s3_client = s3_client_manager.get_boto_client()
+
+    file_processor = FileProcessing(
+        s3_client, bucket_from, source_name, delta_minutes)
+
+    data_storage = DataStorage()
+
+    data_transformation = DataTransformation(args)
+
+    # Der Hauptablauf würde hier folgen, z.B.:
+    data_raw = file_processor.load_recent_files()
+
+    schema = data_transformation.get_df_schema(source_name)
+    spark_df = spark_session.createDataFrame(data_raw, schema=schema)
+
+    data_clean = data_transformation.transform(spark_df)
+
+    target_path_delta = f"s3a://{BUCKET_TO}/{source_name}_data"
+    target_path_csv = f"s3a://{BUCKET_TO}/{source_name}_data_csv"
+
+    data_storage.save_to_delta(data_clean, target_path_delta)
+    data_storage.save_as_csv(data_clean, target_path_csv)
+
+    spark_manager.stop()
