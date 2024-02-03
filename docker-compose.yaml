@@ -9,6 +9,7 @@ x-airflow-common: &airflow-common
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres-airflow/airflow
     AIRFLOW_CONN_SPARK_DEFAULT: "spark://spark-master:7077?deploy-mode=client&spark-binary=spark-submit"
+    AIRFLOW_CONN_POSTGRES_JOBS: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__FERNET_KEY: ""
