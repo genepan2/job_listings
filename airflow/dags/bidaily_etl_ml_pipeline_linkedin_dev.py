@@ -2,12 +2,17 @@ from airflow import DAG
 from airflow.decorators import task
 from airflow.operators.bash_operator import BashOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from airflow.hooks.postgres_hook import PostgresHook
 from airflow.models import Variable
 from datetime import timedelta
+from io import StringIO
 import pendulum
 import json
 import os
 import socket
+import pandas as pd
+import csv
+import boto3
 
 from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
 # from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
@@ -88,6 +93,31 @@ with DAG(
     #     transformer = Transoformer()
     #     transformer.run_all()
     # transform = transform_linkedin_jobs()
+
+    @task(task_id="fetch_and_store_data_from_dw")
+    def fetch_and_store_data_from_dw():
+        # PostgreSQL Connection
+        # this connection was created via env variable in docker compose
+        pg_hook = PostgresHook(postgres_conn_id="postgres_jobs")
+        conn = pg_hook.get_conn()
+        cursor = conn.cursor()
+
+        # TODO: this could be done with a loop
+        # Get Data from PostgreSQL
+        query_locations = "SELECT * FROM dimLocations;"
+        query_sources = "SELECT * FROM dimSources;"
+        df_locations = pd.read_sql_query(query_locations, conn)
+        df_sources = pd.read_sql_query(query_sources, conn)
+
+        # Transofrm Data to CSV
+        csv_buffer = StringIO()
+        df_locations.to_csv(csv_buffer, index=False,
+                            quoting=csv.QUOTE_NONNUMERIC)
+
+        # Save CSV in S3
+        # s3_resource = boto3.resource('s3')
+        # s3_resource.Object('your_bucket_name', 'dimLocations.csv').put(Body=csv_buffer.getvalue())
+    fetch_store_data = fetch_and_store_data_from_dw()
 
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
