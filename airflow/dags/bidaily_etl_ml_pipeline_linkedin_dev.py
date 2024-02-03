@@ -114,7 +114,7 @@ with DAG(
         df_locations.to_csv(csv_buffer, index=False,
                             quoting=csv.QUOTE_NONNUMERIC)
 
-        # test fork
+        # test fork 2
         # Save CSV in S3
         # s3_resource = boto3.resource('s3')
         # s3_resource.Object('your_bucket_name', 'dimLocations.csv').put(Body=csv_buffer.getvalue())
