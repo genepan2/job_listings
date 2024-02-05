@@ -15,15 +15,16 @@ import re
 import boto3
 import socket
 import pandas as pd
+import hashlib
 
 # AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 # AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
 # MINIO_IP_ADDRESS = socket.gethostbyname("minio")
 # SPARK_MASTER_IP_ADDRESS = socket.gethostbyname("spark-master")
 
-BUCKET_FROM = 'bronze'
-BUCKET_TO = 'silver'
-DELTA_MINUTES = 300
+# BUCKET_FROM = 'bronze'
+# BUCKET_TO = 'silver'
+# DELTA_MINUTES = 300
 
 
 class SparkSessionManager:
@@ -146,8 +147,10 @@ class FileProcessing:
 
 class DataStorage:
     def save_to_delta(self, df, target_path):
-        # overwrite mode is important, otherwise errors
-        df.write.format("delta").mode("overwrite").save(target_path)
+        # overwrite: overwrite mode is important, otherwise errors
+        # mergeSchema: because still in development and otherwise error
+        df.write.option("mergeSchema", "true").format(
+            "delta").mode("overwrite").save(target_path)
 
     def save_as_csv(self, df, target_path):
         df.write.csv(target_path, mode="overwrite", header=True)
@@ -166,6 +169,17 @@ class DataTransformation:
 
     def clean_company_linkedin_url(self, company_url):
         return company_url.split('?')[0] if company_url else None
+
+    def create_job_fingerprint(self, title, company, description):
+        short_description = description[:256]
+
+        combined_string = f"{title.lower()}|{company.lower()}|{short_description.lower()}"
+        # remove all spcial characters
+        clean_string = re.sub(r'\W+', '', combined_string)
+
+        fingerprint = hashlib.sha256(clean_string.encode()).hexdigest()
+
+        return fingerprint
 
     def transform_source_linkedin(self, df):
 
@@ -189,8 +203,11 @@ class DataTransformation:
         clean_linkedin_id_udf = udf(self.clean_linkedin_id, StringType())
         clean_company_linkedin_url_udf = udf(
             self.clean_company_linkedin_url, StringType())
+        create_job_fingerprint_udf = udf(
+            self.create_job_fingerprint, StringType())
 
         df_cleaned = df_filtered.withColumn("title", transform_job_title_udf(col("title"))) \
+            .withColumn("fingerprint", create_job_fingerprint_udf(col("title"), col("company_name"), col("description"))) \
             .withColumn("level", transform_job_level_udf(col("level"), col("title"))) \
             .withColumn("location", transform_job_location_udf(col("location"))) \
             .withColumn("publish_date", transform_to_isoformat_udf(col("publish_date"), col("search_datetime"))) \
@@ -302,8 +319,8 @@ if __name__ == "__main__":
 
     data_clean = data_transformation.transform(spark_df)
 
-    target_path_delta = f"s3a://{BUCKET_TO}/{source_name}_data"
-    target_path_csv = f"s3a://{BUCKET_TO}/{source_name}_data_csv"
+    target_path_delta = f"s3a://{bucket_to}/{source_name}_data"
+    target_path_csv = f"s3a://{bucket_to}/{source_name}_data_csv"
 
     data_storage.save_to_delta(data_clean, target_path_delta)
     data_storage.save_as_csv(data_clean, target_path_csv)
