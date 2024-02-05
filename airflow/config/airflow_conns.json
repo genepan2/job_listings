@@ -1,7 +1,7 @@
 {
   "jobs_mongodb": {
     "conn_type": "mongo",
-    "description": "Connection to the Job Listings",
+    "description": "Connection to the Job Listings. DEPRECATED.",
     "login": "",
     "password": null,
     "host": "mongo",
@@ -18,5 +18,15 @@
     "port": 7077,
     "schema": "",
     "extra": ""
+  },
+  "S3_conn": {
+    "conn_type": "aws",
+    "description": "This connects to Minio S3 Container",
+    "login": "root",
+    "password": "root12345",
+    "host": "",
+    "port": null,
+    "schema": "",
+    "extra": "{\"endpoint_url\": \"http://minio:9000\"}"
   }
 }
