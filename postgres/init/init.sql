@@ -63,6 +63,16 @@ CREATE TABLE IF NOT EXISTS dimIndustries (
     Name VARCHAR(255)
 );
 
+CREATE TABLE IF NOT EXISTS dimSkillCategory (
+    SkillCategoryId SERIAL PRIMARY KEY,
+    Name VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS dimTechnologyCategory (
+    TechnologyCategoryId SERIAL PRIMARY KEY,
+    Name VARCHAR(255)
+);
+
 CREATE TABLE IF NOT EXISTS dimSkills (
     SkillId SERIAL PRIMARY KEY,
     Name VARCHAR(255),
@@ -75,14 +85,25 @@ CREATE TABLE IF NOT EXISTS dimTechnologies (
     TechnologyCategoryKey INT REFERENCES dimTechnologyCategory(TechnologyCategoryId)
 );
 
-CREATE TABLE IF NOT EXISTS dimSkillCategory (
-    SkillCategoryId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
-);
+---------------------
+-- FACT TABLE
 
-CREATE TABLE IF NOT EXISTS dimTechnologyCategory (
-    TechnologyCategoryId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+CREATE TABLE IF NOT EXISTS fctJobListings (
+    JobListingId SERIAL PRIMARY KEY,
+    JobKey INT REFERENCES dimJobs(JobId),
+    SourceKey INT REFERENCES dimSources(SourceId),
+    SearchDateKey INT REFERENCES dimDates(DateId), -- References to dimDates
+    SearchWordKey VARCHAR(255),
+    SearchLocationKey VARCHAR(255),
+    PublishDateKey INT REFERENCES dimDates(DateId), -- References to dimDates
+    CloseDateKey INT REFERENCES dimDates(DateId), -- References to dimDates
+    LanguageKey INT REFERENCES dimLanguages(LanguageId),
+    JobLevelKey INT REFERENCES dimJobLevels(JobLevelId),
+    EmploymentKey INT REFERENCES dimEmployments(EmploymentId),
+    IndustryKey INT REFERENCES dimIndustries(IndustryId),
+    NumberOfApplications INT,
+    ListingDurationDays INT,
+    ScrapeDurationMilliseconds INT
 );
 
 ---------------------
@@ -103,34 +124,13 @@ CREATE TABLE IF NOT EXISTS JobSkillsBridge (
 CREATE TABLE IF NOT EXISTS JobTechnologiesBridge (
     JobTechnologyId SERIAL PRIMARY KEY,
     JobListingKey INT REFERENCES fctJobListings(JobListingId),
-    TechnologyKey INT REFERENCES dimTechnology(TechnologyId)
+    TechnologyKey INT REFERENCES dimTechnologies(TechnologyId)
 );
 
 CREATE TABLE IF NOT EXISTS JobSearchKeywordBridge (
     JobSearchKeywordId SERIAL PRIMARY KEY,
     JobListingKey INT REFERENCES fctJobListings(JobListingId),
     SearchKeywordKey INT REFERENCES dimSearchKeywords(SearchKeywordId)
-);
-
----------------------
--- FACT TABLE
-
-CREATE TABLE IF NOT EXISTS fctJobListings (
-    JobListingId SERIAL PRIMARY KEY,
-    JobKey INT REFERENCES dimJobs(JobId),
-    SourceKey INT REFERENCES dimSources(SourceId),
-    SearchDateKey INT REFERENCES dimDate(DateId), -- References to dimDate
-    SearchWordKey VARCHAR(255),
-    SearchLocationKey VARCHAR(255),
-    PublishDateKey INT REFERENCES dimDate(DateId), -- References to dimDate
-    CloseDateKey INT REFERENCES dimDate(DateId), -- References to dimDate
-    LanguageKey INT REFERENCES dimLanguages(LanguageId),
-    JobLevelKey INT REFERENCES dimJobLevels(JobLevelId),
-    EmploymentKey INT REFERENCES dimEmployments(EmploymentId),
-    IndustryKey INT REFERENCES dimIndustries(IndustryId),
-    NumberOfApplications INT,
-    ListingDurationDays INT,
-    ScrapeDurationMilliseconds INT
 );
 
 
