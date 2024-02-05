@@ -25,7 +25,7 @@ import common.JobListings.helper_utils as HelperUtils
 SOURCE_NAME = "linkedin"
 BUCKET_FROM = 'bronze'
 BUCKET_TO = 'silver'
-DELTA_MINUTES = 600
+DELTA_MINUTES = 180
 
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
@@ -75,13 +75,13 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    # @task(task_id="extract_linkedin")
-    # def extract_linkedin_jobs():
-    #     for keyword in keywords_linkedin:
-    #         for location in locations_linkedin:
-    #             scraper = Extractor(keyword, location, JOBS_TO_GET)
-    #             scraper.scrape_jobs()
-    # extract = extract_linkedin_jobs()
+    @task(task_id="extract_linkedin")
+    def extract_linkedin_jobs():
+        for keyword in keywords_linkedin:
+            for location in locations_linkedin:
+                scraper = Extractor(keyword, location, JOBS_TO_GET)
+                scraper.scrape_jobs()
+    extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
     # @task(task_id="extract_linkedin")
@@ -130,43 +130,44 @@ with DAG(
             logging.info(f"Done with ${table_name}")
     fetch_store_data = fetch_and_store_data_from_dw()
 
-    # transform_spark = SparkSubmitOperator(
-    #     task_id=f"transform_{SOURCE_NAME}_spark",
-    #     conn_id='jobs_spark_conn',
-    #     application='./dags/common/JobListings/spark/transform_jobs.py',
-    #     py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
-    #     # not sure about the "mariadb-java-client-3.3.2.jar"
-    #     jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
-    #     application_args=[f"{SOURCE_NAME}Transformer",
-    #                       SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
-    #     conf={
-    #         "spark.network.timeout": "10000s",
-    #         #  "hive.metastore.uris": hive_metastore,
-    #         #  "hive.exec.dynamic.partition": "true",
-    #         #  "hive.exec.dynamic.partition.mode": "nonstrict",
-    #         "spark.sql.sources.partitionOverwriteMode": "dynamic",
-    #         "spark.hadoop.fs.s3a.multiobjectdelete.enable": "true",
-    #         "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
-    #         "spark.hadoop.fs.s3a.fast.upload": "true",
-    #         "spark.hadoop.fs.s3a.endpoint": f"http://{MINIO_IP_ADDRESS}:9000",
-    #         "spark.hadoop.fs.s3a.access.key": AWS_SPARK_ACCESS_KEY,
-    #         "spark.hadoop.fs.s3a.secret.key": AWS_SPARK_SECRET_KEY,
-    #         "spark.hadoop.fs.s3a.path.style.access": "true",
-    #         "spark.history.fs.logDirectory": f"s3a://{SPARK_HISTORY_LOG_DIR}/",
-    #         "spark.sql.files.ignoreMissingFiles": "true",
-    #         "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
-    #         "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
-    #         "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
-    #         # todo: tuning configurations -> research
-    #         # "spark.sql.shuffle.partitions": 200
-    #     }
-    #     # executor_memory='2g',
-    #     # executor_cores=2,
-    #     # driver_memory='2g',
-    # )
+    transform_spark = SparkSubmitOperator(
+        task_id=f"transform_{SOURCE_NAME}_spark",
+        conn_id='jobs_spark_conn',
+        application='./dags/common/JobListings/spark/transform_jobs.py',
+        py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
+        # not sure about the "mariadb-java-client-3.3.2.jar"
+        jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
+        application_args=[f"{SOURCE_NAME}Transformer",
+                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
+        conf={
+            "spark.network.timeout": "10000s",
+            #  "hive.metastore.uris": hive_metastore,
+            #  "hive.exec.dynamic.partition": "true",
+            #  "hive.exec.dynamic.partition.mode": "nonstrict",
+            "spark.sql.sources.partitionOverwriteMode": "dynamic",
+            "spark.hadoop.fs.s3a.multiobjectdelete.enable": "true",
+            "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
+            "spark.hadoop.fs.s3a.fast.upload": "true",
+            "spark.hadoop.fs.s3a.endpoint": f"http://{MINIO_IP_ADDRESS}:9000",
+            "spark.hadoop.fs.s3a.access.key": AWS_SPARK_ACCESS_KEY,
+            "spark.hadoop.fs.s3a.secret.key": AWS_SPARK_SECRET_KEY,
+            "spark.hadoop.fs.s3a.path.style.access": "true",
+            "spark.history.fs.logDirectory": f"s3a://{SPARK_HISTORY_LOG_DIR}/",
+            "spark.sql.files.ignoreMissingFiles": "true",
+            "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
+            "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+            # "spark.databricks.delta.schema.autoMerge.enabled": "true",
+            "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
+            # todo: tuning configurations -> research
+            # "spark.sql.shuffle.partitions": 200
+        }
+        # executor_memory='2g',
+        # executor_cores=2,
+        # driver_memory='2g',
+    )
 
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
-    # extract >> transform_spark
-    fetch_store_data
+    # fetch_store_data
     # transform_spark
+    extract >> fetch_store_data >> transform_spark
