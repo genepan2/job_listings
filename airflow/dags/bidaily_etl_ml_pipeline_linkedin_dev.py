@@ -2,12 +2,19 @@ from airflow import DAG
 from airflow.decorators import task
 from airflow.operators.bash_operator import BashOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from airflow.hooks.postgres_hook import PostgresHook
+from airflow.hooks.S3_hook import S3Hook
 from airflow.models import Variable
 from datetime import timedelta
+from io import StringIO
 import pendulum
 import json
 import os
 import socket
+import pandas as pd
+import csv
+import boto3
+import logging
 
 from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
 # from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
@@ -16,6 +23,10 @@ import common.JobListings.helper_database as HelperDatabase
 import common.JobListings.helper_utils as HelperUtils
 
 SOURCE_NAME = "linkedin"
+BUCKET_FROM = 'bronze'
+BUCKET_TO = 'silver'
+DELTA_MINUTES = 180
+
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
 SPARK_HISTORY_LOG_DIR = os.getenv('SPARK_HISTORY_LOG_DIR')
@@ -37,12 +48,12 @@ else:
         raise ValueError(
             f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}")
 
-move_raw_json_files_to_archive = '''
-current_time=$(date "+%Y-%m-%d_%H-%M-%S")
-archive_dir="/opt/airflow/data/archive/${current_time}"
-mkdir -p "${archive_dir}"
-find /opt/airflow/data/raw/linkedin_json -type f -name '*.json' -exec mv {} "${archive_dir}" \;
-'''
+# move_raw_json_files_to_archive = '''
+# current_time=$(date "+%Y-%m-%d_%H-%M-%S")
+# archive_dir="/opt/airflow/data/archive/${current_time}"
+# mkdir -p "${archive_dir}"
+# find /opt/airflow/data/raw/linkedin_json -type f -name '*.json' -exec mv {} "${archive_dir}" \;
+# '''
 
 default_args = {
     'owner': 'admin',
@@ -64,13 +75,13 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    # @task(task_id="extract_linkedin")
-    # def extract_linkedin_jobs():
-    #     for keyword in keywords_linkedin:
-    #         for location in locations_linkedin:
-    #             scraper = Extractor(keyword, location, JOBS_TO_GET)
-    #             scraper.scrape_jobs()
-    # extract = extract_linkedin_jobs()
+    @task(task_id="extract_linkedin")
+    def extract_linkedin_jobs():
+        for keyword in keywords_linkedin:
+            for location in locations_linkedin:
+                scraper = Extractor(keyword, location, JOBS_TO_GET)
+                scraper.scrape_jobs()
+    extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
     # @task(task_id="extract_linkedin")
@@ -85,6 +96,40 @@ with DAG(
     #     transformer.run_all()
     # transform = transform_linkedin_jobs()
 
+    @task(task_id="fetch_and_store_data_from_dw")
+    def fetch_and_store_data_from_dw():
+        # PostgreSQL Connection
+        # this connection was created via env variable in docker compose
+        pg_hook = PostgresHook(postgres_conn_id="postgres_jobs")
+        conn = pg_hook.get_conn()
+
+        # S3 Connection
+        s3_hook = S3Hook(aws_conn_id='S3_conn')
+
+        table_names = ['dimLocations', 'dimLanguages', 'dimSources', 'dimJobLevels', 'dimSearchKeywords',
+                       'dimEmployments', 'dimIndustries', 'dimSkillCategory', 'dimTechnologyCategory', 'dimSkills', 'dimTechnologies']
+
+        for table_name in table_names:
+            logging.info(f"Getting Data from ${table_name}")
+            # get data
+            query = f"SELECT * FROM {table_name};"
+            df = pd.read_sql_query(query, conn)
+
+            # transform to csv
+            csv_buffer = StringIO()
+            df.to_csv(csv_buffer, index=False, quoting=csv.QUOTE_NONNUMERIC)
+
+            # saveas csv
+            logging.info(f"Saving Data from ${table_name}")
+            s3_hook.load_string(
+                string_data=csv_buffer.getvalue(),
+                bucket_name='silver',
+                key=f'dimTables/{table_name}.csv',
+                replace=True
+            )
+            logging.info(f"Done with ${table_name}")
+    fetch_store_data = fetch_and_store_data_from_dw()
+
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
         conn_id='jobs_spark_conn',
@@ -92,7 +137,8 @@ with DAG(
         py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
         # not sure about the "mariadb-java-client-3.3.2.jar"
         jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
-        application_args=[f"{SOURCE_NAME}Transformer", SOURCE_NAME],
+        application_args=[f"{SOURCE_NAME}Transformer",
+                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
         conf={
             "spark.network.timeout": "10000s",
             #  "hive.metastore.uris": hive_metastore,
@@ -110,6 +156,7 @@ with DAG(
             "spark.sql.files.ignoreMissingFiles": "true",
             "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
             "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+            # "spark.databricks.delta.schema.autoMerge.enabled": "true",
             "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
             # todo: tuning configurations -> research
             # "spark.sql.shuffle.partitions": 200
@@ -119,30 +166,8 @@ with DAG(
         # driver_memory='2g',
     )
 
-    # @task(task_id="load_linkedin")
-    # def load_linkedin_to_mongodb():
-    #     file_path = HelperUtils.construct_file_path_for_data_source(
-    #         SOURCE_NAME)
-    #     HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
-    # load_temp = load_linkedin_to_mongodb()
-
-    # @task(task_id="predict_salary_linkedin")
-    # def ml_predict_salary():
-    #     predictor = SalaryPredictor(SOURCE_NAME)
-    #     predictor.predict_and_map_salaries()
-    # predict_salary = ml_predict_salary()
-
-    # @task(task_id="load_data_to_main")
-    # def load_linkedin_to_main_collection():
-    #     HelperDatabase.load_records_to_main_collection(SOURCE_NAME)
-    # load_main = load_linkedin_to_main_collection()
-
-    # cleanup_raw = BashOperator(
-    #     task_id='archive_raw_linkedin_files',
-    #     bash_command=move_raw_json_files_to_archive,
-    # )
-
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
-    # extract >> transform_spark
-    transform_spark
+    # fetch_store_data
+    # transform_spark
+    extract >> fetch_store_data >> transform_spark
