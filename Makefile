@@ -1,4 +1,4 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris
+.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw
 
 copy:
 	./copy-constants.sh
@@ -9,7 +9,7 @@ init:
 init_minio:
 	docker-compose exec minio bash ./init/minio-init.sh
 
-dev: minio spark airflow
+dev: minio spark airflow postgres_dw
 
 pull:
 	docker-compose pull
@@ -61,6 +61,9 @@ doris:
 
 dl_doris:
 	sh download_doris.sh
+
+postgres_dw:
+	docker-compose up -d postgres
 
 # presto-cluster:
 # 	docker-compose up -d presto presto-worker
