@@ -3,6 +3,7 @@ from airflow.decorators import task
 from airflow.operators.bash_operator import BashOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.hooks.postgres_hook import PostgresHook
+from airflow.hooks.S3_hook import S3Hook
 from airflow.models import Variable
 from datetime import timedelta
 from io import StringIO
@@ -13,6 +14,7 @@ import socket
 import pandas as pd
 import csv
 import boto3
+import logging
 
 from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
 # from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
@@ -46,12 +48,12 @@ else:
         raise ValueError(
             f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}")
 
-move_raw_json_files_to_archive = '''
-current_time=$(date "+%Y-%m-%d_%H-%M-%S")
-archive_dir="/opt/airflow/data/archive/${current_time}"
-mkdir -p "${archive_dir}"
-find /opt/airflow/data/raw/linkedin_json -type f -name '*.json' -exec mv {} "${archive_dir}" \;
-'''
+# move_raw_json_files_to_archive = '''
+# current_time=$(date "+%Y-%m-%d_%H-%M-%S")
+# archive_dir="/opt/airflow/data/archive/${current_time}"
+# mkdir -p "${archive_dir}"
+# find /opt/airflow/data/raw/linkedin_json -type f -name '*.json' -exec mv {} "${archive_dir}" \;
+# '''
 
 default_args = {
     'owner': 'admin',
@@ -100,62 +102,71 @@ with DAG(
         # this connection was created via env variable in docker compose
         pg_hook = PostgresHook(postgres_conn_id="postgres_jobs")
         conn = pg_hook.get_conn()
-        cursor = conn.cursor()
 
-        # TODO: this could be done with a loop
-        # Get Data from PostgreSQL
-        query_locations = "SELECT * FROM dimLocations;"
-        query_sources = "SELECT * FROM dimSources;"
-        df_locations = pd.read_sql_query(query_locations, conn)
-        df_sources = pd.read_sql_query(query_sources, conn)
+        # S3 Connection
+        s3_hook = S3Hook(aws_conn_id='S3_conn')
 
-        # Transofrm Data to CSV
-        csv_buffer = StringIO()
-        df_locations.to_csv(csv_buffer, index=False,
-                            quoting=csv.QUOTE_NONNUMERIC)
+        table_names = ['dimLocations', 'dimLanguages', 'dimSources', 'dimJobLevels', 'dimSearchKeywords',
+                       'dimEmployments', 'dimIndustries', 'dimSkillCategory', 'dimTechnologyCategory', 'dimSkills', 'dimTechnologies']
 
-        # test fork 2
-        # Save CSV in S3
-        # s3_resource = boto3.resource('s3')
-        # s3_resource.Object('your_bucket_name', 'dimLocations.csv').put(Body=csv_buffer.getvalue())
+        for table_name in table_names:
+            logging.info(f"Getting Data from ${table_name}")
+            # get data
+            query = f"SELECT * FROM {table_name};"
+            df = pd.read_sql_query(query, conn)
+
+            # transform to csv
+            csv_buffer = StringIO()
+            df.to_csv(csv_buffer, index=False, quoting=csv.QUOTE_NONNUMERIC)
+
+            # saveas csv
+            logging.info(f"Saving Data from ${table_name}")
+            s3_hook.load_string(
+                string_data=csv_buffer.getvalue(),
+                bucket_name='silver',
+                key=f'dimTables/{table_name}.csv',
+                replace=True
+            )
+            logging.info(f"Done with ${table_name}")
     fetch_store_data = fetch_and_store_data_from_dw()
 
-    transform_spark = SparkSubmitOperator(
-        task_id=f"transform_{SOURCE_NAME}_spark",
-        conn_id='jobs_spark_conn',
-        application='./dags/common/JobListings/spark/transform_jobs.py',
-        py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
-        # not sure about the "mariadb-java-client-3.3.2.jar"
-        jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
-        application_args=[f"{SOURCE_NAME}Transformer",
-                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
-        conf={
-            "spark.network.timeout": "10000s",
-            #  "hive.metastore.uris": hive_metastore,
-            #  "hive.exec.dynamic.partition": "true",
-            #  "hive.exec.dynamic.partition.mode": "nonstrict",
-            "spark.sql.sources.partitionOverwriteMode": "dynamic",
-            "spark.hadoop.fs.s3a.multiobjectdelete.enable": "true",
-            "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
-            "spark.hadoop.fs.s3a.fast.upload": "true",
-            "spark.hadoop.fs.s3a.endpoint": f"http://{MINIO_IP_ADDRESS}:9000",
-            "spark.hadoop.fs.s3a.access.key": AWS_SPARK_ACCESS_KEY,
-            "spark.hadoop.fs.s3a.secret.key": AWS_SPARK_SECRET_KEY,
-            "spark.hadoop.fs.s3a.path.style.access": "true",
-            "spark.history.fs.logDirectory": f"s3a://{SPARK_HISTORY_LOG_DIR}/",
-            "spark.sql.files.ignoreMissingFiles": "true",
-            "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
-            "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
-            "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
-            # todo: tuning configurations -> research
-            # "spark.sql.shuffle.partitions": 200
-        }
-        # executor_memory='2g',
-        # executor_cores=2,
-        # driver_memory='2g',
-    )
+    # transform_spark = SparkSubmitOperator(
+    #     task_id=f"transform_{SOURCE_NAME}_spark",
+    #     conn_id='jobs_spark_conn',
+    #     application='./dags/common/JobListings/spark/transform_jobs.py',
+    #     py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
+    #     # not sure about the "mariadb-java-client-3.3.2.jar"
+    #     jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
+    #     application_args=[f"{SOURCE_NAME}Transformer",
+    #                       SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
+    #     conf={
+    #         "spark.network.timeout": "10000s",
+    #         #  "hive.metastore.uris": hive_metastore,
+    #         #  "hive.exec.dynamic.partition": "true",
+    #         #  "hive.exec.dynamic.partition.mode": "nonstrict",
+    #         "spark.sql.sources.partitionOverwriteMode": "dynamic",
+    #         "spark.hadoop.fs.s3a.multiobjectdelete.enable": "true",
+    #         "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
+    #         "spark.hadoop.fs.s3a.fast.upload": "true",
+    #         "spark.hadoop.fs.s3a.endpoint": f"http://{MINIO_IP_ADDRESS}:9000",
+    #         "spark.hadoop.fs.s3a.access.key": AWS_SPARK_ACCESS_KEY,
+    #         "spark.hadoop.fs.s3a.secret.key": AWS_SPARK_SECRET_KEY,
+    #         "spark.hadoop.fs.s3a.path.style.access": "true",
+    #         "spark.history.fs.logDirectory": f"s3a://{SPARK_HISTORY_LOG_DIR}/",
+    #         "spark.sql.files.ignoreMissingFiles": "true",
+    #         "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
+    #         "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+    #         "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
+    #         # todo: tuning configurations -> research
+    #         # "spark.sql.shuffle.partitions": 200
+    #     }
+    #     # executor_memory='2g',
+    #     # executor_cores=2,
+    #     # driver_memory='2g',
+    # )
 
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
     # extract >> transform_spark
-    transform_spark
+    fetch_store_data
+    # transform_spark
