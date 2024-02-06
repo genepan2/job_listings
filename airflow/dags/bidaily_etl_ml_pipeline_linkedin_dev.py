@@ -140,11 +140,27 @@ with DAG(
         dag=dag,
     )
 
+    # TODO: maybe better to just get all files from folder...
+    spark_folder_path = "./dags/common/JobListings/spark/"
+    spark_py_files = [
+        "constants.py",
+        "data_enrichment.py",
+        "data_storage.py",
+        "data_transformation.py",
+        "file_processing.py",
+        "helper_transform.py",
+        "s3_client_manager.py",
+        "spark_session_manager.py"
+    ]
+
+    extended_py_files = ", ".join(
+        [spark_folder_path + file for file in spark_py_files])
+
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
         conn_id='jobs_spark_conn',
         application='./dags/common/JobListings/spark/transform_jobs.py',
-        py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
+        py_files=extended_py_files,
         # not sure about the "mariadb-java-client-3.3.2.jar"
         jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
         application_args=[f"{SOURCE_NAME}Transformer",
