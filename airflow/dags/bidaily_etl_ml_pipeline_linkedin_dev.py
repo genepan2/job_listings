@@ -130,6 +130,16 @@ with DAG(
             logging.info(f"Done with ${table_name}")
     fetch_store_data = fetch_and_store_data_from_dw()
 
+    source_file = '${AIRFLOW_HOME}/dags/common/JobListings/constants.py'
+    destination_file = '${AIRFLOW_HOME}/dags/common/JobListings/spark/constants.py'
+
+    # Copy the constants to spark folder before running spark
+    copy_constants = BashOperator(
+        task_id='copy_constants',
+        bash_command=f'cp -f {source_file} {destination_file}',
+        dag=dag,
+    )
+
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
         conn_id='jobs_spark_conn',
@@ -166,8 +176,16 @@ with DAG(
         # driver_memory='2g',
     )
 
+    # Delete the constants file after running spark
+    # delete_constants = BashOperator(
+    #     task_id='delete_constants',
+    #     bash_command=f'rm {destination_file}',
+    #     dag=dag,
+    # )
+
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
     # fetch_store_data
     # transform_spark
-    extract >> fetch_store_data >> transform_spark
+    # extract >> fetch_store_data >> copy_constants >> transform_spark >> delete_constants
+    extract >> fetch_store_data >> copy_constants >> transform_spark
