@@ -59,14 +59,15 @@ class DataTransformation:
         create_job_fingerprint_udf = udf(
             self.create_job_fingerprint, StringType())
 
-        df_cleaned = df_filtered.withColumn("title", transform_job_title_udf(col("title"))) \
+        df_cleaned = df_filtered \
+            .withColumn("titleCleaned", transform_job_title_udf(col("title"))) \
             .withColumn("fingerprint", create_job_fingerprint_udf(col("title"), col("company_name"), col("description"))) \
             .withColumn("level", transform_job_level_udf(col("level"), col("title"))) \
             .withColumn("location", transform_job_location_udf(col("location"))) \
             .withColumn("publish_date", transform_to_isoformat_udf(col("publish_date"), col("search_datetime"))) \
             .withColumn("applicants", extract_applicants_udf(col("applicants"))) \
             .withColumn("language", transform_detect_language_udf(col("description"))) \
-            .withColumn("linkedin_id", clean_linkedin_id_udf(col("linkedin_id"))) \
+            .withColumn("sourceListingIdentifier", clean_linkedin_id_udf(col("linkedin_id"))) \
             .withColumn("company_linkedin_url", clean_company_linkedin_url_udf(col("company_linkedin_url"))) \
             .withColumnRenamed("Unnamed: 0", "index")  # important, otherwise error. spark needs all columns to be named
 
