@@ -130,13 +130,52 @@ with DAG(
             logging.info(f"Done with ${table_name}")
     fetch_store_data = fetch_and_store_data_from_dw()
 
+    source_file = '${AIRFLOW_HOME}/dags/common/JobListings/constants.py'
+    destination_file = '${AIRFLOW_HOME}/dags/common/JobListings/spark/constants.py'
+
+    # Copy the constants to spark folder before running spark
+    copy_constants = BashOperator(
+        task_id='copy_constants',
+        bash_command=f'cp -f {source_file} {destination_file}',
+        dag=dag,
+    )
+
+    # TODO: maybe better to just get all files from folder...
+    spark_folder_path = "./dags/common/JobListings/spark/"
+    spark_py_files = [
+        "constants.py",
+        "data_enrichment.py",
+        "data_storage.py",
+        "data_transformation.py",
+        "file_processing.py",
+        "helper_transform.py",
+        "s3_client_manager.py",
+        "spark_session_manager.py"
+    ]
+
+    extended_py_files = ",".join(
+        [spark_folder_path + file for file in spark_py_files])
+
+    spark_jars_folder = "./dags/jars/"
+
+    spark_jar_files = [
+        "mariadb-java-client-3.3.2.jar",  # not sure about this one...
+        "aws-java-sdk-bundle-1.12.262.jar",
+        "delta-spark_2.12-3.0.0.jar",
+        "delta-storage-3.0.0.jar",
+        "hadoop-aws-3.3.4.jar",
+        "hadoop-common-3.3.4.jar"
+    ]
+
+    extended_jar_files = ",".join(
+        [spark_jars_folder + file for file in spark_jar_files])
+
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
         conn_id='jobs_spark_conn',
         application='./dags/common/JobListings/spark/transform_jobs.py',
-        py_files='./dags/common/JobListings/spark/helper_transform.py,./dags/common/JobListings/spark/constants.py',
-        # not sure about the "mariadb-java-client-3.3.2.jar"
-        jars='./dags/jars/mariadb-java-client-3.3.2.jar,./dags/jars/aws-java-sdk-bundle-1.12.262.jar,./dags/jars/delta-spark_2.12-3.0.0.jar,./dags/jars/delta-storage-3.0.0.jar,./dags/jars/hadoop-aws-3.3.4.jar,./dags/jars/hadoop-common-3.3.4.jar',
+        py_files=extended_py_files,
+        jars=extended_jar_files,
         application_args=[f"{SOURCE_NAME}Transformer",
                           SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
         conf={
@@ -166,8 +205,16 @@ with DAG(
         # driver_memory='2g',
     )
 
+    # Delete the constants file after running spark
+    # delete_constants = BashOperator(
+    #     task_id='delete_constants',
+    #     bash_command=f'rm {destination_file}',
+    #     dag=dag,
+    # )
+
     # extract >> transform >> load_temp >> predict_salary >> load_main >> cleanup_raw
     # extract
     # fetch_store_data
     # transform_spark
-    extract >> fetch_store_data >> transform_spark
+    # extract >> fetch_store_data >> copy_constants >> transform_spark >> delete_constants
+    extract >> fetch_store_data >> copy_constants >> transform_spark
