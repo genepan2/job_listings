@@ -1,132 +1,141 @@
----------------------
 -- DIMENSION TABLES
 CREATE TABLE IF NOT EXISTS dimJobs (
-    JobId SERIAL PRIMARY KEY,
-    Title VARCHAR(255),
-    TitleCleaned VARCHAR(255),
-    Description TEXT,
-    Url VARCHAR(255),
-    SourceListingIdentifier VARCHAR(255),
-    Fingerprint VARCHAR(255)
+    job_id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    title_cleaned VARCHAR(255),
+    description TEXT,
+    url VARCHAR(255),
+    source_listing_identifier VARCHAR(255),
+    fingerprint VARCHAR(255)
+);
+CREATE TABLE IF NOT EXISTS dimCompanies (
+    company_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimLocations (
-    LocationId SERIAL PRIMARY KEY,
-    City VARCHAR(255),
-    Country VARCHAR(255)
+    location_id SERIAL PRIMARY KEY,
+    city VARCHAR(255),
+    country VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimLanguages (
-    LanguageId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    language_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TYPE SourceTypeEnum AS ENUM ('origin', 'meta', 'hybrid');
 CREATE TABLE IF NOT EXISTS dimSources (
-    SourceId SERIAL PRIMARY KEY,
-    Name VARCHAR(255),
-    Url VARCHAR(255),
-    Type SourceTypeEnum,
-    isApi BOOLEAN DEFAULT FALSE
+    source_id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    url VARCHAR(255),
+    type SourceTypeEnum,
+    is_api BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE IF NOT EXISTS dimJobLevels (
-    JobLevelId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    job_level_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimSearchKeywords (
-    SearchKeywordId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    search_keyword_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimSearchLocations (
-    SearchLocationId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    search_location_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimDates (
-    DateId SERIAL PRIMARY KEY,
-    Year INT NOT NULL,
-    Month INT NOT NULL,
-    Week INT NOT NULL,
-    Day INT NOT NULL,
-    Hour INT NOT NULL,
-    Minute INT NOT NULL,
-    WeekDay INT NOT NULL,
-    isHoliday BOOLEAN DEFAULT FALSE
+    date_id SERIAL PRIMARY KEY,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    week INT NOT NULL,
+    day INT NOT NULL,
+    hour INT NOT NULL,
+    minute INT NOT NULL,
+    week_day INT NOT NULL,
+    is_holiday BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE IF NOT EXISTS dimEmployments (
-    EmploymentId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    employment_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimIndustries (
-    IndustryId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    industry_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimSkillCategory (
-    SkillCategoryId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    skill_category_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimTechnologyCategory (
-    TechnologyCategoryId SERIAL PRIMARY KEY,
-    Name VARCHAR(255)
+    technology_category_id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimSkills (
-    SkillId SERIAL PRIMARY KEY,
-    Name VARCHAR(255),
-    SkillCategoryKey INT REFERENCES dimSkillCategory(SkillCategoryId)
+    skill_id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    skill_category_key INT REFERENCES dimSkillCategory(skill_category_id)
 );
 CREATE TABLE IF NOT EXISTS dimTechnologies (
-    TechnologyId SERIAL PRIMARY KEY,
-    Name VARCHAR(255),
-    TechnologyCategoryKey INT REFERENCES dimTechnologyCategory(TechnologyCategoryId)
+    technology_id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    technology_category_key INT REFERENCES dimTechnologyCategory(technology_category_id)
 );
----------------------
 -- FACT TABLE
 CREATE TABLE IF NOT EXISTS fctJobListings (
-    JobListingId SERIAL PRIMARY KEY,
-    JobKey INT REFERENCES dimJobs(JobId),
-    SourceKey INT REFERENCES dimSources(SourceId),
-    SearchDateKey INT REFERENCES dimDates(DateId),
+    job_listing_id SERIAL PRIMARY KEY,
+    job_key INT REFERENCES dimJobs(job_id),
+    company_key INT REFERENCES dimCompanies(company_id),
+    source_key INT REFERENCES dimSources(source_id),
+    search_date_key INT REFERENCES dimDates(date_id),
     -- References to dimDates
-    -- SearchWordKey INT REFERENCES dimSearchKeywords(),
-    -- SearchLocationKey INT REFERENCES dimSearchLocations(),
-    PublishDateKey INT REFERENCES dimDates(DateId),
+    -- search_word_key INT REFERENCES dimSearchKeywords(),
+    -- search_location_key INT REFERENCES dimSearchLocations(),
+    publish_date_key INT REFERENCES dimDates(date_id),
     -- References to dimDates
-    CloseDateKey INT REFERENCES dimDates(DateId),
+    close_date_key INT REFERENCES dimDates(date_id),
     -- References to dimDates
-    LanguageKey INT REFERENCES dimLanguages(LanguageId),
-    JobLevelKey INT REFERENCES dimJobLevels(JobLevelId),
-    EmploymentKey INT REFERENCES dimEmployments(EmploymentId),
-    IndustryKey INT REFERENCES dimIndustries(IndustryId),
-    NumberOfApplications INT,
-    ListingDurationDays INT,
-    ScrapeDurationMilliseconds INT
+    language_key INT REFERENCES dimLanguages(language_id),
+    job_level_key INT REFERENCES dimJobLevels(job_level_id),
+    employment_key INT REFERENCES dimEmployments(employment_id),
+    industry_key INT REFERENCES dimIndustries(industry_id),
+    number_of_applications INT,
+    listing_duration_days INT,
+    scrape_duration_milliseconds INT
 );
----------------------
 -- BRIDGE TABLES
 CREATE TABLE IF NOT EXISTS JobLocationsBridge (
-    JobLocationId SERIAL PRIMARY KEY,
-    JobListingKey INT REFERENCES fctJobListings(JobListingId),
-    LocationKey INT REFERENCES dimLocations(LocationId)
+    job_location_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    location_key INT REFERENCES dimLocations(location_id)
 );
+-- CREATE TABLE IF NOT EXISTS JobLocationsBridge (
+--     location_key INT,
+--     job_listing_key INT,
+--     PRIMARY KEY (location_key, job_listing_key),
+--     FOREIGN KEY (location_key) REFERENCES dimLocations(location_id)
+--     FOREIGN KEY (job_listing_key) REFERENCES fctJobListings(job_listing_id),
+-- );
 CREATE TABLE IF NOT EXISTS JobSkillsBridge (
-    JobSkillId SERIAL PRIMARY KEY,
-    JobListingKey INT REFERENCES fctJobListings(JobListingId),
-    SkillKey INT REFERENCES dimSkills(SkillId)
+    job_skill_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    skill_key INT REFERENCES dimSkills(skill_id)
 );
 CREATE TABLE IF NOT EXISTS JobTechnologiesBridge (
-    JobTechnologyId SERIAL PRIMARY KEY,
-    JobListingKey INT REFERENCES fctJobListings(JobListingId),
-    TechnologyKey INT REFERENCES dimTechnologies(TechnologyId)
+    job_technology_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    technology_key INT REFERENCES dimTechnologies(technology_id)
 );
 CREATE TABLE IF NOT EXISTS JobSearchKeywordBridge (
-    JobSearchKeywordId SERIAL PRIMARY KEY,
-    JobListingKey INT REFERENCES fctJobListings(JobListingId),
-    SearchKeywordKey INT REFERENCES dimSearchKeywords(SearchKeywordId)
+    job_search_keyword_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    search_keyword_key INT REFERENCES dimSearchKeywords(search_keyword_id)
 );
 CREATE TABLE IF NOT EXISTS JobSearchLocationBridge (
-    JobSearchKeywordId SERIAL PRIMARY KEY,
-    JobListingKey INT REFERENCES fctJobListings(JobListingId),
-    SearchLocationKey INT REFERENCES dimSearchLocations(SearchLocationId)
+    job_search_keyword_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    search_location_key INT REFERENCES dimSearchLocations(search_location_id)
 );
 ---------------------
 -- INSERT Initial Data
-INSERT INTO dimLocations (City, Country)
+INSERT INTO dimLocations (city, country)
 VALUES ('Other', 'Global'),
     ('Remote', 'Global'),
     ('Hybrid', 'Global'),
@@ -135,11 +144,11 @@ VALUES ('Other', 'Global'),
     ('Hamburg', 'Germany'),
     ('Cologne', 'Germany'),
     ('Frankfurt', 'Germany');
-INSERT INTO dimLanguages (Name)
+INSERT INTO dimLanguages (name)
 VALUES ('Other'),
     ('English'),
     ('German');
-INSERT INTO dimSources (Name, Url, Type, isApi)
+INSERT INTO dimSources (name, url, type, is_api)
 VALUES (
         'LinkedIn',
         'https://www.linkedin.com/',
@@ -158,7 +167,7 @@ VALUES (
         'meta',
         true
     );
-INSERT INTO dimJobLevels (Name)
+INSERT INTO dimJobLevels (name)
 VALUES ('Other'),
     ('Student'),
     ('Internship'),
@@ -167,7 +176,7 @@ VALUES ('Other'),
     ('Senior'),
     ('Lead'),
     ('Head');
-INSERT INTO dimSearchKeywords (Name)
+INSERT INTO dimSearchKeywords (name)
 VALUES ('Other'),
     ('Big Data Engineer'),
     ('Business Intelligence Engineer'),
@@ -178,12 +187,12 @@ VALUES ('Other'),
     ('Data Scientist'),
     ('Data'),
     ('Machine Learning Engineer');
-INSERT INTO dimEmployments (Name)
+INSERT INTO dimEmployments (name)
 VALUES ('Other'),
     ('Full-time'),
     ('Part-time'),
     ('Contract');
-INSERT INTO dimIndustries (Name)
+INSERT INTO dimIndustries (name)
 VALUES ('Other'),
     ('IT Services and IT Consulting'),
     ('Technology, Information and Internet'),
