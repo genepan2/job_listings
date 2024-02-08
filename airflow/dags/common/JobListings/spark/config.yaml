@@ -1,0 +1,22 @@
+dimensions_info:
+ dimSources:
+  factColumn: "source"
+  dimColumn: "name"
+  factForeignKeyColumn: "sourceKey"
+  dimIdColumn: ""
+ dimCompanies:
+  factColumn: "company_name"
+  dimColumn: "name"
+  factForeignKeyColumn: "CompanyKey"
+  dimIdColumn: ""
+ dimLanguages:
+  factColumn: "language"
+  dimColumn: "name"
+  factForeignKeyColumn: "LanguageKey"
+  dimIdColumn: ""
+ dimJobLevels:
+  factColumn: "level"
+  dimColumn: "name"
+  distinctColumns: ["name"]
+  factForeignKeyColumn: "JobLevelKey"
+  dimIdColumn: ""
