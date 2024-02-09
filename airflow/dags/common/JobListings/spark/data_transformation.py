@@ -85,28 +85,26 @@ class DataTransformation:
 
     def get_df_schema_source_linkedin(self):
         schema = StructType([
-            StructField("Unnamed: 0", IntegerType(), True),
+            StructField("Unnamed: 0", StringType(), True),
             StructField("company_name", StringType(), True),
             StructField("company_linkedin_url", StringType(), True),
             StructField("title", StringType(), True),
-            # StructField("title_cleaned", StringType(), True),
             StructField("location", StringType(), True),
             StructField("country", StringType(), True),
             StructField("source_identifier", StringType(), True),
             StructField("url", StringType(), True),
+            StructField("job_apps_count", StringType(), True),
             StructField("publish_date", StringType(), True),
             StructField("level", StringType(), True),
             StructField("employment", StringType(), True),
             StructField("function", StringType(), True),
             StructField("industries", StringType(), True),
             StructField("description", StringType(), True),
-            # StructField("search_datetime", TimestampType(), True),
             StructField("search_datetime", StringType(), True),
             StructField("search_keyword", StringType(), True),
             StructField("search_location", StringType(), True),
-            StructField("job_apps_count", StringType(), True),
-            StructField("scrape_dur_ms", StringType(), True),
             StructField("source", StringType(), True),
+            StructField("scrape_dur_ms", StringType(), True),
         ])
         return schema
 
