@@ -25,7 +25,7 @@ import common.JobListings.helper_utils as HelperUtils
 SOURCE_NAME = "linkedin"
 BUCKET_FROM = 'bronze'
 BUCKET_TO = 'silver'
-DELTA_MINUTES = 180
+DELTA_MINUTES = 120
 
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
@@ -58,9 +58,9 @@ else:
 default_args = {
     'owner': 'admin',
     'depends_on_past': False,
-    'email_on_failure': True,
+    'email_on_failure': False,
     'email_on_retry': False,
-    'retries': 1,
+    'retries': 0,
     'retry_delay': timedelta(minutes=3),
 }
 
@@ -96,39 +96,39 @@ with DAG(
     #     transformer.run_all()
     # transform = transform_linkedin_jobs()
 
-    @task(task_id="fetch_and_store_data_from_dw")
-    def fetch_and_store_data_from_dw():
-        # PostgreSQL Connection
-        # this connection was created via env variable in docker compose
-        pg_hook = PostgresHook(postgres_conn_id="postgres_jobs")
-        conn = pg_hook.get_conn()
+    # @task(task_id="fetch_and_store_data_from_dw")
+    # def fetch_and_store_data_from_dw():
+    #     # PostgreSQL Connection
+    #     # this connection was created via env variable in docker compose
+    #     pg_hook = PostgresHook(postgres_conn_id="postgres_jobs")
+    #     conn = pg_hook.get_conn()
 
-        # S3 Connection
-        s3_hook = S3Hook(aws_conn_id='S3_conn')
+    #     # S3 Connection
+    #     s3_hook = S3Hook(aws_conn_id='S3_conn')
 
-        table_names = ['dimLocations', 'dimLanguages', 'dimSources', 'dimJobLevels', 'dimSearchKeywords',
-                       'dimEmployments', 'dimIndustries', 'dimSkillCategory', 'dimTechnologyCategory', 'dimSkills', 'dimTechnologies']
+    #     table_names = ['dimLocations', 'dimLanguages', 'dimSources', 'dimJobLevels', 'dimSearchKeywords',
+    #                    'dimEmployments', 'dimIndustries', 'dimSkillCategory', 'dimTechnologyCategory', 'dimSkills', 'dimTechnologies']
 
-        for table_name in table_names:
-            logging.info(f"Getting Data from ${table_name}")
-            # get data
-            query = f"SELECT * FROM {table_name};"
-            df = pd.read_sql_query(query, conn)
+    #     for table_name in table_names:
+    #         logging.info(f"Getting Data from ${table_name}")
+    #         # get data
+    #         query = f"SELECT * FROM {table_name};"
+    #         df = pd.read_sql_query(query, conn)
 
-            # transform to csv
-            csv_buffer = StringIO()
-            df.to_csv(csv_buffer, index=False, quoting=csv.QUOTE_NONNUMERIC)
+    #         # transform to csv
+    #         csv_buffer = StringIO()
+    #         df.to_csv(csv_buffer, index=False, quoting=csv.QUOTE_NONNUMERIC)
 
-            # saveas csv
-            logging.info(f"Saving Data from ${table_name}")
-            s3_hook.load_string(
-                string_data=csv_buffer.getvalue(),
-                bucket_name='silver',
-                key=f'dimTables/{table_name}.csv',
-                replace=True
-            )
-            logging.info(f"Done with ${table_name}")
-    fetch_store_data = fetch_and_store_data_from_dw()
+    #         # saveas csv
+    #         logging.info(f"Saving Data from ${table_name}")
+    #         s3_hook.load_string(
+    #             string_data=csv_buffer.getvalue(),
+    #             bucket_name='silver',
+    #             key=f'dimTables/{table_name}.csv',
+    #             replace=True
+    #         )
+    #         logging.info(f"Done with ${table_name}")
+    # fetch_store_data = fetch_and_store_data_from_dw()
 
     source_file = '${AIRFLOW_HOME}/dags/common/JobListings/constants.py'
     destination_file = '${AIRFLOW_HOME}/dags/common/JobListings/spark/constants.py'
@@ -157,14 +157,14 @@ with DAG(
         [spark_folder_path + file for file in spark_py_files])
 
     spark_jars_folder = "./dags/jars/"
-
     spark_jar_files = [
         "mariadb-java-client-3.3.2.jar",  # not sure about this one...
         "aws-java-sdk-bundle-1.12.262.jar",
         "delta-spark_2.12-3.0.0.jar",
         "delta-storage-3.0.0.jar",
         "hadoop-aws-3.3.4.jar",
-        "hadoop-common-3.3.4.jar"
+        "hadoop-common-3.3.4.jar",
+        "postgresql-42.7.1.jar"
     ]
 
     extended_jar_files = ",".join(
@@ -217,4 +217,6 @@ with DAG(
     # fetch_store_data
     # transform_spark
     # extract >> fetch_store_data >> copy_constants >> transform_spark >> delete_constants
-    extract >> fetch_store_data >> copy_constants >> transform_spark
+    # extract >> fetch_store_data >> copy_constants >> transform_spark
+    # transform_spark
+    extract >> copy_constants >> transform_spark
