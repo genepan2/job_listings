@@ -60,14 +60,14 @@ class DataTransformation:
             self.create_job_fingerprint, StringType())
 
         df_cleaned = df_filtered \
-            .withColumn("titleCleaned", transform_job_title_udf(col("title"))) \
+            .withColumn("title_cleaned", transform_job_title_udf(col("title"))) \
             .withColumn("fingerprint", create_job_fingerprint_udf(col("title"), col("company_name"), col("description"))) \
             .withColumn("level", transform_job_level_udf(col("level"), col("title"))) \
             .withColumn("location", transform_job_location_udf(col("location"))) \
             .withColumn("publish_date", transform_to_isoformat_udf(col("publish_date"), col("search_datetime"))) \
-            .withColumn("applicants", extract_applicants_udf(col("applicants"))) \
+            .withColumn("job_apps_count", extract_applicants_udf(col("job_apps_count"))) \
             .withColumn("language", transform_detect_language_udf(col("description"))) \
-            .withColumn("sourceListingIdentifier", clean_linkedin_id_udf(col("linkedin_id"))) \
+            .withColumn("source_identifier", clean_linkedin_id_udf(col("source_identifier"))) \
             .withColumn("company_linkedin_url", clean_company_linkedin_url_udf(col("company_linkedin_url"))) \
             .withColumnRenamed("Unnamed: 0", "index")  # important, otherwise error. spark needs all columns to be named
 
@@ -89,10 +89,11 @@ class DataTransformation:
             StructField("company_name", StringType(), True),
             StructField("company_linkedin_url", StringType(), True),
             StructField("title", StringType(), True),
+            # StructField("title_cleaned", StringType(), True),
             StructField("location", StringType(), True),
-            StructField("linkedin_id", StringType(), True),
+            StructField("country", StringType(), True),
+            StructField("source_identifier", StringType(), True),
             StructField("url", StringType(), True),
-            StructField("applicants", StringType(), True),
             StructField("publish_date", StringType(), True),
             StructField("level", StringType(), True),
             StructField("employment", StringType(), True),
@@ -103,6 +104,9 @@ class DataTransformation:
             StructField("search_datetime", StringType(), True),
             StructField("search_keyword", StringType(), True),
             StructField("search_location", StringType(), True),
+            StructField("job_apps_count", StringType(), True),
+            StructField("scrape_dur_ms", StringType(), True),
+            StructField("source", StringType(), True),
         ])
         return schema
 
