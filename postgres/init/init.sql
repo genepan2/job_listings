@@ -60,23 +60,23 @@ CREATE TABLE IF NOT EXISTS dimIndustries (
     industry_id SERIAL PRIMARY KEY,
     name VARCHAR(255)
 );
-CREATE TABLE IF NOT EXISTS dimSkillCategory (
+CREATE TABLE IF NOT EXISTS dimSkillCategories (
     skill_category_id SERIAL PRIMARY KEY,
     name VARCHAR(255)
 );
-CREATE TABLE IF NOT EXISTS dimTechnologyCategory (
+CREATE TABLE IF NOT EXISTS dimTechnologyCategories (
     technology_category_id SERIAL PRIMARY KEY,
     name VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimSkills (
     skill_id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    skill_category_key INT REFERENCES dimSkillCategory(skill_category_id)
+    skill_category_key INT REFERENCES dimSkillCategories(skill_category_id)
 );
 CREATE TABLE IF NOT EXISTS dimTechnologies (
     technology_id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    technology_category_key INT REFERENCES dimTechnologyCategory(technology_category_id)
+    technology_category_key INT REFERENCES dimTechnologyCategories(technology_category_id)
 );
 -- FACT TABLE
 CREATE TABLE IF NOT EXISTS fctJobListings (
