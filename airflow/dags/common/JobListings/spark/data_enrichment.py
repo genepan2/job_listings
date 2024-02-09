@@ -12,7 +12,7 @@ class DataEnrichment:
         # self.jdbc_url = "jdbc:postgresql://your_database_url:5432/your_database_name"
         self.jdbc_url = os.getenv('JDBC_URL')
 
-    def load_dimension_table(self, table_name, dim_column=None, fact_value=None):
+    def load_dimension_table(self, table_name, columns, dim_column=None, fact_value=None):
         """
         Loads a dimension table and optionally filters based on a value.
 
@@ -24,20 +24,20 @@ class DataEnrichment:
         Returns:
         DataFrame: A DataFrame of the filtered (or unfiltered) dimension table.
         """
-        jdbc_url = "jdbc:postgresql://your_database_url:5432/your_database_name"
-        # connection_properties = {
-        #     "user": "your_username",
-        #     "password": "your_password",
-        #     "driver": "org.postgresql.Driver"
-        # }
 
         print(table_name)
-        print(self.jdbc_url)
-        print(self.connection_prop)
+        # print(self.jdbc_url)
+        # print(self.connection_prop)
+
+        columns_to_get = " ,".join(columns)
 
         # Load the entire dimension table
         dim_df = self.spark.read.jdbc(
-            url=self.jdbc_url, table=table_name, properties=self.connection_prop)
+            url=self.jdbc_url,
+            # table=table_name,
+            table=f"(SELECT {columns_to_get} FROM {table_name}) AS {table_name}_alias",
+            properties=self.connection_prop
+        )
 
         # If a column name and value for filtering are provided, apply the filter
         if dim_column and fact_value:
