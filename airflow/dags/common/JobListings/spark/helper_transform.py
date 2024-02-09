@@ -63,8 +63,13 @@ def transform_to_isoformat(publication_date, search_datetime):
     yesterday_names = ["yesterday", "gestern"]
 
     # Convert search_datetime to a datetime object at the start
-    search_datetime_ob = datetime.strptime(
-        search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+    try:
+        search_datetime_ob = datetime.strptime(
+            search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+    except ValueError:
+        # If search_datetime is invalid, use current date and time
+        logging.info("Invalid search_datetime, using current datetime.")
+        search_datetime_ob = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
 
     # Check if publication_date is a special keyword like "today" or "yesterday"
     if publication_date and publication_date.lower() in today_names or publication_date is None or publication_date == 'NaN':
