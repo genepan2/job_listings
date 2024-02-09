@@ -68,16 +68,19 @@ class ExtractorLinkedIn:
         soup = BeautifulSoup(resp.text, 'html.parser')
 
         job_title = soup.find("div", {"class": "top-card-layout__entity-info"})
-        job_title = job_title.find("a").text if job_title else None
+        job_title = job_title.find("a").text.strip() if job_title else None
 
-        job_linkedin_id_elem = soup.find(
-            "code", {"id": "decoratedJobPostingId"})
-        job_linkedin_id = job_linkedin_id_elem.text if job_linkedin_id_elem is not None else None
+        # job_linkedin_id_elem = soup.find(
+        # "code", {"id": "decoratedJobPostingId"})
+        # job_linkedin_id = job_linkedin_id_elem.text if job_linkedin_id_elem is not None else None
+
+        job_linkedin_id = job_id
 
         job_linkedin_url = target_url
 
         amount_applicants_elem = soup.select_one(".num-applicants__caption")
-        amount_applicants = amount_applicants_elem.text if amount_applicants_elem is not None else None
+        amount_applicants = amount_applicants_elem.text.strip(
+        ) if amount_applicants_elem is not None else None
 
         publish_date_elem = soup.select_one(".posted-time-ago__text")
         publish_date = publish_date_elem.text.strip() if publish_date_elem else None
@@ -94,40 +97,42 @@ class ExtractorLinkedIn:
         if len(job_criteria_items) > 0:
             seniority_level_element = job_criteria_items[0].select_one(
                 ".description__job-criteria-text")
-            seniority_level = seniority_level_element.text if seniority_level_element else None
+            seniority_level = seniority_level_element.text.strip(
+            ) if seniority_level_element else None
 
         if len(job_criteria_items) > 1:
             employment_type_element = job_criteria_items[1].select_one(
                 ".description__job-criteria-text")
-            employment_type = employment_type_element.text if employment_type_element else None
+            employment_type = employment_type_element.text.strip(
+            ) if employment_type_element else None
 
         if len(job_criteria_items) > 2:
             job_function_element = job_criteria_items[2].select_one(
                 ".description__job-criteria-text")
-            job_function = job_function_element.text if job_function_element else None
+            job_function = job_function_element.text.strip() if job_function_element else None
 
         if len(job_criteria_items) > 3:
             industries_element = job_criteria_items[3].select_one(
                 ".description__job-criteria-text")
-            industries = industries_element.text if industries_element else None
+            industries = industries_element.text.strip() if industries_element else None
 
         description = soup.select_one(".description__text")
         if description is not None:
             description_contents = description.select_one(
-                ".show-more-less-html__markup").text
+                ".show-more-less-html__markup").text.strip()
         else:
             description_contents = None
 
         company_html = soup.select_one(
             ".topcard__org-name-link")
-        company_name = company_html.string if company_html else None
+        company_name = company_html.string.strip() if company_html else None
 
         company_linkedin_url = company_html['href'] if company_html else None
 
         job_location_html = soup.select_one(".topcard__flavor-row")
         if job_location_html is not None:
             job_location = job_location_html.select_one(
-                ".topcard__flavor--bullet").text
+                ".topcard__flavor--bullet").text.strip()
         else:
             job_location = None
 
