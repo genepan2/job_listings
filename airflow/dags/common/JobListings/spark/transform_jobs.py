@@ -84,19 +84,19 @@ if __name__ == "__main__":
         "dim_languages_df": data_clean_df.select(col("language").alias("name")),
         "dim_sources_df": data_clean_df.select(
             col("source").alias("name")),  # source is not there
-        "dim_jobLevels_df": data_clean_df.select(col("level").alias("name")),
-        "dim_searchKeywords_df": data_clean_df.select(
+        "dim_job_levels_df": data_clean_df.select(col("level").alias("name")),
+        "dim_search_keywords_df": data_clean_df.select(
             col("search_keyword").alias("name")),
-        "dim_searchLocations_df": data_clean_df.select(
+        "dim_search_locations_df": data_clean_df.select(
             col("search_location").alias("name")),
         "dim_dates_df": data_clean_df.select(),
         "dim_employments_df": data_clean_df.select(col("employment").alias("name")),
         "dim_industries_df": data_clean_df.select(col("industries").alias("name")),
-        # "dim_skillCategory_df": data_clean_df.select(),
-        # "dim_technologyCategory_df": data_clean_df.select(),
+        # "dim_skill_categories_df": data_clean_df.select(),
+        # "dim_technology_categories_df": data_clean_df.select(),
         # "dim_skills_df": data_clean_df.select(),
         # "dim_technologies_df": data_clean_df.select(),
-        "dim_company_df": data_clean_df.select(col("company_name").alias("name"))
+        "dim_companies_df": data_clean_df.select(col("company_name").alias("name"))
     }
 
     fact_df = data_clean_df.select("company_name", "title", "location", "job_apps_count", "level", "employment",
@@ -121,7 +121,8 @@ if __name__ == "__main__":
             raise ValueError(f"DataFrame {dataframe_name} not found")
 
         # Load existing data from the dimension table
-        dim_existing_df = data_enrichment.load_dimension_table(dim_table)
+        dim_existing_df = data_enrichment.load_dimension_table(
+            dim_table, info.get("distinctColumns"))
 
         # Identify new values by comparing with existing data
         dim_new_values_df = dim_df.select(
