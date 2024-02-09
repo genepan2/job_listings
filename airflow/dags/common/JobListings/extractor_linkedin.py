@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import logging
 from datetime import datetime
 import pandas as pd
+from time import perf_counter
 
 from common.JobListings.constants import FIELDS
 from common.JobListings.helper_storage import store_df_to_s3
@@ -13,6 +14,7 @@ SOURCE_NAME = 'linkedin'
 
 class ExtractorLinkedIn:
     def __init__(self, keyword, location, items=None, page=1):
+        self.source = 'LinkedIn'
         self.items = items
         self.search_keyword = keyword
         self.search_location = location
@@ -56,10 +58,13 @@ class ExtractorLinkedIn:
         return job_ids[:self.items] if self.items else job_ids
 
     def get_job_details(self, job_id, search):
+        start_time_scraping = perf_counter()
         # logging.info(search)
         target_url = f'https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}'
         resp = requests.get(target_url, headers=self.headers)
         # logging.info(resp.text)
+        end_time_scraping = perf_counter()
+        total_time_scraping = end_time_scraping - start_time_scraping
         soup = BeautifulSoup(resp.text, 'html.parser')
 
         job_title = soup.find("div", {"class": "top-card-layout__entity-info"})
@@ -126,11 +131,15 @@ class ExtractorLinkedIn:
         else:
             job_location = None
 
+        job_country = search["location"].split(
+            ",")[1].strip() if "," in search["location"] else ""
+
         return {
             FIELDS["company_name"]: company_name,
             FIELDS["company_linkedin_url"]: company_linkedin_url,
             FIELDS["title"]: job_title,
             FIELDS["location"]: job_location,
+            FIELDS["country"]: job_country,
             FIELDS["linkedin_id"]: job_linkedin_id,
             FIELDS["url"]: job_linkedin_url,
             FIELDS["applicants"]: amount_applicants,
@@ -142,5 +151,7 @@ class ExtractorLinkedIn:
             FIELDS["description"]: description_contents,
             FIELDS["search_datetime"]: datetime.now().isoformat(),
             FIELDS["search_keyword"]: search["keyword"],
-            FIELDS["search_location"]: search["location"]
+            FIELDS["search_location"]: search["location"],
+            FIELDS["source"]: self.source,
+            FIELDS["scrape_dur_ms"]: total_time_scraping,
         }
