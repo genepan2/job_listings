@@ -54,17 +54,20 @@ FIELDS = {
     "description": "description",
     "level": "level",
     "location": "location",
+    "country": "country",
     "employment": "employment",
     "publish_date": "publish_date",
-    "applicants": "applicants",
+    "applicants": "job_apps_count",
     "function": "function",
     "industries": "industries",
     "company_name": "company_name",
     "company_linkedin_url": "company_linkedin_url",
-    "linkedin_id": "linkedin_id",
+    "linkedin_id": "source_identifier",
     "url": "url",
     "search_datetime": "search_datetime",
     "search_keyword": "search_keyword",
     "search_location": "search_location",
-    "language": "language"
+    "language": "language",
+    "source": "source",
+    "scrape_dur_ms": "scrape_dur_ms"
 }
