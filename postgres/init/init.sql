@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS dimJobs (
     title_cleaned VARCHAR(255),
     description TEXT,
     url VARCHAR(255),
-    source_listing_identifier VARCHAR(255),
+    source_identifier VARCHAR(255),
     fingerprint VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimCompanies (
@@ -96,9 +96,9 @@ CREATE TABLE IF NOT EXISTS fctJobListings (
     job_level_key INT REFERENCES dimJobLevels(job_level_id),
     employment_key INT REFERENCES dimEmployments(employment_id),
     industry_key INT REFERENCES dimIndustries(industry_id),
-    number_of_applications INT,
-    listing_duration_days INT,
-    scrape_duration_milliseconds INT
+    job_apps_count INT,
+    list_dur_days INT,
+    scrape_dur_ms INT
 );
 -- BRIDGE TABLES
 CREATE TABLE IF NOT EXISTS JobLocationsBridge (
