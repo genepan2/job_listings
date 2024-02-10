@@ -3,7 +3,8 @@ import helper_transform as HelperTransform
 
 import pyspark.sql.functions as F
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, TimestampType
-from pyspark.sql.functions import udf, col
+from pyspark.sql.functions import udf, col, lit, to_timestamp, format_string
+from pyspark.sql.functions import year, month, weekofyear, dayofmonth, hour, minute, dayofweek
 
 import re
 import hashlib
@@ -33,6 +34,25 @@ class DataTransformation:
         fingerprint = hashlib.sha256(clean_string.encode()).hexdigest()
 
         return fingerprint
+
+    def extend_df_with_date_info(self, df, date_column_name):
+        # Fügt dem DataFrame zusätzliche Datumsspalten hinzu
+        df_extended = df \
+            .withColumn(f"{date_column_name}_unique", format_string("%04d%02d%02d%02d%02d", year(col(date_column_name)), month(col(date_column_name)), dayofmonth(col(date_column_name)), hour(col(date_column_name)), minute(col(date_column_name)))) \
+            .withColumn(f"{date_column_name}_year", year(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_month", month(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_week", weekofyear(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_day", dayofmonth(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_hour", hour(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_minute", minute(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_week_day", dayofweek(col(date_column_name))) \
+            .withColumn(f"{date_column_name}_is_holiday", lit(False))
+        return df_extended
+
+    def apply_multiple_date_transformations(self, df, columns):
+        df = self.extend_df_with_date_info(df, columns[0])
+        df = self.extend_df_with_date_info(df, columns[1])
+        return df
 
     def transform_source_linkedin(self, df):
 
@@ -70,6 +90,9 @@ class DataTransformation:
             .withColumn("source_identifier", clean_linkedin_id_udf(col("source_identifier"))) \
             .withColumn("company_linkedin_url", clean_company_linkedin_url_udf(col("company_linkedin_url"))) \
             .withColumnRenamed("Unnamed: 0", "index")  # important, otherwise error. spark needs all columns to be named
+
+        df_cleaned = self.apply_multiple_date_transformations(
+            df_cleaned, ["publish_date", "search_datetime"])
 
         return df_cleaned
 
@@ -117,24 +140,3 @@ class DataTransformation:
         #     return self.get_df_schema_source_whatjobs()
         else:
             raise ValueError(f"Unsupported data source: {source_name}")
-
-    # def main(self):
-    #     # get the parameters from SparkSubmitOperator
-    #     spark = self.get_spark_session(self.spark_session_name)
-    #     data_raw = self.load_recent_files(BUCKET_FROM, self.source_name)
-
-    #     # convert pandas df to spark df
-    #     schema = self.get_df_schema(self.source_name)
-    #     spark_df = spark.createDataFrame(data_raw, schema=schema)
-
-    #     data_clean = self.transform(spark_df, self.source_name)
-
-    #     target_path_delta = f"s3a://{BUCKET_TO}/{self.source_name}_data"
-    #     self.save_to_delta(data_clean, target_path_delta)
-
-    #     # save as CSV for loading into PostgreSQL
-    #     # timestamp = datetime.now().strftime("%Y%m%d_%H%M")
-    #     target_path_csv = f"s3a://{BUCKET_TO}/{self.source_name}_data_csv"
-    #     self.save_as_csv(data_clean, target_path_csv)
-
-    #     spark.stop()
