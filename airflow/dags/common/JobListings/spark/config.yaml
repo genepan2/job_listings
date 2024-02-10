@@ -1,25 +1,56 @@
 dimensions_info:
- dimSources:
-  factColumn: "source"
-  dimColumn: "name"
-  distinctColumns: ["name"]
-  factForeignKeyColumn: "sourceKey"
-  dimIdColumn: ""
+ dimJobs:
+  factColumn: "fingerprint"
+  dimColumn: "fingerprint"
+  distinctColumns: ["fingerprint"]
+  # factForeignKeyColumn: "job_key"
  dimCompanies:
   factColumn: "company_name"
   dimColumn: "name"
   distinctColumns: ["name"]
-  factForeignKeyColumn: "CompanyKey"
-  dimIdColumn: ""
+  # factForeignKeyColumn: "company_key"
+ dimLocations:
+  factColumn: "location"
+  dimColumn: "city"
+  distinctColumns: ["city"]
+  # factForeignKeyColumn: "location_key"
  dimLanguages:
   factColumn: "language"
   dimColumn: "name"
   distinctColumns: ["name"]
-  factForeignKeyColumn: "LanguageKey"
-  dimIdColumn: ""
+  # factForeignKeyColumn: "language_key"
+ dimSources:
+  factColumn: "source"
+  dimColumn: "name"
+  distinctColumns: ["name"]
+  # factForeignKeyColumn: "source_key"
  dimJobLevels:
   factColumn: "level"
   dimColumn: "name"
   distinctColumns: ["name"]
-  factForeignKeyColumn: "JobLevelKey"
-  dimIdColumn: ""
+  # factForeignKeyColumn: "job_level_key"
+ # dimSearchKeywords:
+ #  factColumn: "level"
+ #  dimColumn: "name"
+ #  distinctColumns: ["name"]
+ # factForeignKeyColumn: "job_level_key"
+ # dimSearchLocations:
+ #  factColumn: "search_location"
+ #  dimColumn: "name"
+ #  distinctColumns: ["name"]
+ # factForeignKeyColumn: "job_level_key"
+ dimDates:
+  factColumn: ["publish_date_unique", "search_datetime_unique"]
+  dimColumn: "date_unique"
+  distinctColumns: ["date_unique"]
+  # factForeignKeyColumn: ["search_date_key", "publish_date_key"]
+ dimEmployments:
+  factColumn: ["employment"]
+  dimColumn: "name"
+  distinctColumns: ["name"]
+  # factForeignKeyColumn: ["employment_key"]
+ dimIndustries:
+  factColumn: ["industries"]
+  dimColumn: "name"
+  distinctColumns: ["name"]
+  # factForeignKeyColumn: ["industry_key"]
