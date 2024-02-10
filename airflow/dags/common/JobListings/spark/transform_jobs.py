@@ -76,6 +76,14 @@ if __name__ == "__main__":
 
     # Create the Dim DataFrames
     # index,company_name,company_linkedin_url,title,location,linkedin_id,url,applicants,publish_date,level,employment,function,industries,description,search_datetime,search_keyword,search_location,fingerprint,language
+
+    # combining the unique date values
+    date_df1 = data_clean_df.select(
+        col("publish_date_unique").alias("date_unique"))
+    date_df2 = data_clean_df.select(
+        col("search_datetime_unique").alias("date_unique"))
+    date_df = date_df1.union(date_df2)
+
     dataframes = {
         "dim_jobs_df": data_clean_df.select(
             "title", "title_cleaned", "description", "source_identifier", "fingerprint"),
@@ -89,7 +97,8 @@ if __name__ == "__main__":
             col("search_keyword").alias("name")),
         "dim_search_locations_df": data_clean_df.select(
             col("search_location").alias("name")),
-        "dim_dates_df": data_clean_df.select(),
+        # "dim_dates_df": data_clean_df.select(),
+        "dim_dates_df": date_df,
         "dim_employments_df": data_clean_df.select(col("employment").alias("name")),
         "dim_industries_df": data_clean_df.select(col("industries").alias("name")),
         # "dim_skill_categories_df": data_clean_df.select(),
@@ -100,7 +109,9 @@ if __name__ == "__main__":
     }
 
     fact_df = data_clean_df.select("company_name", "title", "location", "job_apps_count", "level", "employment",
-                                   "industries", "search_datetime", "search_keyword", "search_location", "fingerprint", "language", "scrape_dur_ms")
+                                   "industries", "search_datetime", "search_keyword", "search_location", "fingerprint", "language", "scrape_dur_ms",
+                                   "publish_date_unique", "publish_date_year", "publish_date_month", "publish_date_week", "publish_date_day", "publish_date_hour", "publish_date_minute", "publish_date_week_day", "publish_date_is_holiday",
+                                   "search_datetime_unique", "search_datetime_year", "search_datetime_month", "search_datetime_week", "search_datetime_day", "search_datetime_hour", "search_datetime_minute", "search_datetime_week_day", "search_datetime_is_holiday")
 
     # load config
     dimensions_info = load_config("dimensions_info")
@@ -138,13 +149,20 @@ if __name__ == "__main__":
         # fact_df = fact_df.join(dim_existing_df, fact_df[info["factColumn"]] == dim_existing_df[info["dimColumn"]], "left") \
         #     .withColumn(info["factForeignKeyColumn"], dim_existing_df[info["dimIdColumn"]])
 
-        # TODO: this needs to iterate for saving the dim tables and separately the fact table
-        # target_path_delta = f"s3a://{bucket_to}/{source_name}_data"
-        # target_path_csv = f"s3a://{bucket_to}/{source_name}_data_csv"
-        target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/{dim_table}"
-        target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table}"
+        # save the dim tables
+        if not is_dataframe_empty(dim_new_values_df):
+            target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/{dim_table}"
+            target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table}"
 
-        data_storage.save_to_delta(data_clean_df, target_path_delta)
-        data_storage.save_as_csv(data_clean_df, target_path_csv)
+            data_storage.save_to_delta(dim_new_values_df, target_path_delta)
+            data_storage.save_as_csv(dim_new_values_df, target_path_csv)
+
+    # save the fact table
+    if not is_dataframe_empty(fact_df):
+        target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/fctJobListings"
+        target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/fctJobListings"
+
+        data_storage.save_to_delta(fact_df, target_path_delta)
+        data_storage.save_as_csv(fact_df, target_path_csv)
 
     spark_manager.stop()
