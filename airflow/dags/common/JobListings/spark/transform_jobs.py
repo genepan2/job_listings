@@ -49,6 +49,12 @@ if __name__ == "__main__":
     spark_manager = SparkSessionManager(appname)
     spark_session = spark_manager.get_spark_session()
 
+    # setup logger
+    spark_session.sparkContext.setLogLevel("ERROR")
+    log4jLogger = spark_session._jvm.org.apache.log4j
+    logger = log4jLogger.LogManager.getLogger("LOGGER")
+    logger.setLevel(log4jLogger.Level.INFO)
+
     AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
     AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
     MINIO_IP_ADDRESS = socket.gethostbyname("minio")
@@ -118,6 +124,7 @@ if __name__ == "__main__":
 
     # Loop through each dimension table and perform the enrichment
     for dim_table, info in dimensions_info.items():
+        logger.info(f"Start working on {dim_table}")
         # Determine the DataFrame name based on the key
         dataframe_name = to_snake_case(dim_table)
 
@@ -151,18 +158,22 @@ if __name__ == "__main__":
 
         # save the dim tables
         if not is_dataframe_empty(dim_new_values_df):
+            logger.info(f"Start saving {dim_table}")
             target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/{dim_table}"
             target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table}"
 
             data_storage.save_to_delta(dim_new_values_df, target_path_delta)
             data_storage.save_as_csv(dim_new_values_df, target_path_csv)
+            logger.info(f"Done saving {dim_table}")
 
     # save the fact table
     if not is_dataframe_empty(fact_df):
+        logger.info(f"Start saving Fact Table")
         target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/fctJobListings"
         target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/fctJobListings"
 
         data_storage.save_to_delta(fact_df, target_path_delta)
         data_storage.save_as_csv(fact_df, target_path_csv)
+        logger.info(f"Done saving Fact Table")
 
     spark_manager.stop()
