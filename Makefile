@@ -1,4 +1,7 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw
+.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw restart-spark-w
+
+restart-spark-w:
+	docker compose restart spark-worker
 
 copy:
 	./copy-constants.sh
