@@ -162,8 +162,10 @@ if __name__ == "__main__":
             target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/{dim_table}"
             target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table}"
 
-            data_storage.save_to_delta(dim_new_values_df, target_path_delta)
-            data_storage.save_as_csv(dim_new_values_df, target_path_csv)
+            data_storage.save_from_spark_as_delta(
+                dim_new_values_df, target_path_delta)
+            data_storage.save_from_spark_as_csv(
+                dim_new_values_df, target_path_csv)
             logger.info(f"Done saving {dim_table}")
 
     # save the fact table
@@ -172,8 +174,8 @@ if __name__ == "__main__":
         target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/fctJobListings"
         target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/fctJobListings"
 
-        data_storage.save_to_delta(fact_df, target_path_delta)
-        data_storage.save_as_csv(fact_df, target_path_csv)
+        data_storage.save_from_spark_as_delta(fact_df, target_path_delta)
+        data_storage.save_from_spark_as_csv(fact_df, target_path_csv)
         logger.info(f"Done saving Fact Table")
 
     spark_manager.stop()
