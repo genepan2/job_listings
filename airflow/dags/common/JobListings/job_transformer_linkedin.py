@@ -10,7 +10,7 @@ from pyspark.sql.types import StringType, IntegerType
 import pyspark.sql.functions as F
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
-from job_constants import PATH, FIELDS, JOB_LOCATIONS, JOB_LEVELS
+from job_config_constants import PATH, FIELDS, JOB_LOCATIONS, JOB_LEVELS
 import job_helper_transform as JobHelperTransform
 from job_helper_storage import merge_recent_files_to_df, save_to_delta
 from job_helper_utils import create_key_name, get_spark_session

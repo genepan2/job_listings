@@ -2,7 +2,7 @@ from airflow import AirflowException, AirflowFailException
 import pandas as pd
 from io import StringIO
 
-from job_constants import FIELDS
+from job_config_constants import FIELDS
 from job_helper_storage import store_df_to_s3, get_boto_client
 from job_helper_utils import create_key_name
 

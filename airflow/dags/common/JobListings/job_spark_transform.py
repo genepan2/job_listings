@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
     # load config
     dimensions_info = JobConfigManager.load_config(
-        "job_config.yaml", "dimensions_info")
+        "job_config_tables.yaml", "dimensions_info")
 
     # Loop through each dimension table and perform the enrichment
     for dim_table, info in dimensions_info.items():

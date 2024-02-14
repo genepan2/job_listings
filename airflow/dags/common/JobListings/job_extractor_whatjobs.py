@@ -5,7 +5,7 @@ import logging
 from bs4 import BeautifulSoup
 import unicodedata
 from datetime import datetime
-from job_constants import FIELDS, PATH
+from job_config_constants import FIELDS, PATH
 
 # The number of pages to be scraped from each search result
 WHATJOBS_NUM_PAGES_TO_SCRAPE = 1

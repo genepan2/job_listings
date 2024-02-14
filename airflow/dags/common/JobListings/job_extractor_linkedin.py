@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 from time import perf_counter
 
-from job_constants import FIELDS
+from job_config_constants import FIELDS
 from job_helper_storage import store_df_to_s3
 from job_helper_utils import create_key_name
 from job_data_storage import JobDataStorage

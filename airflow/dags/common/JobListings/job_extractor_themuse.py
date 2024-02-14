@@ -4,7 +4,7 @@ import os
 import urllib.parse
 import random
 import logging
-from job_constants import PATH
+from job_config_constants import PATH
 
 
 class JobExtractorThemuse:

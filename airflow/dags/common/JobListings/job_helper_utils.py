@@ -4,7 +4,7 @@ import re
 from pyspark.sql import SparkSession
 # from pyspark.sql import functions as F
 
-from job_constants import PATH, COLLECTIONS
+from job_config_constants import PATH, COLLECTIONS
 
 
 def get_collection_keys_without_all():

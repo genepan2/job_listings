@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
 # from common.JobListings.constants import JOB_LOCATIONS, JOB_LEVELS
-from job_constants import JOB_LOCATIONS, JOB_LEVELS
+from job_config_constants import JOB_LOCATIONS, JOB_LEVELS
 
 
 def transform_job_level(job_level: str = 'Entry', job_title: str = None):

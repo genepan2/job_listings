@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
-from job_constants import PATH, COLLECTIONS
+from job_config_constants import PATH, COLLECTIONS
 import job_helper_database as JobHelperDatabase
 
 

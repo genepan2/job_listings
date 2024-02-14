@@ -8,7 +8,7 @@ import logging
 import job_helper_utils as JobHelperUtils
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
-from job_constants import COLLECTIONS, MONGO
+from job_config_constants import COLLECTIONS, MONGO
 
 
 def get_data_from_source_collections(collection_name: str = None):
