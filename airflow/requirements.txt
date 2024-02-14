@@ -10,6 +10,7 @@ boto3
 pyspark==3.5.0
 delta
 PyYAML
+psycopg2
 
 # airflow
 apache-airflow-providers-mongo
