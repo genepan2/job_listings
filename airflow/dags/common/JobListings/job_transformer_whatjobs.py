@@ -1,7 +1,7 @@
 import json
 import os
 import logging
-from job_constants import PATH, FIELDS
+from job_config_constants import PATH, FIELDS
 import job_helper_transform as JobHelperTransform
 
 

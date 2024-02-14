@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 import os
-from job_constants import PATH, FIELDS
+from job_config_constants import PATH, FIELDS
 import job_helper_transform as JobHelperTransform
 
 
