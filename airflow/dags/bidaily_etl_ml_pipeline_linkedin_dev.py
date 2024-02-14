@@ -15,17 +15,20 @@ import pandas as pd
 import csv
 import boto3
 import logging
+import yaml
 
-from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
-# from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
-from common.JobListings.predictor_salary import PredictorSalary
-import common.JobListings.helper_database as HelperDatabase
-import common.JobListings.helper_utils as HelperUtils
+from common.JobListings.job_extractor_linkedin import JobExtractorLinkedIn
+# from common.JobListings.job_transformer_linkedin import JobTransformerLinkedIn
+from common.JobListings.job_predictor_salary import JobPredictorSalary
+import common.JobListings.job_helper_database as JobHelperDatabase
+import common.JobListings.job_helper_utils as JobHelperUtils
+import common.JobListings.job_data_loader as JobDataLoader
+
 
 SOURCE_NAME = "linkedin"
 BUCKET_FROM = 'bronze'
 BUCKET_TO = 'silver'
-DELTA_MINUTES = 120
+DELTA_MINUTES = 30
 
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
@@ -79,20 +82,20 @@ with DAG(
     def extract_linkedin_jobs():
         for keyword in keywords_linkedin:
             for location in locations_linkedin:
-                scraper = Extractor(keyword, location, JOBS_TO_GET)
+                scraper = JobExtractorLinkedIn(keyword, location, JOBS_TO_GET)
                 scraper.scrape_jobs()
     extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
     # @task(task_id="extract_linkedin")
     # def extract_linkedin_jobs():
-    #     scraper = Extractor(keywords_linkedin, locations_linkedin, JOBS_TO_GET)
+    #     scraper = JobExtractorLinkedIn(keywords_linkedin, locations_linkedin, JOBS_TO_GET)
     #     scraper.scrape_jobs()
     # extract = extract_linkedin_jobs()
 
     # @task(task_id="transform_linkedin")
     # def transform_linkedin_jobs():
-    #     transformer = Transoformer()
+    #     transformer = JobTransoformer()
     #     transformer.run_all()
     # transform = transform_linkedin_jobs()
 
@@ -130,27 +133,29 @@ with DAG(
     #         logging.info(f"Done with ${table_name}")
     # fetch_store_data = fetch_and_store_data_from_dw()
 
-    source_file = '${AIRFLOW_HOME}/dags/common/JobListings/constants.py'
-    destination_file = '${AIRFLOW_HOME}/dags/common/JobListings/spark/constants.py'
+    # source_file = '${AIRFLOW_HOME}/dags/common/JobListings/constants.py'
+    # destination_file = '${AIRFLOW_HOME}/dags/common/JobListings/spark/constants.py'
 
-    # Copy the constants to spark folder before running spark
-    copy_constants = BashOperator(
-        task_id='copy_constants',
-        bash_command=f'cp -f {source_file} {destination_file}',
-        dag=dag,
-    )
+    # # Copy the constants to spark folder before running spark
+    # copy_constants = BashOperator(
+    #     task_id='copy_constants',
+    #     bash_command=f'cp -f {source_file} {destination_file}',
+    #     dag=dag,
+    # )
 
     # TODO: maybe better to just get all files from folder...
-    spark_folder_path = "./dags/common/JobListings/spark/"
+    spark_folder_path = "./dags/common/JobListings/"
     spark_py_files = [
-        "constants.py",
-        "data_enrichment.py",
-        "data_storage.py",
-        "data_transformation.py",
-        "file_processing.py",
-        "helper_transform.py",
-        "s3_client_manager.py",
-        "spark_session_manager.py"
+        # "__init__.py",
+        "job_config_manager.py",
+        "job_constants.py",
+        "job_data_enrichment.py",
+        "job_data_storage.py",
+        "job_data_transformation.py",
+        "job_file_processing.py",
+        "job_helper_transform.py",
+        "job_s3_client_manager.py",
+        "job_spark_session_manager.py"
     ]
 
     extended_py_files = ",".join(
@@ -173,7 +178,7 @@ with DAG(
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
         conn_id='jobs_spark_conn',
-        application='./dags/common/JobListings/spark/transform_jobs.py',
+        application='./dags/common/JobListings/job_spark_transform.py',
         py_files=extended_py_files,
         jars=extended_jar_files,
         application_args=[f"{SOURCE_NAME}Transformer",
@@ -197,6 +202,7 @@ with DAG(
             "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
             # "spark.databricks.delta.schema.autoMerge.enabled": "true",
             "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
+            "spark.executorEnv.PYTHONPATH": os.getenv('PYTHONPATH')
             # todo: tuning configurations -> research
             # "spark.sql.shuffle.partitions": 200
         }
@@ -204,6 +210,12 @@ with DAG(
         # executor_cores=2,
         # driver_memory='2g',
     )
+
+    @task(task_id="load_linkedin")
+    def load_linkedin_jobs():
+        data_loader = JobDataLoader(SOURCE_NAME)
+
+    load = load_linkedin_jobs()
 
     # Delete the constants file after running spark
     # delete_constants = BashOperator(
@@ -219,4 +231,5 @@ with DAG(
     # extract >> fetch_store_data >> copy_constants >> transform_spark >> delete_constants
     # extract >> fetch_store_data >> copy_constants >> transform_spark
     # transform_spark
-    extract >> copy_constants >> transform_spark
+    # extract >> copy_constants >> transform_spark
+    extract >> transform_spark >> load

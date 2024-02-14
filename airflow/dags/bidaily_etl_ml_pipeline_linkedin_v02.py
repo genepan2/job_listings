@@ -6,11 +6,11 @@ from datetime import timedelta
 import pendulum
 import json
 
-from common.JobListings.extractor_linkedin import ExtractorLinkedIn as Extractor
-from common.JobListings.transformer_linkedin import TransformerLinkedIn as Transoformer
-from common.JobListings.predictor_salary import PredictorSalary
-import common.JobListings.helper_database as HelperDatabase
-import common.JobListings.helper_utils as HelperUtils
+from common.JobListings.job_extractor_linkedin import JobExtractorLinkedIn
+from common.JobListings.job_transformer_linkedin import JobTransformerLinkedIn
+from common.JobListings.job_predictor_salary import JobPredictorSalary
+import common.JobListings.job_helper_database as JobHelperDatabase
+import common.JobListings.job_helper_utils as JobHelperUtils
 
 SOURCE_NAME = "linkedin"
 
@@ -60,32 +60,32 @@ with DAG(
     def extract_linkedin_jobs():
         for keyword in keywords_linkedin:
             for location in locations_linkedin:
-                scraper = Extractor(keyword, location, JOBS_TO_GET)
+                scraper = JobExtractorLinkedIn(keyword, location, JOBS_TO_GET)
                 scraper.scrape_jobs()
     extract = extract_linkedin_jobs()
 
     @task(task_id="transform_linkedin")
     def transform_linkedin_jobs():
-        transformer = Transoformer()
+        transformer = JobTransformerLinkedIn()
         transformer.run_all()
     transform = transform_linkedin_jobs()
 
     @task(task_id="load_linkedin")
     def load_linkedin_to_mongodb():
-        file_path = HelperUtils.construct_file_path_for_data_source(
+        file_path = JobHelperUtils.construct_file_path_for_data_source(
             SOURCE_NAME)
-        HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
+        JobHelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
     load_temp = load_linkedin_to_mongodb()
 
     @task(task_id="predict_salary_linkedin")
     def ml_predict_salary():
-        predictor = SalaryPredictor(SOURCE_NAME)
+        predictor = JobPredictorSalary(SOURCE_NAME)
         predictor.predict_and_map_salaries()
     predict_salary = ml_predict_salary()
 
     @task(task_id="load_data_to_main")
     def load_linkedin_to_main_collection():
-        HelperDatabase.load_records_to_main_collection(SOURCE_NAME)
+        JobHelperDatabase.load_records_to_main_collection(SOURCE_NAME)
     load_main = load_linkedin_to_main_collection()
 
     cleanup_raw = BashOperator(

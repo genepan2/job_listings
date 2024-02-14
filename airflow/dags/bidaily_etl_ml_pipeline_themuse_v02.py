@@ -7,13 +7,13 @@ import pendulum
 import json
 
 # Import Themuse specific classes
-from common.JobListings.extractor_themuse import ExtractorThemuse as Extractor
-from common.JobListings.transformer_themuse import TransformerThemuse as Transformer
-from common.JobListings.predictor_salary import PredictorSalary
-import common.JobListings.helper_database as HelperDatabase
-import common.JobListings.helper_utils as HelperUtils
+from common.JobListings.job_extractor_themuse import JobExtractorThemuse
+from common.JobListings.job_transformer_themuse import JobTransformerThemuse
+from common.JobListings.job_predictor_salary import JobPredictorSalary
+import common.JobListings.job_helper_database as JobHelperDatabase
+import common.JobListings.job_helper_utils as JobHelperUtils
 
-from common.JobListings.constants import COLLECTIONS
+from common.JobListings.job_constants import COLLECTIONS
 
 SOURCE_NAME = "themuse"
 
@@ -66,32 +66,33 @@ with DAG(
     def extract_themuse_jobs():
         for keyword in keywords_themuse:
             for location in locations_themuse:
-                extractor = Extractor([keyword], [location], JOBS_TO_GET)
+                extractor = JobExtractorThemuse(
+                    [keyword], [location], JOBS_TO_GET)
                 extractor.extract_jobs()
     extract = extract_themuse_jobs()
 
     @task(task_id="transform_themuse")
     def transform_themuse_jobs():
-        transformer = Transformer()
+        transformer = JobTransformerThemuse()
         transformer.transform_jobs()
     transform = transform_themuse_jobs()
 
     @task(task_id="load_themuse")
     def load_themuse_to_mongodb():
-        file_path = HelperUtils.construct_file_path_for_data_source(
+        file_path = JobHelperUtils.construct_file_path_for_data_source(
             SOURCE_NAME)
-        HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
+        JobHelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
     load_temp = load_themuse_to_mongodb()
 
     @task(task_id="predict_salary_themuse")
     def ml_predict_salary():
-        predictor = SalaryPredictor(SOURCE_NAME)
+        predictor = JobPredictorSalary(SOURCE_NAME)
         predictor.predict_and_map_salaries()
     predict_salary = ml_predict_salary()
 
     @task(task_id="load_data_to_main_themuse")
     def load_themuse_to_main_collection():
-        HelperDatabase.load_records_to_main_collection(SOURCE_NAME)
+        JobHelperDatabase.load_records_to_main_collection(SOURCE_NAME)
     load_main = load_themuse_to_main_collection()
 
     cleanup_raw = BashOperator(

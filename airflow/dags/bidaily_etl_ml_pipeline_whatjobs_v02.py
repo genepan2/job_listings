@@ -5,11 +5,11 @@ from airflow.models import Variable
 from datetime import datetime, timedelta
 import pendulum
 import json
-from common.JobListings.extractor_whatjobs import ExtractorWhatjobs as Extractor
-from common.JobListings.transformer_whatjobs import TransformerWhatjobs as Transformer
-from common.JobListings.predictor_salary import PredictorSalary
-import common.JobListings.helper_database as HelperDatabase
-import common.JobListings.helper_utils as HelperUtils
+from common.JobListings.job_extractor_whatjobs import JobExtractorWhatjobs
+from common.JobListings.job_transformer_whatjobs import JobTransformerWhatjobs
+from common.JobListings.job_predictor_salary import JobPredictorSalary
+import common.JobListings.job_helper_database as JobHelperDatabase
+import common.JobListings.job_helper_utils as JobHelperUtils
 
 SOURCE_NAME = "whatjobs"
 
@@ -57,32 +57,33 @@ with DAG(
     def extract_whatjobs_jobs():
         for keyword in keywords_whatjobs:
             for location in locations_whatjobs:
-                extractor = Extractor(keyword, location, JOBS_TO_GET)
+                extractor = JobExtractorWhatjobs(
+                    keyword, location, JOBS_TO_GET)
                 extractor.scrape_all_pages()
     extract = extract_whatjobs_jobs()
 
     @task(task_id="transform_whatjobs")
     def transform_whatjobs_jobs():
-        transformer = Transformer()
+        transformer = JobTransformerWhatjobs()
         transformer.transform_data()
     transform = transform_whatjobs_jobs()
 
     @task(task_id="load_whatjobs")
     def load_whatjobs_to_mongodb():
-        file_path = HelperUtils.construct_file_path_for_data_source(
+        file_path = JobHelperUtils.construct_file_path_for_data_source(
             SOURCE_NAME)
-        HelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
+        JobHelperDatabase.load_data_to_collection(SOURCE_NAME, file_path)
     load_temp = load_whatjobs_to_mongodb()
 
     @task(task_id="predict_salary_whatjobs")
     def ml_predict_salary():
-        predictor = SalaryPredictor(SOURCE_NAME)
+        predictor = JobPredictorSalary(SOURCE_NAME)
         predictor.predict_and_map_salaries()
     predict_salary = ml_predict_salary()
 
     @task(task_id="load_data_to_main_whatjobs")
     def load_whatjobs_to_main_collection():
-        HelperDatabase.load_records_to_main_collection(SOURCE_NAME)
+        JobHelperDatabase.load_records_to_main_collection(SOURCE_NAME)
     load_main = load_whatjobs_to_main_collection()
 
     cleanup_raw = BashOperator(
