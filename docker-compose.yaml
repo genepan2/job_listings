@@ -29,10 +29,11 @@ x-airflow-common: &airflow-common
     MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
     MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
     SPARK_HISTORY_LOG_DIR: ${SPARK_HISTORY_LOG_DIR}
+    PYTHONPATH: /opt/airflow/dags/common/JobListings
     JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
     DW_USER: ${POSTGRES_USER}
     DW_PASS: ${POSTGRES_PASSWORD}
-    # DW_DB: ${POSTGRES_DB}
+    DW_DB: ${POSTGRES_DB}
   volumes:
     - ./airflow/config:/opt/airflow/config
     - ./airflow/dags:/opt/airflow/dags
