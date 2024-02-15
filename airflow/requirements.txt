@@ -10,7 +10,8 @@ boto3
 pyspark==3.5.0
 delta
 PyYAML
-psycopg2
+# psycopg2
+psycopg2-binary
 stringcase
 
 # airflow
