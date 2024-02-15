@@ -13,7 +13,7 @@ from common.JobListings.job_predictor_salary import JobPredictorSalary
 import common.JobListings.job_helper_database as JobHelperDatabase
 import common.JobListings.job_helper_utils as JobHelperUtils
 
-from common.JobListings.job_constants import COLLECTIONS
+from common.JobListings.job_config_constants import COLLECTIONS
 
 SOURCE_NAME = "themuse"
 
