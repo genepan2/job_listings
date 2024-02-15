@@ -54,3 +54,17 @@ dimensions_info:
   dimColumn: "name"
   distinctColumns: ["name"]
   # factForeignKeyColumn: ["industry_key"]
+
+fact_info:
+ fctJobListings:
+  someValue: "empty"
+
+bridge_info:
+ JobSkillsBridge:
+  someValue: "empty"
+ JobTechnologiesBridge:
+  someValue: "empty"
+ JobSearchKeywordBridge:
+  someValue: "empty"
+ JobSearchLocationBridge:
+  someValue: "empty"
