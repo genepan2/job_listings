@@ -23,3 +23,24 @@ class JobS3ClientManager:
         except Exception as e:
             logging.error(f"Error creating S3 client: {str(e)}")
             raise
+
+    def list_objects(self, bucket_name, prefix=''):
+        s3_client = self.get_boto_client()
+        try:
+            response = s3_client.list_objects_v2(
+                Bucket=bucket_name, Prefix=prefix)
+            return response.get('Contents', [])
+        except Exception as e:
+            logging.error(
+                f"Error listing objects in bucket {bucket_name} with prefix {prefix}: {str(e)}")
+            raise
+
+    def get_object(self, bucket_name, file_key):
+        s3_client = self.get_boto_client()
+        try:
+            response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
+            return response['Body'].read()
+        except Exception as e:
+            logging.error(
+                f"Error getting object {file_key} from bucket {bucket_name}: {str(e)}")
+            raise
