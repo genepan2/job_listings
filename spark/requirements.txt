@@ -6,3 +6,4 @@ boto3
 langdetect
 python-dateutil
 PyYAML
+stringcase
