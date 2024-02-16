@@ -1,63 +1,76 @@
 dimensions_info:
  dimJobs:
-  factColumn: "fingerprint"
-  dimColumn: "fingerprint"
+  factColumns: "fingerprint"
+  dimColumns: "fingerprint"
   distinctColumns: ["fingerprint"]
-  # factForeignKeyColumn: "job_key"
+  # factForeignKeyColumns: "job_key"
  dimCompanies:
-  factColumn: "company_name"
-  dimColumn: "name"
+  factColumns: "company_name"
+  dimColumns: "name"
   distinctColumns: ["name"]
-  # factForeignKeyColumn: "company_key"
+  # factForeignKeyColumns: "company_key"
  dimLocations:
-  factColumn: "location"
-  dimColumn: "city"
+  factColumns: "location"
+  dimColumns: "city"
   distinctColumns: ["city"]
-  # factForeignKeyColumn: "location_key"
+  # factForeignKeyColumns: "location_key"
  dimLanguages:
-  factColumn: "language"
-  dimColumn: "name"
+  factColumns: "language"
+  dimColumns: "name"
   distinctColumns: ["name"]
-  # factForeignKeyColumn: "language_key"
+  # factForeignKeyColumns: "language_key"
  dimSources:
-  factColumn: "source"
-  dimColumn: "name"
+  factColumns: "source"
+  dimColumns: "name"
   distinctColumns: ["name"]
-  # factForeignKeyColumn: "source_key"
+  # factForeignKeyColumns: "source_key"
  dimJobLevels:
-  factColumn: "level"
-  dimColumn: "name"
+  factColumns: "level"
+  dimColumns: "name"
   distinctColumns: ["name"]
-  # factForeignKeyColumn: "job_level_key"
+  # factForeignKeyColumns: "job_level_key"
  # dimSearchKeywords:
- #  factColumn: "level"
- #  dimColumn: "name"
+ #  factColumns: "level"
+ #  dimColumns: "name"
  #  distinctColumns: ["name"]
- # factForeignKeyColumn: "job_level_key"
+ # factForeignKeyColumns: "job_level_key"
  # dimSearchLocations:
- #  factColumn: "search_location"
- #  dimColumn: "name"
+ #  factColumns: "search_location"
+ #  dimColumns: "name"
  #  distinctColumns: ["name"]
- # factForeignKeyColumn: "job_level_key"
+ # factForeignKeyColumns: "job_level_key"
  dimDates:
-  factColumn: ["publish_date_unique", "search_datetime_unique"]
-  dimColumn: "date_unique"
+  factColumns: ["publish_date_unique", "search_datetime_unique"]
+  dimColumns: "date_unique"
   distinctColumns: ["date_unique"]
-  # factForeignKeyColumn: ["search_date_key", "publish_date_key"]
+  factForeignKeyColumns: ["search_date_key", "publish_date_key"]
  dimEmployments:
-  factColumn: ["employment"]
-  dimColumn: "name"
+  factColumns: ["employment"]
+  dimColumns: "name"
   distinctColumns: ["name"]
-  # factForeignKeyColumn: ["employment_key"]
+  # factForeignKeyColumns: ["employment_key"]
  dimIndustries:
-  factColumn: ["industries"]
-  dimColumn: "name"
+  factColumns: ["industries"]
+  dimColumns: "name"
   distinctColumns: ["name"]
-  # factForeignKeyColumn: ["industry_key"]
+  # factForeignKeyColumns: ["industry_key"]
 
 fact_info:
  fctJobListings:
-  someValue: "empty"
+  dimKeyColumns:
+   [
+    "job_key",
+    "company_key",
+    "source_key",
+    "search_date_key",
+    "publish_date_key",
+    "close_date_key",
+    "language_key",
+    "job_level_key",
+    "employment_key",
+    "industry_key",
+   ]
+  otherColumns: ["job_apps_count", "list_dur_days", "scrape_dur_ms"]
 
 bridge_info:
  JobSkillsBridge:
