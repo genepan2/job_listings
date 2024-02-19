@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS dimSearchLocations (
 );
 CREATE TABLE IF NOT EXISTS dimDates (
     date_id SERIAL PRIMARY KEY,
-    date_unique VARCHAR(12),
+    -- date_unique VARCHAR(12),
+    date_unique BIGINT NOT NULL,
     year INT NOT NULL,
     month INT NOT NULL,
     week INT NOT NULL,
