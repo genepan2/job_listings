@@ -57,20 +57,23 @@ dimensions_info:
 
 fact_info:
  fctJobListings:
-  dimKeyColumns:
-   [
+  dimKeyColumns: [
     "job_key",
     "company_key",
     "source_key",
     "search_date_key",
     "publish_date_key",
-    "close_date_key",
+    # "close_date_key",
     "language_key",
     "job_level_key",
     "employment_key",
-    "industry_key",
+    # "industry_key",
    ]
-  otherColumns: ["job_apps_count", "list_dur_days", "scrape_dur_ms"]
+  otherColumns: [
+    "job_apps_count",
+    # "list_dur_days",
+    "scrape_dur_ms",
+   ]
 
 bridge_info:
  JobSkillsBridge:
