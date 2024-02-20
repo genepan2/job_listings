@@ -52,7 +52,7 @@ class JobDataLoader:
         df.info()
         return [tuple(x) for x in df.to_numpy()]
 
-    def write_data(self, table_name, data, columns):
+    def write_data(self, table_name, data, columns, distinctColumn):
         """Schreibt neue Daten in eine PostgreSQL-Tabelle."""
         # # logging.info(data.info())
         if not data:
@@ -66,9 +66,10 @@ class JobDataLoader:
             try:
                 column_names = ", ".join(columns)
                 placeholders = ", ".join(["%s"] * len(columns))
-                query = (
-                    f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders})"
-                )
+                if distinctColumn is None:
+                    query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders})"
+                else:
+                    query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders}) ON CONFLICT ({distinctColumn}) DO NOTHING"
                 # logging.info(query)
                 for row in data:
                     # placeholders = ", ".join(["%s"] * len(row))
@@ -85,11 +86,11 @@ class JobDataLoader:
                 # Optional: Hier könntest du den Fehler weiter nach außen werfen oder spezifische Aktionen durchführen
                 raise
 
-    def write_dataframe(self, table_name, df):
+    def write_dataframe(self, table_name, df, distinctColumn=None):
         """Schreibt Daten aus einem DataFrame in eine PostgreSQL-Tabelle und gibt die generierten IDs zurück."""
         # # logging.info(df.info())
         data_tuples = self.dataframe_to_tuples(df)  # Konvertiere den DataFrame in Tupel
-        return self.write_data(table_name, data_tuples, df.columns)
+        return self.write_data(table_name, data_tuples, df.columns, distinctColumn)
 
     def get_dim_ids_for_fact_values(
         self, dim_table_name, fact_table_df, dim_value_column, fact_value_column
@@ -223,9 +224,8 @@ class JobDataLoader:
             # )
 
             # i want to remove duplicates from the dim data based on one column
-            dim_data_df = dim_data_df.drop_duplicates(
-                subset=[dim_table_info["distinctColumns"][0]]
-            )
+            distinctColumn = dim_table_info["distinctColumns"][0]
+            dim_data_df = dim_data_df.drop_duplicates(subset=[distinctColumn])
 
             # if dim_data_df.empty:
             # continue
@@ -244,7 +244,8 @@ class JobDataLoader:
 
             if not dim_data_df.empty:
                 # continue
-                self.write_dataframe(dim_table_name, dim_data_df)
+                self.write_dataframe(dim_table_name, dim_data_df, distinctColumn)
+
             # new_ids_df = pd.DataFrame(new_ids, columns=[dim_id_column_name])
             logging.info(
                 f"Count Rows in Dim  Table {dim_table_name}: {dim_data_df.shape[0]}"
@@ -261,10 +262,12 @@ class JobDataLoader:
                 fact_column_names,
                 fact_key_column_names,
             )
+            logging.info(f"Last Dim Table: {dim_table_name}")
+            fact_data_df.info()
             logging.info(
                 f"Count Rows in Fact Table                 : {fact_data_df.shape[0]}"
             )
-            fact_data_df = fact_data_df.drop_duplicates(inplace=True)
+            fact_data_df.drop_duplicates(inplace=True)
 
         # jetzt muss die fact tabelle in die datenbank geladen werden.
         # und zwar nur die notwendigen spalten
