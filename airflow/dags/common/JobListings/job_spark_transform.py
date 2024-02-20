@@ -5,11 +5,13 @@ from job_data_storage import JobDataStorage
 from job_data_transformation import JobDataTransformation
 from job_data_enrichment import JobDataEnrichment
 from job_config_manager import JobConfigManager
+from job_helper_utils import generate_dim_id_column_name
 
 from pyspark.sql.functions import col
 from pyspark.sql import DataFrame
 import os
 import yaml
+from stringcase import snakecase, camelcase, pascalcase
 
 # from airflow.exceptions import AirflowFailException
 import logging
@@ -17,12 +19,6 @@ import sys
 import socket
 
 import re
-
-
-def to_snake_case(name):
-    # Zuerst von CamelCase/PascalCase zu snake_case
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower() + "_df"
 
 
 def is_dataframe_empty(df: DataFrame) -> bool:
@@ -47,17 +43,19 @@ if __name__ == "__main__":
     logger = log4jLogger.LogManager.getLogger("LOGGER")
     logger.setLevel(log4jLogger.Level.INFO)
 
-    AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
-    AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
+    AWS_SPARK_ACCESS_KEY = os.getenv("MINIO_SPARK_ACCESS_KEY")
+    AWS_SPARK_SECRET_KEY = os.getenv("MINIO_SPARK_SECRET_KEY")
     MINIO_IP_ADDRESS = socket.gethostbyname("minio")
     SPARK_MASTER_IP_ADDRESS = socket.gethostbyname("spark-master")
 
     s3_client_manager = JobS3ClientManager(
-        AWS_SPARK_ACCESS_KEY, AWS_SPARK_SECRET_KEY, f"http://{MINIO_IP_ADDRESS}:9000")
-    s3_client = s3_client_manager.get_boto_client()
+        AWS_SPARK_ACCESS_KEY, AWS_SPARK_SECRET_KEY, f"http://{MINIO_IP_ADDRESS}:9000"
+    )
+    # s3_client = s3_client_manager.get_boto_client()
 
     file_processor = JobFileProcessing(
-        s3_client, bucket_from, source_name, delta_minutes)
+        s3_client_manager, bucket_from, source_name, delta_minutes
+    )
 
     data_storage = JobDataStorage()
 
@@ -65,7 +63,11 @@ if __name__ == "__main__":
     data_enrichment = JobDataEnrichment(spark_session)
 
     # Der Hauptablauf würde hier folgen, z.B.:
-    data_raw = file_processor.load_recent_files()
+    data_raw = file_processor.merge_files_to_df()
+
+    # logger.info(data_raw.printSchema())
+    logger.info(data_raw.info())
+    logger.info(data_raw.head(5))
 
     schema = data_transformation.get_df_schema(source_name)
     spark_df = spark_session.createDataFrame(data_raw, schema=schema)
@@ -76,99 +78,124 @@ if __name__ == "__main__":
     # index,company_name,company_linkedin_url,title,location,linkedin_id,url,applicants,publish_date,level,employment,function,industries,description,search_datetime,search_keyword,search_location,fingerprint,language
 
     # combining the unique date values
-    date_df1 = data_clean_df.select(
-        col("publish_date_unique").alias("date_unique"))
-    date_df2 = data_clean_df.select(
-        col("search_datetime_unique").alias("date_unique"))
+    # date_df1 = data_clean_df.select(col("publish_date_unique").alias("date_unique", "publish_date_year", "publish_date_month", "publish_date_week", "publish_date_day", "publish_date_hour", "publish_date_minute", "publish_date_week_day", "publish_date_is_holiday"))
+    # date_df2 = data_clean_df.select(col("search_datetime_unique").alias("date_unique", "search_datetime_year", "search_datetime_month", "search_datetime_week", "search_datetime_day", "search_datetime_hour", "search_datetime_minute", "search_datetime_week_day", "search_datetime_is_holiday"))
+    # Definiere die Spaltennamen für date_df1 und date_df2
+    columns_df1 = [
+        "publish_date_unique",
+        "publish_date_year",
+        "publish_date_month",
+        "publish_date_week",
+        "publish_date_day",
+        "publish_date_hour",
+        "publish_date_minute",
+        "publish_date_week_day",
+        "publish_date_is_holiday",
+    ]
+    columns_df2 = [
+        "search_datetime_unique",
+        "search_datetime_year",
+        "search_datetime_month",
+        "search_datetime_week",
+        "search_datetime_day",
+        "search_datetime_hour",
+        "search_datetime_minute",
+        "search_datetime_week_day",
+        "search_datetime_is_holiday",
+    ]
+
+    date_df1 = data_transformation.create_df_with_aliases(
+        data_clean_df, columns_df1, "publish_date_"
+    )
+    date_df2 = data_transformation.create_df_with_aliases(
+        data_clean_df, columns_df2, "search_datetime_"
+    )
+
     date_df = date_df1.union(date_df2)
+    # logger.info(date_df1.printSchema())
+    # logger.info(date_df1.count())
+    # logger.info(date_df2.printSchema())
+    # logger.info(date_df2.count())
+    # logger.info(date_df.printSchema())
+    # logger.info(date_df.count())
+    # date_df_distinct = date_df.select("unique").distinct()
+    date_df_distinct = date_df.dropDuplicates(["unique"])
+    date_df_renamed = date_df_distinct.withColumnRenamed("unique", "date_unique")
+    # logger.info(date_df_distinct.count())
 
-    dataframes = {
-        "dim_jobs_df": data_clean_df.select(
-            "title", "title_cleaned", "description", "source_identifier", "fingerprint"),
-        "dim_locations_df": data_clean_df.select(
-            col("location").alias("city"), "country"),  # country is not there yet!
-        "dim_languages_df": data_clean_df.select(col("language").alias("name")),
-        "dim_sources_df": data_clean_df.select(
-            col("source").alias("name")),  # source is not there
-        "dim_job_levels_df": data_clean_df.select(col("level").alias("name")),
-        "dim_search_keywords_df": data_clean_df.select(
-            col("search_keyword").alias("name")),
-        "dim_search_locations_df": data_clean_df.select(
-            col("search_location").alias("name")),
-        # "dim_dates_df": data_clean_df.select(),
-        "dim_dates_df": date_df,
-        "dim_employments_df": data_clean_df.select(col("employment").alias("name")),
-        "dim_industries_df": data_clean_df.select(col("industries").alias("name")),
-        # "dim_skill_categories_df": data_clean_df.select(),
-        # "dim_technology_categories_df": data_clean_df.select(),
-        # "dim_skills_df": data_clean_df.select(),
-        # "dim_technologies_df": data_clean_df.select(),
-        "dim_companies_df": data_clean_df.select(col("company_name").alias("name"))
-    }
+    dim_dataframes = data_transformation.get_dataframes_from_data(data_clean_df)
+    dim_dataframes["dim_dates_df"] = date_df_renamed
+    # logger.info(dim_dataframes.printSchema())
+    # logger.info(f"Keys: {list(dim_dataframes.keys())}")
 
-    fact_df = data_clean_df.select("company_name", "title", "location", "job_apps_count", "level", "employment",
-                                   "industries", "search_datetime", "search_keyword", "search_location", "fingerprint", "language", "scrape_dur_ms",
-                                   "publish_date_unique", "publish_date_year", "publish_date_month", "publish_date_week", "publish_date_day", "publish_date_hour", "publish_date_minute", "publish_date_week_day", "publish_date_is_holiday",
-                                   "search_datetime_unique", "search_datetime_year", "search_datetime_month", "search_datetime_week", "search_datetime_day", "search_datetime_hour", "search_datetime_minute", "search_datetime_week_day", "search_datetime_is_holiday")
+    fact_df = data_transformation.select_fact_columns(data_clean_df)
 
     # load config
-    dimensions_info = JobConfigManager.load_config(
-        "job_config_tables.yaml", "dimensions_info")
+    config_manager = JobConfigManager("job_config_tables.yaml")
+    dimensions_info = config_manager.load_config("dimensions_info")
 
     # Loop through each dimension table and perform the enrichment
-    for dim_table, info in dimensions_info.items():
-        logger.info(f"Start working on {dim_table}")
-        # Determine the DataFrame name based on the key
-        dataframe_name = to_snake_case(dim_table)
+    for dim_table_name, dim_tabel_info in dimensions_info.items():
+        logger.info(f"Start working on {dim_table_name}")
 
         # Determine the dimIdColumn if not provided or empty
-        if not info.get("dimIdColumn"):
-            info["dimIdColumn"] = data_enrichment.generate_dim_id_column_name(
-                dim_table)
+        if not dim_tabel_info.get("dimIdColumn"):
+            dim_tabel_info["dimIdColumn"] = generate_dim_id_column_name(dim_table_name)
+
+        distinctColumns = dim_tabel_info.get("distinctColumns")
+        if not isinstance(distinctColumns, list):
+            distinctColumns = [distinctColumns]
 
         # Access the corresponding DataFrame
-        dim_df = dataframes.get(dataframe_name)
+        dataframe_name = snakecase(dim_table_name) + "_df"
+        dim_df = dim_dataframes.get(dataframe_name)
+
+        logger.info(f"Schema von {dataframe_name}")
+        logger.info(dim_df.printSchema())
+
         if not dim_df:
             raise ValueError(f"DataFrame {dataframe_name} not found")
 
         # Load existing data from the dimension table
         dim_existing_df = data_enrichment.load_dimension_table(
-            dim_table, info.get("distinctColumns"))
-
+            dim_table_name, distinctColumns
+        )
         # Identify new values by comparing with existing data
-        dim_new_values_df = dim_df.select(
-            info.get("distinctColumns")).distinct().exceptAll(dim_existing_df)
-
-        # # If there are new values, save them to the dimension table
-        # if not is_dataframe_empty(dim_new_values_df):
-        #     data_enrichment.save_dimension_table(dim_new_values_df, dim_table)
-        #     # Reload the dimension table to include the newly added values
-        #     dim_existing_df = data_enrichment.load_dimension_table(dim_table)
-
-        # # Perform the join to enrich the fact dataframe
-        # fact_df = fact_df.join(dim_existing_df, fact_df[info["factColumn"]] == dim_existing_df[info["dimColumn"]], "left") \
-        #     .withColumn(info["factForeignKeyColumn"], dim_existing_df[info["dimIdColumn"]])
+        dim_new_values_df = (
+            dim_df.select(distinctColumns).distinct().exceptAll(dim_existing_df)
+        )
 
         # save the dim tables
         if not is_dataframe_empty(dim_new_values_df):
-            logger.info(f"Start saving {dim_table}")
-            target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/{dim_table}"
-            target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table}"
+            # an dieser Stelle muss ich ein merge machen mit der dim_df über die distinctColumns
+            dim_df_new_full = dim_new_values_df.join(
+                dim_df,
+                # dim_new_values_df[distinctColumns[0]] == dim_df[distinctColumns[0]],
+                distinctColumns[0],
+                "inner",
+            )
+            logger.info(dim_df_new_full.printSchema())
 
-            data_storage.save_from_spark_as_delta(
-                dim_new_values_df, target_path_delta)
-            data_storage.save_from_spark_as_csv(
-                dim_new_values_df, target_path_csv)
-            logger.info(f"Done saving {dim_table}")
+            logger.info(f"Start saving {dim_table_name} as delta")
+            target_path_delta = (
+                f"s3a://{bucket_to}/{source_name}/delta/{dim_table_name}"
+            )
+            data_storage.save_from_spark_as_delta(dim_df_new_full, target_path_delta)
+
+            logger.info(f"Start saving {dim_table_name} as csv")
+            target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table_name}"
+            data_storage.save_from_spark_as_csv(dim_df_new_full, target_path_csv)
+
+            logger.info(f"Done saving {dim_table_name}")
 
     # save the fact table
     if not is_dataframe_empty(fact_df):
-        logger.info(f"Start saving Fact Table")
+        logger.info("Start saving Fact Table")
         target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/fctJobListings"
         target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/fctJobListings"
 
         data_storage.save_from_spark_as_delta(fact_df, target_path_delta)
         data_storage.save_from_spark_as_csv(fact_df, target_path_csv)
-        logger.info(f"Done saving Fact Table")
+        logger.info("Done saving Fact Table")
 
     spark_manager.stop()
