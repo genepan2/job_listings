@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS dimJobs (
     title_cleaned VARCHAR(255),
     description TEXT,
     url VARCHAR(255),
-    source_identifier VARCHAR(255) UNIQUE,
-    fingerprint VARCHAR(255)
+    source_identifier VARCHAR(255),
+    fingerprint VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimCompanies (
     company_id SERIAL PRIMARY KEY,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS dimDates (
 );
 CREATE TABLE IF NOT EXISTS dimEmployments (
     employment_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimIndustries (
     industry_id SERIAL PRIMARY KEY,
