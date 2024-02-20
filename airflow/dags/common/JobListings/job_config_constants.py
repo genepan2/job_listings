@@ -1,17 +1,15 @@
 import os
 
-MISC = {
-    "items_per_page": 10
-}
+MISC = {"items_per_page": 10}
 
-PATH_ROOT = '/opt/airflow'
+PATH_ROOT = "/opt/airflow"
 
 PATH = {
     "root": os.path.join(PATH_ROOT),
-    "data": os.path.join(PATH_ROOT, 'data'),
-    "data_raw": os.path.join(PATH_ROOT, 'data', 'raw'),
-    "data_processed": os.path.join(PATH_ROOT, 'data', 'processed'),
-    "ml": os.path.join(PATH_ROOT, 'ml'),
+    "data": os.path.join(PATH_ROOT, "data"),
+    "data_raw": os.path.join(PATH_ROOT, "data", "raw"),
+    "data_processed": os.path.join(PATH_ROOT, "data", "processed"),
+    "ml": os.path.join(PATH_ROOT, "ml"),
 }
 
 JOB_LOCATIONS = {
@@ -21,7 +19,7 @@ JOB_LOCATIONS = {
     "cologne": "Cologne",
     "frankfurt": "Frankfurt",
     "remote": "Remote",
-    "other": "Other"
+    "other": "Other",
 }
 
 JOB_LEVELS = {
@@ -32,20 +30,20 @@ JOB_LEVELS = {
     "lead": "Lead",
     "head": "Head",
     "student": "Student",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
 }
 
 COLLECTIONS = {
     "themuse": "jobs_themuse",
     "whatjobs": "jobs_whatjobs",
     "linkedin": "jobs_linkedin",
-    "all": os.environ.get('MONGO_COLLECTION_ALL', 'jobs_all')
+    "all": os.environ.get("MONGO_COLLECTION_ALL", "jobs_all"),
 }
 
 MONGO = {
-    "uri": os.environ.get('MONGO_URI', 'mongodb://mongo:27017/'),
+    "uri": os.environ.get("MONGO_URI", "mongodb://mongo:27017/"),
     "db": "job_listing_db",
-    "conn_id": "jobs_mongodb"
+    "conn_id": "jobs_mongodb",
 }
 
 FIELDS = {
@@ -69,5 +67,6 @@ FIELDS = {
     "search_location": "search_location",
     "language": "language",
     "source": "source",
-    "scrape_dur_ms": "scrape_dur_ms"
+    "scrape_dur_ms": "scrape_dur_ms",
+    "scraping_pause": "scraping_pause",
 }
