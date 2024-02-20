@@ -31,17 +31,24 @@ class JobFileProcessing:
             logging.error(f"Error parsing date from filename {filename}: {str(e)}")
             return False
 
-    def get_files(self, table_name):
+    def get_files(self, table_name, file_format):
         prefix = f"{self.source_name}/csv/"
         if self.bucket_name == "bronze":
             prefix += f"{self.source_name}_raw"
         else:  # Für Silver und andere Bucket-Typen kann die Struktur hier angepasst werden
             # Beispiel, tatsächlicher Wert könnte variieren
-            prefix += f"{table_name}/"
+            prefix += f"{table_name}/part"
 
         files = self.s3_client_manager.list_objects(self.bucket_name, prefix)
         # Filtert die Dateien basierend auf dem Zeitfenster, wenn delta_minutes gesetzt ist, sonst werden alle Dateien zurückgegeben
-        return [file["Key"] for file in files if self.is_file_recent(file["Key"])]
+        return [
+            file["Key"]
+            for file in files
+            if (
+                file["Key"].endswith(f".{file_format}")
+                and self.is_file_recent(file["Key"])
+            )
+        ]
 
     # def get_recent_files_from_s3(self, bucket_name, source_name):
     #     # this is the new structure in bronze bucket
@@ -82,14 +89,21 @@ class JobFileProcessing:
     #     # logging.info(concatenated_df.columns)
     #     return concatenated_df
 
-    def merge_files_to_df(self, table_name=None):
+    def merge_files_to_df(self, table_name=None, file_format="csv"):
         # files = self.get_files(bucket_type)
-        files = self.get_files(table_name)
+        files = self.get_files(table_name, file_format)
+        if not files:
+            raise ValueError("No files were found...")
+
         df_list = []
         for file_key in files:
+            logging.info(f"Processing {file_key}...")
             file_content = self.s3_client_manager.get_object(self.bucket_name, file_key)
-            df = pd.read_csv(BytesIO(file_content), on_bad_lines="warn")
+            df = pd.read_csv(
+                BytesIO(file_content), on_bad_lines="warn", escapechar="\\"
+            )
             df_list.append(df)
+
         if df_list:
             concatenated_df = pd.concat(df_list, ignore_index=True)
             return concatenated_df
