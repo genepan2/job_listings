@@ -11,12 +11,12 @@ from job_config_constants import PATH, COLLECTIONS
 
 def generate_dim_id_column_name(dim_table_name):
     # Remove "dim" at the start, "s" at the end, and add "Id" at the end for general case
-    if dim_table_name.startswith("dim_") and dim_table_name.endswith("s"):
+    if dim_table_name.startswith("dim") and dim_table_name.endswith("s"):
         base_name = dim_table_name[3:-1]  # Remove "dim" and "s"
 
         # Special handling for names ending in 'ies' -> 'y'
-        if base_name.endswith("ies"):
-            base_name = base_name[:-3] + "y"
+        if base_name.endswith("ie"):
+            base_name = base_name[:-2] + "y"
 
         return snakecase(base_name) + "_id"
     return dim_table_name
@@ -28,11 +28,26 @@ def generate_fact_key_column_name(dim_table_name):
         base_name = dim_table_name[3:-1]  # Remove "dim" and "s"
 
         # Special handling for names ending in 'ies' -> 'y'
-        if base_name.endswith("ies"):
-            base_name = base_name[:-3] + "y"
+        if base_name.endswith("ie"):
+            base_name = base_name[:-2] + "y"
 
         return snakecase(base_name) + "_key"
     return dim_table_name
+
+
+# i want to generate the dim tabel name from the dim_tanle_id_column_name
+# and when the dim_table_id_column_name ends with "y" i want to remove the "y" and add "ies" to the end
+def generate_dim_table_name_from_id_column_name(dim_table_id_column_name):
+    # Remove "Id" at the end and add "dim" at the start for general case
+    if dim_table_id_column_name.endswith("_id"):
+        base_name = dim_table_id_column_name[:-3]  # Remove "_id"
+
+        # Special handling for names ending in 'y' -> 'ies'
+        if base_name.endswith("y"):
+            base_name = base_name[:-1] + "ie"
+
+        return "dim" + pascalcase(base_name) + "s"
+    return dim_table_id_column_name
 
 
 def get_collection_keys_without_all():
