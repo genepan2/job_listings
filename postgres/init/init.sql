@@ -5,12 +5,12 @@ CREATE TABLE IF NOT EXISTS dimJobs (
     title_cleaned VARCHAR(255),
     description TEXT,
     url VARCHAR(255),
-    source_identifier VARCHAR(255),
+    source_identifier VARCHAR(255) UNIQUE,
     fingerprint VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimCompanies (
     company_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimLocations (
     location_id SERIAL PRIMARY KEY,
@@ -19,32 +19,32 @@ CREATE TABLE IF NOT EXISTS dimLocations (
 );
 CREATE TABLE IF NOT EXISTS dimLanguages (
     language_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TYPE SourceTypeEnum AS ENUM ('origin', 'meta', 'hybrid');
 CREATE TABLE IF NOT EXISTS dimSources (
     source_id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
+    name VARCHAR(255) UNIQUE,
     url VARCHAR(255),
     type SourceTypeEnum,
     is_api BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE IF NOT EXISTS dimJobLevels (
     job_level_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimSearchKeywords (
     search_keyword_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimSearchLocations (
     search_location_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimDates (
     date_id SERIAL PRIMARY KEY,
     -- date_unique VARCHAR(12),
-    date_unique BIGINT NOT NULL,
+    date_unique BIGINT UNIQUE NOT NULL,
     year INT NOT NULL,
     month INT NOT NULL,
     week INT NOT NULL,
@@ -60,15 +60,15 @@ CREATE TABLE IF NOT EXISTS dimEmployments (
 );
 CREATE TABLE IF NOT EXISTS dimIndustries (
     industry_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimSkillCategories (
     skill_category_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimTechnologyCategories (
     technology_category_id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS dimSkills (
     skill_id SERIAL PRIMARY KEY,
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS fctJobListings (
     language_key INT REFERENCES dimLanguages(language_id),
     job_level_key INT REFERENCES dimJobLevels(job_level_id),
     employment_key INT REFERENCES dimEmployments(employment_id),
-    industry_key INT REFERENCES dimIndustries(industry_id),
+    -- industry_key INT REFERENCES dimIndustries(industry_id),
     job_apps_count INT,
     list_dur_days INT,
     scrape_dur_ms INT
@@ -134,6 +134,11 @@ CREATE TABLE IF NOT EXISTS JobSearchLocationBridge (
     job_search_keyword_id SERIAL PRIMARY KEY,
     job_listing_key INT REFERENCES fctJobListings(job_listing_id),
     search_location_key INT REFERENCES dimSearchLocations(search_location_id)
+);
+CREATE TABLE IF NOT EXISTS JobIndustryBridge (
+    job_industry_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    industry_key INT REFERENCES dimIndustries(industry_id)
 );
 ---------------------
 -- INSERT Initial Data
