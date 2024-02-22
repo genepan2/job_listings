@@ -77,56 +77,10 @@ if __name__ == "__main__":
     # Create the Dim DataFrames
     # index,company_name,company_linkedin_url,title,location,linkedin_id,url,applicants,publish_date,level,employment,function,industries,description,search_datetime,search_keyword,search_location,fingerprint,language
 
-    # combining the unique date values
-    # date_df1 = data_clean_df.select(col("publish_date_unique").alias("date_unique", "publish_date_year", "publish_date_month", "publish_date_week", "publish_date_day", "publish_date_hour", "publish_date_minute", "publish_date_week_day", "publish_date_is_holiday"))
-    # date_df2 = data_clean_df.select(col("search_datetime_unique").alias("date_unique", "search_datetime_year", "search_datetime_month", "search_datetime_week", "search_datetime_day", "search_datetime_hour", "search_datetime_minute", "search_datetime_week_day", "search_datetime_is_holiday"))
-    # Definiere die Spaltennamen für date_df1 und date_df2
-    columns_df1 = [
-        "publish_date_unique",
-        "publish_date_year",
-        "publish_date_month",
-        "publish_date_week",
-        "publish_date_day",
-        "publish_date_hour",
-        "publish_date_minute",
-        "publish_date_week_day",
-        "publish_date_is_holiday",
-    ]
-    columns_df2 = [
-        "search_datetime_unique",
-        "search_datetime_year",
-        "search_datetime_month",
-        "search_datetime_week",
-        "search_datetime_day",
-        "search_datetime_hour",
-        "search_datetime_minute",
-        "search_datetime_week_day",
-        "search_datetime_is_holiday",
-    ]
-
-    date_df1 = data_transformation.create_df_with_aliases(
-        data_clean_df, columns_df1, "publish_date_"
-    )
-    date_df2 = data_transformation.create_df_with_aliases(
-        data_clean_df, columns_df2, "search_datetime_"
-    )
-
-    date_df = date_df1.union(date_df2)
-    # logger.info(date_df1.printSchema())
-    # logger.info(date_df1.count())
-    # logger.info(date_df2.printSchema())
-    # logger.info(date_df2.count())
-    # logger.info(date_df.printSchema())
-    # logger.info(date_df.count())
-    # date_df_distinct = date_df.select("unique").distinct()
-    date_df_distinct = date_df.dropDuplicates(["unique"])
-    date_df_renamed = date_df_distinct.withColumnRenamed("unique", "date_unique")
-    # logger.info(date_df_distinct.count())
+    dates_df = data_transformation.get_unique_date_values_dataframes(data_clean_df)
 
     dim_dataframes = data_transformation.get_dataframes_from_data(data_clean_df)
-    dim_dataframes["dim_dates_df"] = date_df_renamed
-    # logger.info(dim_dataframes.printSchema())
-    # logger.info(f"Keys: {list(dim_dataframes.keys())}")
+    dim_dataframes["dim_dates_df"] = dates_df
 
     fact_df = data_transformation.select_fact_columns(data_clean_df)
 
@@ -157,12 +111,23 @@ if __name__ == "__main__":
             raise ValueError(f"DataFrame {dataframe_name} not found")
 
         # Load existing data from the dimension table
-        dim_existing_df = data_enrichment.load_dimension_table(
-            dim_table_name, distinctColumns
+        # dim_existing_df = data_enrichment.load_dimension_table(
+        #     dim_table_name, distinctColumns
+        # )
+        dim_existing_values = data_enrichment.load_filtered_table(
+            dim_table_name,
+            distinctColumns,
+            distinctColumns[0],
+            dim_df,
+            distinctColumns[0],
         )
+
         # Identify new values by comparing with existing data
+        # dim_new_values_df = (
+        #     dim_df.select(distinctColumns).distinct().exceptAll(dim_existing_df)
+        # )
         dim_new_values_df = (
-            dim_df.select(distinctColumns).distinct().exceptAll(dim_existing_df)
+            dim_df.select(distinctColumns).distinct().exceptAll(dim_existing_values)
         )
 
         # save the dim tables
