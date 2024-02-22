@@ -16,11 +16,18 @@ class JobConfigManager:
 
         return config[config_part]
 
-    def get_fact_table_name(self):
-        fact_info = self.load_config("fact_info")
-        return list(fact_info.keys())[0]
+    def get_fct_table_name(self):
+        fct_info = self.load_config("fct_info")
+        return list(fct_info.keys())[0]
 
-    def get_all_fact_table_columns(self):
-        fact_info = self.load_config("fact_info")
-        factTable = fact_info["fctJobListings"]
-        return factTable["dimKeyColumns"] + factTable["otherColumns"]
+    def get_fct_table(self):
+        fct_info = self.load_config("fct_info")
+        return fct_info["fctJobListings"]
+
+    def get_all_fct_table_columns(self):
+        fctTable = self.get_fct_table()
+        return fctTable["dimKeyColumns"] + fctTable["otherColumns"]
+
+    def get_fct_unique_columns(self):
+        fctTable = self.get_fct_table()
+        return fctTable["uniqueColumns"]
