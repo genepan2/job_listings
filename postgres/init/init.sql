@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS dimJobs (
 CREATE TABLE IF NOT EXISTS dimSourceInfos (
     source_info_id SERIAL PRIMARY KEY,
     url VARCHAR(255) UNIQUE,
-    identifier VARCHAR(255),
+    identifier VARCHAR(255)
 );
 CREATE TABLE IF NOT EXISTS dimCompanies (
     company_id SERIAL PRIMARY KEY,
