@@ -60,7 +60,7 @@ dimensions_info:
   uniqueColumns: ["name"]
   # factForeignKeyColumns: ["industry_key"]
 
-fact_info:
+fct_info:
  fctJobListings:
   dimKeyColumns: [
     "job_key",
