@@ -11,36 +11,46 @@ class JobDataEnrichment:
         }
         self.jdbc_url = os.getenv("JDBC_URL")
 
-    def load_dimension_table(
-        self, table_name, columns, dim_column=None, fact_value=None
+    def load_filtered_table(
+        self, table_name, columns, match_column, match_df, match_column_df
     ):
         """
-        Loads a dimension table and optionally filters based on a value.
+        Loads table rows that match values in a given DataFrame column.
 
         Parameters:
-        table_name (str): The name of the dimension table.
-        dim_column (str): Optional. The column name in the dimension table to filter on.
-        fact_value (str): Optional. The value to filter in the dimension table.
+        table_name (str): The name of the table.
+        columns (list[str]): The columns to load from the table.
+        match_column (str): The column name in the table to match against.
+        match_df (DataFrame): The DataFrame containing values to match.
+        match_column_df (str): The column name in match_df containing the match values.
 
         Returns:
-        DataFrame: A DataFrame of the filtered (or unfiltered) dimension table.
+        DataFrame: A DataFrame of the filtered table.
         """
 
-        columns_to_get = " ,".join(columns)
+        # Convert the DataFrame column to a list of unique values
+        match_values = list(
+            match_df.select(match_column_df).distinct().toPandas()[match_column_df]
+        )
 
-        # Load the entire dimension table
-        dim_df = self.spark.read.jdbc(
+        # Format the match values for SQL query
+        match_values_str = ",".join([f"'{value}'" for value in match_values])
+
+        # Build the SQL query
+        columns_to_get = ", ".join(columns)
+        query = f"""
+            (SELECT {columns_to_get} FROM {table_name}
+            WHERE {match_column} IN ({match_values_str})) AS {table_name}_alias
+        """
+
+        # Load the filtered table
+        filtered_df = self.spark.read.jdbc(
             url=self.jdbc_url,
-            # table=table_name,
-            table=f"(SELECT {columns_to_get} FROM {table_name}) AS {table_name}_alias",
+            table=query,
             properties=self.connection_prop,
         )
 
-        # If a column name and value for filtering are provided, apply the filter
-        if dim_column and fact_value:
-            dim_df = dim_df.filter(dim_df[dim_column] == fact_value)
-
-        return dim_df
+        return filtered_df
 
     def save_dimension_table(self, df, table_name):
         df.write.format("jdbc").mode("append").option("url", self.jdbc_url).option(
