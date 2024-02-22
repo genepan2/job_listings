@@ -1,7 +1,7 @@
 dimensions_info:
  dimJobs:
-  factColumns: "fingerprint"
-  dimColumns: "fingerprint"
+  factColumns: "title"
+  dimColumns: "title"
   distinctColumns: ["fingerprint"]
   # factForeignKeyColumns: "job_key"
  dimCompanies:
@@ -9,6 +9,11 @@ dimensions_info:
   dimColumns: "name"
   distinctColumns: ["name"]
   # factForeignKeyColumns: "company_key"
+ dimSourceInfos:
+  factColumns: "url"
+  dimColumns: "url"
+  distinctColumns: ["url"]
+  # factForeignKeyColumns: "source_info_key"
  dimLocations:
   factColumns: "location"
   dimColumns: "city"
@@ -73,7 +78,9 @@ fact_info:
     "job_apps_count",
     # "list_dur_days",
     "scrape_dur_ms",
+    "fingerprint",
    ]
+  distinctColumns: ["fingerprint"]
 
 bridge_info:
  JobSkillsBridge:
@@ -83,4 +90,6 @@ bridge_info:
  JobSearchKeywordBridge:
   someValue: "empty"
  JobSearchLocationBridge:
+  someValue: "empty"
+ JobSourceInfoBridge:
   someValue: "empty"
