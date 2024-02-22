@@ -4,9 +4,12 @@ CREATE TABLE IF NOT EXISTS dimJobs (
     title VARCHAR(255),
     title_cleaned VARCHAR(255),
     description TEXT,
-    url VARCHAR(255),
-    source_identifier VARCHAR(255),
     fingerprint VARCHAR(255) UNIQUE
+);
+CREATE TABLE IF NOT EXISTS dimSourceInfos (
+    source_info_id SERIAL PRIMARY KEY,
+    url VARCHAR(255) UNIQUE,
+    identifier VARCHAR(255),
 );
 CREATE TABLE IF NOT EXISTS dimCompanies (
     company_id SERIAL PRIMARY KEY,
@@ -100,7 +103,10 @@ CREATE TABLE IF NOT EXISTS fctJobListings (
     -- industry_key INT REFERENCES dimIndustries(industry_id),
     job_apps_count INT,
     list_dur_days INT,
-    scrape_dur_ms INT
+    scrape_dur_ms INT,
+    fingerprint VARCHAR(255) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- BRIDGE TABLES
 CREATE TABLE IF NOT EXISTS JobLocationsBridge (
@@ -139,6 +145,11 @@ CREATE TABLE IF NOT EXISTS JobIndustryBridge (
     job_industry_id SERIAL PRIMARY KEY,
     job_listing_key INT REFERENCES fctJobListings(job_listing_id),
     industry_key INT REFERENCES dimIndustries(industry_id)
+);
+CREATE TABLE IF NOT EXISTS JobSourceInfoBridge (
+    job_source_info_id SERIAL PRIMARY KEY,
+    job_listing_key INT REFERENCES fctJobListings(job_listing_id),
+    source_info_key INT REFERENCES dimSourceInfos(source_info_id)
 );
 ---------------------
 -- INSERT Initial Data
