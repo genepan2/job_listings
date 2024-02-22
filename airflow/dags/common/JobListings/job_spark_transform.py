@@ -96,9 +96,9 @@ if __name__ == "__main__":
         if not dim_tabel_info.get("dimIdColumn"):
             dim_tabel_info["dimIdColumn"] = generate_id_column_name(dim_table_name)
 
-        distinctColumns = dim_tabel_info.get("distinctColumns")
-        if not isinstance(distinctColumns, list):
-            distinctColumns = [distinctColumns]
+        uniqueColumns = dim_tabel_info.get("uniqueColumns")
+        if not isinstance(uniqueColumns, list):
+            uniqueColumns = [uniqueColumns]
 
         # Access the corresponding DataFrame
         dataframe_name = snakecase(dim_table_name) + "_df"
@@ -112,31 +112,31 @@ if __name__ == "__main__":
 
         # Load existing data from the dimension table
         # dim_existing_df = data_enrichment.load_dimension_table(
-        #     dim_table_name, distinctColumns
+        #     dim_table_name, uniqueColumns
         # )
         dim_existing_values = data_enrichment.load_filtered_table(
             dim_table_name,
-            distinctColumns,
-            distinctColumns[0],
+            uniqueColumns,
+            uniqueColumns[0],
             dim_df,
-            distinctColumns[0],
+            uniqueColumns[0],
         )
 
         # Identify new values by comparing with existing data
         # dim_new_values_df = (
-        #     dim_df.select(distinctColumns).distinct().exceptAll(dim_existing_df)
+        #     dim_df.select(uniqueColumns).distinct().exceptAll(dim_existing_df)
         # )
         dim_new_values_df = (
-            dim_df.select(distinctColumns).distinct().exceptAll(dim_existing_values)
+            dim_df.select(uniqueColumns).distinct().exceptAll(dim_existing_values)
         )
 
         # save the dim tables
         if not is_dataframe_empty(dim_new_values_df):
-            # an dieser Stelle muss ich ein merge machen mit der dim_df über die distinctColumns
+            # an dieser Stelle muss ich ein merge machen mit der dim_df über die uniqueColumns
             dim_df_new_full = dim_new_values_df.join(
                 dim_df,
-                # dim_new_values_df[distinctColumns[0]] == dim_df[distinctColumns[0]],
-                distinctColumns[0],
+                # dim_new_values_df[uniqueColumns[0]] == dim_df[uniqueColumns[0]],
+                uniqueColumns[0],
                 "inner",
             )
             logger.info(dim_df_new_full.printSchema())

@@ -2,62 +2,62 @@ dimensions_info:
  dimJobs:
   factColumns: "title"
   dimColumns: "title"
-  distinctColumns: ["fingerprint"]
+  uniqueColumns: ["fingerprint"]
   # factForeignKeyColumns: "job_key"
  dimCompanies:
   factColumns: "company_name"
   dimColumns: "name"
-  distinctColumns: ["name"]
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: "company_key"
  dimSourceInfos:
   factColumns: "url"
   dimColumns: "url"
-  distinctColumns: ["url"]
+  uniqueColumns: ["url"]
   # factForeignKeyColumns: "source_info_key"
  dimLocations:
   factColumns: "location"
   dimColumns: "city"
-  distinctColumns: ["city"]
+  uniqueColumns: ["city"]
   # factForeignKeyColumns: "location_key"
  dimLanguages:
   factColumns: "language"
   dimColumns: "name"
-  distinctColumns: ["name"]
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: "language_key"
  dimSources:
   factColumns: "source"
   dimColumns: "name"
-  distinctColumns: ["name"]
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: "source_key"
  dimJobLevels:
   factColumns: "level"
   dimColumns: "name"
-  distinctColumns: ["name"]
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: "job_level_key"
  # dimSearchKeywords:
  #  factColumns: "level"
  #  dimColumns: "name"
- #  distinctColumns: ["name"]
+ #  uniqueColumns: ["name"]
  # factForeignKeyColumns: "job_level_key"
  # dimSearchLocations:
  #  factColumns: "search_location"
  #  dimColumns: "name"
- #  distinctColumns: ["name"]
+ #  uniqueColumns: ["name"]
  # factForeignKeyColumns: "job_level_key"
  dimDates:
   factColumns: ["publish_date_unique", "search_datetime_unique"]
   dimColumns: "date_unique"
-  distinctColumns: ["date_unique"]
+  uniqueColumns: ["date_unique"]
   factForeignKeyColumns: ["search_date_key", "publish_date_key"]
  dimEmployments:
   factColumns: ["employment"]
   dimColumns: "name"
-  distinctColumns: ["name"]
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: ["employment_key"]
  dimIndustries:
   factColumns: ["industries"]
   dimColumns: "name"
-  distinctColumns: ["name"]
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: ["industry_key"]
 
 fact_info:
@@ -80,7 +80,7 @@ fact_info:
     "scrape_dur_ms",
     "fingerprint",
    ]
-  distinctColumns: ["fingerprint"]
+  uniqueColumns: ["fingerprint"]
 
 bridge_info:
  JobSkillsBridge:

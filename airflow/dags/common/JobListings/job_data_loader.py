@@ -236,8 +236,8 @@ class JobDataLoader:
             # )
 
             # i want to remove duplicates from the dim data based on one column
-            distinctColumn = dim_table_info["distinctColumns"][0]
-            dim_data_df = dim_data_df.drop_duplicates(subset=[distinctColumn])
+            uniqueColumn = dim_table_info["uniqueColumns"][0]
+            dim_data_df = dim_data_df.drop_duplicates(subset=[uniqueColumn])
 
             # if dim_data_df.empty:
             # continue
@@ -256,7 +256,7 @@ class JobDataLoader:
 
             if not dim_data_df.empty:
                 # continue
-                self.write_dataframe(dim_table_name, dim_data_df, distinctColumn)
+                self.write_dataframe(dim_table_name, dim_data_df, uniqueColumn)
 
             # new_ids_df = pd.DataFrame(new_ids, columns=[dim_id_column_name])
             logging.info(
