@@ -1,4 +1,4 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw restart-spark-w
+.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw pgadmin restart-spark-w
 
 restart-spark-w:
 	docker compose restart spark-worker
@@ -12,7 +12,7 @@ init:
 init_minio:
 	docker-compose exec minio bash ./init/minio-init.sh
 
-dev: minio spark airflow postgres_dw
+dev: minio spark airflow postgres_dw pgadmin
 
 pull:
 	docker-compose pull
@@ -67,6 +67,9 @@ dl_doris:
 
 postgres_dw:
 	docker-compose up -d postgres
+
+pgadmin:
+	docker-compose up -d pgadmin
 
 # presto-cluster:
 # 	docker-compose up -d presto presto-worker
