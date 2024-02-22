@@ -5,7 +5,7 @@ from job_data_storage import JobDataStorage
 from job_data_transformation import JobDataTransformation
 from job_data_enrichment import JobDataEnrichment
 from job_config_manager import JobConfigManager
-from job_helper_utils import generate_dim_id_column_name
+from job_helper_utils import generate_id_column_name
 
 from pyspark.sql.functions import col
 from pyspark.sql import DataFrame
@@ -140,7 +140,7 @@ if __name__ == "__main__":
 
         # Determine the dimIdColumn if not provided or empty
         if not dim_tabel_info.get("dimIdColumn"):
-            dim_tabel_info["dimIdColumn"] = generate_dim_id_column_name(dim_table_name)
+            dim_tabel_info["dimIdColumn"] = generate_id_column_name(dim_table_name)
 
         distinctColumns = dim_tabel_info.get("distinctColumns")
         if not isinstance(distinctColumns, list):
