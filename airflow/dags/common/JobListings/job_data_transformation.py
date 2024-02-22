@@ -263,7 +263,7 @@ class JobDataTransformation:
             "dim_companies_df": df.select(col("company_name").alias("name")),
         }
 
-    def select_fact_columns(self, df):
+    def select_fct_columns(self, df):
         return df.select(
             "company_name",
             "title",
@@ -279,6 +279,8 @@ class JobDataTransformation:
             "language",
             "scrape_dur_ms",
             "source",
+            "url",
+            "source_identifier",
             "publish_date_unique",
             "publish_date_year",
             "publish_date_month",
@@ -343,3 +345,11 @@ class JobDataTransformation:
         ]
         # Erstelle den neuen DataFrame basierend auf den ausgewählten und umbenannten Spalten
         return data_df.select(*select_expr)
+
+    # i will eine methode, zwei dataframes vergleicht und bei übereinstimmung in die erste dataframe einen wert in eine nicht vorhandene spalte einträgt
+    def merge_dataframes(self, main_df, add_df, match_column_name):
+        # eine neue spalte an df2 hinzufügen, die den wert True enthält
+        add_df = add_df.withColumn("is_new", lit(1))
+        return main_df.join(
+            add_df, main_df[match_column_name] == add_df[match_column_name], "left"
+        )

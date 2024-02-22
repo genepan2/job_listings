@@ -57,17 +57,17 @@ class JobDataEnrichment:
             "dbtable", table_name
         ).save()
 
-    def enrich_with_dimension(self, fact_df, dim_df, fact_col, dim_col, fk_col):
+    def enrich_with_dimension(self, fct_df, dim_df, fct_col, dim_col, fk_col):
         # Beispiel: Anreicherung mit einer Dimensionstabelle
-        return fact_df.join(
-            dim_df, fact_df[fact_col] == dim_df[dim_col], "left"
+        return fct_df.join(
+            dim_df, fct_df[fct_col] == dim_df[dim_col], "left"
         ).withColumn(fk_col, dim_df["id"])
 
-    def run_enrichment_process(self, fact_df):
+    def run_enrichment_process(self, fct_df):
         # Beispiel: Ausführen des gesamten Anreicherungsprozesses
         dim_locations = self.load_dimension_table("dimLocations")
         enriched_df = self.enrich_with_dimension(
-            fact_df, dim_locations, "location_name", "location_name", "location_fk"
+            fct_df, dim_locations, "location_name", "location_name", "location_fk"
         )
         # Weitere Anreicherungsschritte hier...
         return enriched_df

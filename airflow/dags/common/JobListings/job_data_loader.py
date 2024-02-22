@@ -12,7 +12,7 @@ from job_file_processing import JobFileProcessing
 
 from job_helper_utils import (
     generate_id_column_name,
-    generate_fact_key_column_name,
+    generate_fct_key_column_name,
     generate_dim_table_name_from_id_column_name,
 )
 
@@ -85,6 +85,8 @@ class JobDataLoader:
                     query += f" RETURNING {id_column_name}"
 
                 for row in data:
+                    logging.info(query)
+                    logging.info(row)
                     cursor.execute(query, row)
                     if return_ids:
                         ids = [row[0] for row in cursor.fetchall()]
@@ -104,20 +106,20 @@ class JobDataLoader:
 
         return data_with_ids
 
-    def get_dim_ids_for_fact_values(
-        self, dim_table_name, fact_table_df, dim_value_column, fact_value_column
+    def get_dim_ids_for_fct_values(
+        self, dim_table_name, fct_table_df, dim_value_column, fct_value_column
     ):
         """
         Holt die IDs aus der Dimensionstabelle für Werte, die in der Faktentabelle vorhanden sind.
 
         :param dim_table_name: Name der Dimensionstabelle in der Datenbank.
-        :param fact_table_df: DataFrame der Faktentabelle.
+        :param fct_table_df: DataFrame der Faktentabelle.
         :param dim_value_column: Spaltenname in der Dimensionstabelle, der die Werte enthält.
-        :param fact_value_column: Spaltenname in der Faktentabelle, der die Werte enthält.
+        :param fct_value_column: Spaltenname in der Faktentabelle, der die Werte enthält.
         :return: DataFrame mit den Werten aus der Faktentabelle und den entsprechenden IDs aus der Dimensionstabelle.
         """
         # Erstellen einer Liste mit eindeutigen Werten aus der Faktentabelle
-        unique_values = fact_table_df[fact_value_column].dropna().unique().tolist()
+        unique_values = fct_table_df[fct_value_column].dropna().unique().tolist()
         # logging.info(unique_values)
         dim_id_column_name = generate_id_column_name(dim_table_name)
         # SQL-Abfrage vorbereiten, um IDs für diese Werte zu holen
@@ -132,88 +134,89 @@ class JobDataLoader:
 
         return ids_df
 
-    def enrich_fact_table_with_dim_ids(
+    def enrich_fct_table_with_dim_ids(
         self,
-        fact_table,
+        fct_table,
         dim_table_with_ids,
-        fact_column_name,
+        fct_column_name,
         dim_column_name,
-        fact_key_column_name,
+        fct_key_column_name,
         dim_id_column_name,
     ):
         """
         Reichert eine Faktentabelle mit IDs aus einer Dimensionstabelle an.
 
-        :param fact_table: DataFrame der Faktentabelle.
+        :param fct_table: DataFrame der Faktentabelle.
         :param dim_table_with_ids: DataFrame der Dimensionstabelle, angereichert mit IDs.
         :param merge_column_name: Der Name der Spalte, über die die Faktentabelle und die Dimensionstabelle zusammengeführt werden.
-        :param fact_key_column_name: Der Name der neuen Spalte in der Faktentabelle, die die IDs aus der Dimensionstabelle aufnehmen soll.
+        :param fct_key_column_name: Der Name der neuen Spalte in der Faktentabelle, die die IDs aus der Dimensionstabelle aufnehmen soll.
         :return: DataFrame der angereicherten Faktentabelle.
         """
         dim_table_name = generate_dim_table_name_from_id_column_name(dim_id_column_name)
         logging.info(f"Dim  Table Name: {dim_table_name}")
-        logging.info(f"Fact Column Name: {fact_column_name}")
+        logging.info(f"Fact Column Name: {fct_column_name}")
         logging.info(f"Dim  Column Name: {dim_column_name}")
 
         dim_table_with_ids.drop_duplicates(subset=[dim_column_name], inplace=True)
         logging.info(dim_table_with_ids.head(10))
         # Zusammenführen der Faktentabelle mit der Dimensionstabelle, um die IDs hinzuzufügen
-        enriched_fact_table = fact_table.merge(
+        enriched_fct_table = fct_table.merge(
             dim_table_with_ids,
-            left_on=fact_column_name,
+            left_on=fct_column_name,
             right_on=dim_column_name,
             how="left",
             suffixes=("", f"_{dim_table_name}"),
         )
 
         # Umbenennen der ID-Spalte in der angereicherten Faktentabelle, falls notwendig
-        enriched_fact_table.rename(
-            columns={dim_id_column_name: fact_key_column_name}, inplace=True
+        enriched_fct_table.rename(
+            columns={dim_id_column_name: fct_key_column_name}, inplace=True
         )
-        # logging.info(enriched_fact_table[fact_key_column_name])
-        # logging.info(f"Count Rows: {enriched_fact_table.shape[0]}")
-        return enriched_fact_table
+        # logging.info(enriched_fct_table[fct_key_column_name])
+        # logging.info(f"Count Rows: {enriched_fct_table.shape[0]}")
+        return enriched_fct_table
 
-    def process_fact_table(
+    def process_fct_table(
         self,
         dim_table_name,
-        fact_data_df,
+        fct_data_df,
         dim_column_name,
-        fact_column_names,
-        fact_key_column_names,
+        fct_column_names,
+        fct_key_column_names,
     ):
-        # Stelle sicher, dass fact_column_names und fact_key_column_names Listen sind
-        if not isinstance(fact_column_names, list):
-            fact_column_names = [fact_column_names]
-        if not isinstance(fact_key_column_names, list):
-            fact_key_column_names = [fact_key_column_names]
+        # Stelle sicher, dass fct_column_names und fct_key_column_names Listen sind
+        if not isinstance(fct_column_names, list):
+            fct_column_names = [fct_column_names]
+        if not isinstance(fct_key_column_names, list):
+            fct_key_column_names = [fct_key_column_names]
 
         dim_id_column_name = generate_id_column_name(dim_table_name)
 
         # Iteriere über jede Spalte, die verarbeitet werden soll
-        for fact_column_name, fact_key_column_name in zip(
-            fact_column_names, fact_key_column_names
+        for fct_column_name, fct_key_column_name in zip(
+            fct_column_names, fct_key_column_names
         ):
-            new_ids_df = self.get_dim_ids_for_fact_values(
-                dim_table_name, fact_data_df, dim_column_name, fact_column_name
+            new_ids_df = self.get_dim_ids_for_fct_values(
+                dim_table_name, fct_data_df, dim_column_name, fct_column_name
             )
 
             # die Primary Keys in der Fact Tabelle einsetzen
-            fact_data_df = self.enrich_fact_table_with_dim_ids(
-                fact_data_df,
+            fct_data_df = self.enrich_fct_table_with_dim_ids(
+                fct_data_df,
                 new_ids_df,
-                fact_column_name,
+                fct_column_name,
                 dim_column_name,
-                fact_key_column_name,
+                fct_key_column_name,
                 dim_id_column_name,
             )
 
-        return fact_data_df
+        return fct_data_df
 
     def main(self):
         # config_manager = JobConfigManager("job_config_tables.yaml")
         dim_tables_config = self.config_manager.load_config("dimensions_info")
-        fact_table_name = self.config_manager.get_fact_table_name()
+        fct_table_name = self.config_manager.get_fct_table_name()
+        fct_uniqueColumns = self.config_manager.get_fct_unique_columns()
 
         s3_manager = JobS3ClientManager()
         # s3_client = s3_manager.get_boto_client()
@@ -223,8 +226,8 @@ class JobDataLoader:
         )
 
         # die neuen Daten (CSV) der Fact Tabelle laden aus S3
-        fact_data_df = file_processor.merge_files_to_df(fact_table_name)
-        fact_data_df.info()
+        fct_data_df = file_processor.merge_files_to_df(fct_table_name)
+        fct_data_df.info()
 
         # über jede Dim Tabelle aus dem Config iterieren und
         for dim_table_name, dim_table_info in dim_tables_config.items():
@@ -246,12 +249,12 @@ class JobDataLoader:
             # dim_id_column_name = generate_id_column_name(dim_table_name)
 
             if not dim_table_info.get("factForeignKeyColumns"):
-                dim_table_info["factForeignKeyColumns"] = generate_fact_key_column_name(
+                dim_table_info["factForeignKeyColumns"] = generate_fct_key_column_name(
                     dim_table_name
                 )
-            fact_key_column_names = dim_table_info["factForeignKeyColumns"]
+            fct_key_column_names = dim_table_info["factForeignKeyColumns"]
 
-            fact_column_names = dim_table_info["factColumns"]
+            fct_column_names = dim_table_info["factColumns"]
             dim_column_name = dim_table_info["dimColumns"]
 
             if not dim_data_df.empty:
@@ -263,32 +266,32 @@ class JobDataLoader:
                 f"Count Rows in Dim  Table {dim_table_name}: {dim_data_df.shape[0]}"
             )
 
-            fact_data_df.info()
+            fct_data_df.info()
             logging.info(
-                f"Count Rows in Fact Table                 : {fact_data_df.shape[0]}"
+                f"Count Rows in Fact Table                 : {fct_data_df.shape[0]}"
             )
-            fact_data_df = self.process_fact_table(
+            fct_data_df = self.process_fct_table(
                 dim_table_name,
-                fact_data_df,
+                fct_data_df,
                 dim_column_name,
-                fact_column_names,
-                fact_key_column_names,
+                fct_column_names,
+                fct_key_column_names,
             )
             logging.info(f"Last Dim Table: {dim_table_name}")
-            fact_data_df.info()
+            fct_data_df.info()
             logging.info(
-                f"Count Rows in Fact Table                 : {fact_data_df.shape[0]}"
+                f"Count Rows in Fact Table                 : {fct_data_df.shape[0]}"
             )
-            fact_data_df.drop_duplicates(inplace=True)
+            fct_data_df.drop_duplicates(inplace=True)
 
         # jetzt muss die fact tabelle in die datenbank geladen werden.
         # und zwar nur die notwendigen spalten
 
-        fact_table_columns = self.config_manager.get_all_fact_table_columns()
-        fact_data_df.info()
-        final_fact_table_df = fact_data_df[fact_table_columns]
+        fct_table_columns = self.config_manager.get_all_fct_table_columns()
+        fct_data_df.info()
+        final_fct_table_df = fct_data_df[fct_table_columns]
 
-        # logging.info(final_fact_table_df.head(25))
-        # logging.info(f"Count Rows: {final_fact_table_df.shape[0]}")
+        # logging.info(final_fct_table_df.head(25))
+        # logging.info(f"Count Rows: {final_fct_table_df.shape[0]}")
 
-        self.write_dataframe(fact_table_name, final_fact_table_df)
+        self.write_dataframe(fct_table_name, final_fct_table_df, fct_uniqueColumns[0])

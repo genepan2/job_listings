@@ -26,7 +26,7 @@ def generate_id_column_name(table_name):
     return table_name
 
 
-def generate_fact_key_column_name(dim_table_name):
+def generate_fct_key_column_name(dim_table_name):
     # Remove "dim" at the start, "s" at the end, and add "Id" at the end for general case
     if dim_table_name.startswith("dim") and dim_table_name.endswith("s"):
         base_name = dim_table_name[3:-1]  # Remove "dim" and "s"
