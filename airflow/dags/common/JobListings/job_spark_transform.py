@@ -82,7 +82,7 @@ if __name__ == "__main__":
     dim_dataframes = data_transformation.get_dataframes_from_data(data_clean_df)
     dim_dataframes["dim_dates_df"] = dates_df
 
-    fact_df = data_transformation.select_fact_columns(data_clean_df)
+    fct_df = data_transformation.select_fct_columns(data_clean_df)
 
     # load config
     config_manager = JobConfigManager("job_config_tables.yaml")
@@ -93,8 +93,8 @@ if __name__ == "__main__":
         logger.info(f"Start working on {dim_table_name}")
 
         # Determine the dimIdColumn if not provided or empty
-        if not dim_tabel_info.get("dimIdColumn"):
-            dim_tabel_info["dimIdColumn"] = generate_id_column_name(dim_table_name)
+        # if not dim_tabel_info.get("dimIdColumn"):
+        #     dim_tabel_info["dimIdColumn"] = generate_id_column_name(dim_table_name)
 
         uniqueColumns = dim_tabel_info.get("uniqueColumns")
         if not isinstance(uniqueColumns, list):
@@ -154,13 +154,32 @@ if __name__ == "__main__":
             logger.info(f"Done saving {dim_table_name}")
 
     # save the fact table
-    if not is_dataframe_empty(fact_df):
+    fct_info = config_manager.load_config("fct_info")
+    fct_table_name = config_manager.get_fct_table_name()
+    uniqueColumns = fct_info.get("fctJobListings").get("uniqueColumns")
+
+    fct_existing_values = data_enrichment.load_filtered_table(
+        fct_table_name,
+        uniqueColumns,
+        uniqueColumns[0],
+        fct_df,
+        uniqueColumns[0],
+    )
+
+    # fct_new_values_df = (
+    #     fct_df.select(uniqueColumns).distinct().exceptAll(fct_existing_values)
+    # )
+    fct_merged_df = data_transformation.merge_dataframes(
+        fct_df, fct_existing_values, uniqueColumns[0]
+    )
+
+    if not is_dataframe_empty(fct_merged_df):
         logger.info("Start saving Fact Table")
         target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/fctJobListings"
         target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/fctJobListings"
 
-        data_storage.save_from_spark_as_delta(fact_df, target_path_delta)
-        data_storage.save_from_spark_as_csv(fact_df, target_path_csv)
+        data_storage.save_from_spark_as_delta(fct_merged_df, target_path_delta)
+        data_storage.save_from_spark_as_csv(fct_merged_df, target_path_csv)
         logger.info("Done saving Fact Table")
 
     spark_manager.stop()
