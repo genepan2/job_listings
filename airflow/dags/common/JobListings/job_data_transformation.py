@@ -299,6 +299,40 @@ class JobDataTransformation:
             "search_datetime_is_holiday",
         )
 
+    def get_unique_date_values_dataframes(self, df):
+        # Definiere die Spaltennamen für date_df1 und date_df2
+        columns_df1 = [
+            "publish_date_unique",
+            "publish_date_year",
+            "publish_date_month",
+            "publish_date_week",
+            "publish_date_day",
+            "publish_date_hour",
+            "publish_date_minute",
+            "publish_date_week_day",
+            "publish_date_is_holiday",
+        ]
+        columns_df2 = [
+            "search_datetime_unique",
+            "search_datetime_year",
+            "search_datetime_month",
+            "search_datetime_week",
+            "search_datetime_day",
+            "search_datetime_hour",
+            "search_datetime_minute",
+            "search_datetime_week_day",
+            "search_datetime_is_holiday",
+        ]
+
+        date_df1 = self.create_df_with_aliases(df, columns_df1, "publish_date_")
+        date_df2 = self.create_df_with_aliases(df, columns_df2, "search_datetime_")
+
+        date_df = date_df1.union(date_df2)
+        date_df_distinct = date_df.dropDuplicates(["unique"])
+        date_df_renamed = date_df_distinct.withColumnRenamed("unique", "date_unique")
+
+        return date_df_renamed
+
     def create_df_with_aliases(self, data_df, columns, remove_prefix):
         # Erstelle eine Liste von select-Anweisungen, die die ursprünglichen Spaltennamen in die gewünschten Aliase umwandelt
         select_expr = [
