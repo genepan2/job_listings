@@ -236,8 +236,11 @@ class JobDataTransformation:
                 "title",
                 "title_cleaned",
                 "description",
-                "source_identifier",
                 "fingerprint",
+            ),
+            "dim_source_infos_df": df.select(
+                "url",
+                col("source_identifier").alias("identifier"),
             ),
             "dim_locations_df": df.select(
                 col("location").alias("city"), "country"
