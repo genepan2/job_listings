@@ -11,7 +11,7 @@ from job_config_manager import JobConfigManager
 from job_file_processing import JobFileProcessing
 
 from job_helper_utils import (
-    generate_dim_id_column_name,
+    generate_id_column_name,
     generate_fact_key_column_name,
     generate_dim_table_name_from_id_column_name,
 )
@@ -52,7 +52,15 @@ class JobDataLoader:
         df.info()
         return [tuple(x) for x in df.to_numpy()]
 
-    def write_data(self, table_name, data, columns, distinctColumn):
+    def write_dataframe(self, table_name, df, distinct_column=None, return_ids=False):
+        """Schreibt Daten aus einem DataFrame in eine PostgreSQL-Tabelle und gibt die generierten IDs zurück."""
+        # # logging.info(df.info())
+        data_tuples = self.dataframe_to_tuples(df)  # Konvertiere den DataFrame in Tupel
+        return self.write_data(
+            table_name, data_tuples, df.columns, distinct_column, return_ids
+        )
+
+    def write_data(self, table_name, data, columns, distinct_column, return_ids):
         """Schreibt neue Daten in eine PostgreSQL-Tabelle."""
         # # logging.info(data.info())
         if not data:
@@ -66,16 +74,24 @@ class JobDataLoader:
             try:
                 column_names = ", ".join(columns)
                 placeholders = ", ".join(["%s"] * len(columns))
-                if distinctColumn is None:
+
+                if distinct_column is None:
                     query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders})"
                 else:
-                    query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders}) ON CONFLICT ({distinctColumn}) DO NOTHING"
-                # logging.info(query)
+                    query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders}) ON CONFLICT ({distinct_column}) DO NOTHING"
+
+                if return_ids:
+                    id_column_name = generate_id_column_name(table_name)
+                    query += f" RETURNING {id_column_name}"
+
                 for row in data:
-                    # placeholders = ", ".join(["%s"] * len(row))
-                    # query = f"INSERT INTO {table_name} VALUES ({placeholders})"
-                    # logging.info(row)
                     cursor.execute(query, row)
+                    if return_ids:
+                        ids = [row[0] for row in cursor.fetchall()]
+                        data_with_ids = [row + (id,) for row, id in zip(data, ids)]
+                    else:
+                        data_with_ids = data
+
                 # Commit der Transaktion, wenn alle Einfügungen erfolgreich waren
                 self.connection.commit()
                 # logging.info(f"Table {table_name} successfuly written to data warehouse.")
@@ -86,11 +102,7 @@ class JobDataLoader:
                 # Optional: Hier könntest du den Fehler weiter nach außen werfen oder spezifische Aktionen durchführen
                 raise
 
-    def write_dataframe(self, table_name, df, distinctColumn=None):
-        """Schreibt Daten aus einem DataFrame in eine PostgreSQL-Tabelle und gibt die generierten IDs zurück."""
-        # # logging.info(df.info())
-        data_tuples = self.dataframe_to_tuples(df)  # Konvertiere den DataFrame in Tupel
-        return self.write_data(table_name, data_tuples, df.columns, distinctColumn)
+        return data_with_ids
 
     def get_dim_ids_for_fact_values(
         self, dim_table_name, fact_table_df, dim_value_column, fact_value_column
@@ -107,7 +119,7 @@ class JobDataLoader:
         # Erstellen einer Liste mit eindeutigen Werten aus der Faktentabelle
         unique_values = fact_table_df[fact_value_column].dropna().unique().tolist()
         # logging.info(unique_values)
-        dim_id_column_name = generate_dim_id_column_name(dim_table_name)
+        dim_id_column_name = generate_id_column_name(dim_table_name)
         # SQL-Abfrage vorbereiten, um IDs für diese Werte zu holen
         query = f"SELECT {dim_value_column}, {dim_id_column_name} FROM {dim_table_name} WHERE {dim_value_column} IN %s"
         # Ausführen der Abfrage und Speichern der Ergebnisse in einem DataFrame
@@ -176,7 +188,7 @@ class JobDataLoader:
         if not isinstance(fact_key_column_names, list):
             fact_key_column_names = [fact_key_column_names]
 
-        dim_id_column_name = generate_dim_id_column_name(dim_table_name)
+        dim_id_column_name = generate_id_column_name(dim_table_name)
 
         # Iteriere über jede Spalte, die verarbeitet werden soll
         for fact_column_name, fact_key_column_name in zip(
@@ -231,7 +243,7 @@ class JobDataLoader:
             # continue
             # diese Daten ins Postgres laden
             # die Primary Keys erhalten, alle Primary Keys
-            # dim_id_column_name = generate_dim_id_column_name(dim_table_name)
+            # dim_id_column_name = generate_id_column_name(dim_table_name)
 
             if not dim_table_info.get("factForeignKeyColumns"):
                 dim_table_info["factForeignKeyColumns"] = generate_fact_key_column_name(
