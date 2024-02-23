@@ -66,8 +66,8 @@ if __name__ == "__main__":
     data_raw = file_processor.merge_files_to_df()
 
     # logger.info(data_raw.printSchema())
-    logger.info(data_raw.info())
-    logger.info(data_raw.head(5))
+    # logger.info(data_raw.info())
+    # logger.info(data_raw.head(5))
 
     schema = data_transformation.get_df_schema(source_name)
     spark_df = spark_session.createDataFrame(data_raw, schema=schema)
@@ -104,9 +104,6 @@ if __name__ == "__main__":
         dataframe_name = snakecase(dim_table_name) + "_df"
         dim_df = dim_dataframes.get(dataframe_name)
 
-        logger.info(f"Schema von {dataframe_name}")
-        logger.info(dim_df.printSchema())
-
         if not dim_df:
             raise ValueError(f"DataFrame {dataframe_name} not found")
 
@@ -139,7 +136,6 @@ if __name__ == "__main__":
                 uniqueColumns[0],
                 "inner",
             )
-            logger.info(dim_df_new_full.printSchema())
 
             logger.info(f"Start saving {dim_table_name} as delta")
             target_path_delta = (
@@ -166,9 +162,6 @@ if __name__ == "__main__":
         uniqueColumns[0],
     )
 
-    # fct_new_values_df = (
-    #     fct_df.select(uniqueColumns).distinct().exceptAll(fct_existing_values)
-    # )
     fct_merged_df = data_transformation.merge_dataframes(
         fct_df, fct_existing_values, uniqueColumns[0]
     )
