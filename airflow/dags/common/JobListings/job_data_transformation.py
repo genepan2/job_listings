@@ -346,10 +346,10 @@ class JobDataTransformation:
         # Erstelle den neuen DataFrame basierend auf den ausgewählten und umbenannten Spalten
         return data_df.select(*select_expr)
 
-    # i will eine methode, zwei dataframes vergleicht und bei übereinstimmung in die erste dataframe einen wert in eine nicht vorhandene spalte einträgt
     def merge_dataframes(self, main_df, add_df, match_column_name):
-        # eine neue spalte an df2 hinzufügen, die den wert True enthält
-        add_df = add_df.withColumn("is_new", lit(1))
-        return main_df.join(
-            add_df, main_df[match_column_name] == add_df[match_column_name], "left"
-        )
+        if add_df.isEmpty():
+            return main_df.withColumn("is_new", lit(True))
+        else:
+            add_df = add_df.withColumn("is_new", lit(True))
+            merged_df = main_df.join(add_df, [match_column_name], "left")
+            return merged_df
