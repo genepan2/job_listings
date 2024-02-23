@@ -10,7 +10,7 @@ from job_config_constants import PATH, COLLECTIONS
 
 
 def generate_id_column_name(table_name):
-    # Remove "dim" at the start, "s" at the end, and add "Id" at the end for general case
+    # Remove "dim"/"fct" at the start, "s" at the end, and add "Id" at the end for general case
     if (
         table_name.startswith("dim")
         or table_name.startswith("fct")
@@ -52,6 +52,14 @@ def generate_dim_table_name_from_id_column_name(dim_table_id_column_name):
 
         return "dim" + pascalcase(base_name) + "s"
     return dim_table_id_column_name
+
+
+def generate_bridge_key_column_name(bridge_table_name):
+    # Remove "Bridge" at the end and add "Key" at the end for general case
+    if bridge_table_name.endswith("Bridge"):
+        base_name = bridge_table_name[3:-6]  # Remove "Job" and "Bridge"
+        return snakecase(base_name) + "_key"
+    return bridge_table_name
 
 
 def get_collection_keys_without_all():
