@@ -84,12 +84,12 @@ fct_info:
 
 bridge_info:
  JobSkillsBridge:
-  someValue: "empty"
+  fctKeyColumn: "empty"
  JobTechnologiesBridge:
-  someValue: "empty"
+  fctKeyColumn: "empty"
  JobSearchKeywordBridge:
-  someValue: "empty"
+  fctKeyColumn: "empty"
  JobSearchLocationBridge:
-  someValue: "empty"
+  fctKeyColumn: "empty"
  JobSourceInfoBridge:
-  someValue: "empty"
+  fctKeyColumn: "empty"
