@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2.extensions import register_adapter, AsIs
+from psycopg2.extras import execute_values
 
 import os
 import pandas as pd
@@ -14,6 +15,7 @@ from job_helper_utils import (
     generate_id_column_name,
     generate_fct_key_column_name,
     generate_dim_table_name_from_id_column_name,
+    generate_bridge_key_column_name,
 )
 
 register_adapter(np.int64, AsIs)
@@ -32,24 +34,11 @@ class JobDataLoader:
             dbname=os.getenv("DW_DB"),
             user=os.getenv("DW_USER"),
             password=os.getenv("DW_PASS"),
-            # host=os.getenv('postgres')
             host="postgres",
         )
 
     def dataframe_to_tuples(self, df):
         """Konvertiert einen Pandas DataFrame in eine Liste von Tupeln."""
-        # # logging.info(df.info())
-        # df.info()
-        # for column in df.columns:
-        #     # logging.info(f"Dtype is: {df[column].dtype}")
-        #     if df[column].dtype == numpy.int64:
-        #         df[column] = df[column].astype(int)
-        # converted_df = df.applymap(lambda x: int(x) if isinstance(x, np.int64) else x)
-        # if "date_unique" in df.columns:
-        #     # logging.info("date_unique was found...")
-        #     df["date_unique"] = df["date_unique"].values.astype(int)
-        # # logging.info(converted_df.info())
-        df.info()
         return [tuple(x) for x in df.to_numpy()]
 
     def write_dataframe(self, table_name, df, distinct_column=None, return_ids=False):
@@ -69,42 +58,76 @@ class JobDataLoader:
             return
 
         # columns = data[0].keys()
+        df = pd.DataFrame(data, columns=columns)
 
         with self.connection.cursor() as cursor:
             try:
                 column_names = ", ".join(columns)
                 placeholders = ", ".join(["%s"] * len(columns))
 
-                if distinct_column is None:
-                    query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders})"
-                else:
-                    query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders}) ON CONFLICT ({distinct_column}) DO NOTHING"
+                # if distinct_column is None:
+                #     query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders})"
+                # else:
+                #     query = f"INSERT INTO {table_name} ({column_names}) VALUES ({placeholders}) ON CONFLICT ({distinct_column}) DO NOTHING"
+
+                query = self.construct_query(
+                    table_name, column_names, placeholders, distinct_column, return_ids
+                )
 
                 if return_ids:
                     id_column_name = generate_id_column_name(table_name)
-                    query += f" RETURNING {id_column_name}"
+                    # query += f" RETURNING {id_column_name}"
 
-                for row in data:
-                    logging.info(query)
-                    logging.info(row)
-                    cursor.execute(query, row)
-                    if return_ids:
-                        ids = [row[0] for row in cursor.fetchall()]
-                        data_with_ids = [row + (id,) for row, id in zip(data, ids)]
-                    else:
-                        data_with_ids = data
+                    # if return_ids:
+                    data_with_ids = []  # Eine leere Liste, um die Daten mit IDs zu sammeln
+                    for row in data:
+                        # logging.info(query)
+                        # logging.info(row)
+                        cursor.execute(query, row)
+                        id_of_new_row = (
+                            cursor.fetchone()[0] if cursor.rowcount > 0 else None
+                        )
+                        # Kombiniere das Originaldaten-Tupel mit der neuen ID
+                        new_row_with_id = row + (id_of_new_row,)
+                        data_with_ids.append(new_row_with_id)
+                    self.connection.commit()  # Commit nach allen Einfügungen
+                    column_names_with_id = columns.tolist() + [id_column_name]
+                    df = pd.DataFrame(data_with_ids, columns=column_names_with_id)
+                else:
+                    # logging.info(query)
+                    # logging.info(data)
+                    execute_values(cursor, query, data)  # Bulk-Insert as of version 2.7
+                    self.connection.commit()  # Commit nach dem Bulk-Insert
 
-                # Commit der Transaktion, wenn alle Einfügungen erfolgreich waren
-                self.connection.commit()
-                # logging.info(f"Table {table_name} successfuly written to data warehouse.")
             except Exception as e:
                 self.connection.rollback()  # Rollback im Fehlerfall
                 # Logge den Fehler oder sende eine Benachrichtigung
                 logging.info(f"Fehler beim Einfügen in die Datenbank: {e}")
+                logging.info(f"Query: {query}")
+                logging.info(f"Row: {row}")
                 # Optional: Hier könntest du den Fehler weiter nach außen werfen oder spezifische Aktionen durchführen
                 raise
 
-        return data_with_ids
+        return df
+
+    def construct_query(
+        self, table_name, column_names, placeholders, distinct_column, return_ids
+    ):
+        query = f"INSERT INTO {table_name} ({column_names})"
+
+        if return_ids:
+            query += f" VALUES ({placeholders})"
+        else:
+            query += " VALUES %s"
+
+        if distinct_column:
+            query += f" ON CONFLICT ({distinct_column}) DO NOTHING"
+
+        if return_ids:
+            id_column_name = generate_id_column_name(table_name)
+            query += f" RETURNING {id_column_name}"
+
+        return query
 
     def get_dim_ids_for_fct_values(
         self, dim_table_name, fct_table_df, dim_value_column, fct_value_column
@@ -153,12 +176,12 @@ class JobDataLoader:
         :return: DataFrame der angereicherten Faktentabelle.
         """
         dim_table_name = generate_dim_table_name_from_id_column_name(dim_id_column_name)
-        logging.info(f"Dim  Table Name: {dim_table_name}")
-        logging.info(f"Fact Column Name: {fct_column_name}")
-        logging.info(f"Dim  Column Name: {dim_column_name}")
+        # logging.info(f"Dim  Table Name: {dim_table_name}")
+        # logging.info(f"Fact Column Name: {fct_column_name}")
+        # logging.info(f"Dim  Column Name: {dim_column_name}")
 
         dim_table_with_ids.drop_duplicates(subset=[dim_column_name], inplace=True)
-        logging.info(dim_table_with_ids.head(10))
+        # logging.info(dim_table_with_ids.head(10))
         # Zusammenführen der Faktentabelle mit der Dimensionstabelle, um die IDs hinzuzufügen
         enriched_fct_table = fct_table.merge(
             dim_table_with_ids,
@@ -262,14 +285,14 @@ class JobDataLoader:
                 self.write_dataframe(dim_table_name, dim_data_df, uniqueColumn)
 
             # new_ids_df = pd.DataFrame(new_ids, columns=[dim_id_column_name])
-            logging.info(
-                f"Count Rows in Dim  Table {dim_table_name}: {dim_data_df.shape[0]}"
-            )
+            # logging.info(
+            #     f"Count Rows in Dim  Table {dim_table_name}: {dim_data_df.shape[0]}"
+            # )
 
-            fct_data_df.info()
-            logging.info(
-                f"Count Rows in Fact Table                 : {fct_data_df.shape[0]}"
-            )
+            # fct_data_df.info()
+            # logging.info(
+            #     f"Count Rows in Fact Table                 : {fct_data_df.shape[0]}"
+            # )
             fct_data_df = self.process_fct_table(
                 dim_table_name,
                 fct_data_df,
@@ -277,10 +300,10 @@ class JobDataLoader:
                 fct_column_names,
                 fct_key_column_names,
             )
-            logging.info(f"Last Dim Table: {dim_table_name}")
-            fct_data_df.info()
-            logging.info(
-                f"Count Rows in Fact Table                 : {fct_data_df.shape[0]}"
+            # logging.info(f"Last Dim Table: {dim_table_name}")
+            # fct_data_df.info()
+            # logging.info(
+            #     f"Count Rows in Fact Table                 : {fct_data_df.shape[0]}"
             )
             fct_data_df.drop_duplicates(inplace=True)
 
@@ -294,4 +317,30 @@ class JobDataLoader:
         # logging.info(final_fct_table_df.head(25))
         # logging.info(f"Count Rows: {final_fct_table_df.shape[0]}")
 
-        self.write_dataframe(fct_table_name, final_fct_table_df, fct_uniqueColumns[0])
+        fct_table_df_with_ids = self.write_dataframe(
+            fct_table_name, final_fct_table_df, fct_uniqueColumns[0], True
+        )
+        fct_table_df_with_ids.head(10)
+
+        # jetzt werden die bridge tabellen gemacht
+        bridge_tables_config = self.config_manager.get_bridge_tables()
+        fct_id_column_name = generate_id_column_name(fct_table_name)
+        fct_key_column_name = fct_id_column_name[:-3] + "_key"
+
+        for bridge_table_name, bridge_table_info in bridge_tables_config.items():
+            logging.info(f"Doing Bridge Table: {bridge_table_name}")
+            fct_key_column_name = generate_bridge_key_column_name(bridge_table_name)
+
+            if fct_key_column_name not in fct_table_df_with_ids.columns:
+                logging.info(
+                    f"{fct_key_column_name} Column not found in Fact Table. Skipping Bridge Table: {bridge_table_name}"
+                )
+                continue
+
+            bridge_df = fct_table_df_with_ids[[fct_id_column_name, fct_key_column_name]]
+            bridge_df.rename(
+                inplace=True, columns={fct_id_column_name: fct_key_column_name}
+            )
+            bridge_df.head(10)
+
+            self.write_dataframe(bridge_table_name, bridge_df)
