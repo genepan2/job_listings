@@ -31,3 +31,6 @@ class JobConfigManager:
     def get_fct_unique_columns(self):
         fctTable = self.get_fct_table()
         return fctTable["uniqueColumns"]
+
+    def get_bridge_tables(self):
+        return self.load_config("bridge_info")
