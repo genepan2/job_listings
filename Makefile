@@ -1,4 +1,10 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw pgadmin restart-spark-w
+.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw pgadmin restart-spark-w stop start
+
+stop:
+	docker-compose stop
+
+start:
+	docker-compose start
 
 restart-spark-w:
 	docker compose restart spark-worker
