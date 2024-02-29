@@ -26,7 +26,15 @@ class JobConfigManager:
 
     def get_all_fct_table_columns(self):
         fctTable = self.get_fct_table()
-        return fctTable["dimKeyColumns"] + fctTable["otherColumns"]
+        return (
+            fctTable["dimKeyColumns"]
+            + fctTable["otherColumns"]
+            + fctTable["bridgeColumns"]
+        )
+
+    def get_fct_table_bridge_columns(self):
+        fctTable = self.get_fct_table()
+        return fctTable["bridgeColumns"]
 
     def get_fct_unique_columns(self):
         fctTable = self.get_fct_table()
