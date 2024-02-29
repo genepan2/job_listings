@@ -50,6 +50,9 @@ class JobDataEnrichment:
             properties=self.connection_prop,
         )
 
+        # print("type of filtered_df:")
+        # print(type(filtered_df))
+        # <class 'pyspark.sql.dataframe.DataFrame'>
         return filtered_df
 
     def save_dimension_table(self, df, table_name):
