@@ -20,6 +20,8 @@ import socket
 
 import re
 
+DO_DIM_TABLES = True
+
 
 def is_dataframe_empty(df: DataFrame) -> bool:
     """Check if a DataFrame is empty."""
@@ -34,7 +36,7 @@ if __name__ == "__main__":
     bucket_to = args[4]
     delta_minutes = int(args[5])
 
-    spark_manager = JobSparkSessionManager(appname)
+    spark_manager = JobSparkSessionManager(appname, "ALL")
     spark_session = spark_manager.get_spark_session()
 
     # setup logger
@@ -73,6 +75,7 @@ if __name__ == "__main__":
     spark_df = spark_session.createDataFrame(data_raw, schema=schema)
 
     data_clean_df = data_transformation.transform(spark_df)
+    # data_clean_df.show(25)
 
     # Create the Dim DataFrames
     # index,company_name,company_linkedin_url,title,location,linkedin_id,url,applicants,publish_date,level,employment,function,industries,description,search_datetime,search_keyword,search_location,fingerprint,language
@@ -89,70 +92,80 @@ if __name__ == "__main__":
     dimensions_info = config_manager.load_config("dimensions_info")
 
     # Loop through each dimension table and perform the enrichment
-    for dim_table_name, dim_tabel_info in dimensions_info.items():
-        logger.info(f"Start working on {dim_table_name}")
+    if DO_DIM_TABLES:
+        for dim_table_name, dim_tabel_info in dimensions_info.items():
+            logger.info(f"Start working on {dim_table_name}")
 
-        # Determine the dimIdColumn if not provided or empty
-        # if not dim_tabel_info.get("dimIdColumn"):
-        #     dim_tabel_info["dimIdColumn"] = generate_id_column_name(dim_table_name)
+            # Determine the dimIdColumn if not provided or empty
+            # if not dim_tabel_info.get("dimIdColumn"):
+            #     dim_tabel_info["dimIdColumn"] = generate_id_column_name(dim_table_name)
 
-        uniqueColumns = dim_tabel_info.get("uniqueColumns")
-        if not isinstance(uniqueColumns, list):
-            uniqueColumns = [uniqueColumns]
+            uniqueColumns = dim_tabel_info.get("uniqueColumns")
+            if not isinstance(uniqueColumns, list):
+                uniqueColumns = [uniqueColumns]
 
-        # Access the corresponding DataFrame
-        dataframe_name = snakecase(dim_table_name) + "_df"
-        dim_df = dim_dataframes.get(dataframe_name)
+            # Access the corresponding DataFrame
+            dataframe_name = snakecase(dim_table_name) + "_df"
+            dim_df = dim_dataframes.get(dataframe_name)
 
-        if not dim_df:
-            raise ValueError(f"DataFrame {dataframe_name} not found")
+            if not dim_df:
+                raise ValueError(f"DataFrame {dataframe_name} not found")
 
-        # Load existing data from the dimension table
-        # dim_existing_df = data_enrichment.load_dimension_table(
-        #     dim_table_name, uniqueColumns
-        # )
-        dim_existing_values = data_enrichment.load_filtered_table(
-            dim_table_name,
-            uniqueColumns,
-            uniqueColumns[0],
-            dim_df,
-            uniqueColumns[0],
-        )
-
-        # Identify new values by comparing with existing data
-        # dim_new_values_df = (
-        #     dim_df.select(uniqueColumns).distinct().exceptAll(dim_existing_df)
-        # )
-        dim_new_values_df = (
-            dim_df.select(uniqueColumns).distinct().exceptAll(dim_existing_values)
-        )
-
-        # save the dim tables
-        if not is_dataframe_empty(dim_new_values_df):
-            # an dieser Stelle muss ich ein merge machen mit der dim_df über die uniqueColumns
-            dim_df_new_full = dim_new_values_df.join(
-                dim_df,
-                # dim_new_values_df[uniqueColumns[0]] == dim_df[uniqueColumns[0]],
+            # Load existing data from the dimension table
+            # dim_existing_df = data_enrichment.load_dimension_table(
+            #     dim_table_name, uniqueColumns
+            # )
+            dim_existing_values = data_enrichment.load_filtered_table(
+                dim_table_name,
+                uniqueColumns,
                 uniqueColumns[0],
-                "inner",
+                dim_df,
+                uniqueColumns[0],
             )
 
-            logger.info(f"Start saving {dim_table_name} as delta")
-            target_path_delta = (
-                f"s3a://{bucket_to}/{source_name}/delta/{dim_table_name}"
+            # Identify new values by comparing with existing data
+            # dim_new_values_df = (
+            #     dim_df.select(uniqueColumns).distinct().exceptAll(dim_existing_df)
+            # )
+            dim_new_values_df = (
+                dim_df.select(uniqueColumns).distinct().exceptAll(dim_existing_values)
             )
-            data_storage.save_from_spark_as_delta(dim_df_new_full, target_path_delta)
 
-            logger.info(f"Start saving {dim_table_name} as csv")
-            target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/{dim_table_name}"
-            data_storage.save_from_spark_as_csv(dim_df_new_full, target_path_csv)
+            # save the dim tables
+            if not is_dataframe_empty(dim_new_values_df):
+                # an dieser Stelle muss ich ein merge machen mit der dim_df über die uniqueColumns
+                dim_df_new_full = dim_new_values_df.join(
+                    dim_df,
+                    # dim_new_values_df[uniqueColumns[0]] == dim_df[uniqueColumns[0]],
+                    uniqueColumns[0],
+                    "inner",
+                )
 
-            logger.info(f"Done saving {dim_table_name}")
+                dim_df_new_full.show(25)
+
+                logger.info(f"Start saving {dim_table_name} as delta")
+                target_path_delta = (
+                    f"s3a://{bucket_to}/{source_name}/delta/{dim_table_name}"
+                )
+                data_storage.save_from_spark_as_delta(
+                    dim_df_new_full, target_path_delta
+                )
+
+                logger.info(f"Start saving {dim_table_name} as csv")
+                target_path_csv = (
+                    f"s3a://{bucket_to}/{source_name}/csv/{dim_table_name}"
+                )
+                data_storage.save_from_spark_as_csv(dim_df_new_full, target_path_csv)
+
+                logger.info(f"Done saving {dim_table_name}")
 
     # save the fact table
     fct_info = config_manager.load_config("fct_info")
     fct_table_name = config_manager.get_fct_table_name()
     uniqueColumns = fct_info.get("fctJobListings").get("uniqueColumns")
+    # print(type(uniqueColumns))
+    # raise ValueError("stop here")
+    uniqueColumns.append("created_at")
 
     fct_existing_values = data_enrichment.load_filtered_table(
         fct_table_name,
@@ -161,6 +174,19 @@ if __name__ == "__main__":
         fct_df,
         uniqueColumns[0],
     )
+    # logger.info("fct_existing_values:")
+    # logger.info(type(fct_df))
+    # print(type(fct_existing_values))
+    # fct_existing_values.show()
+
+    # logger.info("fct_df:")
+    # print(type(fct_df))
+    # fct_df.show()
+
+    columns_to_drop = ["search_datetime"]
+    fct_df = fct_df.dropDuplicates([uniqueColumns[0]]).drop(*columns_to_drop)
+
+    # spark_manager.stop()
 
     fct_merged_df = data_transformation.merge_dataframes(
         fct_df, fct_existing_values, uniqueColumns[0]
@@ -168,11 +194,12 @@ if __name__ == "__main__":
 
     if not is_dataframe_empty(fct_merged_df):
         logger.info("Start saving Fact Table")
+        # fct_merged_df.show(25)
         target_path_delta = f"s3a://{bucket_to}/{source_name}/delta/fctJobListings"
         target_path_csv = f"s3a://{bucket_to}/{source_name}/csv/fctJobListings"
 
-        data_storage.save_from_spark_as_delta(fct_merged_df, target_path_delta)
         data_storage.save_from_spark_as_csv(fct_merged_df, target_path_csv)
+        data_storage.save_from_spark_as_delta(fct_merged_df, target_path_delta)
         logger.info("Done saving Fact Table")
 
     spark_manager.stop()
