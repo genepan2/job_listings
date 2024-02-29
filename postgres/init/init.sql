@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS fctJobListings (
     job_key INT REFERENCES dimJobs(job_id),
     company_key INT REFERENCES dimCompanies(company_id),
     source_key INT REFERENCES dimSources(source_id),
+    -- source_info_key INT REFERENCES dimSourceInfos(source_info_id),
     search_date_key INT REFERENCES dimDates(date_id),
     -- References to dimDates
     -- search_word_key INT REFERENCES dimSearchKeywords(),
@@ -100,10 +101,10 @@ CREATE TABLE IF NOT EXISTS fctJobListings (
     language_key INT REFERENCES dimLanguages(language_id),
     job_level_key INT REFERENCES dimJobLevels(job_level_id),
     employment_key INT REFERENCES dimEmployments(employment_id),
-    -- industry_key INT REFERENCES dimIndustries(industry_id),
+    industry_key INT REFERENCES dimIndustries(industry_id),
     job_apps_count INT,
     list_dur_days INT,
-    scrape_dur_ms INT,
+    scrape_dur_ms NUMERIC(19, 16),
     fingerprint VARCHAR(255) UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
