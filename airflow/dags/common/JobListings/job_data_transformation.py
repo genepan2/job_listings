@@ -1,5 +1,6 @@
 from job_config_constants import JOB_LEVELS
 import job_helper_transform as JobHelperTransform
+import datetime
 
 import pyspark.sql.functions as F
 from pyspark.sql.types import (
@@ -10,7 +11,7 @@ from pyspark.sql.types import (
     FloatType,
     TimestampType,
 )
-from pyspark.sql.functions import udf, col, lit, to_timestamp, format_string
+from pyspark.sql.functions import udf, col, lit, to_timestamp, format_string, broadcast
 from pyspark.sql.functions import (
     year,
     month,
@@ -65,6 +66,14 @@ class JobDataTransformation:
         fingerprint = hashlib.sha256(clean_string.encode()).hexdigest()
 
         return fingerprint
+
+    def calculate_date_difference(self, publish_date):
+        if publish_date is None:
+            return 0
+        format_str = "%Y-%m-%dT%H:%M:%S.%f"
+        publish_date = datetime.datetime.strptime(publish_date, format_str)
+        now = datetime.datetime.now()
+        return (now - publish_date).days
 
     def extend_df_with_date_info(self, df, date_column_name):
         # Fügt dem DataFrame zusätzliche Datumsspalten hinzu
@@ -130,6 +139,10 @@ class JobDataTransformation:
         )
         create_job_fingerprint_udf = udf(self.create_job_fingerprint, StringType())
 
+        calculate_date_difference_udf = udf(
+            self.calculate_date_difference, IntegerType()
+        )
+
         df_cleaned = (
             df.withColumn("title_cleaned", transform_job_title_udf(col("title")))
             .withColumn(
@@ -148,6 +161,9 @@ class JobDataTransformation:
             .withColumn("language", transform_detect_language_udf(col("description")))
             .withColumn(
                 "source_identifier", clean_linkedin_id_udf(col("source_identifier"))
+            )
+            .withColumn(
+                "list_dur_days", calculate_date_difference_udf(col("publish_date"))
             )
             .withColumn(
                 "company_linkedin_url",
@@ -214,7 +230,7 @@ class JobDataTransformation:
                 StructField("search_location", StringType(), True),
                 StructField("source", StringType(), True),
                 StructField("scrape_dur_ms", StringType(), True),
-                StructField("Scraping_Pause", StringType(), True),
+                StructField("scraping_pause", StringType(), True),
                 # StructField("scrape_dur_ms", FloatType(), True),
             ]
         )
@@ -246,9 +262,7 @@ class JobDataTransformation:
                 col("location").alias("city"), "country"
             ),  # country is not there yet!
             "dim_languages_df": df.select(col("language").alias("name")),
-            "dim_sources_df": df.select(
-                col("source").alias("name")
-            ),  # source is not there
+            "dim_sources_df": df.select(col("source").alias("name")),
             "dim_job_levels_df": df.select(col("level").alias("name")),
             "dim_search_keywords_df": df.select(col("search_keyword").alias("name")),
             "dim_search_locations_df": df.select(col("search_location").alias("name")),
@@ -278,6 +292,7 @@ class JobDataTransformation:
             "fingerprint",
             "language",
             "scrape_dur_ms",
+            "list_dur_days",
             "source",
             "url",
             "source_identifier",
@@ -347,9 +362,60 @@ class JobDataTransformation:
         return data_df.select(*select_expr)
 
     def merge_dataframes(self, main_df, add_df, match_column_name):
-        if add_df.isEmpty():
+        # print(main_df)
+        # print(add_df)
+        # print(match_column_name)
+        # print(main_df.describe().show())
+        # print(add_df.describe().show())
+        # if add_df.isEmpty():
+        if add_df.count() == 0:
+            print("is empty...")
             return main_df.withColumn("is_new", lit(True))
         else:
-            add_df = add_df.withColumn("is_new", lit(True))
-            merged_df = main_df.join(add_df, [match_column_name], "left")
+            # print("is NOT empty...")
+            # # add_df = add_df.withColumn("is_new", lit(False))
+            # print(add_df.show(50))
+            # print(add_df)
+            # print(f"count rows add_df: {add_df.count()}")
+            # print(f"count rows main_df: {main_df.count()}")
+            # merged_df = main_df.join(add_df, [match_column_name], "left")
+            # merged_df = main_df.join(add_df, match_column_name, how="left")
+            main_df.dropDuplicates(subset=[match_column_name])
+            # print(f"distinct rows: {main_df.distinct().count()}")
+
+            # print("main_df:")
+            # print(main_df.select(match_column_name).show(50))
+
+            a_main_df = main_df.alias("a_main_df")
+            main_df = None
+            a_add_df = add_df.alias("a_add_df")
+            add_df = None
+
+            print("Datentypen im ersten DataFrame:")
+            print(a_main_df.dtypes)
+            print("\nDatentypen im zweiten DataFrame:")
+            print(a_add_df.dtypes)
+
+            merged_df = (
+                a_main_df.join(
+                    # broadcast(a_add_df),
+                    a_add_df,
+                    # main_df[match_column_name] == add_df[match_column_name],
+                    match_column_name,
+                    # how="left_outer",
+                    "left_outer",
+                )
+                # .select(a_main_df["*"], a_add_df["is_new"])
+                # .fillna(True, subset=["is_new"])
+            )
+            # merged_df = main_df.merge(add_df, on=match_column_name, how="left")
+            a_main_df = None
+            a_add_df = None
+
+            print("type of merged_df:")
+            print(type(merged_df))
+            print(f"count rows merged_df: {merged_df.count()}")
+            print(f"merged_df columns: {merged_df.columns}")
+            print(merged_df)
+            print(merged_df.show(2))
             return merged_df
