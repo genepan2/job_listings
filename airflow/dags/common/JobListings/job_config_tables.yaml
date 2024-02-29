@@ -13,11 +13,17 @@ dimensions_info:
   factColumns: "url"
   dimColumns: "url"
   uniqueColumns: ["url"]
+  isBridge: true
   # factForeignKeyColumns: "source_info_key"
  dimLocations:
   factColumns: "location"
   dimColumns: "city"
   uniqueColumns: ["city"]
+  # factForeignKeyColumns: "location_key"
+ dimIndustries:
+  factColumns: "industries"
+  dimColumns: "name"
+  uniqueColumns: ["name"]
   # factForeignKeyColumns: "location_key"
  dimLanguages:
   factColumns: "language"
@@ -28,21 +34,24 @@ dimensions_info:
   factColumns: "source"
   dimColumns: "name"
   uniqueColumns: ["name"]
+  # isBridge: true
   # factForeignKeyColumns: "source_key"
  dimJobLevels:
   factColumns: "level"
   dimColumns: "name"
   uniqueColumns: ["name"]
   # factForeignKeyColumns: "job_level_key"
- # dimSearchKeywords:
- #  factColumns: "level"
- #  dimColumns: "name"
- #  uniqueColumns: ["name"]
+ dimSearchKeywords:
+  factColumns: "search_keyword"
+  dimColumns: "name"
+  uniqueColumns: ["name"]
+  isBridge: true
  # factForeignKeyColumns: "job_level_key"
- # dimSearchLocations:
- #  factColumns: "search_location"
- #  dimColumns: "name"
- #  uniqueColumns: ["name"]
+ dimSearchLocations:
+  factColumns: "search_location"
+  dimColumns: "name"
+  uniqueColumns: ["name"]
+  isBridge: true
  # factForeignKeyColumns: "job_level_key"
  dimDates:
   factColumns: ["publish_date_unique", "search_datetime_unique"]
@@ -54,11 +63,6 @@ dimensions_info:
   dimColumns: "name"
   uniqueColumns: ["name"]
   # factForeignKeyColumns: ["employment_key"]
- dimIndustries:
-  factColumns: ["industries"]
-  dimColumns: "name"
-  uniqueColumns: ["name"]
-  # factForeignKeyColumns: ["industry_key"]
 
 fct_info:
  fctJobListings:
@@ -72,14 +76,18 @@ fct_info:
     "language_key",
     "job_level_key",
     "employment_key",
-    # "industry_key",
    ]
-  otherColumns: [
-    "job_apps_count",
-    # "list_dur_days",
-    "scrape_dur_ms",
-    "fingerprint",
+  otherColumns:
+   ["job_apps_count", "list_dur_days", "scrape_dur_ms", "fingerprint"]
+  bridgeColumns: [
+    "industry_key",
+    "source_info_key",
+    "search_keyword_key",
+    "search_location_key",
+    # "skill_key",
+    # "technology_key",
    ]
+
   uniqueColumns: ["fingerprint"]
 
 bridge_info:
