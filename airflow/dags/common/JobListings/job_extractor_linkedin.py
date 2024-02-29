@@ -8,12 +8,13 @@ import random
 import time
 
 from job_config_constants import FIELDS
-from job_helper_storage import store_df_to_s3
+
+# from job_helper_storage import store_df_to_s3
 from job_helper_utils import create_key_name
 from job_data_storage import JobDataStorage
 from job_s3_client_manager import JobS3ClientManager
 
-SOURCE_NAME = "linkedin"
+# SOURCE_NAME = "linkedin"
 
 
 class JobExtractorLinkedIn:
@@ -38,17 +39,17 @@ class JobExtractorLinkedIn:
 
         df = pd.DataFrame(job_details)
 
-        file_name = create_key_name(
-            SOURCE_NAME, True, self.search_location, self.search_keyword
+        key_name = create_key_name(
+            self.source, True, self.search_location, self.search_keyword
         )
         bucket = "bronze"
-        logging.info(file_name)
+        logging.info(key_name)
         df.info()
         logging.info(df.isnull().sum())
 
         s3_client = self.s3_manager.get_boto_client()
         JobDataStorage.save_df_to_s3_as_csv(
-            s3_client, df, bucket, SOURCE_NAME, file_name
+            s3_client, df, bucket, self.source, key_name
         )
         # store_df_to_s3(df, file_name, bucket)
 
