@@ -18,21 +18,23 @@ import logging
 import yaml
 
 from common.JobListings.job_extractor_linkedin import JobExtractorLinkedIn
+
 # from common.JobListings.job_transformer_linkedin import JobTransformerLinkedIn
-from common.JobListings.job_predictor_salary import JobPredictorSalary
-import common.JobListings.job_helper_database as JobHelperDatabase
-import common.JobListings.job_helper_utils as JobHelperUtils
-import common.JobListings.job_data_loader as JobDataLoader
+# from common.JobListings.job_predictor_salary import JobPredictorSalary
+# import common.JobListings.job_helper_database as JobHelperDatabase
+# import common.JobListings.job_helper_utils as JobHelperUtils
+from common.JobListings.job_data_loader import JobDataLoader
 
 
 SOURCE_NAME = "linkedin"
-BUCKET_FROM = 'bronze'
-BUCKET_TO = 'silver'
-DELTA_MINUTES = 30
+BUCKET_FROM = "bronze"
+BUCKET_TO = "silver"
+# DELTA_MINUTES = (60 * 24 * 2) + 300
+DELTA_MINUTES = 240
 
-AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
-AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
-SPARK_HISTORY_LOG_DIR = os.getenv('SPARK_HISTORY_LOG_DIR')
+AWS_SPARK_ACCESS_KEY = os.getenv("MINIO_SPARK_ACCESS_KEY")
+AWS_SPARK_SECRET_KEY = os.getenv("MINIO_SPARK_SECRET_KEY")
+SPARK_HISTORY_LOG_DIR = os.getenv("SPARK_HISTORY_LOG_DIR")
 # not sure whether this is realy necassery
 MINIO_IP_ADDRESS = socket.gethostbyname("minio")
 
@@ -42,14 +44,15 @@ locations_linkedin = json.loads(Variable.get("search_location_linkedin"))
 jobs_to_load = Variable.get("jobs_to_load", default_var=None)
 
 
-if jobs_to_load == 'None' or not jobs_to_load:
+if jobs_to_load == "None" or not jobs_to_load:
     JOBS_TO_GET = None
 else:
     try:
         JOBS_TO_GET = int(jobs_to_load)
     except ValueError:
         raise ValueError(
-            f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}")
+            f"Expected 'jobs_to_load' to be an integer or 'None', got: {jobs_to_load}"
+        )
 
 # move_raw_json_files_to_archive = '''
 # current_time=$(date "+%Y-%m-%d_%H-%M-%S")
@@ -59,17 +62,17 @@ else:
 # '''
 
 default_args = {
-    'owner': 'admin',
-    'depends_on_past': False,
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 0,
-    'retry_delay': timedelta(minutes=3),
+    "owner": "admin",
+    "depends_on_past": False,
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 0,
+    "retry_delay": timedelta(minutes=3),
 }
 
 with DAG(
     dag_id="LinkedIn_ETL_ML_Pipeline_DEV",
-    description='Aggregate Job Postings from LinkedIn Platform',
+    description="Aggregate Job Postings from LinkedIn Platform",
     tags=["jobs", "project"],
     start_date=pendulum.datetime(2023, 10, 1, tz="UTC"),
     schedule_interval=timedelta(hours=2),
@@ -84,6 +87,7 @@ with DAG(
             for location in locations_linkedin:
                 scraper = JobExtractorLinkedIn(keyword, location, JOBS_TO_GET)
                 scraper.scrape_jobs()
+
     extract = extract_linkedin_jobs()
 
     # this is only temporary. to test if saving as delta works.
@@ -148,18 +152,17 @@ with DAG(
     spark_py_files = [
         # "__init__.py",
         "job_config_manager.py",
-        "job_constants.py",
+        "job_config_constants.py",
         "job_data_enrichment.py",
         "job_data_storage.py",
         "job_data_transformation.py",
         "job_file_processing.py",
         "job_helper_transform.py",
         "job_s3_client_manager.py",
-        "job_spark_session_manager.py"
+        "job_spark_session_manager.py",
     ]
 
-    extended_py_files = ",".join(
-        [spark_folder_path + file for file in spark_py_files])
+    extended_py_files = ",".join([spark_folder_path + file for file in spark_py_files])
 
     spark_jars_folder = "./dags/jars/"
     spark_jar_files = [
@@ -169,20 +172,26 @@ with DAG(
         "delta-storage-3.0.0.jar",
         "hadoop-aws-3.3.4.jar",
         "hadoop-common-3.3.4.jar",
-        "postgresql-42.7.1.jar"
+        "postgresql-42.7.1.jar",
     ]
 
     extended_jar_files = ",".join(
-        [spark_jars_folder + file for file in spark_jar_files])
+        [spark_jars_folder + file for file in spark_jar_files]
+    )
 
     transform_spark = SparkSubmitOperator(
         task_id=f"transform_{SOURCE_NAME}_spark",
-        conn_id='jobs_spark_conn',
-        application='./dags/common/JobListings/job_spark_transform.py',
+        conn_id="jobs_spark_conn",
+        application="./dags/common/JobListings/job_spark_transform.py",
         py_files=extended_py_files,
         jars=extended_jar_files,
-        application_args=[f"{SOURCE_NAME}Transformer",
-                          SOURCE_NAME, BUCKET_FROM, BUCKET_TO, str(DELTA_MINUTES)],
+        application_args=[
+            f"{SOURCE_NAME}Transformer",
+            SOURCE_NAME,
+            BUCKET_FROM,
+            BUCKET_TO,
+            str(DELTA_MINUTES),
+        ],
         conf={
             "spark.network.timeout": "10000s",
             #  "hive.metastore.uris": hive_metastore,
@@ -202,18 +211,19 @@ with DAG(
             "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
             # "spark.databricks.delta.schema.autoMerge.enabled": "true",
             "spark.delta.logStore.class": "org.apache.spark.sql.delta.storage.S3SingleDriverLogStore",
-            "spark.executorEnv.PYTHONPATH": os.getenv('PYTHONPATH')
+            "spark.executorEnv.PYTHONPATH": os.getenv("PYTHONPATH"),
             # todo: tuning configurations -> research
             # "spark.sql.shuffle.partitions": 200
-        }
-        # executor_memory='2g',
+        },
+        # executor_memory="2g",
         # executor_cores=2,
-        # driver_memory='2g',
+        # driver_memory="2g",
     )
 
-    @task(task_id="load_linkedin")
+    @task(task_id=f"load_{SOURCE_NAME}_data")
     def load_linkedin_jobs():
-        data_loader = JobDataLoader(SOURCE_NAME)
+        data_loader = JobDataLoader(SOURCE_NAME, BUCKET_TO, "job_config_tables.yaml")
+        data_loader.main()
 
     load = load_linkedin_jobs()
 
@@ -233,3 +243,4 @@ with DAG(
     # transform_spark
     # extract >> copy_constants >> transform_spark
     extract >> transform_spark >> load
+    # transform_spark >> load
