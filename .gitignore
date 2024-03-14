@@ -5,12 +5,16 @@ _temp
 .vscode
 .DS_Store
 .trunk
+.storage/minio
 frontend/node_modules
 airflow/logs
 airflow/data
 airflow/dags/__pycache__
+airflow/dags/jars
 backend/app/data
-backend/app/data
+doris/data
+doris
+
 
 # Ignore files
 .env
@@ -20,3 +24,5 @@ backend/app/data
 **/.DS_Store
 .DS_Store
 env
+*.gz
+**/*.gz

@@ -1,0 +1,9 @@
+numpy
+pandas
+requests
+# pyspark
+boto3
+langdetect
+python-dateutil
+PyYAML
+stringcase

@@ -4,9 +4,19 @@ requests
 bs4
 langdetect
 unicodedata2
+pendulum
+boto3
+# pyspark==3.3.4
+pyspark==3.5.0
+delta
+PyYAML
+# psycopg2
+psycopg2-binary
+stringcase
 
 # airflow
 apache-airflow-providers-mongo
+apache-airflow-providers-apache-spark
 
 # machine learning
 joblib

@@ -1,0 +1,231 @@
+version: "3.8"
+
+x-airflow-common: &airflow-common
+  build:
+    context: ./airflow
+    dockerfile: Dockerfile
+  environment: &airflow-common-env
+    AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres-airflow/airflow
+    AIRFLOW_CONN_SPARK_DEFAULT: "spark://spark-master:7077?deploy-mode=client&spark-binary=spark-submit"
+    AIRFLOW_CONN_POSTGRES_JOBS: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__CORE__FERNET_KEY: ""
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__TEST_CONNECTION: "Enabled"
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 30
+    AIRFLOW__SMTP__SMTP_HOST: ${AIRFLOW__SMTP__SMTP_HOST}
+    AIRFLOW__SMTP__SMTP_MAIL_FROM: ${AIRFLOW__SMTP__SMTP_MAIL_FROM}
+    AIRFLOW__SMTP__SMTP_PASSWORD: ${AIRFLOW__SMTP__SMTP_PASSWORD}
+    AIRFLOW__SMTP__SMTP_PORT: ${AIRFLOW__SMTP__SMTP_PORT}
+    AIRFLOW__SMTP__SMTP_USER: ${AIRFLOW__SMTP__SMTP_USER}
+    _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_WWW_USERNAME}
+    _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD}
+    MINIO_ROOT_ACCESS_KEY: ${MINIO_ROOT_ACCESS_KEY}
+    MINIO_ROOT_SECRET_KEY: ${MINIO_ROOT_SECRET_KEY}
+    MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+    MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+    SPARK_HISTORY_LOG_DIR: ${SPARK_HISTORY_LOG_DIR}
+    PYTHONPATH: /opt/airflow/dags/common/JobListings
+    JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
+    DW_USER: ${POSTGRES_USER}
+    DW_PASS: ${POSTGRES_PASSWORD}
+    DW_DB: ${POSTGRES_DB}
+  volumes:
+    - ./airflow/config:/opt/airflow/config
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/data:/opt/airflow/data
+    - ./airflow/logs:/opt/airflow/logs
+    - ./airflow/ml:/opt/airflow/ml
+    - ./airflow/plugins:/opt/airflow/plugins
+  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
+  depends_on:
+    redis:
+      condition: service_healthy
+    postgres-airflow:
+      condition: service_healthy
+
+services:
+  spark-master:
+    build: ./spark
+    restart: unless-stopped
+    ports:
+      - 4040:4040
+      - 7077:7077
+      - 8080:8080
+      - 18080:18080
+    environment:
+      MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+      MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+      JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
+      DW_USER: ${POSTGRES_USER}
+      DW_PASS: ${POSTGRES_PASSWORD}
+      # DW_DB: ${POSTGRES_DB}
+    volumes:
+      - ./spark/jobs:/home/ubuntu/jobs_listings
+    command: sh spark-master.sh
+
+  spark-worker:
+    build: ./spark
+    restart: unless-stopped
+    ports:
+      - "8081-8085:8081"
+    environment:
+      MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+      MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+      JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
+      DW_USER: ${POSTGRES_USER}
+      DW_PASS: ${POSTGRES_PASSWORD}
+      # DW_DB: ${POSTGRES_DB}
+    volumes:
+      - ./spark/jobs:/home/ubuntu/jobs_listings
+    command: sh spark-worker.sh
+
+  minio:
+    hostname: minio
+    image: "minio/minio:latest"
+    volumes:
+      - ./.storage/minio:/data
+      - ./minio:/init
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_SECRET_KEY}
+      MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
+      MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+      SPARK_HISTORY_LOG_DIR: ${SPARK_HISTORY_LOG_DIR}
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  postgres-airflow:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume-af:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 30s
+      retries: 50
+    restart: always
+    # profiles:
+    #   - backend
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - 8090:8080
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8090/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"',
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+
+  airflow-worker:
+    <<: *airflow-common
+    command: celery worker
+    ports:
+      - 8793:8793
+    healthcheck:
+      test:
+        - "CMD-SHELL"
+        - 'celery --app airflow.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}"'
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+
+  airflow-init:
+    <<: *airflow-common
+    command: bash -c "/opt/airflow/config/airflow_init.sh"
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "false"
+      _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_WWW_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_PASSWORD:-airflow}
+      _AIRFLOW_WWW_USER_EMAIL: ${AIRFLOW_WWW_EMAIL:-someemail@gmail.com}
+
+  airflow-flower:
+    <<: *airflow-common
+    command: celery flower
+    ports:
+      - 5555:5555
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-db-volume-dw:/var/lib/postgresql/data
+      - ./postgres/init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-pgpass}
+      - POSTGRES_USER=${POSTGRES_USER:-pguser}
+      - POSTGRES_DB=${POSTGRES_DB:-pgdb}
+    # command: bash -c "/docker-entrypoint-initdb.d/init.sql"
+
+  pgadmin:
+      image: dpage/pgadmin4
+      # container_name: pgadmin4_container
+      restart: always
+      ports:
+        - "8888:80"
+      environment:
+        PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgexample@example.com}
+        PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pass12345}
+      volumes:
+        - pgadmin-data:/var/lib/pgadmin
+      depends_on:
+        - postgres
+
+
+volumes:
+  mongo-data:
+  postgres-db-volume-af:
+  postgres-db-volume-dw:
+  pgadmin-data:
