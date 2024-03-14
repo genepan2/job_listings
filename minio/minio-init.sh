@@ -19,6 +19,6 @@ mc admin user add jobsminio $SPARK_USER $SPARK_USER_PASSWORD
 mc admin policy attach jobsminio readwrite --user=$SPARK_USER
 
 # Create Buckets
-mc mb  jobsminio/bronze
-mc mb  jobsminio/silver
-mc mb  jobsminio/$SPARK_HISTORY_LOG_DIR
+mc mb jobsminio/bronze
+mc mb jobsminio/silver
+mc mb jobsminio/$SPARK_HISTORY_LOG_DIR
