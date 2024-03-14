@@ -93,7 +93,9 @@ class JobFileProcessing:
         # files = self.get_files(bucket_type)
         files = self.get_files(table_name, file_format)
         if not files:
-            raise ValueError("No files were found...")
+            #raise ValueError("No files were found...")
+            logging.info("No files were found... Returning empty DataFrame.")
+            return pd.DataFrame()
 
         df_list = []
         for file_key in files:

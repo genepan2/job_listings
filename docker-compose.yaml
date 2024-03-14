@@ -5,6 +5,7 @@ x-airflow-common: &airflow-common
     context: ./airflow
     dockerfile: Dockerfile
   environment: &airflow-common-env
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:///${AIRFLOW_HOME}/airflow.db
     AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres-airflow/airflow

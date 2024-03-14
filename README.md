@@ -32,40 +32,65 @@ The workflow begins with scraping web pages using BeautifulSoup, a process not o
 
 It is important to note that while Spark and Delta storage represent over-engineering for the current data volume of this project, their inclusion serves educational purposes, reflecting the learning nature of this project.
 
+## System Architecture
+
+The architecture diagram below illustrates the overall structure and interactions between the different components of our system. This includes how data flows from the initial sources through to the final storage and analysis stages.
+
+![Architecture Diagram v002](static/de-job-listing-architecture-diagram-v002.png "Architecture Diagram")
+
+### Short Description of Data Flow (per DAG)
+1. Scrape data from a single source based on defined keywords and locations.
+2. Save the results for each combination of location and keyword as CSV files into the 'bronze' bucket.
+3. Load data from the latest batch and apply transformations.
+4. Save the transformed data for each Dimension and Fact Table in separate CSV files (and in Delta formats).
+5. Load all Dimension Tables into PostgreSQL, retrieve IDs, and use them to populate the Fact Table.
+6. Load the Fact Table into PostgreSQL, retrieve IDs, and use them to populate Bridge Tables.
+7. Load Bridge Tables into PostgreSQL.
+
 ## Getting Started
 
 ### Prerequisites
 Before setting up the project, ensure your system meets the following requirements:
 - At least 8 GB of RAM
 - A stable internet connection
-- This guide primarily targets OS X users. Windows users may need to make slight adjustments at specific steps.
 
-Note: To simplify Docker Compose commands, we use Make. Windows users will need an additional module to execute Make commands in the terminal. You can install it with [scoop](https://scoop.sh/) using the command `scoop install main/make`.
+Note: To simplify Docker Compose commands, we make use of Makefile, which is a Linux COMPLETE THIS.
 
 ### Make Commands and Docker Compose Equivalents
 To facilitate the management of the project's Docker containers, we use Make commands. Below is a table of the commonly used Make commands and their corresponding Docker Compose commands:
 
-| Make Command       | Docker Compose Command                                           |
-|--------------------|------------------------------------------------------------------|
-| `make dev`         | `docker-compose up -d minio spark-master spark-worker airflow-webserver airflow-scheduler airflow-worker postgres_dw pgadmin` |
-| `make stop`        | `docker-compose stop`                                            |
-| `make start`       | `docker-compose start`                                           |
-| `make restart-spark-w` | `docker-compose restart spark-worker`                             |
-| `make init`        | `docker-compose up airflow-init`                                 |
-| `make pull`        | `docker-compose pull`                                            |
-| `make up`          | `docker-compose up -d`                                           |
-| `make down`        | `docker-compose down`                                            |
-| `make dl_jars`     | Executes a script to download necessary JAR files for Spark      |
+| Make Command         | Docker Compose Command                                           |
+|----------------------|------------------------------------------------------------------|
+| `make run`           | `docker-compose up -d minio spark-master spark-worker airflow-webserver airflow-scheduler airflow-worker postgres pgadmin` |
+| `make start`         | `docker-compose start`                                           |
+| `make stop`          | `docker-compose stop`                                            |
+| `make pull`          | `docker-compose pull`                                            |
+| `make up`            | `docker-compose up -d`                                           |
+| `make down`          | `docker-compose down -v`                                         |
+| `make dl-jars`       | `mkdir -p ./airflow/dags/jars && sh ./airflow/download_jarfiles.sh`        |
+| `make clear-images`  | `docker image prune --filter="dangling=true"`                    |
+| `make airflow`       | `docker-compose up -d airflow-webserver airflow-scheduler airflow-worker` |
+| `make airflow-init`          | `docker-compose up airflow-init`                                 |
+| `make minio`         | `docker-compose up -d minio`                                     |
+| `make minio-init`    | `docker-compose exec minio bash ./init/minio-init.sh`            |
+| `make spark`         | `docker-compose up -d spark-master && sleep 5 && docker-compose up -d spark-worker` |
+| `make spark-scale`   | `docker-compose up --scale spark-worker=3 -d`                    |
+| `make spark-worker-restart` | `docker-compose restart spark-worker`                           |
+| `make postgres`   | `docker-compose up -d postgres`                                  |
+| `make pgadmin`       | `docker-compose up -d pgadmin`                                   |
+| `make mariadb-exec`  | `docker-compose exec mariadb mysql -u root -p -h localhost`      |
+
 
 Utilize these commands as needed for starting, stopping, and managing the project containers and services.
 
 ### Installation and Setup
 Follow these steps to set up the environment:
 
-1. Clone the repository by running `git clone https://github.com/genepan2/job_listings` in the terminal.
-2. Rename `env.example` to `.env` and fill in the missing information such as usernames and passwords. Uncomment paths that do not match your OS; the default is set for macOS. Additionally, adjust the wait command—`timeout` is the Windows equivalent of `sleep` in OS X.
-3. Create Docker images: Execute `make build` or `docker-compose build`. This may take some time.
-4. For Spark, some libraries are needed. Run `make dl_jars` to execute the `download_jarfiles.sh` script, which downloads libraries for AWS, Delta, Hadoop, MariaDB, PostgreSQL, and copies them to the `airflow\dags\jars` directory.
+1. **GitHub Repo**: Clone the repository by running `git clone https://github.com/genepan2/job_listings` in the terminal.
+2. **Environment Variables**: Rename `env.example` to `.env` and fill in the missing information such as usernames and passwords. For local development, defaul values are there.
+3. **Docker Images**: Execute `make build` or `docker-compose build`. This may take some time.
+4. **Spark Libraries**: Run `make dl_jars` to execute the `download_jarfiles.sh` script, which downloads libraries for AWS, Delta, Hadoop, MariaDB, PostgreSQL, and copies them to the `airflow\dags\jars` directory.
+5. **MinIO Buckets**: For setting up MinIO, you need to create the necessary buckets. Execute the command `make minio-init` or `docker compose exec -it minio bash` to access the MinIO container. Once inside, run `sh ./init/minio-init.sh`. When prompted, enter the "Access Key" and "Secret Access Key" that you have specified in the `.env` file.
 
 ### Starting the Application
 Execute the following commands to start all components:
@@ -80,7 +105,7 @@ You can access the interfaces in your browser using the following URLs:
 - MinIO: `http://localhost:9000` (default access: root/root12345)
 - Airflow: `http://localhost:8080` (default access: airflow/airflow)
 - Spark: `http://localhost:8081`
-- PgAdmin: `http://localhost:8888` (access: pgexample@example.com/pass12345)
+- PgAdmin: `http://localhost:8888` (default access: pgexample@example.com/pass12345)
 
 All credentials can be set in the `.env` file.
 

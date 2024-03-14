@@ -290,6 +290,9 @@ class JobDataLoader:
             # load new dim table data from S3 bucket
             dim_data_df = file_processor.merge_files_to_df(dim_table_name)
 
+            # if dim_data_df.empty:
+                # continue
+
             uniqueColumn = dim_table_info["uniqueColumns"][0]
             dim_data_df.drop_duplicates(subset=[uniqueColumn], inplace=True)
             # .reset_index(drop=True)
@@ -334,6 +337,8 @@ class JobDataLoader:
         final_fct_table_columns = [
             col for col in fct_table_columns if col not in bridge_column_names
         ]
+        print(final_fct_table_columns)
+        
         final_fct_table_df = fct_data_df[final_fct_table_columns]
 
         # write the fact table to the database and return the ids
