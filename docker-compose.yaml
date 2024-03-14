@@ -106,24 +106,6 @@ services:
       timeout: 20s
       retries: 3
 
-  # mariadb: #for hive metastore
-  #   image: mariadb:latest
-  #   # image: mariadb/columnstore:latest
-  #   ports:
-  #     - 3306:3306
-  #   environment:
-  #     USE_S3_STORAGE: 0
-  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #     MYSQL_USER: ${MYSQL_USER}
-  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
-
-  # hive:
-  #   build: ./hive
-  #   restart: unless-stopped
-  #   ports:
-  #     - 9083:9083
-
   postgres-airflow:
     image: postgres:13
     environment:
@@ -137,8 +119,6 @@ services:
       interval: 5s
       retries: 5
     restart: always
-    # profiles:
-    #   - backend
 
   redis:
     image: redis:latest
@@ -221,7 +201,6 @@ services:
     ports:
       - 5432:5432
     volumes:
-      # - ./postgres/data:/var/lib/postgresql/data
       - postgres-db-volume-dw:/var/lib/postgresql/data
       - ./postgres/init/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
