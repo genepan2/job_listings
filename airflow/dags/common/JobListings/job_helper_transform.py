@@ -5,10 +5,12 @@ import os
 import re
 import logging
 import unicodedata
+# import math
 from datetime import datetime, timedelta
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
-from common.JobListings.constants import JOB_LOCATIONS, JOB_LEVELS
+# from common.JobListings.constants import JOB_LOCATIONS, JOB_LEVELS
+from job_config_constants import JOB_LOCATIONS, JOB_LEVELS
 
 
 def transform_job_level(job_level: str = 'Entry', job_title: str = None):
@@ -57,15 +59,21 @@ def transform_job_location(job_location: str):
 
 
 def transform_to_isoformat(publication_date, search_datetime):
+    # todo: why logging.info() is not working here???
     today_names = ["today", "heute"]
     yesterday_names = ["yesterday", "gestern"]
 
     # Convert search_datetime to a datetime object at the start
-    search_datetime_ob = datetime.strptime(
-        search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+    try:
+        search_datetime_ob = datetime.strptime(
+            search_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+    except ValueError:
+        # If search_datetime is invalid, use current date and time
+        logging.info("Invalid search_datetime, using current datetime.")
+        search_datetime_ob = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
 
     # Check if publication_date is a special keyword like "today" or "yesterday"
-    if publication_date and publication_date.lower() in today_names or publication_date is None:
+    if publication_date and publication_date.lower() in today_names or publication_date is None or publication_date == 'NaN':
         return search_datetime
 
     if publication_date and publication_date.lower() in yesterday_names:
@@ -115,7 +123,7 @@ def transform_to_isoformat(publication_date, search_datetime):
             pass  # Try the next format
 
     # If none of the formats match, raise an exception or return a default value as needed
-    raise ValueError("Unable to parse publication_date")
+    raise ValueError(f"Unable to parse publication_date: {publication_date}")
 
 
 def transform_job_title(title: str):

@@ -1,4 +1,21 @@
-.PHONY: airflow spark hive scale-spark minio superset down dev init copy doris dl_doris postgres_dw
+include .env
+
+ifeq ($(OS),Windows_NT)
+	SLEEP_COMMAND = timeout 10
+else
+	SLEEP_COMMAND = sleep 10
+endif
+
+.PHONY: airflow spark hive scale-spark minio superset down run init copy doris dl_doris postgres_dw pgadmin restart-spark-w stop start
+
+stop:
+	docker-compose stop
+
+start:
+	docker-compose start
+
+restart-spark-w:
+	docker compose restart spark-worker
 
 copy:
 	./copy-constants.sh
@@ -9,7 +26,7 @@ init:
 init_minio:
 	docker-compose exec minio bash ./init/minio-init.sh
 
-dev: minio spark airflow postgres_dw
+run: minio spark airflow postgres_dw pgadmin
 
 pull:
 	docker-compose pull
@@ -43,7 +60,7 @@ airflow:
 
 spark:
 	docker-compose up -d spark-master
-	sleep 10
+	${SLEEP_COMMAND}
 	docker-compose up -d spark-worker
 
 scale-spark:
@@ -51,12 +68,12 @@ scale-spark:
 
 hive:
 	docker-compose up -d mariadb
-	sleep 2
+	${SLEEP_COMMAND}
 	docker-compose up -d hive
 
 doris:
 	docker-compose up -d doris-fe
-	sleep 10
+	${SLEEP_COMMAND}
 	docker-compose up -d doris-be
 
 dl_doris:
@@ -64,6 +81,9 @@ dl_doris:
 
 postgres_dw:
 	docker-compose up -d postgres
+
+pgadmin:
+	docker-compose up -d pgadmin
 
 # presto-cluster:
 # 	docker-compose up -d presto presto-worker

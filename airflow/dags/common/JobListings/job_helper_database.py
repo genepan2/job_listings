@@ -5,15 +5,15 @@ import os
 import json
 import logging
 
-import common.JobListings.helper_utils as HelperUtils
+import job_helper_utils as JobHelperUtils
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
-from common.JobListings.constants import COLLECTIONS, MONGO
+from job_config_constants import COLLECTIONS, MONGO
 
 
 def get_data_from_source_collections(collection_name: str = None):
     all_data = []
-    collection_names = HelperUtils.get_collection_keys_without_all()
+    collection_names = JobHelperUtils.get_collection_keys_without_all()
 
     if collection_name in collection_names:
         collection_names = [collection_name]
@@ -41,7 +41,7 @@ def get_data_from_source_collections(collection_name: str = None):
 
 
 def delete_data_from_source_collections():
-    collection_names = HelperUtils.get_collection_keys_without_all()
+    collection_names = JobHelperUtils.get_collection_keys_without_all()
     operation_successful = True
 
     try:

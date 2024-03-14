@@ -5,13 +5,13 @@ import logging
 from bs4 import BeautifulSoup
 import unicodedata
 from datetime import datetime
-from common.JobListings.constants import FIELDS, PATH
+from job_config_constants import FIELDS, PATH
 
 # The number of pages to be scraped from each search result
 WHATJOBS_NUM_PAGES_TO_SCRAPE = 1
 
 
-class ExtractorWhatjobs:
+class JobExtractorWhatjobs:
     # Class level attribute to ensure each job gets a unique identifier
     global_job_number = 1
     all_jobs = []  # Class level attribute to store all jobs across different job titles and locations

@@ -4,10 +4,10 @@ import os
 import urllib.parse
 import random
 import logging
-from common.JobListings.constants import PATH
+from job_config_constants import PATH
 
 
-class ExtractorThemuse:
+class JobExtractorThemuse:
     def __init__(self, categories: list, locations: list, items: int = None):
         categories_str = "&category=".join(
             [urllib.parse.quote(cat) for cat in categories])

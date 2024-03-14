@@ -10,17 +10,17 @@ from pyspark.sql.types import StringType, IntegerType
 import pyspark.sql.functions as F
 
 # from constants import PATH, JOB_LOCATIONS, JOB_LEVELS, COLLECTIONS, FIELDS
-from common.JobListings.constants import PATH, FIELDS, JOB_LOCATIONS, JOB_LEVELS
-import common.JobListings.helper_transform as HelperTransform
-from common.JobListings.helper_storage import merge_recent_files_to_df, save_to_delta
-from common.JobListings.helper_utils import create_key_name, get_spark_session
+from job_config_constants import PATH, FIELDS, JOB_LOCATIONS, JOB_LEVELS
+import job_helper_transform as JobHelperTransform
+from job_helper_storage import merge_recent_files_to_df, save_to_delta
+from job_helper_utils import create_key_name, get_spark_session
 
 AWS_SPARK_ACCESS_KEY = os.getenv('MINIO_SPARK_ACCESS_KEY')
 AWS_SPARK_SECRET_KEY = os.getenv('MINIO_SPARK_SECRET_KEY')
 MINIO_IP_ADDRESS = socket.gethostbyname("minio")
 
 
-class TransformerLinkedIn:
+class JobTransformerLinkedIn:
     def __init__(self):
         self.directory_path = os.path.join(PATH['data_raw'], 'linkedin_json')
         self.processed_directory_path = os.path.join(
@@ -60,13 +60,13 @@ class TransformerLinkedIn:
     #         cleaned_job = {key: value.strip() if isinstance(
     #             value, str) else value for key, value in job.items()}
 
-    #         cleaned_job[FIELDS["title"]] = HelperTransform.transform_job_title(
+    #         cleaned_job[FIELDS["title"]] = JobHelperTransform.transform_job_title(
     #             cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["title"]] else None
-    #         cleaned_job[FIELDS["level"]] = HelperTransform.transform_job_level(
+    #         cleaned_job[FIELDS["level"]] = JobHelperTransform.transform_job_level(
     #             cleaned_job[FIELDS["level"]], cleaned_job[FIELDS["title"]]) if cleaned_job[FIELDS["level"]] else JOB_LEVELS["middle"]
-    #         cleaned_job[FIELDS["location"]] = HelperTransform.transform_job_location(
+    #         cleaned_job[FIELDS["location"]] = JobHelperTransform.transform_job_location(
     #             cleaned_job[FIELDS["location"]]) if cleaned_job[FIELDS["location"]] else JOB_LOCATIONS["other"]
-    #         cleaned_job[FIELDS["publish_date"]] = HelperTransform.transform_to_isoformat(
+    #         cleaned_job[FIELDS["publish_date"]] = JobHelperTransform.transform_to_isoformat(
     #             cleaned_job[FIELDS["publish_date"]], cleaned_job[FIELDS["search_datetime"]])
 
     #         amount_applicants = re.compile(
@@ -78,7 +78,7 @@ class TransformerLinkedIn:
     #         cleaned_job[FIELDS["company_linkedin_url"]] = cleaned_job[FIELDS["company_linkedin_url"]].split(
     #             '?')[0] if cleaned_job[FIELDS["company_linkedin_url"]] else None
 
-    #         cleaned_job["language"] = HelperTransform.transform_detect_language(
+    #         cleaned_job["language"] = JobHelperTransform.transform_detect_language(
     #             cleaned_job[FIELDS["description"]])
 
     #         cleaned_data.append(cleaned_job)
@@ -86,7 +86,7 @@ class TransformerLinkedIn:
 
     def transform_job_level(level, title):
         # Include your existing logic here and return MIDDLE_LEVEL if level is None
-        return HelperTransform.transform_job_level(level, title) if level else JOB_LEVELS["middle"]
+        return JobHelperTransform.transform_job_level(level, title) if level else JOB_LEVELS["middle"]
 
     def clean_linkedin_id(linkedin_id):
         return linkedin_id.replace('<!--', '').replace('-->', '') if linkedin_id else None
@@ -96,16 +96,16 @@ class TransformerLinkedIn:
 
     def transform(self, df):
 
-        # clean_string_udf = udf(HelperTransform.clean_string, StringType())
+        # clean_string_udf = udf(JobHelperTransform.clean_string, StringType())
         transform_job_title_udf = udf(
-            HelperTransform.transform_job_title, StringType())
-        # transform_job_level_udf = udf(HelperTransform.transform_job_level, StringType())
+            JobHelperTransform.transform_job_title, StringType())
+        # transform_job_level_udf = udf(JobHelperTransform.transform_job_level, StringType())
         transform_job_location_udf = udf(
-            HelperTransform.transform_job_location, StringType())
+            JobHelperTransform.transform_job_location, StringType())
         transform_to_isoformat_udf = udf(
-            HelperTransform.transform_to_isoformat, StringType())
+            JobHelperTransform.transform_to_isoformat, StringType())
         transform_detect_language_udf = udf(
-            HelperTransform.transform_detect_language, StringType())
+            JobHelperTransform.transform_detect_language, StringType())
         extract_applicants_udf = udf(lambda x: int(re.compile(
             r'\d+').findall(x)[0]) if x else 0, IntegerType())
         transform_job_level_udf = udf(self.transform_job_level, StringType())

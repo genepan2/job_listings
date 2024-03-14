@@ -1,11 +1,11 @@
 import json
 from datetime import datetime
 import os
-from common.JobListings.constants import PATH, FIELDS
-import common.JobListings.helper_transform as HelperTransform
+from job_config_constants import PATH, FIELDS
+import job_helper_transform as JobHelperTransform
 
 
-class TransformerThemuse:
+class JobTransformerThemuse:
     def __init__(self):
         self.directory_path = os.path.join(PATH['data_raw'], 'themuse_json')
         self.processed_directory_path = os.path.join(
@@ -18,20 +18,20 @@ class TransformerThemuse:
 
     def transform_job_listing(self, job):
 
-        job_description = HelperTransform.transform_strip_html_tags(
+        job_description = JobHelperTransform.transform_strip_html_tags(
             job.get("contents", ""))
 
         transformed_job = {
-            FIELDS["title"]: HelperTransform.transform_job_title(job.get("name", "")),
+            FIELDS["title"]: JobHelperTransform.transform_job_title(job.get("name", "")),
             FIELDS["company_name"]: job.get("company", {}).get("name", ""),
-            FIELDS["location"]: HelperTransform.transform_job_location(job.get("locations", [{}])[0].get("name", "")) if job.get("locations") else "",
+            FIELDS["location"]: JobHelperTransform.transform_job_location(job.get("locations", [{}])[0].get("name", "")) if job.get("locations") else "",
             FIELDS["search_keyword"]: job.get("categories", [{}])[0].get("name", "") if job.get("categories") else "",
-            FIELDS["level"]: HelperTransform.transform_job_level(job_title=job.get("name", "")),
-            FIELDS["publish_date"]: HelperTransform.transform_to_isoformat(job.get("publication_date", ""), datetime.now().isoformat()),
+            FIELDS["level"]: JobHelperTransform.transform_job_level(job_title=job.get("name", "")),
+            FIELDS["publish_date"]: JobHelperTransform.transform_to_isoformat(job.get("publication_date", ""), datetime.now().isoformat()),
             FIELDS["url"]: job.get("refs", {}).get("landing_page", ""),
             FIELDS["search_datetime"]: datetime.now().isoformat(),
             FIELDS["description"]: job_description,
-            FIELDS["language"]: HelperTransform.transform_detect_language(
+            FIELDS["language"]: JobHelperTransform.transform_detect_language(
                 job_description)
         }
         return transformed_job
@@ -44,7 +44,7 @@ class TransformerThemuse:
         for job in raw_jobs:
             job_location = job.get("locations", [{}])[0].get("name", "")
             if "Germany" in job_location or "Flexible / Remote" in job_location:
-                job["contents"] = HelperTransform.transform_translate_unicode_characters(
+                job["contents"] = JobHelperTransform.transform_translate_unicode_characters(
                     job.get("contents", ""))
                 transformed_job = self.transform_job_listing(job)
                 transformed_jobs.append(transformed_job)

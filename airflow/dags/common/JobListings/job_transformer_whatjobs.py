@@ -1,11 +1,11 @@
 import json
 import os
 import logging
-from common.JobListings.constants import PATH, FIELDS
-import common.JobListings.helper_transform as HelperTransform
+from job_config_constants import PATH, FIELDS
+import job_helper_transform as JobHelperTransform
 
 
-class TransformerWhatjobs:
+class JobTransformerWhatjobs:
     def __init__(self):
         self.input_directory = os.path.join(PATH['data_raw'], 'whatjobs_json')
         self.output_filename = os.path.join(
@@ -22,15 +22,15 @@ class TransformerWhatjobs:
 
                     for job in jobs:
                         try:
-                            job[FIELDS["title"]] = HelperTransform.transform_job_title(
+                            job[FIELDS["title"]] = JobHelperTransform.transform_job_title(
                                 job.get("title", ""))
-                            job[FIELDS["level"]] = HelperTransform.transform_job_level(
+                            job[FIELDS["level"]] = JobHelperTransform.transform_job_level(
                                 job_title=job.get("title", ""))
-                            job[FIELDS["location"]] = HelperTransform.transform_job_location(
+                            job[FIELDS["location"]] = JobHelperTransform.transform_job_location(
                                 job.get("location", ""))
-                            job[FIELDS["publish_date"]] = HelperTransform.transform_to_isoformat(
+                            job[FIELDS["publish_date"]] = JobHelperTransform.transform_to_isoformat(
                                 job.get("publish_date", ""), job.get("search_datetime", ""))
-                            job[FIELDS["language"]] = HelperTransform.transform_detect_language(
+                            job[FIELDS["language"]] = JobHelperTransform.transform_detect_language(
                                 job["description"])
 
                             counter += 1

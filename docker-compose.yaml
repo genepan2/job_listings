@@ -29,6 +29,11 @@ x-airflow-common: &airflow-common
     MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
     MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
     SPARK_HISTORY_LOG_DIR: ${SPARK_HISTORY_LOG_DIR}
+    PYTHONPATH: /opt/airflow/dags/common/JobListings
+    JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
+    DW_USER: ${POSTGRES_USER}
+    DW_PASS: ${POSTGRES_PASSWORD}
+    DW_DB: ${POSTGRES_DB}
   volumes:
     - ./airflow/config:/opt/airflow/config
     - ./airflow/dags:/opt/airflow/dags
@@ -42,81 +47,8 @@ x-airflow-common: &airflow-common
       condition: service_healthy
     postgres-airflow:
       condition: service_healthy
-    # mongo:
-    #   condition: service_healthy
-  # profiles:
-  #   - backend
 
 services:
-  # api:
-  #   build:
-  #     context: ./backend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8000:8000"
-  #   volumes:
-  #     - ./backend/app:/app
-  #   environment:
-  #     # MONGO_URI: mongodb://mongo:27017/${MONGO_DB_NAME}
-  #     MONGO_URI: mongodb://mongo:27017/
-  #     MONGO_COLLECTION_ALL: ${MONGO_COLLECTION_ALL:-jobs_all}
-  #     MONGO_DB_NAME: ${MONGO_DB_NAME:-job_listing_db}
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "curl --fail http://0.0.0.0:8000/health || exit 1"]
-  #     interval: 10s
-  #     timeout: 10s
-  #     retries: 5
-  #     start_period: 20s
-  #   # profiles:
-  #   #   - backend
-
-  # mongo:
-  #   image: mongo:latest
-  #   ports:
-  #     - "27017:27017"
-  #   volumes:
-  #     - ./mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-  #     - mongo-data:/data/db
-  #   environment:
-  #     # MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:-root}
-  #     # MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-rootpassword}
-  #     MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
-  #     MAIN_COLLECTION_NAME: ${MONGO_COLLECTION_ALL}
-  #     INDEX_FIELD: url
-  #   healthcheck:
-  #     test:
-  #       [
-  #         "CMD",
-  #         "echo",
-  #         "db.runCommand('ping').ok",
-  #         "|",
-  #         "mongosh",
-  #         "localhost:27017/test",
-  #         "--quiet",
-  #       ]
-  #     interval: 5s
-  #     timeout: 30s
-  #     retries: 30
-  #     start_period: 40s
-  #   # profiles:
-  #   #   - backend
-
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./frontend/src:/src
-  #   depends_on:
-  #     mongo:
-  #       condition: service_healthy
-  #     api:
-  #       condition: service_healthy
-  # profiles:
-  #   - frontend
-
   spark-master:
     build: ./spark
     restart: unless-stopped
@@ -128,6 +60,10 @@ services:
     environment:
       MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
       MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+      JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
+      DW_USER: ${POSTGRES_USER}
+      DW_PASS: ${POSTGRES_PASSWORD}
+      # DW_DB: ${POSTGRES_DB}
     volumes:
       - ./spark/jobs:/home/ubuntu/jobs_listings
     command: sh spark-master.sh
@@ -140,6 +76,10 @@ services:
     environment:
       MINIO_SPARK_ACCESS_KEY: ${MINIO_SPARK_ACCESS_KEY}
       MINIO_SPARK_SECRET_KEY: ${MINIO_SPARK_SECRET_KEY}
+      JDBC_URL: "jdbc:postgresql://postgres:5432/${POSTGRES_DB}"
+      DW_USER: ${POSTGRES_USER}
+      DW_PASS: ${POSTGRES_PASSWORD}
+      # DW_DB: ${POSTGRES_DB}
     volumes:
       - ./spark/jobs:/home/ubuntu/jobs_listings
     command: sh spark-worker.sh
@@ -166,24 +106,6 @@ services:
       timeout: 20s
       retries: 3
 
-  # mariadb: #for hive metastore
-  #   image: mariadb:latest
-  #   # image: mariadb/columnstore:latest
-  #   ports:
-  #     - 3306:3306
-  #   environment:
-  #     USE_S3_STORAGE: 0
-  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #     MYSQL_USER: ${MYSQL_USER}
-  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
-
-  # hive:
-  #   build: ./hive
-  #   restart: unless-stopped
-  #   ports:
-  #     - 9083:9083
-
   postgres-airflow:
     image: postgres:13
     environment:
@@ -197,8 +119,6 @@ services:
       interval: 5s
       retries: 5
     restart: always
-    # profiles:
-    #   - backend
 
   redis:
     image: redis:latest
@@ -281,7 +201,6 @@ services:
     ports:
       - 5432:5432
     volumes:
-      # - ./postgres/data:/var/lib/postgresql/data
       - postgres-db-volume-dw:/var/lib/postgresql/data
       - ./postgres/init/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
@@ -290,32 +209,23 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-pgdb}
     # command: bash -c "/docker-entrypoint-initdb.d/init.sql"
 
-  # doris-fe:
-  #   image: apache/doris:2.0.0_alpha-fe-x86_64
-  #   hostname: doris-fe
-  #   environment:
-  #   - FE_SERVERS=fe1:${INTRANET_IP}:9010
-  #   - FE_ID=1
-  #   volumes:
-  #   - ./doris/data/fe/doris-meta/:/opt/apache-doris/fe/doris-meta/
-  #   - ./doris/data/fe/log/:/opt/apache-doris/fe/log/
-  #   - ./doris/conf/fe.conf:/opt/apache-doris/fe/conf/fe.conf
-  #   network_mode: host
+  pgadmin:
+      image: dpage/pgadmin4
+      # container_name: pgadmin4_container
+      restart: always
+      ports:
+        - "8888:80"
+      environment:
+        PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgexample@example.com}
+        PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pass12345}
+      volumes:
+        - pgadmin-data:/var/lib/pgadmin
+      depends_on:
+        - postgres
 
-  # doris-be:
-  #   image: apache/doris:2.0.0_alpha-be-x86_64
-  #   hostname: doris-be
-  #   environment:
-  #   - FE_SERVERS=fe1:${INTRANET_IP}:9010
-  #   - BE_ADDR=${INTRANET_IP}:9050
-  #   volumes:
-  #   - ./doris/data/be/storage/:/opt/apache-doris/be/storage/
-  #   - ./doris/data/be/script/:/docker-entrypoint-initdb.d/
-  #   depends_on:
-  #     - doris-fe
-  #   network_mode: host
 
 volumes:
   mongo-data:
   postgres-db-volume-af:
   postgres-db-volume-dw:
+  pgadmin-data:

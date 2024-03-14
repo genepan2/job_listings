@@ -10,11 +10,11 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
-from common.JobListings.constants import PATH, COLLECTIONS
-import common.JobListings.helper_database as HelperDatabase
+from job_config_constants import PATH, COLLECTIONS
+import job_helper_database as JobHelperDatabase
 
 
-class PredictorSalary:
+class JobPredictorSalary:
     def __init__(self, source_name):
         logging.info(source_name)
         # self.model_path = 'backend/app/ml/reglog_model.pkl'
@@ -47,7 +47,7 @@ class PredictorSalary:
         # self.job_listing_df = pd.read_csv(self.job_listing_data_path)
         # self.job_listing_df = get_data_from_source_collections(source_name)
         self.job_listing_df = pd.DataFrame(
-            HelperDatabase.get_data_from_source_collections(COLLECTIONS[self.source_name]))
+            JobHelperDatabase.get_data_from_source_collections(COLLECTIONS[self.source_name]))
         # logging.info(type(self.job_listing_df))
         self.X_train = pd.read_csv(self.X_train_path)
 
@@ -109,7 +109,7 @@ class PredictorSalary:
         # Perform the bulk update
         if updates:
             # result = collection.bulk_write(updates)
-            result = HelperDatabase.update_bulk_records(
+            result = JobHelperDatabase.update_bulk_records(
                 updates, self.source_name)
 
         # Check the outcome (optional)

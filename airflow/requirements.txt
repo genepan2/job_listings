@@ -9,6 +9,10 @@ boto3
 # pyspark==3.3.4
 pyspark==3.5.0
 delta
+PyYAML
+# psycopg2
+psycopg2-binary
+stringcase
 
 # airflow
 apache-airflow-providers-mongo
